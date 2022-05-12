@@ -8,15 +8,23 @@ import {EnAttenteComponent} from './components/en-attente/en-attente.component';
 import {EnCoursComponent} from './components/en-cours/en-cours.component';
 import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 import {RouterModule} from "@angular/router";
-import { MatIconModule } from '@angular/material/icon';
-import { DialogComponent } from './components/dialog/dialog.component'
+import {MatIconModule} from '@angular/material/icon';
+import {DialogComponent} from './components/dialog/dialog.component'
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
-import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
-
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
+import {SideBareComponent} from './components/side-bare/side-bare.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatDividerModule} from '@angular/material/divider';
+
+import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +33,14 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     EnAttenteComponent,
     EnCoursComponent,
     DialogComponent,
+    SideBareComponent,
+    FournisseurComponent,
+
   ],
-  entryComponents:[DialogComponent],
+
   imports: [
+    AppRoutingModule,
+
     BrowserModule,
     NgbNavModule,
     RouterModule,
@@ -38,9 +51,16 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatButtonModule,
-],
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    HttpClientModule,
+    MatDividerModule,
+    MatDialogModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {
 }

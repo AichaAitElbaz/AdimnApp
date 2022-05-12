@@ -10,10 +10,14 @@ import {MatDialogModule} from "@angular/material";
 import {EnAttenteComponent} from "./components/en-attente/en-attente.component";
 import {EnCoursComponent} from "./components/en-cours/en-cours.component";
 import {DialogComponent} from "./components/dialog/dialog.component";
+import {SideBareComponent} from "./components/side-bare/side-bare.component";
+import {FournisseurComponent} from "./components/fournisseur/fournisseur.component";
 
 const routes: Routes = [
-  {path:'Attente',component:DialogComponent},
+  {path:'Attente',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
+  {path:'Dialog',component:DialogComponent},
+  {path:'F',component:FournisseurComponent},
 
 
 

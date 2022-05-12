@@ -1,0 +1,7 @@
+.mat-toolbar,mat-sidenav{
+background-color:darkslategrey;
+
+}
+.mat-sidenav-content{
+  background-color: floralwhite;
+}
