@@ -20,10 +20,13 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from '@angular/material/divider';
-
+// import {FontAwesomeModule} from '@font'
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
+import { EnAttenteDeviComponent } from './components/en-attente-devi/en-attente-devi.component';
+import { EnAttenteLivraisonComponent } from './components/en-attente-livraison/en-attente-livraison.component';
+import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-attente-paiement.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { FournisseurComponent } from './components/fournisseur/fournisseur.compo
     DialogComponent,
     SideBareComponent,
     FournisseurComponent,
+    EnAttenteDeviComponent,
+    EnAttenteLivraisonComponent,
+    EnAttentePaiementComponent,
 
   ],
 

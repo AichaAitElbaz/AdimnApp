@@ -8,4 +8,5 @@ export class ExpressionBesoin {
   public dateExb: string;
   public statut: string;
   public service:ServiceDemandeur;
+  public user:User;
 }

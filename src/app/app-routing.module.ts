@@ -12,12 +12,18 @@ import {EnCoursComponent} from "./components/en-cours/en-cours.component";
 import {DialogComponent} from "./components/dialog/dialog.component";
 import {SideBareComponent} from "./components/side-bare/side-bare.component";
 import {FournisseurComponent} from "./components/fournisseur/fournisseur.component";
+import {EnAttenteLivraisonComponent} from "./components/en-attente-livraison/en-attente-livraison.component";
+import {EnAttenteDeviComponent} from "./components/en-attente-devi/en-attente-devi.component";
+import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-attente-paiement.component";
 
 const routes: Routes = [
   {path:'Attente',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
   {path:'Dialog',component:DialogComponent},
   {path:'F',component:FournisseurComponent},
+  {path:'D',component:EnAttenteDeviComponent},
+  {path:'L',component:EnAttenteLivraisonComponent},
+  {path:'P',component:EnAttentePaiementComponent},
 
 
 

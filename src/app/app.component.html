@@ -1,25 +1,27 @@
-<mat-toolbar >
+<!--<mat-toolbar >-->
+<!--&lt;!&ndash;<img src="Cady_ayyad_university.png">&ndash;&gt;-->
+<!--    <svg  (click)="sidenav.toggle()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">-->
+<!--      <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>-->
+<!--    </svg>-->
 
-    <svg  (click)="sidenav.toggle()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-filter-left" viewBox="0 0 16 16">
-      <path d="M2 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-    </svg>
+<!--</mat-toolbar>-->
+<!--<mat-sidenav-container>-->
+<!--  <mat-sidenav #sidenav opened="false" mode="side">-->
+<!--    <mat-nav-list>-->
+<!--      <a mat-list-item routerLink="Attente">demande En Attente</a>-->
+<!--      <a mat-list-item routerLink="Cours">demande En Cours</a>-->
+<!--      <a mat-list-item routerLink="D">demande En Attente de devi</a>-->
+<!--      <a mat-list-item routerLink="L">demande En Attente de laivraison </a>-->
+<!--      <a mat-list-item routerLink="P">demande En Attente de paiement </a>-->
+<!--    </mat-nav-list>-->
+<!--  </mat-sidenav>-->
+<!--    <mat-sidenav-content>-->
+<!--      <div style="height: 88vh">-->
+<!--        <router-outlet></router-outlet>-->
 
-</mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav opened="false" mode="side">
-    <mat-nav-list>
-      <a mat-list-item routerLink="Attente">demande En Attente</a>
-      <a mat-list-item routerLink="Cours">demande En Cours</a>
-      <a mat-list-item>demande En Attente de devi</a>
-      <a mat-list-item>demande En Attente de laivraison </a>
-      <a mat-list-item>demande En Attente de paiement </a>
-    </mat-nav-list>
-  </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="height: 88vh;">
-        <router-outlet></router-outlet>
+<!--      </div>-->
+<!--    </mat-sidenav-content>-->
 
-      </div>
-    </mat-sidenav-content>
+<!--</mat-sidenav-container>-->
+<app-side-bare ></app-side-bare>
 
-</mat-sidenav-container>
