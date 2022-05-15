@@ -84,6 +84,7 @@ export class EnAttenteService {
   }
 
   get service(): ServiceDemandeur {
+    if (this._service==null)this._service=new ServiceDemandeur();
     return this._service;
   }
 
@@ -147,18 +148,26 @@ export class EnAttenteService {
   }
 
   deleteService(serviceDemandeur: ServiceDemandeur) {
-    this.http.delete("http://localhost:8096/v1/admin/service-demandeur/reference/" + serviceDemandeur.reference).subscribe(
+    this.http.delete("http://localhost:8096/v1/admin/service-demandeur/reference/" +serviceDemandeur.reference).subscribe(
       data => {
         console.log(serviceDemandeur);
       }
     )
   }
 
-  updateService(serviceDemandeur: ServiceDemandeur, nomService:string) {
-    this.http.post("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur,nomService).subscribe(
+  updateService(serviceDemandeur: ServiceDemandeur) {
+    this.http.post("http://localhost:8096/v1/admin/service-demandeur/update/",serviceDemandeur).subscribe(
       data=>{
         console.log("service saved");
       }
     )
+  }
+  saveService(serviceDemandeur: ServiceDemandeur){
+    this.http.post("http://localhost:8096/v1/admin/service-demandeur/",serviceDemandeur).subscribe(
+      data=>{
+
+      }
+    )
+
   }
 }
