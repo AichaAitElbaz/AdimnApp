@@ -20,6 +20,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from '@angular/material/divider';
+
 // import {FontAwesomeModule} from '@font'
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
@@ -27,6 +28,8 @@ import { FournisseurComponent } from './components/fournisseur/fournisseur.compo
 import { EnAttenteDeviComponent } from './components/en-attente-devi/en-attente-devi.component';
 import { EnAttenteLivraisonComponent } from './components/en-attente-livraison/en-attente-livraison.component';
 import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-attente-paiement.component';
+import { ArchiveeComponent } from './components/archivee/archivee.component';
+import { ServiceComponent } from './components/service/service.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-
     EnAttenteDeviComponent,
     EnAttenteLivraisonComponent,
     EnAttentePaiementComponent,
+    ArchiveeComponent,
+    ServiceComponent,
 
   ],
 
@@ -62,7 +67,7 @@ import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-
     MatListModule,
     HttpClientModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

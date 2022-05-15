@@ -15,6 +15,8 @@ import {FournisseurComponent} from "./components/fournisseur/fournisseur.compone
 import {EnAttenteLivraisonComponent} from "./components/en-attente-livraison/en-attente-livraison.component";
 import {EnAttenteDeviComponent} from "./components/en-attente-devi/en-attente-devi.component";
 import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-attente-paiement.component";
+import {ArchiveeComponent} from "./components/archivee/archivee.component";
+import {ServiceComponent} from "./components/service/service.component";
 
 const routes: Routes = [
   {path:'Attente',component:EnAttenteComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
   {path:'D',component:EnAttenteDeviComponent},
   {path:'L',component:EnAttenteLivraisonComponent},
   {path:'P',component:EnAttentePaiementComponent},
+  {path:'A',component:ArchiveeComponent},
+  {path:'S',component:ServiceComponent},
 
 
 

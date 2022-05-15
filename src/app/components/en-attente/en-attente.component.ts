@@ -32,7 +32,7 @@ export class EnAttenteComponent implements OnInit {
     this.enAttenteService.getExpressionBesoins();
     // this.enAttenteService.findUserByExpressionDeBesoinRef(this.enAttenteService.expressionBesoin);
     this.enAttenteService.affecter();
-    this.user.expressionBesoins.forEach(e => this.enAttenteService.save(e))
+    // this.user.expressionBesoins.forEach(e => this.enAttenteService.save(e))
   }
 
   get user(): User {
@@ -42,4 +42,16 @@ export class EnAttenteComponent implements OnInit {
   save(expressionBesoin:ExpressionBesoin) {
 
     this.enAttenteService.save(expressionBesoin);}
+
+  archiver(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.archiver(expressionBesoin);
+  }
+
+  vider(i:number) {
+    this.enAttenteService.vider(i);
+  }
+
+  update(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.update(expressionBesoin);
+  }
 }

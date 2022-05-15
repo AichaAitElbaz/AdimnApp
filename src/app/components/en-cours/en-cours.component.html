@@ -12,7 +12,7 @@
       <tbody>
       <tr *ngFor="let e of expressionBesoins">
         <td>{{e.user.userName}}</td>
-        <td></td>
+        <td>{{e.user.serviceDemandeur.reference}}</td>
         <td>{{e.objet}}</td>
         <td>{{e.statut}}</td>
         <td width="20%">

@@ -10,7 +10,7 @@
       </thead>
 
       <tbody>
-      <tr *ngFor="let e of expressionBesoins">
+      <tr *ngFor="let e of expressionBesoins,index as i">
         <td>{{e.user.userName}}</td>
         <td>{{e.user.serviceDemandeur.reference}}</td>
         <td>{{e.objet}}</td>
@@ -30,7 +30,7 @@
                 </button>
 
                 <button style="  width: 40px;height: 50px;font-size: 10px" mat-fab color="warn"
-                        aria-label="Example icon button with a delete icon">
+                        aria-label="Example icon button with a delete icon" (click)="archiver(e);update(e);vider(i)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-trash-fill" viewBox="0 0 16 16">
                     <path

@@ -1,16 +1,27 @@
-
 <div class="d-flex">
   <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
     <li ngbNavItem="top">
       <a ngbNavLink>Demande En Attente</a>
-      <ng-template ngbNavContent >
-       <app-en-attente></app-en-attente>
+      <ng-template ngbNavContent>
+        <app-en-attente></app-en-attente>
       </ng-template>
     </li>
     <li ngbNavItem="middle">
       <a ngbNavLink>En Cours</a>
       <ng-template ngbNavContent>
         <app-en-cours></app-en-cours>
+      </ng-template>
+    </li>
+    <li ngbNavItem="down">
+      <a ngbNavLink>Archivée</a>
+      <ng-template ngbNavContent>
+        <app-archivee></app-archivee>
+      </ng-template>
+    </li>
+    <li ngbNavItem="down2">
+      <a ngbNavLink>Services</a>
+      <ng-template ngbNavContent>
+        <app-service></app-service>
       </ng-template>
     </li>
 

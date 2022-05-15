@@ -19,10 +19,14 @@ private _service:ServiceDemandeur;
   }
   public getExpressionBesoins() {
     console.log("ven")
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/").subscribe(
+//
+    const iterator = "en Cours";
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/"+iterator).subscribe(
       data => {
-        this.expressionBesoins = [...data];
-      }
+  console.log(data)
+
+  this.expressionBesoins = [...data];
+}
     )
   }
   public affecter() {
@@ -56,4 +60,16 @@ private _service:ServiceDemandeur;
   set service(value: ServiceDemandeur) {
     this._service = value;
   }
+
+  getExpressionBesoinsArchivee() {
+    console.log("ven")
+//
+    const iterator = "Archivée";
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/"+iterator).subscribe(
+      data => {
+        console.log(data)
+
+        this.expressionBesoins = [...data];
+      }
+    )  }
 }

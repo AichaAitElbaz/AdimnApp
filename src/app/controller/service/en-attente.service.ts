@@ -12,6 +12,7 @@ export class EnAttenteService {
   private _service: ServiceDemandeur;
   private _expressionBesoin: ExpressionBesoin;
   private _user: User;
+  private _services: Array<ServiceDemandeur>
 
   constructor(private http: HttpClient) {
   }
@@ -90,14 +91,74 @@ export class EnAttenteService {
     this._service = value;
   }
 
-  public save(expressionBesoin:ExpressionBesoin) {
-    console.log("vant")
+  public save(expressionBesoin: ExpressionBesoin) {
+    expressionBesoin.statut = "en Cours";
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+      data => {
 
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/",expressionBesoin).subscribe(
-      data=>{
-        console.log("apres")
       }
     )
 
+  }
+
+  archiver(expressionBesoin: ExpressionBesoin) {
+    expressionBesoin.statut = "Archivée";
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+      data => {
+        console.log(expressionBesoin.statut)
+      }
+    )
+
+  }
+
+  vider(i: number) {
+    this.expressionBesoins.splice(i, 1)
+
+  }
+
+  vidertabService(i: number) {
+
+    this.services.splice(i, 1)
+  }
+
+  update(expressionBesoin: ExpressionBesoin) {
+    this.http.post("http://localhost:8095//centre-project/v1/expression-besoin/update/", expressionBesoin).subscribe(
+      data => {
+        console.log(expressionBesoin.statut)
+      }
+    )
+  }
+
+  getServices() {
+    this.http.get<Array<ServiceDemandeur>>("http://localhost:8096/v1/admin/service-demandeur/").subscribe(
+      data => {
+        this.services = [...data];
+      }
+    )
+  }
+
+  get services(): Array<ServiceDemandeur> {
+    if (this._services == null) this._services = new Array<ServiceDemandeur>();
+    return this._services;
+  }
+
+  set services(value: Array<ServiceDemandeur>) {
+    this._services = value;
+  }
+
+  deleteService(serviceDemandeur: ServiceDemandeur) {
+    this.http.delete("http://localhost:8096/v1/admin/service-demandeur/reference/" + serviceDemandeur.reference).subscribe(
+      data => {
+        console.log(serviceDemandeur);
+      }
+    )
+  }
+
+  updateService(serviceDemandeur: ServiceDemandeur, nomService:string) {
+    this.http.post("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur,nomService).subscribe(
+      data=>{
+        console.log("service saved");
+      }
+    )
   }
 }
