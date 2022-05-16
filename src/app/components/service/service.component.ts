@@ -37,9 +37,9 @@ constructor(private enAttenteService:EnAttenteService,private servicesService:Se
     (<HTMLInputElement> document.getElementById("btn")).hidden = false;
     (<HTMLElement> document.getElementById("in")).hidden=false;
   }
-  updateService(serviceDemandeur: ServiceDemandeur,nomService:string) {
-    this.enAttenteService.updateService(serviceDemandeur,nomService);
-  }
+  // updateService(serviceDemandeur: ServiceDemandeur,nomService:string) {
+  //   this.enAttenteService.updateService(serviceDemandeur,nomService);
+  // }
   public saveService(serviceDemandeur:ServiceDemandeur){
   this.enAttenteService.saveService(serviceDemandeur);
   }

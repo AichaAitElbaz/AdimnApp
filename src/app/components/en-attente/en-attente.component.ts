@@ -6,6 +6,7 @@ import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {EnAttenteService} from "../../controller/service/en-attente.service";
 import {ServiceDemandeur} from "../../controller/model/service-demandeur.model";
 import {User} from "../../controller/model/user.model";
+import {EnCoursService} from "../../controller/service/en-cours.service";
 
 @Component({
   selector: 'app-en-attente',
@@ -20,7 +21,7 @@ import {User} from "../../controller/model/user.model";
 
 export class EnAttenteComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private enAttenteService: EnAttenteService) {
+  constructor(public dialog: MatDialog, private enAttenteService: EnAttenteService,private enCoursService:EnCoursService ) {
   }
 
   get expressionBesoins(): Array<ExpressionBesoin> {
@@ -31,7 +32,7 @@ export class EnAttenteComponent implements OnInit {
   ngOnInit(): void {
     this.enAttenteService.getExpressionBesoins();
     // this.enAttenteService.findUserByExpressionDeBesoinRef(this.enAttenteService.expressionBesoin);
-    this.enAttenteService.affecter();
+    this.enCoursService.affecter();
     // this.user.expressionBesoins.forEach(e => this.enAttenteService.save(e))
   }
 
