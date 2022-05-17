@@ -12,18 +12,18 @@ import {EnAttenteService} from "../../controller/service/en-attente.service";
 })
 export class ArchiveeComponent implements OnInit {
 
-  constructor(private enCoursService:EnCoursService,private enAttenteService:EnAttenteService) { }
+  constructor(private archiveeService:ArchiveeService,private enAttenteService:EnAttenteService) { }
 
   ngOnInit(): void {
-    this.enCoursService.getExpressionBesoinsArchivee();
-    this.enCoursService.affecter();
+    this.archiveeService.getExpressionBesoinsArchivee();
+    this.archiveeService.affecter();
   }
-  get expressionBesoins(): Array<ExpressionBesoin> {
-    return this.enCoursService.expressionBesoins;
+  get expressionBesoinsArchivees(): Array<ExpressionBesoin> {
+    return this.archiveeService.expressionBesoinsArchivees;
   }
 
-  get user(): User {
-    return this.enCoursService.user;
+  get users(): Array<User> {
+    return this.archiveeService.users;
   }
 
   save(expressionBesoin: ExpressionBesoin) {

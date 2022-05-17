@@ -3,7 +3,7 @@
     <table class="table table-hover table-striped " style="border: dimgrey solid">
 
       <thead>
-      <th>id</th>
+
       <th>Nom</th>
       <th>action</th>
 
@@ -11,17 +11,8 @@
 
       <tbody>
       <tr *ngFor="let s of services,index as i">
-        <td>{{s.id}}</td>
-        <td>{{s.reference}}</td>
+        <td>{{s.nom}}</td>
         <td>
-          <button style="  width: 40px;height: 50px;font-size: 10px" color="primary" mat-fab
-                  aria-label="Example icon button with a delete icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-check-lg" viewBox="0 0 16 16">
-              <path
-                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-            </svg>
-          </button>
 
           <button style="  width: 40px;height: 50px;font-size: 10px" mat-fab color="warn"
                   aria-label="Example icon button with a delete icon" (click)="vidertabService(i);deleteService(s)">
@@ -31,30 +22,19 @@
                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
             </svg>
           </button>
-          <button style="  width: 40px;height: 50px;font-size: 10px" mat-fab color="warn"
-                  aria-label="Example icon button with a delete icon" (click)="setinputDesabled()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-trash-fill" viewBox="0 0 16 16">
-              <path
-                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-            </svg>
-          </button>
-          <input id="in" hidden="true" [(ngModel)]="service.reference">
-<!--          <button id="btn" hidden="true" (click)="updateService(service)">ok</button>-->
+
+          <input id="in" hidden="true" [(ngModel)]="s.nom">
+<!--          <button id="btn" hidden="true" (click)="updateService(s.reference,s.nom)">ok</button>-->
         </td>
 
 
-      </tr>
-    <tr>
-      <td>
-        <button (click)="saveService(service)">add</button>
-      </td>
-    </tr>
-      </tbody>
+      </tr> </tbody>
     </table>
   </div>
-  <div class=" card-footer
-          ">
+
+
+  <div >
+    <button class=" btn btn-danger " style="margin:0px; border: solid white;">+</button>
   </div>
 
 </div>

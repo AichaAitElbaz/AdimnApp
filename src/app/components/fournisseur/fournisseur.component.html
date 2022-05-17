@@ -1,1 +1,53 @@
-<p>fournisseur works!</p>
+<div class="card-header">
+  choix des fournisseurs
+</div>
+<div class="card-body">
+
+  <div class="row">
+    <div class="form-check form-check-inline" *ngFor="let f of fournisseurs">
+
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"  >
+
+      <label class="form-check-label" for="inlineCheckbox1">{{f.nomFournisseur}}</label>
+    </div>
+  </div></div>
+<div class="card-footer">
+
+    <button mat-dialog-close style="background-color:red; border-color: crimson" >OK</button>
+</div>
+<!--<table class="table table-hover table-striped " style="border: dimgrey solid">-->
+
+<!--  <thead>-->
+<!--  <th>Nom</th>-->
+<!--  <th>Service</th>-->
+<!--  <th>objet</th>-->
+<!--  <th>statut</th>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<!--  <tr *ngFor="let e of fournisseurs">-->
+<!--    <td>{{e.}}</td>-->
+<!--   -->
+<!--    <td width="20%">-->
+<!--      <div class="example-button-row">-->
+<!--        <div class="example-flex-container">-->
+<!--          <div class="example-button-container">-->
+<!--            <button style="  width: 40px;height: 50px;font-size: 10px" color="primary" mat-fab-->
+<!--                    aria-label="Example icon button with a delete icon" >-->
+<!--              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+<!--                   class="bi bi-check-lg" viewBox="0 0 16 16">-->
+<!--                <path-->
+<!--                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>-->
+<!--              </svg>-->
+<!--            </button>-->
+
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </td>-->
+<!--  </tr>-->
+
+<!--  </tbody>-->
+<!--</table>-->

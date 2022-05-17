@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Fournisseur} from "../../controller/model/fournisseur.model";
+import {FournisseurService} from "../../controller/service/fournisseur.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FournisseurComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private fournisseurService: FournisseurService) {
   }
 
+  ngOnInit(): void {
+    this.fournisseurService.getFournisseurs();
+  }
+
+  get fournisseurs(): Array<Fournisseur> {
+    return this.fournisseurService.fournisseurs;
+  }
 }

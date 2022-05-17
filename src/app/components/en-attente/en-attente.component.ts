@@ -14,14 +14,12 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
   styleUrls: ['./en-attente.component.css'],
 
 
-
-
 })
 
 
 export class EnAttenteComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private enAttenteService: EnAttenteService,private enCoursService:EnCoursService ) {
+  constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService) {
   }
 
   get expressionBesoins(): Array<ExpressionBesoin> {
@@ -32,23 +30,25 @@ export class EnAttenteComponent implements OnInit {
   ngOnInit(): void {
     this.enAttenteService.getExpressionBesoins();
     // this.enAttenteService.findUserByExpressionDeBesoinRef(this.enAttenteService.expressionBesoin);
-    this.enCoursService.affecter();
+
+    this.enAttenteService.affecter();
     // this.user.expressionBesoins.forEach(e => this.enAttenteService.save(e))
   }
 
-  get user(): User {
-    return this.enAttenteService.user;
+  get users(): Array<User> {
+    return this.enAttenteService.users;
   }
 
-  save(expressionBesoin:ExpressionBesoin) {
+  save(expressionBesoin: ExpressionBesoin) {
 
-    this.enAttenteService.save(expressionBesoin);}
+    this.enAttenteService.save(expressionBesoin);
+  }
 
   archiver(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.archiver(expressionBesoin);
   }
 
-  vider(i:number) {
+  vider(i: number) {
     this.enAttenteService.vider(i);
   }
 

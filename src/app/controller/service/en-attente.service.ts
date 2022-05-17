@@ -12,19 +12,21 @@ export class EnAttenteService {
   private _service: ServiceDemandeur;
   private _expressionBesoin: ExpressionBesoin;
   private _user: User;
-  private _services: Array<ServiceDemandeur>
+  private _services: Array<ServiceDemandeur>;
+  private _users: Array<User>
 
   constructor(private http: HttpClient) {
   }
 
 
   public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/employe/AllExpressionServices").subscribe(
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/en%20Attente").subscribe(
       data => {
 
+        console.log(data)
 
-        this.expressionBesoins = [...data];
-
+        this.expressionBesoins = [...data]
+        // console.log(this.expressionBesoins)
       }
     )
   }
@@ -58,9 +60,13 @@ export class EnAttenteService {
   }
 
   public affecter() {
-    console.log(this.expressionBesoins)
-    this.user.expressionBesoins = this.expressionBesoins;
-    this.user.serviceDemandeur = this.service;
+    this.expressionBesoins.forEach(
+      e => {
+        this.users.push(e.user);
+
+      }
+    )
+
   }
 
   get expressionBesoin(): ExpressionBesoin {
@@ -84,7 +90,7 @@ export class EnAttenteService {
   }
 
   get service(): ServiceDemandeur {
-    if (this._service==null)this._service=new ServiceDemandeur();
+    if (this._service == null) this._service = new ServiceDemandeur();
     return this._service;
   }
 
@@ -130,6 +136,15 @@ export class EnAttenteService {
     )
   }
 
+  get users(): Array<User> {
+    if (this._users == null) this._users = new Array<User>()
+    return this._users;
+  }
+
+  set users(value: Array<User>) {
+    this._users = value;
+  }
+
   getServices() {
     this.http.get<Array<ServiceDemandeur>>("http://localhost:8096/v1/admin/service-demandeur/").subscribe(
       data => {
@@ -148,23 +163,24 @@ export class EnAttenteService {
   }
 
   deleteService(serviceDemandeur: ServiceDemandeur) {
-    this.http.delete("http://localhost:8096/v1/admin/service-demandeur/reference/" +serviceDemandeur.reference).subscribe(
+    this.http.delete("http://localhost:8096/v1/admin/service-demandeur/reference/" + serviceDemandeur.reference).subscribe(
       data => {
         console.log(serviceDemandeur);
       }
     )
   }
 
-  updateService(serviceDemandeur: ServiceDemandeur) {
-    this.http.post("http://localhost:8096/v1/admin/service-demandeur/update/",serviceDemandeur).subscribe(
-      data=>{
+  updateService(ref: String, nom: String) {
+    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/", ref + "/" + nom).subscribe(
+      data => {
         console.log("service saved");
       }
     )
   }
-  saveService(serviceDemandeur: ServiceDemandeur){
-    this.http.post("http://localhost:8096/v1/admin/service-demandeur/",serviceDemandeur).subscribe(
-      data=>{
+
+  saveService(serviceDemandeur: ServiceDemandeur) {
+    this.http.post("http://localhost:8096/v1/admin/service-demandeur/", serviceDemandeur).subscribe(
+      data => {
 
       }
     )

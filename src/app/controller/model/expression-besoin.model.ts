@@ -7,6 +7,5 @@ export class ExpressionBesoin {
   public objet: string;
   public dateExb: string;
   public statut: string;
-  public service:ServiceDemandeur;
-  public user:User;
+  public user=new User();
 }

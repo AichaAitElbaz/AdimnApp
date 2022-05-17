@@ -5,6 +5,6 @@ export class User {
   public id:number;
   public ref:string;
   public userName:string;
-  public serviceDemandeur:ServiceDemandeur;
+  public serviceDemandeur=new ServiceDemandeur();
   public expressionBesoins =new Array<ExpressionBesoin>();
 }

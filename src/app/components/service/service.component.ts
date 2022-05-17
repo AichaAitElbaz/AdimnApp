@@ -46,4 +46,8 @@ constructor(private enAttenteService:EnAttenteService,private servicesService:Se
   get service(): ServiceDemandeur {
     return this.enAttenteService.service;
   }
+
+  updateService(ref: string, nom: string) {
+    this.enAttenteService.updateService(ref,nom);
+  }
 }
