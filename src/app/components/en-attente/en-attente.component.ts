@@ -7,6 +7,9 @@ import {EnAttenteService} from "../../controller/service/en-attente.service";
 import {ServiceDemandeur} from "../../controller/model/service-demandeur.model";
 import {User} from "../../controller/model/user.model";
 import {EnCoursService} from "../../controller/service/en-cours.service";
+import {FournisseurComponent} from "../fournisseur/fournisseur.component";
+import {ServicesService} from "../../controller/service/services.service";
+import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 
 @Component({
   selector: 'app-en-attente',
@@ -19,7 +22,8 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
 
 export class EnAttenteComponent implements OnInit {
 
-  constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService) {
+  constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService,
+              private DIALOG:MatDialog,private servicesService:ServicesService) {
   }
 
   get expressionBesoins(): Array<ExpressionBesoin> {
@@ -55,4 +59,18 @@ export class EnAttenteComponent implements OnInit {
   update(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.update(expressionBesoin);
   }
+
+  updateInUser(expressionBesoin:ExpressionBesoin) {
+    this.enAttenteService.updateInUser(expressionBesoin);
+  }
+  public openDialog() {
+    this.DIALOG.open(ExpressionBesoinItemComponent, {
+      height: '400px',
+      width: '600px'})
+  }
+  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+    this.servicesService.getExpresssionBesoinItems(expressionBesoin);
+  }
+
+
 }

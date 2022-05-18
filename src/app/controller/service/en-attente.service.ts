@@ -20,7 +20,7 @@ export class EnAttenteService {
 
 
   public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/en%20Attente").subscribe(
+    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8096/v1/admin/employe/EnattenteExpressionServices").subscribe(
       data => {
 
         console.log(data)
@@ -99,7 +99,6 @@ export class EnAttenteService {
   }
 
 
-
   public save(expressionBesoin: ExpressionBesoin) {
     expressionBesoin.statut = "en Cours";
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
@@ -131,7 +130,7 @@ export class EnAttenteService {
   }
 
   update(expressionBesoin: ExpressionBesoin) {
-    this.http.post("http://localhost:8095//centre-project/v1/expression-besoin/update/", expressionBesoin).subscribe(
+    this.http.put("http://localhost:8095/centre-project/v1/expression-besoin/refuser", expressionBesoin).subscribe(
       data => {
         console.log(expressionBesoin.statut)
       }
@@ -172,8 +171,8 @@ export class EnAttenteService {
     )
   }
 
-  updateService(ref: String, nom: String) {
-    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/", ref + "/" + nom).subscribe(
+  updateService(serviceDemandeur:ServiceDemandeur) {
+    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur.nom,serviceDemandeur ).subscribe(
       data => {
         console.log("service saved");
       }
@@ -181,11 +180,19 @@ export class EnAttenteService {
   }
 
   saveService(serviceDemandeur: ServiceDemandeur) {
+    serviceDemandeur.reference = "s5";
     this.http.post("http://localhost:8096/v1/admin/service-demandeur/", serviceDemandeur).subscribe(
       data => {
-
       }
     )
 
+  }
+
+  updateInUser(expressionBesoin: ExpressionBesoin) {
+    this.http.put("http://localhost:8095/centre-project/v1/expression-besoin/accepter", expressionBesoin).subscribe(
+      data => {
+        console.log(data)
+      }
+    )
   }
 }

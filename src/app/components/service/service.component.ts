@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EnAttenteService} from "../../controller/service/en-attente.service";
 import {ServiceDemandeur} from "../../controller/model/service-demandeur.model";
 import {ServicesService} from "../../controller/service/services.service";
@@ -11,12 +11,14 @@ import {ServicesService} from "../../controller/service/services.service";
 
 })
 export class ServiceComponent implements OnInit {
-constructor(private enAttenteService:EnAttenteService,private servicesService:ServicesService) {
-}
+  private serviceDemandeur: ServiceDemandeur;
+
+  constructor(private enAttenteService: EnAttenteService, private servicesService: ServicesService) {
+  }
 
 
   ngOnInit(): void {
-  this.enAttenteService.getServices();
+    this.enAttenteService.getServices();
 
   }
 
@@ -32,22 +34,40 @@ constructor(private enAttenteService:EnAttenteService,private servicesService:Se
   deleteService(serviceDemandeur: ServiceDemandeur) {
     this.enAttenteService.deleteService(serviceDemandeur);
   }
-  public  setinputDesabled() {
 
-    (<HTMLInputElement> document.getElementById("btn")).hidden = false;
-    (<HTMLElement> document.getElementById("in")).hidden=false;
+  public setinputDesabled() {
+
+    (<HTMLInputElement>document.getElementById("btn")).hidden = false;
+    (<HTMLElement>document.getElementById("in")).hidden = false;
   }
+
   // updateService(serviceDemandeur: ServiceDemandeur,nomService:string) {
   //   this.enAttenteService.updateService(serviceDemandeur,nomService);
   // }
-  public saveService(serviceDemandeur:ServiceDemandeur){
-  this.enAttenteService.saveService(serviceDemandeur);
+  public saveService(serviceDemandeur:ServiceDemandeur) {
+    console.log(serviceDemandeur.nom)
+    this.enAttenteService.saveService(serviceDemandeur);
   }
+
   get service(): ServiceDemandeur {
     return this.enAttenteService.service;
   }
 
-  updateService(ref: string, nom: string) {
-    this.enAttenteService.updateService(ref,nom);
+  updateService(serviceDemandeur:ServiceDemandeur) {
+    this.enAttenteService.updateService(serviceDemandeur);
+  }
+
+  addrow(x: string) {
+    var table = document.getElementById(x);
+    table.innerHTML += document.getElementById("newrow");
+  }
+
+  public save(serviceDemandeur: ServiceDemandeur) {
+    this.servicesService.save(serviceDemandeur);
+  }
+
+  setinputvisible() {
+    document.getElementById("input").hidden=false;
+    document.getElementById("addbtn").hidden=false;
   }
 }

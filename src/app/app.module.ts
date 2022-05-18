@@ -29,6 +29,7 @@ import { EnAttenteLivraisonComponent } from './components/en-attente-livraison/e
 import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-attente-paiement.component';
 import { ArchiveeComponent } from './components/archivee/archivee.component';
 import { ServiceComponent } from './components/service/service.component';
+import { ExpressionBesoinItemComponent } from './components/expression-besoin-item/expression-besoin-item.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ServiceComponent } from './components/service/service.component';
     EnAttentePaiementComponent,
     ArchiveeComponent,
     ServiceComponent,
+    ExpressionBesoinItemComponent,
 
   ],
 
