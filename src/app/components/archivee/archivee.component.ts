@@ -4,6 +4,9 @@ import {ArchiveeService} from "../../controller/service/archivee.service";
 import {EnCoursService} from "../../controller/service/en-cours.service";
 import {User} from "../../controller/model/user.model";
 import {EnAttenteService} from "../../controller/service/en-attente.service";
+import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ServicesService} from "../../controller/service/services.service";
 
 @Component({
   selector: 'app-archivee',
@@ -12,7 +15,7 @@ import {EnAttenteService} from "../../controller/service/en-attente.service";
 })
 export class ArchiveeComponent implements OnInit {
 
-  constructor(private archiveeService:ArchiveeService,private enAttenteService:EnAttenteService) { }
+  constructor(private archiveeService:ArchiveeService,private enAttenteService:EnAttenteService,private DIALOG:MatDialog,private servicesService:ServicesService) { }
 
   ngOnInit(): void {
     this.archiveeService.getExpressionBesoinsArchivee();
@@ -28,5 +31,13 @@ export class ArchiveeComponent implements OnInit {
 
   save(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.save(expressionBesoin);
+  }
+  public openDialog2() {
+    this.DIALOG.open(ExpressionBesoinItemComponent, {
+      height: '400px',
+      width: '600px'})
+  }
+  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+    this.servicesService.getExpresssionBesoinItems(expressionBesoin);
   }
 }

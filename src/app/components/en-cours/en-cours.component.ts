@@ -6,6 +6,8 @@ import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {User} from "../../controller/model/user.model";
 import { Router } from '@angular/router';
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
+import {ServicesService} from "../../controller/service/services.service";
+import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 
 @Component({
   selector: 'app-en-cours',
@@ -13,7 +15,7 @@ import {FournisseurComponent} from "../fournisseur/fournisseur.component";
   styleUrls: ['./en-cours.component.css']
 })
 export class EnCoursComponent implements OnInit {
-  constructor(private enCoursService:EnCoursService,private DIALOG:MatDialog) {}
+  constructor(private enCoursService:EnCoursService,private DIALOG:MatDialog,private servicesService:ServicesService) {}
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
@@ -26,11 +28,18 @@ export class EnCoursComponent implements OnInit {
   }
   public openDialog() {
     this.DIALOG.open(FournisseurComponent, {
-      height: '400px',
-      width: '600px'})
+      height: '700px',
+      width: '2000px'})
   }
   get users2(): Array<User> {
     return this.enCoursService.users2;
   }
-
+  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+    this.servicesService.getExpresssionBesoinItems(expressionBesoin);
+  }
+  public openDialog2() {
+    this.DIALOG.open(ExpressionBesoinItemComponent, {
+      height: '400px',
+      width: '600px'})
+  }
 }
