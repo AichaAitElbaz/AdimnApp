@@ -28,8 +28,8 @@ export class EnCoursComponent implements OnInit {
   }
   public openDialog() {
     this.DIALOG.open(FournisseurComponent, {
-      height: '400px',
-      width: '600px'})
+      height: '700px',
+      width: '2000px'})
   }
   get users2(): Array<User> {
     return this.enCoursService.users2;

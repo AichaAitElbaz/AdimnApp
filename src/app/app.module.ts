@@ -11,7 +11,7 @@ import {RouterModule} from "@angular/router";
 import {MatIconModule} from '@angular/material/icon';
 import {DialogComponent} from './components/dialog/dialog.component'
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
@@ -30,6 +30,8 @@ import { EnAttentePaiementComponent } from './components/en-attente-paiement/en-
 import { ArchiveeComponent } from './components/archivee/archivee.component';
 import { ServiceComponent } from './components/service/service.component';
 import { ExpressionBesoinItemComponent } from './components/expression-besoin-item/expression-besoin-item.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -69,6 +71,9 @@ import { ExpressionBesoinItemComponent } from './components/expression-besoin-it
     HttpClientModule,
     MatDividerModule,
     MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

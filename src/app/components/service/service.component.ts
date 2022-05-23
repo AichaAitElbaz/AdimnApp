@@ -35,10 +35,10 @@ export class ServiceComponent implements OnInit {
     this.enAttenteService.deleteService(serviceDemandeur);
   }
 
-  public setinputDesabled() {
+  public setinputDesabled(id:string) {
 
-    (<HTMLInputElement>document.getElementById("btn")).hidden = false;
-    (<HTMLElement>document.getElementById("in")).hidden = false;
+    (<HTMLInputElement>document.getElementById(id)).hidden = false;
+    // (<HTMLElement>document.getElementById("in")).hidden = false;
   }
 
   // updateService(serviceDemandeur: ServiceDemandeur,nomService:string) {
