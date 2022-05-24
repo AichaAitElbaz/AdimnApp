@@ -17,6 +17,7 @@ import {EnAttenteDeviComponent} from "./components/en-attente-devi/en-attente-de
 import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-attente-paiement.component";
 import {ArchiveeComponent} from "./components/archivee/archivee.component";
 import {ServiceComponent} from "./components/service/service.component";
+import {SignInComponent} from "./components/sign-in/sign-in.component";
 
 const routes: Routes = [
   {path:'Attente',component:EnAttenteComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'P',component:EnAttentePaiementComponent},
   {path:'A',component:ArchiveeComponent},
   {path:'S',component:ServiceComponent},
+  {path:'SI',component:SignInComponent},
 
 
 

@@ -32,6 +32,7 @@ import { ServiceComponent } from './components/service/service.component';
 import { ExpressionBesoinItemComponent } from './components/expression-besoin-item/expression-besoin-item.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ArchiveeComponent,
     ServiceComponent,
     ExpressionBesoinItemComponent,
+    SignInComponent,
 
   ],
 
