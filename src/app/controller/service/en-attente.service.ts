@@ -20,7 +20,7 @@ export class EnAttenteService {
 
 
   public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8096/v1/admin/employe/EnattenteExpressionServices").subscribe(
+    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8096/v1/admin/employe/en-attente-expression-services").subscribe(
       data => {
 
         console.log(data)
