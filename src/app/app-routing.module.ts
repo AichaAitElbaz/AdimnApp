@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 
 import {CommonModule} from "@angular/common";
@@ -18,25 +18,35 @@ import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-at
 import {ArchiveeComponent} from "./components/archivee/archivee.component";
 import {ServiceComponent} from "./components/service/service.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {AppComponent} from "./app.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {StatistiquesComponent} from "./components/statistiques/statistiques.component";
+import {VirementComponent} from "./components/virement/virement.component";
+import {TermineeComponent} from "./components/terminee/terminee.component";
 
 const routes: Routes = [
-  {path:'',component:EnAttenteComponent},
-  {path:'Cours',component:EnCoursComponent},
-  {path:'Dialog',component:DialogComponent},
-  {path:'F',component:FournisseurComponent},
-  {path:'D',component:EnAttenteDeviComponent},
-  {path:'L',component:EnAttenteLivraisonComponent},
-  {path:'P',component:EnAttentePaiementComponent},
-  {path:'A',component:ArchiveeComponent},
-  {path:'S',component:ServiceComponent},
-  {path:'bb',component:SignInComponent},
-
-
-
+  {
+    path: '', component: DashboardComponent, children: [
+      {path: 'statistiques', component: StatistiquesComponent},
+      {path: 'en-attente', component: EnAttenteComponent},
+      {path: 'en-cours', component: EnCoursComponent},
+      {path: 'dialog', component: DialogComponent},
+      {path: 'F', component: FournisseurComponent},
+      {path: 'devis', component: EnAttenteDeviComponent},
+      {path: 'livraison', component: EnAttenteLivraisonComponent},
+      {path: 'paiement', component: EnAttentePaiementComponent},
+      {path: 'archivee', component: ArchiveeComponent},
+      {path: 'terminee', component: TermineeComponent},
+      {path: 'virement', component: VirementComponent},
+    ]
+  },
+  {path: 's', component: ServiceComponent},
+  {path: 'login', component: SignInComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),CommonModule],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

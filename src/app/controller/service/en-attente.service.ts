@@ -171,8 +171,8 @@ export class EnAttenteService {
     )
   }
 
-  updateService(serviceDemandeur:ServiceDemandeur) {
-    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur.nom,serviceDemandeur ).subscribe(
+  updateService(serviceDemandeur: ServiceDemandeur) {
+    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/" + serviceDemandeur.nom, serviceDemandeur).subscribe(
       data => {
         console.log("service saved");
       }
@@ -194,6 +194,5 @@ export class EnAttenteService {
         console.log(data)
       }
     )
-
   }
 }

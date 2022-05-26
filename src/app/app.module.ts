@@ -35,6 +35,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatTabsModule} from "@angular/material/tabs";
+import { HeaderComponent } from './components/dashboard/header/header.component';
+import { SidebarComponent } from './components/dashboard/sidebar/sidebar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StatistiquesComponent } from './components/statistiques/statistiques.component';
+import { VirementComponent } from './components/virement/virement.component';
+import { TermineeComponent } from './components/terminee/terminee.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +59,12 @@ import {MatTabsModule} from "@angular/material/tabs";
     ServiceComponent,
     SignInComponent,
     ExpressionBesoinItemComponent,
+    HeaderComponent,
+    SidebarComponent,
+    DashboardComponent,
+    StatistiquesComponent,
+    VirementComponent,
+    TermineeComponent,
 
   ],
 
