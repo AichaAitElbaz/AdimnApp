@@ -1,39 +1,45 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Fournisseur} from "../model/fournisseur.model";
 import {TypeFournisseur} from "../model/type-fournisseur.mpdel";
+import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
+import {ExpressionBesoin} from "../model/expression-besoin.model";
+import {EnCoursService} from "./en-cours.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FournisseurService {
-private _fournisseur:Fournisseur;
-private _fournisseurs:Array<Fournisseur>;
-private _typesfournisseur:Array<TypeFournisseur>;
-  constructor(private http:HttpClient) { }
+  private _fournisseur: Fournisseur;
+  private _fournisseurs: Array<Fournisseur>;
+  private _typesfournisseur: Array<TypeFournisseur>;
+  private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
+  private _expressionBesoins: Array<ExpressionBesoin>;
+
+  constructor(private http: HttpClient,private enCoursService:EnCoursService) {
+  }
 
 
-public getTypes(){
+  public getTypes() {
     this.http.get<Array<TypeFournisseur>>("http://localhost:8096/v1/admin/type-fournisseur/").subscribe(
-      data=>{
-        this.typesfournisseur=[...data];
+      data => {
+        this.typesfournisseur = [...data];
         console.log(data)
       }
     )
-}
+  }
 
-public getFournisseurs(){
-    this.http.get<Array<Fournisseur>>(  "http://localhost:8096/v1/admin/fournisseur/").subscribe(
-      data=>{
-        this.fournisseurs=[...data];
+  public getFournisseurs() {
+    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/").subscribe(
+      data => {
+        this.fournisseurs = [...data];
       }
-
     )
-}
+  }
 
 
   get fournisseurs(): Array<Fournisseur> {
-    if (this._fournisseurs==null)this._fournisseurs=new Array<Fournisseur>();
+    if (this._fournisseurs == null) this._fournisseurs = new Array<Fournisseur>();
     return this._fournisseurs;
   }
 
@@ -42,7 +48,7 @@ public getFournisseurs(){
   }
 
   get fournisseur(): Fournisseur {
-    if (this._fournisseur==null)this._fournisseur=new Fournisseur();
+    if (this._fournisseur == null) this._fournisseur = new Fournisseur();
     return this._fournisseur;
   }
 
@@ -51,7 +57,7 @@ public getFournisseurs(){
   }
 
   get typesfournisseur(): Array<TypeFournisseur> {
-    if (this._typesfournisseur==null)this._typesfournisseur=new Array<TypeFournisseur>();
+    if (this._typesfournisseur == null) this._typesfournisseur = new Array<TypeFournisseur>();
     return this._typesfournisseur;
   }
 
@@ -59,11 +65,41 @@ public getFournisseurs(){
     this._typesfournisseur = value;
   }
 
-  addFourniseeur(fournisseur:Fournisseur) {
-    this.http.post("http://localhost:8096/v1/admin/fournisseur/",fournisseur).subscribe(
-      data=>{
+  addFourniseeur(fournisseur: Fournisseur) {
+    this.http.post("http://localhost:8096/v1/admin/fournisseur/", fournisseur).subscribe(
+      data => {
 
       }
     )
+  }
+
+  getItems() {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours\n").subscribe(
+      data => {
+        this.expressionBesoinsItems = [...data]
+        console.log(data)
+      }
+    )
+  }
+  public getlistofExpressionBesoinItem() {
+    this.enCoursService.expressionBesoinsAcceptees.forEach(e=>e.expressionBesoinItems=this.expressionBesoinsItems);
+  }
+  get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
+    if (this._expressionBesoinsItems == null) this._expressionBesoinsItems = new Array<ExpressionBesoinItem>();
+    return this._expressionBesoinsItems;
+  }
+
+  set expressionBesoinsItems(value: Array<ExpressionBesoinItem>) {
+    this._expressionBesoinsItems = value;
+  }
+
+
+  get expressionBesoins(): Array<ExpressionBesoin> {
+    if (this._expressionBesoins==null)this._expressionBesoins=new Array<ExpressionBesoin>();
+    return this._expressionBesoins;
+  }
+
+  set expressionBesoins(value: Array<ExpressionBesoin>) {
+    this._expressionBesoins = value;
   }
 }

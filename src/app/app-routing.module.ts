@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 
 import {CommonModule} from "@angular/common";
@@ -23,6 +23,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {StatistiquesComponent} from "./components/statistiques/statistiques.component";
 import {VirementComponent} from "./components/virement/virement.component";
 import {TermineeComponent} from "./components/terminee/terminee.component";
+import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin.component";
+import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
 
 const routes: Routes = [
   {
@@ -38,6 +40,9 @@ const routes: Routes = [
       {path: 'archivee', component: ArchiveeComponent},
       {path: 'terminee', component: TermineeComponent},
       {path: 'virement', component: VirementComponent},
+      {path:'SI',component:SignInComponent},
+      {path:'C',component:ItemEnCoursComponent},
+      {path:'T',component:TableauBesoinComponent},
     ]
   },
   {path: 's', component: ServiceComponent},
@@ -45,8 +50,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule],
+  imports: [RouterModule.forRoot(routes),CommonModule],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

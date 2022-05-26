@@ -1,0 +1,32 @@
+<div class="col-md-9 container">
+  <div class="card-body">
+    <table class="table table-hover table-striped ">
+      <thead>
+      <!--      <th>id</th>-->
+      <th></th>
+      <th>exp</th>
+      <th>designation</th>
+      <th>Qte</th>
+
+      </thead>
+      <tbody>
+
+
+      <tr *ngFor="let x of expressionBesoinItems">
+       <input type="checkbox" id="input" (change)="getChecked($event,x)" name="{{x}}" >
+        <td></td>
+        <!--        <td>{{x.expressionBesoin.reference}}</td>-->
+        <td>{{x.produit.libelle}}</td>
+        <td>{{x.quantite}}</td>
+
+      </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+  <button id="btn" mat-raised-button color="warn"  >next</button>
+
+
+</div>
+

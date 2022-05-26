@@ -10,19 +10,5 @@ interface SideNavToggle{
   styleUrls: ['./side-bare.component.scss']
 })
 export class SideBareComponent  {
-  @Output() onToggleSideNav: EventEmitter<SideNavToggle>=new EventEmitter()
-collapsed=false;
-  scrreenWidth=0;
-navData=navbarData;
-  constructor() { }
-
-
-  closeSidenav():void{
-this.collapsed=false;
-  }
-
-  toggleCollapse():void {
-this.collapsed=!this.collapsed;
-this.onToggleSideNav.emit({collapsed:this.collapsed,screenWidth:this.scrreenWidth});
-  }
+  active = 1;
 }

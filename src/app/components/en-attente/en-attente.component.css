@@ -1,0 +1,23 @@
+table {
+  width: 60%;
+  margin-left: 350px;
+  margin-top: 80px;
+  background: #f3f3f3;
+}
+.first{
+  width: 700px;
+
+}
+.second{
+  width: 140px;
+}
+.td1{
+  height: 60px;
+}
+
+*{
+  /*background: darkgray;*/
+}
+.icon{
+
+}

@@ -8,7 +8,7 @@ import {User} from "../model/user.model";
   providedIn: 'root'
 })
 export class EnAttenteService {
-  private _expressionBesoins: Array<ExpressionBesoin>;
+  private _expressionBesoins2: Array<ExpressionBesoin>;
   private _service: ServiceDemandeur;
   private _expressionBesoin: ExpressionBesoin;
   private _user: User;
@@ -20,12 +20,12 @@ export class EnAttenteService {
 
 
   public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/employe/en-attente-expression-services").subscribe(
+    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8095/centre-project/v1/expression-besoin/statut/en%20Attente").subscribe(
       data => {
 
         console.log(data)
 
-        this.expressionBesoins = [...data]
+        this.expressionBesoins2 = [...data]
         // console.log(this.expressionBesoins)
       }
     )
@@ -39,15 +39,15 @@ export class EnAttenteService {
   //   this.expressionBesoin.expressionBesoinItems.push(this.clonelistExpressionBesoinItem(this.expressionBesoinItem));
   // }
 
-  get expressionBesoins(): Array<ExpressionBesoin> {
-    if (this._expressionBesoins == null) {
-      this._expressionBesoins = new Array<ExpressionBesoin>();
+  get expressionBesoins2(): Array<ExpressionBesoin> {
+    if (this._expressionBesoins2 == null) {
+      this._expressionBesoins2 = new Array<ExpressionBesoin>();
     }
-    return this._expressionBesoins;
+    return this._expressionBesoins2;
   }
 
-  set expressionBesoins(value: Array<ExpressionBesoin>) {
-    this._expressionBesoins = value;
+  set expressionBesoins2(value: Array<ExpressionBesoin>) {
+    this._expressionBesoins2 = value;
   }
 
   public findUserByExpressionDeBesoinRef(expressionBesoin: ExpressionBesoin) {
@@ -60,7 +60,7 @@ export class EnAttenteService {
   }
 
   public affecter() {
-    this.expressionBesoins.forEach(
+    this.expressionBesoins2.forEach(
       e => {
         this.users.push(e.user);
 
@@ -120,7 +120,7 @@ export class EnAttenteService {
   }
 
   vider(i: number) {
-    this.expressionBesoins.splice(i, 1)
+    this.expressionBesoins2.splice(i, 1)
 
   }
 
@@ -171,8 +171,8 @@ export class EnAttenteService {
     )
   }
 
-  updateService(serviceDemandeur: ServiceDemandeur) {
-    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/" + serviceDemandeur.nom, serviceDemandeur).subscribe(
+  updateService(serviceDemandeur:ServiceDemandeur) {
+    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur.nom,serviceDemandeur ).subscribe(
       data => {
         console.log("service saved");
       }

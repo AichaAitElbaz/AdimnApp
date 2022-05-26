@@ -6,7 +6,7 @@ import {ComponentsComponent} from './components/components.component';
 import {UpBareComponent} from './components/up-bare/up-bare.component';
 import {EnAttenteComponent} from './components/en-attente/en-attente.component';
 import {EnCoursComponent} from './components/en-cours/en-cours.component';
-import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbAlertModule, NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from '@angular/material/icon';
 import {DialogComponent} from './components/dialog/dialog.component'
@@ -41,6 +41,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StatistiquesComponent } from './components/statistiques/statistiques.component';
 import { VirementComponent } from './components/virement/virement.component';
 import { TermineeComponent } from './components/terminee/terminee.component';
+import { TableauBesoinComponent } from './components/tableau-besoin/tableau-besoin.component';
+import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
+
 
 @NgModule({
   declarations: [
@@ -66,11 +69,13 @@ import { TermineeComponent } from './components/terminee/terminee.component';
     VirementComponent,
     TermineeComponent,
 
+    TableauBesoinComponent,
+    ItemEnCoursComponent,
   ],
 
   imports: [
     AppRoutingModule,
-
+    // MatTableModule,
     BrowserModule,
     NgbNavModule,
     RouterModule,
@@ -90,6 +95,9 @@ import { TermineeComponent } from './components/terminee/terminee.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+
+    NgbAlertModule,
+
     MatCardModule,
     MatTabsModule,
   ],
