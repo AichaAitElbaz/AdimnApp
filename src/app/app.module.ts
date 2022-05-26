@@ -32,6 +32,9 @@ import { ServiceComponent } from './components/service/service.component';
 import { ExpressionBesoinItemComponent } from './components/expression-besoin-item/expression-besoin-item.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {MatCardModule} from "@angular/material/card";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -48,6 +51,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     EnAttentePaiementComponent,
     ArchiveeComponent,
     ServiceComponent,
+    SignInComponent,
     ExpressionBesoinItemComponent,
 
   ],
@@ -74,6 +78,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatCardModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

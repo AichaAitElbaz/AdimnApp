@@ -130,7 +130,7 @@ export class EnAttenteService {
   }
 
   update(expressionBesoin: ExpressionBesoin) {
-    this.http.post("http://localhost:8095//centre-project/v1/expression-besoin/update/", expressionBesoin).subscribe(
+    this.http.put("http://localhost:8095/centre-project/v1/expression-besoin/refuser", expressionBesoin).subscribe(
       data => {
         console.log(expressionBesoin.statut)
       }
@@ -180,7 +180,7 @@ export class EnAttenteService {
   }
 
   saveService(serviceDemandeur: ServiceDemandeur) {
-    // serviceDemandeur.reference = "s5";
+    serviceDemandeur.reference = "s5";
     this.http.post("http://localhost:8096/v1/admin/service-demandeur/", serviceDemandeur).subscribe(
       data => {
       }
