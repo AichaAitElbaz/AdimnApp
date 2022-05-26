@@ -32,7 +32,8 @@
   <tbody>
   <tr *ngFor="let e of expressionBesoinItems; index as i">
     <td>
-      <div><mat-checkbox class="example-margin" ngModel="{{e}}" (change)="fonction($event,e)"></mat-checkbox></div>
+
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,e)">
     </td>
     <td></td>
     <td>
@@ -40,8 +41,9 @@
     </td>
     <td>{{ e.quantite}}</td>
     <td>
-
     </td>
   </tr>
   </tbody>
+  <button mat-raised-button color="warn" (click)="openTableauBesoin()">Valider</button>
+
 </table>
