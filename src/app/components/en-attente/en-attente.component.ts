@@ -10,6 +10,7 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-en-attente',

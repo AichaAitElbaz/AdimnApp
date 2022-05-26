@@ -6,7 +6,7 @@ import {ComponentsComponent} from './components/components.component';
 import {UpBareComponent} from './components/up-bare/up-bare.component';
 import {EnAttenteComponent} from './components/en-attente/en-attente.component';
 import {EnCoursComponent} from './components/en-cours/en-cours.component';
-import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbAlertModule, NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from '@angular/material/icon';
 import {DialogComponent} from './components/dialog/dialog.component'
@@ -33,6 +33,9 @@ import { ExpressionBesoinItemComponent } from './components/expression-besoin-it
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { TableauBesoinComponent } from './components/tableau-besoin/tableau-besoin.component';
+import {MatTableModule} from "@angular/material/table";
+import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +54,13 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     ServiceComponent,
     ExpressionBesoinItemComponent,
     SignInComponent,
-
+    TableauBesoinComponent,
+    ItemEnCoursComponent,
   ],
 
   imports: [
     AppRoutingModule,
-
+    MatTableModule,
     BrowserModule,
     NgbNavModule,
     RouterModule,
@@ -76,6 +80,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    NgbAlertModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

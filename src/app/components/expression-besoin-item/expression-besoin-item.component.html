@@ -1,23 +1,47 @@
-<div class="card-body">
-  <table class="table table-hover table-striped " style="border: dimgrey solid">
-    <thead>
+<!--<div class="card-body">-->
+<!--  <table class="table table-hover table-striped " style="border: dimgrey solid">-->
+<!--    <thead>-->
 
-    <th>reference</th>
-    <th>designation</th>
-    <th>Qte</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let c of expressionBesoinItems">
-      <td>{{c.ref}}</td>
-      <td>{{c.produit.libelle}}</td>
-      <td>{{c.quantite}}</td>
-    </tr>
+<!--    <th>reference</th>-->
+<!--    <th>designation</th>-->
+<!--    <th>Qte</th>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let c of expressionBesoinItems">-->
+<!--      <td>{{c.ref}}</td>-->
+<!--      <td>{{c.produit.libelle}}</td>-->
+<!--      <td>{{c.quantite}}</td>-->
+<!--    </tr>-->
 
-    </tbody>
-  </table>
+<!--    </tbody>-->
+<!--  </table>-->
 
 
-</div>
-<div class="card-footer">
-  <button mat-dialog-close style=" border-color: crimson">close</button>
-</div>
+<!--</div>-->
+<!--<div class="card-footer">-->
+<!--  <button mat-dialog-close style=" border-color: crimson">close</button>-->
+<!--</div>-->
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Expression De Besoin</th>
+    <th scope="col">Designation</th>
+    <th scope="col">Qte</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinItems; index as i">
+    <td>
+      <div><mat-checkbox class="example-margin" ngModel="{{e}}" (change)="fonction($event,e)"></mat-checkbox></div>
+    </td>
+    <td></td>
+    <td>
+      {{ e.produit.libelle }}
+    </td>
+    <td>{{ e.quantite}}</td>
+    <td>
+
+    </td>
+  </tr>
+  </tbody>
+</table>

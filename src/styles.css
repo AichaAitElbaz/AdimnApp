@@ -1,21 +1,12 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
-
 /** {*/
 /*  margin: 0;*/
 /*  padding: 0;*/
 /*  box-sizing: border-box;*/
 /*}*/
 
-/*body {*/
-/*  position: relative;*/
-/*  font-family: 'Roboto', sans-serif;*/
-/*}*/
-
-/*.card {*/
 /*  display: flex;*/
 /*  flex-direction: column;*/
 /*  border-radius: .5rem;*/

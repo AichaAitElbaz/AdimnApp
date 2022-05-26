@@ -5,6 +5,7 @@ import {FournisseurService} from "../../controller/service/fournisseur.service";
 import {TypeFournisseur} from "../../controller/model/type-fournisseur.mpdel";
 import {ServicesService} from "../../controller/service/services.service";
 import {ServiceComponent} from "../service/service.component";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-fournisseur',
@@ -16,6 +17,7 @@ export class FournisseurComponent implements OnInit {
 
   constructor(private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
+  disableSelect = new FormControl(false);
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
