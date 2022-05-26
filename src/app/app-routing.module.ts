@@ -20,7 +20,7 @@ import {ServiceComponent} from "./components/service/service.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
 
 const routes: Routes = [
-  {path:'',component:EnAttenteComponent},
+  {path:'1',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
   {path:'Dialog',component:DialogComponent},
   {path:'F',component:FournisseurComponent},
@@ -29,7 +29,7 @@ const routes: Routes = [
   {path:'P',component:EnAttentePaiementComponent},
   {path:'A',component:ArchiveeComponent},
   {path:'S',component:ServiceComponent},
-  {path:'bb',component:SignInComponent},
+  {path:'',component:SignInComponent},
 
 
 
