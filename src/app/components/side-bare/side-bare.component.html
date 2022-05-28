@@ -1,6 +1,6 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">
   <li [ngbNavItem]="1" [destroyOnHide]="true">
-    <a ngbNavLink>En attent</a>
+    <a ngbNavLink>En attente</a>
     <ng-template ngbNavContent>
 
 
@@ -26,6 +26,12 @@
     <a ngbNavLink>Items</a>
     <ng-template ngbNavContent let-active>
       <app-expression-besoin-item></app-expression-besoin-item>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="5">
+    <a ngbNavLink>Fournisseurs</a>
+    <ng-template ngbNavContent let-active>
+      <app-fournisseur></app-fournisseur>
     </ng-template>
   </li>
 </ul>

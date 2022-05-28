@@ -36,6 +36,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { TableauBesoinComponent } from './components/tableau-besoin/tableau-besoin.component';
 import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -58,31 +59,32 @@ import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.c
     ItemEnCoursComponent,
   ],
 
-  imports: [
-    AppRoutingModule,
-    MatTableModule,
-    BrowserModule,
-    NgbNavModule,
-    RouterModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    HttpClientModule,
-    MatDividerModule,
-    MatDialogModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    NgbAlertModule,
+    imports: [
+        AppRoutingModule,
+        MatTableModule,
+        BrowserModule,
+        NgbNavModule,
+        RouterModule,
+        MatIconModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        HttpClientModule,
+        MatDividerModule,
+        MatDialogModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        NgbAlertModule,
+        MatExpansionModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent],
 

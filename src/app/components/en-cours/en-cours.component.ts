@@ -27,11 +27,7 @@ export class EnCoursComponent implements OnInit {
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     return this.enCoursService.expressionBesoinsAcceptees;
   }
-  public openDialog() {
-    this.DIALOG.open(FournisseurComponent, {
-      height: '700px',
-      width: '2000px'})
-  }
+
   get users2(): Array<User> {
     return this.enCoursService.users2;
   }
