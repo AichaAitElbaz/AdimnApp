@@ -20,24 +20,26 @@ export class FournisseurService {
   constructor(private http: HttpClient,private enCoursService:EnCoursService) {
   }
 
+  public getFournisseursByType(selected:string){
+    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/type-fournisseur/{type}?type="+selected).subscribe(
+      data=>{
+        this.fournisseurs=[...data]
+        console.log(this.fournisseurs)
 
+
+      }
+    )
+  }
   public getTypes() {
     this.http.get<Array<TypeFournisseur>>("http://localhost:8096/v1/admin/type-fournisseur/").subscribe(
       data => {
         this.typesfournisseur = [...data];
-        console.log(data)
+        console.log(this.typesfournisseur)
       }
     )
   }
 
-  public getFournisseursByType(typeFournisseur:TypeFournisseur) {
-    console.log(5555)
-    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/type-fournisseur/reference/"+typeFournisseur.reference).subscribe(
-      data => {
-        this.fournisseurs = [...data];
-      }
-    )
-  }
+
 
 
   get fournisseurs(): Array<Fournisseur> {

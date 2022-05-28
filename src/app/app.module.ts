@@ -37,7 +37,7 @@ import { TableauBesoinComponent } from './components/tableau-besoin/tableau-beso
 import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-
+import {MatInputModule} from "@angular/material/input";
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +82,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
         ReactiveFormsModule,
         MatCheckboxModule,
         NgbAlertModule,
+        MatInputModule,
         MatExpansionModule,
 
     ],

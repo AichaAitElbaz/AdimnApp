@@ -8,6 +8,7 @@ import {ServiceComponent} from "../service/service.component";
 import {FormControl} from "@angular/forms";
 import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component";
 import {MatDialog} from "@angular/material/dialog";
+import {MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-fournisseur',
@@ -18,14 +19,20 @@ import {MatDialog} from "@angular/material/dialog";
 export class FournisseurComponent implements OnInit {
   panelOpenState = false;
 
+  apiresponse:any=[];
   constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
+  selected:any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     this.fournisseurService.getFournisseurs();
+    console.log(this.selected+"hhhhhh")
+  }
+  getFournisseursByType(selected:string){
+    return this.fournisseurService.getFournisseursByType(selected);
   }
 
   getfournisseurs():Array<Fournisseur>  {
@@ -55,7 +62,12 @@ export class FournisseurComponent implements OnInit {
     })
   }
 
-  public getFournisseursByType(typeFournisseur: TypeFournisseur) {
-    this.fournisseurService.getFournisseursByType(typeFournisseur);
+
+  unhidden() {
+    document.getElementById("table").hidden=false;
   }
+}
+export class appfournisseur {
+  selected="math"
+
 }
