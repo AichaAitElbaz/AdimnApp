@@ -18,18 +18,23 @@ import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-at
 import {ArchiveeComponent} from "./components/archivee/archivee.component";
 import {ServiceComponent} from "./components/service/service.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin.component";
+import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
 
 const routes: Routes = [
-  {path:'1',component:EnAttenteComponent},
+  {path:'F',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
   {path:'Dialog',component:DialogComponent},
-  {path:'F',component:FournisseurComponent},
+  {path:'FF',component:FournisseurComponent},
   {path:'D',component:EnAttenteDeviComponent},
   {path:'L',component:EnAttenteLivraisonComponent},
   {path:'P',component:EnAttentePaiementComponent},
   {path:'A',component:ArchiveeComponent},
   {path:'S',component:ServiceComponent},
-  {path:'',component:SignInComponent},
+  {path:'SI',component:SignInComponent},
+  {path:'',component:TableauBesoinComponent},
+  {path:'SS',component:SideBareComponent},
+  {path:'C',component:ItemEnCoursComponent},
 
 
 

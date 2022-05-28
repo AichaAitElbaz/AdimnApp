@@ -6,6 +6,7 @@ export class ExpressionBesoinItem {
   public ref: string;
   public quantite: number;
   public date: string;
+  public statut: string;
   public expressionBesoin: ExpressionBesoin;
   public produit: Produit;
 }

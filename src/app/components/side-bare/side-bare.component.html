@@ -1,55 +1,40 @@
-<div class="d-flex">
-  <ul ngbNav #nav="ngbNav" class="nav-pills" orientation="vertical">
-    <li ngbNavItem="top">
-      <a ngbNavLink>Demande En Attente</a>
-      <ng-template ngbNavContent>
-        <app-en-attente></app-en-attente>
-      </ng-template>
-    </li>
-    <li ngbNavItem="middle">
-      <a ngbNavLink>En Cours</a>
-      <ng-template ngbNavContent>
-        <app-en-cours></app-en-cours>
-      </ng-template>
-    </li>
-    <li ngbNavItem="down">
-      <a ngbNavLink>Archivée</a>
-      <ng-template ngbNavContent>
-        <app-archivee></app-archivee>
-      </ng-template>
-    </li>
-    <li ngbNavItem="down2">
-      <a ngbNavLink>Services</a>
-      <ng-template ngbNavContent>
-        <app-service></app-service>
-      </ng-template>
-    </li>
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">
+  <li [ngbNavItem]="1" [destroyOnHide]="true">
+    <a ngbNavLink>En attente</a>
+    <ng-template ngbNavContent>
 
-  </ul>
 
-  <div [ngbNavOutlet]="nav" class="col-lg"></div>
-</div>
-<!--<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">-->
-<!--  <div class="logo-container">-->
-<!--    <button class="logo" (click)="toggleCollapse()">M</button>-->
-<!--    <div class="logo-text" *ngIf="collapsed">Menu</div>-->
-<!--    <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">-->
-<!--      <mat-icon></mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
-<!--&lt;!&ndash;<ul class="sidenav-nav">&ndash;&gt;-->
-<!--&lt;!&ndash;  <li class="sidenav-nav-item" *ngFor="let data of navData">&ndash;&gt;-->
-<!--&lt;!&ndash;    <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">&ndash;&gt;-->
-<!--&lt;!&ndash;      <i class="sidenav-link-icon" [class]="data.icon"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;      <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>&ndash;&gt;-->
-<!--&lt;!&ndash;    </a>&ndash;&gt;-->
-<!--&lt;!&ndash;  </li>&ndash;&gt;-->
-<!--      <mat-nav-list>-->
-<!--        <a mat-list-item routerLink="Attente">demande En Attente</a>-->
-<!--        <a mat-list-item routerLink="Cours">demande En Cours</a>-->
-<!--        <a mat-list-item routerLink="D">demande En Attente de devi</a>-->
-<!--        <a mat-list-item routerLink="L">demande En Attente de laivraison </a>-->
-<!--        <a mat-list-item routerLink="P">demande En Attente de paiement </a>-->
-<!--      </mat-nav-list>-->
-<!--&lt;!&ndash;</ul>&ndash;&gt;-->
-<!--</div>-->
+      <app-en-attente></app-en-attente>
+
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>En cours</a>
+    <ng-template ngbNavContent>
+
+
+      <app-en-cours></app-en-cours>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Archivées</a>
+    <ng-template ngbNavContent let-active>
+      <app-archivee></app-archivee>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="4">
+    <a ngbNavLink>Items</a>
+    <ng-template ngbNavContent let-active>
+      <app-expression-besoin-item></app-expression-besoin-item>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="5">
+    <a ngbNavLink>Fournisseurs</a>
+    <ng-template ngbNavContent let-active>
+      <app-fournisseur></app-fournisseur>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+

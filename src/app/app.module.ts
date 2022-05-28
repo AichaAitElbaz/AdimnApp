@@ -6,7 +6,7 @@ import {ComponentsComponent} from './components/components.component';
 import {UpBareComponent} from './components/up-bare/up-bare.component';
 import {EnAttenteComponent} from './components/en-attente/en-attente.component';
 import {EnCoursComponent} from './components/en-cours/en-cours.component';
-import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbAlertModule, NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from '@angular/material/icon';
 import {DialogComponent} from './components/dialog/dialog.component'
@@ -32,9 +32,11 @@ import { ServiceComponent } from './components/service/service.component';
 import { ExpressionBesoinItemComponent } from './components/expression-besoin-item/expression-besoin-item.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import {SignInComponent} from "./components/sign-in/sign-in.component";
-import {MatCardModule} from "@angular/material/card";
-import {MatTabsModule} from "@angular/material/tabs";
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { TableauBesoinComponent } from './components/tableau-besoin/tableau-besoin.component';
+import {MatTableModule} from "@angular/material/table";
+import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -51,36 +53,38 @@ import {MatTabsModule} from "@angular/material/tabs";
     EnAttentePaiementComponent,
     ArchiveeComponent,
     ServiceComponent,
-    SignInComponent,
     ExpressionBesoinItemComponent,
-
+    SignInComponent,
+    TableauBesoinComponent,
+    ItemEnCoursComponent,
   ],
 
-  imports: [
-    AppRoutingModule,
+    imports: [
+        AppRoutingModule,
+        MatTableModule,
+        BrowserModule,
+        NgbNavModule,
+        RouterModule,
+        MatIconModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        HttpClientModule,
+        MatDividerModule,
+        MatDialogModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        NgbAlertModule,
+        MatExpansionModule,
 
-    BrowserModule,
-    NgbNavModule,
-    RouterModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    HttpClientModule,
-    MatDividerModule,
-    MatDialogModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatTabsModule,
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent],
 

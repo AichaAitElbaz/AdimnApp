@@ -10,6 +10,7 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-en-attente',
@@ -26,17 +27,15 @@ export class EnAttenteComponent implements OnInit {
               private DIALOG:MatDialog,private servicesService:ServicesService) {
   }
 
-  get expressionBesoins(): Array<ExpressionBesoin> {
+  get expressionBesoins2(): Array<ExpressionBesoin> {
 
-    return this.enAttenteService.expressionBesoins;
+    return this.enAttenteService.expressionBesoins2;
   }
 
   ngOnInit(): void {
     this.enAttenteService.getExpressionBesoins();
-    // this.enAttenteService.findUserByExpressionDeBesoinRef(this.enAttenteService.expressionBesoin);
 
     this.enAttenteService.affecter();
-    // this.user.expressionBesoins.forEach(e => this.enAttenteService.save(e))
   }
 
   get users(): Array<User> {

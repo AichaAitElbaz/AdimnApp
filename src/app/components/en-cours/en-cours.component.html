@@ -1,44 +1,77 @@
-<div class="col-md-9 container">
-  <div class="card-body">
-    <table class="table table-hover table-striped " style="border: dimgrey solid">
+<!--<div class="col-md-9 container">-->
+<!--  <div class="card-body">-->
+<!--    <table class="table table-hover table-striped " style="border: dimgrey solid">-->
 
-      <thead>
-      <th>Nom</th>
-      <th>Service</th>
-      <th>objet</th>
-      <th>statut</th>
-      </thead>
+<!--      <thead>-->
+<!--      <th>Nom</th>-->
+<!--      <th>Service</th>-->
+<!--      <th>objet</th>-->
+<!--      <th>statut</th>-->
+<!--      </thead>-->
 
-      <tbody>
-      <tr *ngFor="let e of expressionBesoinsAcceptees">
-        <td>{{e.user.username}}</td>
-        <td>{{e.user.serviceDemandeur}}</td>
-        <td>{{e.objet}}</td>
-        <td>{{e.statut}}</td>
-        <td width="20%">
-          <div class="example-button-row">
-            <div class="example-flex-container">
-              <div class="example-button-container">
-                <button style="  width: 40px;height: 50px;font-size: 10px" color="primary" mat-fab
-                        aria-label="Example icon button with a delete icon" (click)="openDialog()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-check-lg" viewBox="0 0 16 16">
-                    <path
-                      d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                  </svg>
-                </button>
-                <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="openDialog2();getExpressionBesoinItems(e)">
-                  <mat-icon>menu</mat-icon>
-                </button>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
+<!--      <tbody>-->
+<!--      <tr *ngFor="let e of expressionBesoinsAcceptees">-->
+<!--        <td>{{e.user.username}}</td>-->
+<!--        <td>{{e.user.serviceDemandeur}}</td>-->
+<!--        <td>{{e.objet}}</td>-->
+<!--        <td>{{e.statut}}</td>-->
+<!--        <td width="20%">-->
+<!--          <div class="example-button-row">-->
+<!--            <div class="example-flex-container">-->
+<!--              <div class="example-button-container">-->
+<!--                <button style="  width: 40px;height: 50px;font-size: 10px" color="primary" mat-fab-->
+<!--                        aria-label="Example icon button with a delete icon" (click)="openDialog()">-->
+<!--                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+<!--                       class="bi bi-check-lg" viewBox="0 0 16 16">-->
+<!--                    <path-->
+<!--                      d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>-->
+<!--                  </svg>-->
+<!--                </button>-->
+<!--                <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="openDialog2();getExpressionBesoinItems(e)">-->
+<!--                  <mat-icon>menu</mat-icon>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </td>-->
+<!--      </tr>-->
 
-      </tbody>
-    </table>
-  </div>
-  <div class="card-footer"></div>
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--  <div class="card-footer"></div>-->
 
-</div>
+<!--</div>-->
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Nom</th>
+    <th scope="col">Objet</th>
+    <th scope="col">Service</th>
+    <th scope="col">Statut</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinsAcceptees; index as i">
+    <td>
+      {{ e.user.username }}
+    </td>   <td>
+    {{ e.user.serviceDemandeur }}
+  </td>
+    <td>{{ e.objet  }}</td>
+    <td>{{ e.statut }}</td>
+    <td>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon class="btn-outline-success"(click)="openDialog2()">description</mat-icon>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

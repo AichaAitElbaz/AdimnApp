@@ -35,12 +35,7 @@ export class ServicesService {
     this._expressionBesoinItems = value;
   }
 
-  public getlistofExpressionBesoinItem() {
-    // this.produit.expressionBesoinItems.push(this.clonelistExpressionBesoinItem(this.expressionBesoinItem));
-    this.expressionBesoinItem.produit = this.produit;
-    // this.expressionBesoinItem.produit.libelle=this.produit.libelle;
-    this.expressionBesoin.expressionBesoinItems.push(this.expressionBesoinItem);
-  }
+
 
   get expressionBesoin(): ExpressionBesoin {
     if (this.expressionBesoin==null)this.expressionBesoin=new ExpressionBesoin();

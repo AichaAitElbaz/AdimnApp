@@ -1,0 +1,36 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Designations</th>
+    <th scope="col">Quantite</th>
+    <th scope="col">PU</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinsItemsValidees; index as i">
+    <td>
+      {{ e.produit.libelle }}
+    </td>
+    <td>{{ e.quantite }}</td>
+    <td><input></td>
+  </tr>
+  <tr>
+    <td>MT HT</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>MT TVA</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>MT TTC</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <button mat-raised-button color="warn" (click)="setItemsEnvoyees()" >Envoyer</button>
+  </tfoot>
+</table>
