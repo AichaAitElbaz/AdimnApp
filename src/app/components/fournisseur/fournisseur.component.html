@@ -33,7 +33,7 @@
   <tbody>
   <tr *ngFor="let f of fournisseurs; index as i">
     <td>
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,f)">
     </td>
     <td>
       {{ f.nomFournisseur }}
@@ -43,6 +43,6 @@
     </td>
   </tr>
   </tbody>
-  <button mat-raised-button color="warn">Envoyer</button>
+  <button mat-raised-button color="warn" (click)="saveTableauBesoinItem()">Envoyer</button>
 
 </table>

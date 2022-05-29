@@ -37,6 +37,7 @@ import { TableauBesoinComponent } from './components/tableau-besoin/tableau-beso
 import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { FournisseurReponseComponent } from './components/fournisseur-reponse/fournisseur-reponse.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     SignInComponent,
     TableauBesoinComponent,
     ItemEnCoursComponent,
+    FournisseurReponseComponent,
   ],
 
     imports: [

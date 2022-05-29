@@ -20,6 +20,7 @@ import {ServiceComponent} from "./components/service/service.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
 import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin.component";
 import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
+import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
 
 const routes: Routes = [
   {path:'F',component:EnAttenteComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:'',component:TableauBesoinComponent},
   {path:'SS',component:SideBareComponent},
   {path:'C',component:ItemEnCoursComponent},
+  {path:'FR',component:FournisseurReponseComponent},
 
 
 
