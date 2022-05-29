@@ -37,8 +37,7 @@ import { TableauBesoinComponent } from './components/tableau-besoin/tableau-beso
 import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import { FournisseurReponseComponent } from './components/fournisseur-reponse/fournisseur-reponse.component';
-
+import {MatInputModule} from "@angular/material/input";
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +57,6 @@ import { FournisseurReponseComponent } from './components/fournisseur-reponse/fo
     SignInComponent,
     TableauBesoinComponent,
     ItemEnCoursComponent,
-    FournisseurReponseComponent,
   ],
 
     imports: [
@@ -84,6 +82,7 @@ import { FournisseurReponseComponent } from './components/fournisseur-reponse/fo
         ReactiveFormsModule,
         MatCheckboxModule,
         NgbAlertModule,
+        MatInputModule,
         MatExpansionModule,
 
     ],

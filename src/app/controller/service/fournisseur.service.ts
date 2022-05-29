@@ -5,7 +5,6 @@ import {TypeFournisseur} from "../model/type-fournisseur.mpdel";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {EnCoursService} from "./en-cours.service";
-import {TableauBesoinItem} from "../model/tableau-besoin-item.mpdel";
 
 @Injectable({
   providedIn: 'root'
@@ -17,30 +16,30 @@ export class FournisseurService {
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _expressionBesoinsItemsValidees: Array<ExpressionBesoinItem>;
   private _expressionBesoins: Array<ExpressionBesoin>;
-  private _itemsValidee: Array<ExpressionBesoinItem>;
-  private _tableauBesoinItem:TableauBesoinItem
 
-  constructor(private http: HttpClient, private enCoursService: EnCoursService) {
+  constructor(private http: HttpClient,private enCoursService:EnCoursService) {
   }
 
+  public getFournisseursByType(selected:string){
+    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/type-fournisseur/{type}?type="+selected).subscribe(
+      data=>{
+        this.fournisseurs=[...data]
+        console.log(this.fournisseurs)
 
+
+      }
+    )
+  }
   public getTypes() {
     this.http.get<Array<TypeFournisseur>>("http://localhost:8096/v1/admin/type-fournisseur/").subscribe(
       data => {
         this.typesfournisseur = [...data];
-        console.log(data)
+        console.log(this.typesfournisseur)
       }
     )
   }
 
-  public getFournisseursByType(typeFournisseur: TypeFournisseur) {
-    console.log(5555)
-    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/type-fournisseur/reference/" + typeFournisseur.reference).subscribe(
-      data => {
-        this.fournisseurs = [...data];
-      }
-    )
-  }
+
 
 
   get fournisseurs(): Array<Fournisseur> {
@@ -86,11 +85,9 @@ export class FournisseurService {
       }
     )
   }
-
   public getlistofExpressionBesoinItem() {
-    this.enCoursService.expressionBesoinsAcceptees.forEach(e => e.expressionBesoinItems = this.expressionBesoinsItems);
+    this.enCoursService.expressionBesoinsAcceptees.forEach(e=>e.expressionBesoinItems=this.expressionBesoinsItems);
   }
-
   get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
     if (this._expressionBesoinsItems == null) this._expressionBesoinsItems = new Array<ExpressionBesoinItem>();
     return this._expressionBesoinsItems;
@@ -102,7 +99,7 @@ export class FournisseurService {
 
 
   get expressionBesoins(): Array<ExpressionBesoin> {
-    if (this._expressionBesoins == null) this._expressionBesoins = new Array<ExpressionBesoin>();
+    if (this._expressionBesoins==null)this._expressionBesoins=new Array<ExpressionBesoin>();
     return this._expressionBesoins;
   }
 
@@ -111,12 +108,12 @@ export class FournisseurService {
   }
 
   getItemsValidees() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-      data => {
-        this.expressionBesoinsItemsValidees = [...data]
-        console.log(data)
-      }
-    )
+      this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
+        data => {
+          this.expressionBesoinsItemsValidees = [...data]
+          console.log(data)
+        }
+      )
   }
 
 
@@ -129,10 +126,10 @@ export class FournisseurService {
   }
 
   setItemsEnvoyees() {
-    this.expressionBesoinsItemsValidees.forEach(e => {
-      e.statut = "envoyeé";
-      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
-        data => {
+    this.expressionBesoinsItemsValidees.forEach(e =>{
+      e.statut="envoyeé";
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",e).subscribe(
+        data=>{
           console.log(99999999999999999999)
         }
       )
@@ -141,58 +138,9 @@ export class FournisseurService {
 
   getFournisseurs() {
     this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/").subscribe(
-      data => {
-        this.fournisseurs = [...data]
+      data=>{
+        this.fournisseurs=[...data]
       }
     )
-  }
-
-  getItemsValidée() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-      data => {
-        this.itemsValidee = [...data];
-      }
-    )
-  }
-
-
-  get itemsValidee(): Array<ExpressionBesoinItem> {
-    if (this._itemsValidee == null) this._itemsValidee = new Array<ExpressionBesoinItem>();
-    return this._itemsValidee;
-  }
-
-  set itemsValidee(value: Array<ExpressionBesoinItem>) {
-    this._itemsValidee = value;
-  }
-
-  saveitem(expressionBesoinItem: ExpressionBesoinItem) {
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", expressionBesoinItem).subscribe(
-      data => {
-        console.log("hello");
-        console.log(data);
-      })
-  }
-
-  saveTableauBesoinItem(itemsValidee: Array<ExpressionBesoinItem>) {
-    let i=0;
-    itemsValidee.forEach(i => {
-      i.fournisseurs.forEach(f => {
-        this._tableauBesoinItem.statut="enregistrée";
-        this.tableauBesoinItem.reference="t_"+i+1;
-        this.tableauBesoinItem.fournisseur = f;
-        this.tableauBesoinItem.expressionBesoinItem = i;
-        console.log(this.tableauBesoinItem);
-        this.http.post("/v1/admin/tableau-besoin-item/",this.tableauBesoinItem);
-      })
-    })
-  }
-
-  get tableauBesoinItem(): TableauBesoinItem {
-    if (this._tableauBesoinItem==null)this._tableauBesoinItem=new TableauBesoinItem();
-    return this._tableauBesoinItem;
-  }
-
-  set tableauBesoinItem(value: TableauBesoinItem) {
-    this._tableauBesoinItem = value;
   }
 }

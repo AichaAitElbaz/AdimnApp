@@ -1,32 +1,32 @@
-<!--<div class="card-body">-->
-<!--  <table class="table table-hover table-striped " style="border: dimgrey solid">-->
-<!--    <thead>-->
 
-<!--    <th>reference</th>-->
-<!--    <th>designation</th>-->
-<!--    <th>Qte</th>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr *ngFor="let c of expressionBesoinItems">-->
-<!--      <td>{{c.ref}}</td>-->
-<!--      <td>{{c.produit.libelle}}</td>-->
-<!--      <td>{{c.quantite}}</td>-->
-<!--    </tr>-->
+<!--
+<mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select id="valeur" [(value)]="selected"  >
+    <mat-option   [(ngModel)]="selected" value="{{c.type}}" *ngFor="let c of typesfournisseur" (change)="getFournisseursByType(selected)">{{c.type}}</mat-option>
+  </mat-select>
+</mat-form-field>
 
-<!--    </tbody>-->
-<!--  </table>-->
+<p>You selected: {{selected}}</p>
+
+<div *ngFor="let c of typesfournisseur" >
+<button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.type);unhidden()">{{c.type}}</button>
+
+  <mat-divider></mat-divider>-->
 
 
-<!--</div>-->
-<!--<div class="card-footer">-->
-<!--  <button mat-dialog-close style=" border-color: crimson">close</button>-->
-<!--</div>-->
-<table class="table table-striped">
+<div *ngFor="let c of typesfournisseur" >
+  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.type);unhidden()">{{c.type}}</button>
+
+
+
+<table class="table table-striped" id="table" hidden="true">
   <thead>
   <tr>
     <th></th>
     <th scope="col">Fournisseur</th>
     <th scope="col">Email</th>
+    <th scope="col">type</th>
     <th scope="col">Ville</th>
   </tr>
   </thead>
@@ -39,6 +39,7 @@
       {{ f.nomFournisseur }}
     </td>
     <td>{{ f.emailFournisseur}}</td>
+    <td>{{ f.typeFournisseur.type}}</td>
     <td>{{f.villeFournisseur}}
     </td>
   </tr>
@@ -46,3 +47,6 @@
   <button mat-raised-button color="warn" (click)="saveTableauBesoinItem()">Envoyer</button>
 
 </table>
+</div>
+
+

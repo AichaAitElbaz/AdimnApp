@@ -8,7 +8,7 @@ import {ServiceComponent} from "../service/service.component";
 import {FormControl} from "@angular/forms";
 import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component";
 import {MatDialog} from "@angular/material/dialog";
-import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
+import {MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-fournisseur',
@@ -19,15 +19,20 @@ import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-ite
 export class FournisseurComponent implements OnInit {
   panelOpenState = false;
 
+  apiresponse:any=[];
   constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
+  selected:any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     this.fournisseurService.getFournisseurs();
-    this.fournisseurService.getItemsValidée();
+    console.log(this.selected+"hhhhhh")
+  }
+  getFournisseursByType(selected:string){
+    return this.fournisseurService.getFournisseursByType(selected);
   }
 
   getfournisseurs():Array<Fournisseur>  {
@@ -57,27 +62,12 @@ export class FournisseurComponent implements OnInit {
     })
   }
 
-  public getFournisseursByType(typeFournisseur: TypeFournisseur) {
-    this.fournisseurService.getFournisseursByType(typeFournisseur);
-  }
 
-  public fonction(event, fournisseur: Fournisseur) {
-    if (event.target.checked) {
+  unhidden() {
+    document.getElementById("table").hidden=false;
+  }
+}
+export class appfournisseur {
+  selected="math"
 
-      this.itemsValidee.forEach(e=>
-      {e.fournisseurs.push(fournisseur);
-      this.fournisseurService.saveitem(e);
-        console.log(e)
-      });
-    } else {
-    }
-    ;
-  }
-  get itemsValidee(): Array<ExpressionBesoinItem> {
-    return this.fournisseurService.itemsValidee;
-  }
-
-  saveTableauBesoinItem() {
-    this.fournisseurService.saveTableauBesoinItem(this.itemsValidee);
-  }
 }
