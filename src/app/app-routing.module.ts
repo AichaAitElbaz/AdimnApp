@@ -23,7 +23,7 @@ import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.com
 import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
 
 const routes: Routes = [
-  {path:'F',component:EnAttenteComponent},
+  {path:'',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
   {path:'Dialog',component:DialogComponent},
   {path:'FF',component:FournisseurComponent},
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'A',component:ArchiveeComponent},
   {path:'S',component:ServiceComponent},
   {path:'SI',component:SignInComponent},
-  {path:'',component:TableauBesoinComponent},
+  {path:'F',component:TableauBesoinComponent},
   {path:'SS',component:SideBareComponent},
   {path:'C',component:ItemEnCoursComponent},
   {path:'FR',component:FournisseurReponseComponent},
