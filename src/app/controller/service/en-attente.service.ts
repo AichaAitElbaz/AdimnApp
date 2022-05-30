@@ -23,7 +23,7 @@ export class EnAttenteService {
     this.http.get<Array<ExpressionBesoin>>( "http://localhost:8095/centre-project/v1/expression-besoin/statut/en%20Attente").subscribe(
       data => {
 
-        console.log(data)
+        console.log(12345)
 
         this.expressionBesoins2 = [...data]
         // console.log(this.expressionBesoins)

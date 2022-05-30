@@ -19,10 +19,10 @@
     <td>{{ e.statut }}</td>
     <td>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="icon btn-outline-primary" (click)="save(e)">bookmark_border</mat-icon>
+        <mat-icon class="icon btn-outline-primary" (click)="save(e);updateInUser(e)">bookmark_border</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class=" btn-outline-danger" (click)="archiver(e)">delete_outline</mat-icon>
+        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon class="btn-outline-success"(click)="openDialog()">description</mat-icon>
@@ -30,4 +30,5 @@
     </td>
   </tr>
   </tbody>
+
 </table>

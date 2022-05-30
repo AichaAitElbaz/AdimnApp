@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
+import {EnAttenteService} from "../../controller/service/en-attente.service";
 
 @Component({
   selector: 'app-en-cours',
@@ -15,7 +16,7 @@ import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expressio
   styleUrls: ['./en-cours.component.css']
 })
 export class EnCoursComponent implements OnInit {
-  constructor(private enCoursService:EnCoursService,private DIALOG:MatDialog,private servicesService:ServicesService) {}
+  constructor(private enCoursService:EnCoursService,private DIALOG:MatDialog,private servicesService:ServicesService,private enAttenteService:EnAttenteService) {}
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
@@ -26,11 +27,7 @@ export class EnCoursComponent implements OnInit {
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     return this.enCoursService.expressionBesoinsAcceptees;
   }
-  public openDialog() {
-    this.DIALOG.open(FournisseurComponent, {
-      height: '700px',
-      width: '2000px'})
-  }
+
   get users2(): Array<User> {
     return this.enCoursService.users2;
   }
@@ -42,4 +39,13 @@ export class EnCoursComponent implements OnInit {
       height: '400px',
       width: '600px'})
   }
+
+  archiver(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.archiver(expressionBesoin);
+  }
+
+  update(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.update(expressionBesoin);
+  }
+
 }

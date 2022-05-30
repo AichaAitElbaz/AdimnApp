@@ -11,26 +11,31 @@ export interface PeriodicElement {
 }
 
 
-
 @Component({
   selector: 'app-tableau-besoin',
   templateUrl: './tableau-besoin.component.html',
   styleUrls: ['./tableau-besoin.component.css']
 })
 export class TableauBesoinComponent implements OnInit {
-  dataSource:Array<ExpressionBesoinItem>
+  dataSource: Array<ExpressionBesoinItem>
 
-  constructor(private fournisseurService:FournisseurService,private http:HttpClient) {
+  constructor(private fournisseurService: FournisseurService, private http: HttpClient) {
   }
 
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit(): void {
-    this.fournisseurService.getItems()
+    this.fournisseurService.getItemsValidees()
     //    this.dataSource=this.expressionBesoinsItems;
   }
-  displayedColumns: ExpressionBesoinItem[] ;
-  get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
-    return this.fournisseurService.expressionBesoinsItems;
+
+  displayedColumns: ExpressionBesoinItem[];
+
+  get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
+    return this.fournisseurService.expressionBesoinsItemsValidees;
+  }
+
+  setItemsEnvoyees() {
+    this.fournisseurService.setItemsEnvoyees();
   }
 }

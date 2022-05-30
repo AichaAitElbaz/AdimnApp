@@ -1,3 +1,5 @@
+import {TypeFournisseur} from "./type-fournisseur.mpdel";
+
 export class Fournisseur {
   public  id: number;
   public referenceFournisseur:string;
@@ -7,5 +9,5 @@ export class Fournisseur {
   public faxFournisseur:string;
   public villeFournisseur:string;
   public emailFournisseur:string;
-  public typeFournisseur:string;
+  public typeFournisseur:TypeFournisseur;
 }

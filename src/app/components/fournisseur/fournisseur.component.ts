@@ -6,6 +6,9 @@ import {TypeFournisseur} from "../../controller/model/type-fournisseur.mpdel";
 import {ServicesService} from "../../controller/service/services.service";
 import {ServiceComponent} from "../service/service.component";
 import {FormControl} from "@angular/forms";
+import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component";
+import {MatDialog} from "@angular/material/dialog";
+import {MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-fournisseur',
@@ -14,18 +17,26 @@ import {FormControl} from "@angular/forms";
 })
 
 export class FournisseurComponent implements OnInit {
+  panelOpenState = false;
 
-  constructor(private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  apiresponse:any=[];
+  constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
+
   disableSelect = new FormControl(false);
+  selected:any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     this.fournisseurService.getFournisseurs();
+    console.log(this.selected+"hhhhhh")
+  }
+  getFournisseursByType(selected:string){
+    return this.fournisseurService.getFournisseursByType(selected);
   }
 
-  get fournisseur(): Fournisseur {
-    return this.fournisseurService.fournisseur;
+  getfournisseurs():Array<Fournisseur>  {
+    return this.fournisseurService.fournisseurs;
   }
 
   get typesfournisseur(): Array<TypeFournisseur> {
@@ -43,4 +54,20 @@ export class FournisseurComponent implements OnInit {
   public hide(id: string) {
     document.getElementById(id).hidden = false;
   }
+
+  openTableauBesoin() {
+    this.DIALOG.open(TableauBesoinComponent, {
+      height: '500px',
+      width: '600px'
+    })
+  }
+
+
+  unhidden() {
+    document.getElementById("table").hidden=false;
+  }
+}
+export class appfournisseur {
+  selected="math"
+
 }

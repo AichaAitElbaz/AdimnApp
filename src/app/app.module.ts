@@ -42,9 +42,10 @@ import { StatistiquesComponent } from './components/statistiques/statistiques.co
 import { VirementComponent } from './components/virement/virement.component';
 import { TermineeComponent } from './components/terminee/terminee.component';
 import { TableauBesoinComponent } from './components/tableau-besoin/tableau-besoin.component';
+import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
-
-
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatInputModule} from "@angular/material/input";
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.c
     EnAttentePaiementComponent,
     ArchiveeComponent,
     ServiceComponent,
+    ExpressionBesoinItemComponent,
     SignInComponent,
     ExpressionBesoinItemComponent,
     HeaderComponent,
@@ -73,32 +75,35 @@ import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.c
     ItemEnCoursComponent,
   ],
 
-  imports: [
-    AppRoutingModule,
-    // MatTableModule,
-    BrowserModule,
-    NgbNavModule,
-    RouterModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    HttpClientModule,
-    MatDividerModule,
-    MatDialogModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
+    imports: [
+        AppRoutingModule,
+        MatTableModule,
+        BrowserModule,
+        NgbNavModule,
+        RouterModule,
+        MatIconModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        HttpClientModule,
+        MatDividerModule,
+        MatDialogModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        NgbAlertModule,
+        MatInputModule,
+        MatExpansionModule,
+      NgbAlertModule,
 
-    NgbAlertModule,
 
-    MatCardModule,
+      MatCardModule,
     MatTabsModule,
   ],
   providers: [],
