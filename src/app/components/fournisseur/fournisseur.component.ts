@@ -66,6 +66,14 @@ export class FournisseurComponent implements OnInit {
   unhidden() {
     document.getElementById("table").hidden=false;
   }
+
+  saveTableauBesoinItem() {
+
+  }
+
+  fonction($event: Event, f: Fournisseur) {
+
+  }
 }
 export class appfournisseur {
   selected="math"

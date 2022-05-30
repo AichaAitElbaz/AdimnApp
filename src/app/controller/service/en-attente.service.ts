@@ -3,12 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {ServiceDemandeur} from "../model/service-demandeur.model";
 import {User} from "../model/user.model";
+import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnAttenteService {
   private _expressionBesoins2: Array<ExpressionBesoin>;
+  private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _service: ServiceDemandeur;
   private _expressionBesoin: ExpressionBesoin;
   private _user: User;
@@ -20,7 +22,7 @@ export class EnAttenteService {
 
 
   public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8095/centre-project/v1/expression-besoin/statut/en%20Attente").subscribe(
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/En%20attente").subscribe(
       data => {
 
         console.log(12345)
@@ -171,8 +173,8 @@ export class EnAttenteService {
     )
   }
 
-  updateService(serviceDemandeur:ServiceDemandeur) {
-    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/"+serviceDemandeur.nom,serviceDemandeur ).subscribe(
+  updateService(serviceDemandeur: ServiceDemandeur) {
+    this.http.put("http://localhost:8096/v1/admin/service-demandeur/update/" + serviceDemandeur.nom, serviceDemandeur).subscribe(
       data => {
         console.log("service saved");
       }
@@ -194,5 +196,23 @@ export class EnAttenteService {
         console.log(data)
       }
     )
+  }
+
+  getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
+      data => {
+        this.expressionBesoinsItems = [...data];
+      }
+    )
+  }
+
+
+  get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
+    if (this._expressionBesoinsItems == null) this._expressionBesoinsItems = new Array<ExpressionBesoinItem>();
+    return this._expressionBesoinsItems;
+  }
+
+  set expressionBesoinsItems(value: Array<ExpressionBesoinItem>) {
+    this._expressionBesoinsItems = value;
   }
 }

@@ -5,6 +5,8 @@ import {TypeFournisseur} from "../model/type-fournisseur.mpdel";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {EnCoursService} from "./en-cours.service";
+import {TableauBesoinItem} from "../model/tableau-besoin-item.mpdel";
+import {newArray} from "@angular/compiler/src/util";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,7 @@ export class FournisseurService {
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _expressionBesoinsItemsValidees: Array<ExpressionBesoinItem>;
   private _expressionBesoins: Array<ExpressionBesoin>;
+  private _tableauBesoinItems:Array<TableauBesoinItem>
 
   constructor(private http: HttpClient,private enCoursService:EnCoursService) {
   }
@@ -78,10 +81,9 @@ export class FournisseurService {
   }
 
   getItems() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/statut/En%20cours").subscribe(
       data => {
         this.expressionBesoinsItems = [...data]
-        console.log(data)
       }
     )
   }
@@ -109,9 +111,9 @@ export class FournisseurService {
 
   getItemsValidees() {
       this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-        data => {
+        data => {   console.log("helooooo"+data);
           this.expressionBesoinsItemsValidees = [...data]
-          console.log(data)
+          console.log("helooooo"+data);
         }
       )
   }
@@ -142,5 +144,22 @@ export class FournisseurService {
         this.fournisseurs=[...data]
       }
     )
+  }
+
+  findTableauItemByexprCode(expressionBesoinItem: ExpressionBesoinItem) {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/code/"+expressionBesoinItem.code).subscribe(
+      data=> {
+        this.tableauBesoinItems = [...data];
+      })
+  }
+
+
+  get tableauBesoinItems(): Array<TableauBesoinItem> {
+    if (this._tableauBesoinItems==null)this._tableauBesoinItems=new Array<TableauBesoinItem>();
+    return this._tableauBesoinItems;
+  }
+
+  set tableauBesoinItems(value: Array<TableauBesoinItem>) {
+    this._tableauBesoinItems = value;
   }
 }

@@ -38,6 +38,11 @@ import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
+import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
+import { TableaubackComponent } from './components/tableauback/tableauback.component';
+import { EnAttenteItemsComponent } from './components/en-attente-items/en-attente-items.component';
+import { EnCoursItemsComponent } from './components/en-cours-items/en-cours-items.component';
+import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +62,11 @@ import {MatInputModule} from "@angular/material/input";
     SignInComponent,
     TableauBesoinComponent,
     ItemEnCoursComponent,
+    FournisseurReponseComponent,
+    TableaubackComponent,
+    EnAttenteItemsComponent,
+    EnCoursItemsComponent,
+    RefuseeItemsComponent,
   ],
 
     imports: [

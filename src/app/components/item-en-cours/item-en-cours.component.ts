@@ -39,7 +39,6 @@ export class ItemEnCoursComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.enCoursService.getitems();
   }
 
   disableSelect = new FormControl(false);

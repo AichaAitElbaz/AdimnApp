@@ -4,6 +4,8 @@ import {Fournisseur} from "./fournisseur.model";
 
 export class ExpressionBesoinItem {
   public id: number;
+  public code: number;
+  public pu: number;
   public ref: string;
   public quantite: number;
   public date: string;
