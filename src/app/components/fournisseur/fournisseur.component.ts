@@ -25,6 +25,7 @@ export class FournisseurComponent implements OnInit {
 
   disableSelect = new FormControl(false);
   selected:any;
+  selectedGame:any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();

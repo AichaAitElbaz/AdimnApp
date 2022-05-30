@@ -15,7 +15,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
-import {SideBareComponent} from './components/side-bare/side-bare.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
@@ -38,6 +37,10 @@ import {MatTableModule} from "@angular/material/table";
 import { ItemEnCoursComponent } from './components/item-en-cours/item-en-cours.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
+
+import {SideBareComponent} from "./components/side-bare/side-bare.component";
+import {TableListComponent} from "./components/table-list/table-list.component";
+import {DefaultModule} from "./components/layouts/default/default.module";
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,37 +60,40 @@ import {MatInputModule} from "@angular/material/input";
     SignInComponent,
     TableauBesoinComponent,
     ItemEnCoursComponent,
+    TableListComponent,
   ],
 
-    imports: [
-        AppRoutingModule,
-        MatTableModule,
-        BrowserModule,
-        NgbNavModule,
-        RouterModule,
-        MatIconModule,
-        MatFormFieldModule,
-        FormsModule,
-        MatDialogModule,
-        BrowserAnimationsModule,
-        NoopAnimationsModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatListModule,
-        HttpClientModule,
-        MatDividerModule,
-        MatDialogModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatCheckboxModule,
-        NgbAlertModule,
-        MatInputModule,
-        MatExpansionModule,
+  imports: [
+    AppRoutingModule,
+    MatTableModule,
+    BrowserModule,
+    NgbNavModule,
+    RouterModule,
+    MatIconModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    HttpClientModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    NgbAlertModule,
+    MatInputModule,
+    MatExpansionModule,
+    DefaultModule,
 
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent],
+
 
 })
 export class AppModule {

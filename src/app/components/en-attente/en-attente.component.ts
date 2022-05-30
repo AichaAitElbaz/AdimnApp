@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
-
 import {MatDialog} from "@angular/material/dialog";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {EnAttenteService} from "../../controller/service/en-attente.service";
@@ -16,11 +14,7 @@ import {MatIcon} from "@angular/material/icon";
   selector: 'app-en-attente',
   templateUrl: "./en-attente.component.html",
   styleUrls: ['./en-attente.component.css'],
-
-
 })
-
-
 export class EnAttenteComponent implements OnInit {
 
   constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService,
@@ -73,3 +67,4 @@ export class EnAttenteComponent implements OnInit {
 
 
 }
+

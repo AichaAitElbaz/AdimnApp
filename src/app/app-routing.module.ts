@@ -22,7 +22,7 @@ import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin
 import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
 
 const routes: Routes = [
-  {path:'F',component:EnAttenteComponent},
+  {path:'',component:EnAttenteComponent},
   {path:'Cours',component:EnCoursComponent},
   {path:'Dialog',component:DialogComponent},
   {path:'FF',component:FournisseurComponent},
@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:'A',component:ArchiveeComponent},
   {path:'S',component:ServiceComponent},
   {path:'SI',component:SignInComponent},
-  {path:'',component:TableauBesoinComponent},
+  {path:'F',component:TableauBesoinComponent},
   {path:'SS',component:SideBareComponent},
   {path:'C',component:ItemEnCoursComponent},
 
