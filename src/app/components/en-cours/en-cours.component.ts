@@ -50,4 +50,6 @@ export class EnCoursComponent implements OnInit {
     this.enAttenteService.update(expressionBesoin);
   }
 
+  navigate(component:string) {
+    this.enCoursService.navigate(component) }
 }
