@@ -4,6 +4,7 @@ import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {ServiceDemandeur} from "../model/service-demandeur.model";
 import {User} from "../model/user.model";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +17,16 @@ export class EnAttenteService {
   private _user: User;
   private _services: Array<ServiceDemandeur>;
   private _users: Array<User>
+  private _url: "http://localhost:8096/v1/admin/employe/en-attente-expression-services/";
 
   constructor(private http: HttpClient) {
   }
 
 
-  public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/En%20attente").subscribe(
-      data => {
-
-        console.log(12345)
-
-        this.expressionBesoins2 = [...data]
-        // console.log(this.expressionBesoins)
+  public getExpressionBesoins(){
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/employe/en-attente-expression-services").subscribe(
+      data=>{
+        this.expressionBesoins2=[...data];
       }
     )
   }
@@ -40,6 +38,14 @@ export class EnAttenteService {
   //   // this.expressionBesoinItem.produit.libelle=this.produit.libelle;
   //   this.expressionBesoin.expressionBesoinItems.push(this.clonelistExpressionBesoinItem(this.expressionBesoinItem));
   // }
+
+  get url(): "http://localhost:8096/v1/admin/employe/en-attente-expression-services/" {
+    return this._url;
+  }
+
+  set url(value: "http://localhost:8096/v1/admin/employe/en-attente-expression-services/") {
+    this._url = value;
+  }
 
   get expressionBesoins2(): Array<ExpressionBesoin> {
     if (this._expressionBesoins2 == null) {
@@ -102,13 +108,14 @@ export class EnAttenteService {
 
 
   public save(expressionBesoin: ExpressionBesoin) {
+    console.log(expressionBesoin.user);
     expressionBesoin.statut = "en Cours";
+    console.log(expressionBesoin)
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
-
+        console.log("save");
       }
     )
-
   }
 
   archiver(expressionBesoin: ExpressionBesoin) {

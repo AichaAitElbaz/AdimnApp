@@ -21,7 +21,7 @@ export class EnCoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
-    this.enCoursService.affecter();
+    // this.enCoursService.affecter();
   }
 
 

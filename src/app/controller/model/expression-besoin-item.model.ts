@@ -12,5 +12,4 @@ export class ExpressionBesoinItem {
   public statut: string;
   public expressionBesoin: ExpressionBesoin;
   public produit: Produit;
-  public fournisseurs=new Array<Fournisseur>();
 }

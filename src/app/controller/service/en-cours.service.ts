@@ -25,12 +25,9 @@ export class EnCoursService {
   }
 
   public getExpressionBesoinsAcceptees() {
-    console.log("ven")
-//
     const iterator = "en Cours";
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/" + iterator).subscribe(
       data => {
-        console.log(data)
 
         this.expressionBesoinsAcceptees = [...data];
       }
