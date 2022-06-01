@@ -24,6 +24,7 @@ import {TermineeComponent} from "./components/terminee/terminee.component";
 import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin.component";
 import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
 import {SideBareComponent} from "./components/side-bare/side-bare.component";
+import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
 
 const routes: Routes = [
   {

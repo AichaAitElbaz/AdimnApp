@@ -43,13 +43,13 @@ export class EnCoursService {
 
   }
 
-  public getitems() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
-      data => {
-        this.expressionBesoinItems = [...data];
-      }
-    )
-  }
+  // public getitems() {
+  //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
+  //     data => {
+  //       this.expressionBesoinItems = [...data];
+  //     }
+  //   )
+  // }
 
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     if (this._expressionBesoinsAcceptees == null) this._expressionBesoinsAcceptees = new Array<ExpressionBesoin>();
