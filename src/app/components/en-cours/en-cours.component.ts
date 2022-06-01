@@ -11,6 +11,7 @@ import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expressio
 import {EnAttenteService} from "../../controller/service/en-attente.service";
 import {ItemEnCoursComponent} from "../item-en-cours/item-en-cours.component";
 import {EnCoursItemsComponent} from "../en-cours-items/en-cours-items.component";
+import {TypeFournisseurComponent} from "../typeFournisseur/typeFournisseur.component";
 
 @Component({
   selector: 'app-en-cours',
@@ -40,6 +41,12 @@ export class EnCoursComponent implements OnInit {
     this.DIALOG.open(EnCoursItemsComponent, {
       height: '400px',
       width: '600px'})
+  }
+  openTypeFournisseur() {
+    this.DIALOG.open(TypeFournisseurComponent, {
+      height: '500px',
+      width: '600px'
+    })
   }
 
   archiver(expressionBesoin: ExpressionBesoin) {

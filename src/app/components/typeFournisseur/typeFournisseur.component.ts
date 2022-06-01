@@ -10,16 +10,15 @@ import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
-import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
-import {EnAttenteService} from "../../controller/service/en-attente.service";
+import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 
 @Component({
   selector: 'app-fournisseur',
-  templateUrl: './fournisseur.component.html',
-  styleUrls: ['./fournisseur.component.css']
+  templateUrl: './typeFournisseur.component.html',
+  styleUrls: ['./typeFournisseur.component.css']
 })
 
-export class FournisseurComponent implements OnInit {
+export class TypeFournisseurComponent implements OnInit {
   panelOpenState = false;
 
   apiresponse:any=[];
@@ -33,7 +32,7 @@ export class FournisseurComponent implements OnInit {
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     // this.fournisseurService.getFournisseurs();
-
+    console.log(this.selected+"hhhhhh")
   }
 
   getFournisseursByType(selected:string){
@@ -75,19 +74,14 @@ export class FournisseurComponent implements OnInit {
 
   }
 
-  fonction(event, f: FournisseurItem) {
-    if (event.target.checked == true) {
-      this.expressionBesoin.fournisseur = f.fournisseur;
-      this.fournisseurService.save(this.expressionBesoin)
-    }
+  fonction($event: Event, f: FournisseurItem) {
+
   }
 
-  get expressionBesoin(): ExpressionBesoin {
-    return this.fournisseurService.expressionBesoin;
+  openFournisseur() {
+    this.DIALOG.open(FournisseurComponent, {
+      height: '500px',
+      width: '600px'
+    })
   }
-}
-
-export class appfournisseur {
-  selected = "math"
-
 }

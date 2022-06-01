@@ -51,6 +51,8 @@ import { TableaubackComponent } from './components/tableauback/tableauback.compo
 import { EnAttenteItemsComponent } from './components/en-attente-items/en-attente-items.component';
 import { EnCoursItemsComponent } from './components/en-cours-items/en-cours-items.component';
 import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.component';
+import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
+import { AjouterFournisseurComponent } from './components/ajouter-fournisseur/ajouter-fournisseur.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.
     EnAttenteItemsComponent,
     EnCoursItemsComponent,
     RefuseeItemsComponent,
+    TypeFournisseurComponent,
+    AjouterFournisseurComponent,
   ],
 
   imports: [
