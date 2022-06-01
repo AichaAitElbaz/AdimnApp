@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Designation</th>
+    <th scope="col">Quantite</th>
+    <th scope="col">Pu</th>
+    <th scope="col">choix</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinsItemsValidees; index as i">
+    <td>
+      {{e.produit.libelle}}
+    </td>
+    <td>{{e.quantite}}</td>
+    <td>{{ e.pu }}</td>
+    <td><mat-icon class="btn-outline-success" (click)="openDialog();findTableauItemByexprCode(e)">description</mat-icon>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -9,5 +9,4 @@ export class Fournisseur {
   public faxFournisseur:string;
   public villeFournisseur:string;
   public emailFournisseur:string;
-  public typeFournisseur:TypeFournisseur;
 }

@@ -34,6 +34,12 @@
       <app-fournisseur></app-fournisseur>
     </ng-template>
   </li>
+  <li [ngbNavItem]="6">
+    <a ngbNavLink>Réponses</a>
+    <ng-template ngbNavContent let-active>
+      <app-fournisseur-reponse></app-fournisseur-reponse>
+    </ng-template>
+  </li>
 </ul>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>

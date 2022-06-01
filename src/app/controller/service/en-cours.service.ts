@@ -25,12 +25,9 @@ export class EnCoursService {
   }
 
   public getExpressionBesoinsAcceptees() {
-    console.log("ven")
-//
     const iterator = "en Cours";
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/" + iterator).subscribe(
       data => {
-        console.log(data)
 
         this.expressionBesoinsAcceptees = [...data];
       }
@@ -46,13 +43,13 @@ export class EnCoursService {
 
   }
 
-  public getitems() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
-      data => {
-        this.expressionBesoinItems = [...data];
-      }
-    )
-  }
+  // public getitems() {
+  //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
+  //     data => {
+  //       this.expressionBesoinItems = [...data];
+  //     }
+  //   )
+  // }
 
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     if (this._expressionBesoinsAcceptees == null) this._expressionBesoinsAcceptees = new Array<ExpressionBesoin>();
@@ -110,4 +107,6 @@ export class EnCoursService {
         console.log(data);
       })
   }
+
+
 }

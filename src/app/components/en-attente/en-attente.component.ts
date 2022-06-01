@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
-
 import {MatDialog} from "@angular/material/dialog";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {EnAttenteService} from "../../controller/service/en-attente.service";
@@ -11,24 +9,21 @@ import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 import {MatIcon} from "@angular/material/icon";
+import {EnAttenteItemsComponent} from "../en-attente-items/en-attente-items.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-en-attente',
   templateUrl: "./en-attente.component.html",
   styleUrls: ['./en-attente.component.css'],
-
-
 })
-
-
 export class EnAttenteComponent implements OnInit {
 
-  constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService,
-              private DIALOG:MatDialog,private servicesService:ServicesService) {
+  constructor(private enCoursService: EnCoursService, public dialog: MatDialog, private enAttenteService: EnAttenteService,
+              private DIALOG: MatDialog, private servicesService: ServicesService) {
   }
 
   get expressionBesoins2(): Array<ExpressionBesoin> {
-
     return this.enAttenteService.expressionBesoins2;
   }
 
@@ -59,17 +54,24 @@ export class EnAttenteComponent implements OnInit {
     this.enAttenteService.update(expressionBesoin);
   }
 
-  updateInUser(expressionBesoin:ExpressionBesoin) {
+  updateInUser(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.updateInUser(expressionBesoin);
   }
+
   public openDialog() {
-    this.DIALOG.open(ExpressionBesoinItemComponent, {
+    this.DIALOG.open(EnAttenteItemsComponent, {
       height: '400px',
-      width: '600px'})
+      width: '600px'
+    })
   }
-  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+
+  public getExpressionBesoinItems(expressionBesoin: ExpressionBesoin) {
     this.servicesService.getExpresssionBesoinItems(expressionBesoin);
   }
 
 
+  getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.getItemsByExpressionBesoinRef(expressionBesoin);
+  }
 }
+

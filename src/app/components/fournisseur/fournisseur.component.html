@@ -16,11 +16,11 @@
 
 
 <div *ngFor="let c of typesfournisseur" >
-  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.type);unhidden()">{{c.type}}</button>
+  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.reference)">{{c.type}}</button>
 
 
 
-<table class="table table-striped" id="table" hidden="true">
+<table class="table table-striped" id="table" >
   <thead>
   <tr>
     <th></th>
@@ -31,21 +31,19 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let f of fournisseurs; index as i">
+  <tr *ngFor="let f of fournisseurItems; index as i">
     <td>
-      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,f)">
     </td>
     <td>
-      {{ f.nomFournisseur }}
+      {{ f.fournisseur.nomFournisseur}}
     </td>
-    <td>{{ f.emailFournisseur}}</td>
-    <td>{{ f.typeFournisseur.type}}</td>
-    <td>{{f.villeFournisseur}}
+    <td>{{ f.fournisseur.emailFournisseur}}</td>
+    <td>{{f.fournisseur.villeFournisseur}}
     </td>
   </tr>
   </tbody>
-  <button mat-raised-button color="warn">Envoyer</button>
-
+  <button mat-raised-button color="warn" (click)="saveTableauBesoinItem()">Envoyer</button>
 </table>
 </div>
 

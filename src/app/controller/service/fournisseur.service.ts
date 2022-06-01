@@ -5,6 +5,9 @@ import {TypeFournisseur} from "../model/type-fournisseur.mpdel";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {EnCoursService} from "./en-cours.service";
+import {TableauBesoinItem} from "../model/tableau-besoin-item.mpdel";
+import {newArray} from "@angular/compiler/src/util";
+import {FournisseurItem} from "../model/fournisseur-item.mpdel";
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +19,17 @@ export class FournisseurService {
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _expressionBesoinsItemsValidees: Array<ExpressionBesoinItem>;
   private _expressionBesoins: Array<ExpressionBesoin>;
+  private _tableauBesoinItems:Array<TableauBesoinItem>;
+  private _fournisseurItems:Array<FournisseurItem>;
 
   constructor(private http: HttpClient,private enCoursService:EnCoursService) {
   }
 
   public getFournisseursByType(selected:string){
-    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/type-fournisseur/{type}?type="+selected).subscribe(
+    this.http.get<Array<FournisseurItem>>("http://localhost:8096/v1/admin/fournisseur-item/type-fournisseur/reference/"+selected).subscribe(
       data=>{
-        this.fournisseurs=[...data]
-        console.log(this.fournisseurs)
-
-
+        this.fournisseurItems=[...data];
+        console.log(data)
       }
     )
   }
@@ -81,7 +84,6 @@ export class FournisseurService {
     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
       data => {
         this.expressionBesoinsItems = [...data]
-        console.log(data)
       }
     )
   }
@@ -109,9 +111,9 @@ export class FournisseurService {
 
   getItemsValidees() {
       this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-        data => {
+        data => {   console.log("helooooo"+data);
           this.expressionBesoinsItemsValidees = [...data]
-          console.log(data)
+          console.log("helooooo"+data);
         }
       )
   }
@@ -142,5 +144,35 @@ export class FournisseurService {
         this.fournisseurs=[...data]
       }
     )
+  }
+
+  findTableauItemByexprCode(expressionBesoinItem: ExpressionBesoinItem) {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/code/"+expressionBesoinItem.code).subscribe(
+      data=> {
+        this.tableauBesoinItems = [...data];
+      })
+  }
+
+
+  get tableauBesoinItems(): Array<TableauBesoinItem> {
+    if (this._tableauBesoinItems==null)this._tableauBesoinItems=new Array<TableauBesoinItem>();
+    return this._tableauBesoinItems;
+  }
+
+  set tableauBesoinItems(value: Array<TableauBesoinItem>) {
+    this._tableauBesoinItems = value;
+  }
+
+
+  get fournisseurItems(): Array<FournisseurItem> {
+    if (this._fournisseurItems==null)this._fournisseurItems=new Array<FournisseurItem>();
+    return this._fournisseurItems;
+  }
+
+  set fournisseurItems(value: Array<FournisseurItem>) {
+    this._fournisseurItems = value;
+  }
+  public clone(fournisseurItem:FournisseurItem){
+
   }
 }
