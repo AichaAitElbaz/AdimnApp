@@ -24,12 +24,21 @@ export class FournisseurService {
 
   constructor(private http: HttpClient,private enCoursService:EnCoursService) {
   }
-
+  clonefournisseure(fournisseur:Fournisseur){
+    let myclone=new Fournisseur();
+    myclone.id=fournisseur.id;
+    myclone.nomFournisseur=fournisseur.nomFournisseur;
+    myclone.adresseFournisseur=fournisseur.adresseFournisseur;
+    myclone.telephoneFournisseur=fournisseur.telephoneFournisseur;
+    myclone.emailFournisseur=fournisseur.emailFournisseur;
+    myclone.villeFournisseur=fournisseur.villeFournisseur;
+    myclone.faxFournisseur=fournisseur.faxFournisseur;
+    return myclone;
+  }
   public getFournisseursByType(selected:string){
     this.http.get<Array<FournisseurItem>>("http://localhost:8096/v1/admin/fournisseur-item/type-fournisseur/reference/"+selected).subscribe(
       data=>{
         this.fournisseurItems=[...data];
-        console.log(data)
       }
     )
   }
@@ -37,7 +46,6 @@ export class FournisseurService {
     this.http.get<Array<TypeFournisseur>>("http://localhost:8096/v1/admin/type-fournisseur/").subscribe(
       data => {
         this.typesfournisseur = [...data];
-        console.log(this.typesfournisseur)
       }
     )
   }
@@ -173,7 +181,5 @@ export class FournisseurService {
   set fournisseurItems(value: Array<FournisseurItem>) {
     this._fournisseurItems = value;
   }
-  public clone(fournisseurItem:FournisseurItem){
 
-  }
 }

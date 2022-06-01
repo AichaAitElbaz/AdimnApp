@@ -13,13 +13,9 @@
 
   <mat-divider></mat-divider>-->
 
-<!--
-<div *ngFor="let c of typesfournisseur" >
-  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.reference)">{{c.type}}</button>
 
-
-
-  <table class="table table-striped" id="table" >
+<div >
+  <table class="table table-striped" id="table">
     <thead>
     <tr>
       <th></th>
@@ -45,25 +41,25 @@
     <button mat-raised-button color="warn" (click)="saveTableauBesoinItem()">Envoyer</button>
   </table>
 </div>
+<button>ajouter un fourniseur</button>
 
+<!--
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300&display=swap"
+      rel="stylesheet">
 
--->
-<div class="row row-cols-1 row-cols-md-3 g-4">
-
-  <div class="col">
-    <div class="card">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top" alt="Skyscrapers"/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-        </p>
-      </div>
-      <div class="card-footer">
-        <button class="btn btn-primary">list des fournisseur</button>
-        <button class="btn btn-warning">ajouter fourrnisseur</button>
-      </div>
-    </div>
+<div class="container">
+  <div class="card"  *ngFor="let c of typesfournisseur">
+    <figure class="card__thumb">
+      <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
+      <figcaption class="card__caption">
+        <h2 class="card__title">{{c.type}}</h2>
+        <p class="card__snippet">NASA released a list of 219 new “planet candidates” discovered by the Kepler space
+          telescope, 10 of which are similar to Earth’s size and may be habitable by other life forms.</p>
+        <a href="" class="card__button">Read more</a>
+      </figcaption>
+    </figure>
   </div>
+
+
 </div>
+-->

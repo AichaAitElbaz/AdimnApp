@@ -1,0 +1,20 @@
+<!--
+<mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select id="valeur" [(value)]="selected"  >
+    <mat-option   [(ngModel)]="selected" value="{{c.type}}" *ngFor="let c of typesfournisseur" (change)="getFournisseursByType(selected)">{{c.type}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selected}}</p>
+
+<div *ngFor="let c of typesfournisseur" >
+<button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.type);unhidden()">{{c.type}}</button>
+
+  <mat-divider></mat-divider>-->
+
+
+<div *ngFor="let c of typesfournisseur" >
+  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.reference);openFournisseur()" >{{c.type}}</button>
+</div>
+

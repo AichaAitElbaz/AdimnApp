@@ -10,14 +10,15 @@ import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
+import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 
 @Component({
   selector: 'app-fournisseur',
-  templateUrl: './fournisseur.component.html',
-  styleUrls: ['./fournisseur.component.css']
+  templateUrl: './typeFournisseur.component.html',
+  styleUrls: ['./typeFournisseur.component.css']
 })
 
-export class FournisseurComponent implements OnInit {
+export class TypeFournisseurComponent implements OnInit {
   panelOpenState = false;
 
   apiresponse:any=[];
@@ -31,7 +32,7 @@ export class FournisseurComponent implements OnInit {
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     // this.fournisseurService.getFournisseurs();
-
+    console.log(this.selected+"hhhhhh")
   }
 
   getFournisseursByType(selected:string){
@@ -57,6 +58,12 @@ export class FournisseurComponent implements OnInit {
     document.getElementById(id).hidden = false;
   }
 
+  openTableauBesoin() {
+    this.DIALOG.open(TableauBesoinComponent, {
+      height: '500px',
+      width: '600px'
+    })
+  }
 
 
   unhidden() {
@@ -71,5 +78,10 @@ export class FournisseurComponent implements OnInit {
 
   }
 
-
+  openFournisseur() {
+    this.DIALOG.open(FournisseurComponent, {
+      height: '500px',
+      width: '600px'
+    })
+  }
 }
