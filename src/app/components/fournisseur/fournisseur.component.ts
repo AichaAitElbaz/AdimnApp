@@ -10,6 +10,8 @@ import {TableauBesoinComponent} from "../tableau-besoin/tableau-besoin.component
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
+import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
+import {EnAttenteService} from "../../controller/service/en-attente.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -20,20 +22,22 @@ import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 export class FournisseurComponent implements OnInit {
   panelOpenState = false;
 
-  apiresponse:any=[];
-  constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  apiresponse: any = [];
+
+  constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private enAttenteService:EnAttenteService) {
   }
 
   disableSelect = new FormControl(false);
-  selected:any;
-  selectedGame:any;
+  selected: any;
+  selectedGame: any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
     // this.fournisseurService.getFournisseurs();
-    console.log(this.selected+"hhhhhh")
+    console.log(this.selected + "hhhhhh")
   }
-  getFournisseursByType(selected:string){
+
+  getFournisseursByType(selected: string) {
     return this.fournisseurService.getFournisseursByType(selected);
   }
 
@@ -51,7 +55,6 @@ export class FournisseurComponent implements OnInit {
   }
 
 
-
   public hide(id: string) {
     document.getElementById(id).hidden = false;
   }
@@ -65,18 +68,26 @@ export class FournisseurComponent implements OnInit {
 
 
   unhidden() {
-    document.getElementById("table").hidden=false;
+    document.getElementById("table").hidden = false;
   }
 
   saveTableauBesoinItem() {
 
   }
 
-  fonction($event: Event, f: FournisseurItem) {
+  fonction(event, f: FournisseurItem) {
+    if (event.target.checked == true) {
+      this.expressionBesoin.fournisseur = f.fournisseur;
+      this.fournisseurService.save(this.expressionBesoin)
+    }
+  }
 
+  get expressionBesoin(): ExpressionBesoin {
+    return this.fournisseurService.expressionBesoin;
   }
 }
+
 export class appfournisseur {
-  selected="math"
+  selected = "math"
 
 }
