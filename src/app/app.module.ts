@@ -80,7 +80,7 @@ import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.
     TableauBesoinComponent,
     ItemEnCoursComponent,
     EnAttenteItemsComponent,
-    EnCoursItemsComponent
+    EnCoursItemsComponent,
     FournisseurReponseComponent,
     TableaubackComponent,
     EnAttenteItemsComponent,
@@ -114,8 +114,6 @@ import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.
     MatInputModule,
     MatExpansionModule,
     NgbAlertModule,
-
-
     MatCardModule,
     MatTabsModule,
   ],

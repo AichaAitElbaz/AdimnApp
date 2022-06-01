@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "../model/user.model";
 import {ServiceDemandeur} from "../model/service-demandeur.model";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class EnCoursService {
   private _service: ServiceDemandeur;
   private _expressionBesoinItems: Array<ExpressionBesoinItem>
 
-  constructor(private dialog: MatDialog, private http: HttpClient) {
+  constructor(private dialog: MatDialog, private http: HttpClient,private router:Router) {
   }
 
   public openDialog() {
@@ -109,4 +110,7 @@ export class EnCoursService {
   }
 
 
+  navigate(component: string) {
+    this.router.navigate([component]);
+  }
 }
