@@ -11,6 +11,7 @@ import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 import {MatIcon} from "@angular/material/icon";
+import {EnAttenteItemsComponent} from "../en-attente-items/en-attente-items.component";
 
 @Component({
   selector: 'app-en-attente',
@@ -63,12 +64,15 @@ export class EnAttenteComponent implements OnInit {
     this.enAttenteService.updateInUser(expressionBesoin);
   }
   public openDialog() {
-    this.DIALOG.open(ExpressionBesoinItemComponent, {
+    this.DIALOG.open(EnAttenteItemsComponent, {
       height: '400px',
       width: '600px'})
   }
   public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
     this.servicesService.getExpresssionBesoinItems(expressionBesoin);
+  }
+  getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.getItemsByExpressionBesoinRef(expressionBesoin);
   }
 
 

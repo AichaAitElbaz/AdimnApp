@@ -39,5 +39,4 @@ export class ExpressionBesoinItemComponent implements OnInit {
     ;
   }
 
-
 }

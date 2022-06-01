@@ -5,5 +5,4 @@ export class TypeFournisseur {
   public id: number;
   public reference: string;
   public  type:string;
-  public  fournisseurs= new Array<Fournisseur>();
 }

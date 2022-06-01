@@ -56,20 +56,21 @@
   <tr *ngFor="let e of expressionBesoinsAcceptees; index as i">
     <td>
       {{ e.user.username }}
-    </td>   <td>
-    {{ e.user.serviceDemandeur }}
-  </td>
+    </td>
+    <td>
+      {{ e.user.serviceDemandeur }}
+    </td>
     <td>{{ e.objet  }}</td>
     <td>{{ e.statut }}</td>
     <td>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>
+        <mat-icon class="icon btn-outline-primary">bookmark_border</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="btn-outline-success"(click)="openDialog2()">description</mat-icon>
+        <mat-icon class="btn-outline-success" (click)="openDialog2()">description</mat-icon>
       </button>
     </td>
   </tr>

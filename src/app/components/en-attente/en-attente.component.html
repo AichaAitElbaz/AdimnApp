@@ -12,20 +12,21 @@
   <tr *ngFor="let e of expressionBesoins2; index as i">
     <td>
       {{ e.user.username }}
-    </td>   <td>
-      {{ e.user.serviceDemandeur }}
     </td>
     <td>{{ e.objet  }}</td>
+    <td>
+      {{ e.user.serviceDemandeur }}
+    </td>
     <td>{{ e.statut }}</td>
     <td>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="icon btn-outline-primary" (click)="save(e);updateInUser(e)">bookmark_border</mat-icon>
+        <mat-icon class="icon btn-outline-primary" (click)="save(e);updateInUser(e)"></mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>
+        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)"></mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="btn-outline-success"(click)="openDialog()">description</mat-icon>
+        <mat-icon class="btn-outline-success"(click)="openDialog();getItemsByExpressionBesoinRef(e)"></mat-icon>
       </button>
     </td>
   </tr>

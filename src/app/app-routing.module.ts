@@ -10,7 +10,6 @@ import {MatDialogModule} from "@angular/material";
 import {EnAttenteComponent} from "./components/en-attente/en-attente.component";
 import {EnCoursComponent} from "./components/en-cours/en-cours.component";
 import {DialogComponent} from "./components/dialog/dialog.component";
-import {SideBareComponent} from "./components/side-bare/side-bare.component";
 import {FournisseurComponent} from "./components/fournisseur/fournisseur.component";
 import {EnAttenteLivraisonComponent} from "./components/en-attente-livraison/en-attente-livraison.component";
 import {EnAttenteDeviComponent} from "./components/en-attente-devi/en-attente-devi.component";
@@ -18,17 +17,17 @@ import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-at
 import {ArchiveeComponent} from "./components/archivee/archivee.component";
 import {ServiceComponent} from "./components/service/service.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
-import {AppComponent} from "./app.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {StatistiquesComponent} from "./components/statistiques/statistiques.component";
 import {VirementComponent} from "./components/virement/virement.component";
 import {TermineeComponent} from "./components/terminee/terminee.component";
 import {TableauBesoinComponent} from "./components/tableau-besoin/tableau-besoin.component";
 import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.component";
+import {SideBareComponent} from "./components/side-bare/side-bare.component";
 
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent, children: [
+      path: '', component: DashboardComponent, children: [
       {path: 'statistiques', component: StatistiquesComponent},
       {path: 'en-attente', component: EnAttenteComponent},
       {path: 'en-cours', component: EnCoursComponent},
@@ -41,6 +40,7 @@ const routes: Routes = [
       {path: 'terminee', component: TermineeComponent},
       {path: 'virement', component: VirementComponent},
       {path:'SI',component:SignInComponent},
+      {path:'sidebar',component:SideBareComponent},
       {path:'C',component:ItemEnCoursComponent},
       {path:'T',component:TableauBesoinComponent},
     ]

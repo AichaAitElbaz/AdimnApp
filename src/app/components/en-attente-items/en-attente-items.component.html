@@ -1,0 +1,43 @@
+<!--<div class="card-body">-->
+<!--  <table class="table table-hover table-striped " style="border: dimgrey solid">-->
+<!--    <thead>-->
+
+<!--    <th>reference</th>-->
+<!--    <th>designation</th>-->
+<!--    <th>Qte</th>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let c of expressionBesoinItems">-->
+<!--      <td>{{c.ref}}</td>-->
+<!--      <td>{{c.produit.libelle}}</td>-->
+<!--      <td>{{c.quantite}}</td>-->
+<!--    </tr>-->
+
+<!--    </tbody>-->
+<!--  </table>-->
+
+
+<!--</div>-->
+<!--<div class="card-footer">-->
+<!--  <button mat-dialog-close style=" border-color: crimson">close</button>-->
+<!--</div>-->
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Designation</th>
+    <th scope="col">Qte</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinsItems; index as i">
+    <td>
+      {{ e.produit.libelle }}
+    </td>
+    <td>{{ e.quantite}}</td>
+
+  </tr>
+
+  </tbody>
+  <button mat-dialog-close mat-raised-button color="warn" >close</button>
+
+</table>
