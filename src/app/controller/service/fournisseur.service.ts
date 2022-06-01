@@ -84,6 +84,7 @@ export class FournisseurService {
     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
       data => {
         this.expressionBesoinsItems = [...data]
+        console.log(data)
       }
     )
   }
@@ -111,9 +112,9 @@ export class FournisseurService {
 
   getItemsValidees() {
       this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-        data => {   console.log("helooooo"+data);
+        data => {
           this.expressionBesoinsItemsValidees = [...data]
-          console.log("helooooo"+data);
+          console.log(data)
         }
       )
   }

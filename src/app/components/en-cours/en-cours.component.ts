@@ -9,6 +9,7 @@ import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 import {EnAttenteService} from "../../controller/service/en-attente.service";
+import {ItemEnCoursComponent} from "../item-en-cours/item-en-cours.component";
 import {EnCoursItemsComponent} from "../en-cours-items/en-cours-items.component";
 
 @Component({
@@ -21,7 +22,7 @@ export class EnCoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
-    // this.enCoursService.affecter();
+    this.enCoursService.affecter();
   }
 
 
@@ -49,7 +50,4 @@ export class EnCoursComponent implements OnInit {
     this.enAttenteService.update(expressionBesoin);
   }
 
-  getItemsByExprEnCoursRef(expressionBesoin: ExpressionBesoin) {
-    this.enAttenteService.getItemsByExpressionBesoinRef(expressionBesoin);
-  }
 }
