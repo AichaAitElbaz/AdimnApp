@@ -1,46 +1,51 @@
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">
-  <li [ngbNavItem]="1" [destroyOnHide]="true">
-    <a ngbNavLink>En attente</a>
-    <ng-template ngbNavContent>
+<!--<ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">-->
+<!--  <li [ngbNavItem]="1" [destroyOnHide]="true">-->
+<!--    <a ngbNavLink>En attente</a>-->
+<!--    <ng-template ngbNavContent>-->
 
 
-      <app-en-attente></app-en-attente>
+<!--      <app-en-attente></app-en-attente>-->
 
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="2">
-    <a ngbNavLink>En cours</a>
-    <ng-template ngbNavContent>
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="2">-->
+<!--    <a ngbNavLink>En cours</a>-->
+<!--    <ng-template ngbNavContent>-->
 
 
-      <app-en-cours></app-en-cours>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="3">
-    <a ngbNavLink>Archivées</a>
-    <ng-template ngbNavContent let-active>
-      <app-archivee></app-archivee>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="4">
-    <a ngbNavLink>Items</a>
-    <ng-template ngbNavContent let-active>
-      <app-expression-besoin-item></app-expression-besoin-item>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="5">
-    <a ngbNavLink>Fournisseurs</a>
-    <ng-template ngbNavContent let-active>
-      <app-fournisseur></app-fournisseur>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="6">
-    <a ngbNavLink>Réponses</a>
-    <ng-template ngbNavContent let-active>
-      <app-fournisseur-reponse></app-fournisseur-reponse>
-    </ng-template>
-  </li>
-</ul>
+<!--      <app-en-cours></app-en-cours>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="3">-->
+<!--    <a ngbNavLink>Archivées</a>-->
+<!--    <ng-template ngbNavContent let-active>-->
+<!--      <app-archivee></app-archivee>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="4">-->
+<!--    <a ngbNavLink>Items</a>-->
+<!--    <ng-template ngbNavContent let-active>-->
+<!--      <app-expression-besoin-item></app-expression-besoin-item>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="5">-->
+<!--    <a ngbNavLink>Fournisseurs</a>-->
+<!--    <ng-template ngbNavContent let-active>-->
+<!--      <app-fournisseur></app-fournisseur>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="6">-->
+<!--    <a ngbNavLink>TableauBesoin</a>-->
+<!--    <ng-template ngbNavContent let-active>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--  <li [ngbNavItem]="7">-->
+<!--    <a ngbNavLink>Réponses</a>-->
+<!--    <ng-template ngbNavContent let-active>-->
+<!--      <app-fournisseur-reponse></app-fournisseur-reponse>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+<!--</ul>-->
 
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<!--<div [ngbNavOutlet]="nav" class="mt-2"></div>-->
 

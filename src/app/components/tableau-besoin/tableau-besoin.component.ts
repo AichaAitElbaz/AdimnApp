@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
 import {HttpClient} from "@angular/common/http";
 import {FournisseurService} from "../../controller/service/fournisseur.service";
+import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 
 export interface PeriodicElement {
   name: string;
@@ -26,13 +27,13 @@ export class TableauBesoinComponent implements OnInit {
 
   ngOnInit(): void {
     this.fournisseurService.getItemsValidees()
-    //    this.dataSource=this.expressionBesoinsItems;
+    this.fournisseurService.getTraiteesExpr();
   }
 
   displayedColumns: ExpressionBesoinItem[];
 
-  get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
-    return this.fournisseurService.expressionBesoinsItemsValidees;
+  get expressionBesoins(): Array<ExpressionBesoin> {
+    return this.fournisseurService.expressionBesoins;
   }
 
   setItemsEnvoyees() {

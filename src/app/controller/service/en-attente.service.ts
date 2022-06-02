@@ -23,10 +23,10 @@ export class EnAttenteService {
   }
 
 
-  public getExpressionBesoins(){
+  public getExpressionBesoins() {
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/employe/en-attente-expression-services").subscribe(
-      data=>{
-        this.expressionBesoins2=[...data];
+      data => {
+        this.expressionBesoins2 = [...data];
       }
     )
   }
@@ -106,16 +106,33 @@ export class EnAttenteService {
     this._service = value;
   }
 
+  public saveExprItems(expressionBesoin: ExpressionBesoin) {
+    expressionBesoin.expressionBesoinItems.forEach(e => {
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
+        data =>
+          console.log(e)
+      )
+    })
+  }
+
+  public saveItems(expressionBesoin1: ExpressionBesoin) {
+    expressionBesoin1.expressionBesoinItems.forEach(e => {
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
+        data => {
+          console.log(e);
+        }
+      )
+    })
+  }
 
   public save(expressionBesoin: ExpressionBesoin) {
-    console.log(expressionBesoin.user);
     expressionBesoin.statut = "en Cours";
-    console.log(expressionBesoin)
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
         console.log("save");
       }
     )
+    this.saveItems(expressionBesoin);
   }
 
   archiver(expressionBesoin: ExpressionBesoin) {
@@ -224,10 +241,10 @@ export class EnAttenteService {
   }
 
   traiter(expressionBesoin: ExpressionBesoin) {
-    expressionBesoin.statut="traitée";
-    this.expressionBesoin=expressionBesoin;
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/",expressionBesoin).subscribe(
-      data=>{
+    expressionBesoin.statut = "traitée";
+    this.expressionBesoin = expressionBesoin;
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+      data => {
         console.log(data)
       }
     )

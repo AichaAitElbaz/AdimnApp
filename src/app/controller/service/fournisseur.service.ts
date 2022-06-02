@@ -120,6 +120,7 @@ export class FournisseurService {
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/trait%C3%A9e").subscribe(
       data => {
         this.expressionBesoins = [...data];
+        console.log(this.expressionBesoins)
       }
     )
   }
@@ -198,8 +199,6 @@ export class FournisseurService {
   }
 
 
-
-
   get expressionBesoin(): ExpressionBesoin {
     if (this._expressionBesoin == null) this._expressionBesoin = new ExpressionBesoin();
     return this._expressionBesoin;
@@ -222,7 +221,7 @@ export class FournisseurService {
 
 
   get tableauBesoin(): TableauBesoin {
-    if (this._tableauBesoin==null)this._tableauBesoin=new TableauBesoin();
+    if (this._tableauBesoin == null) this._tableauBesoin = new TableauBesoin();
     return this._tableauBesoin;
   }
 
@@ -232,8 +231,8 @@ export class FournisseurService {
 
   saveTableauBesoin(tableauBesoin: TableauBesoin) {
     console.log(tableauBesoin)
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/",tableauBesoin).subscribe(
-      data=>{
+    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", tableauBesoin).subscribe(
+      data => {
         console.log("hello")
 
       }
@@ -241,13 +240,16 @@ export class FournisseurService {
   }
 
   selectFournisseur(f: FournisseurItem) {
-this.expressionBesoins.forEach(e=>{
-  this.tableauBesoin.expressionBesoin=e;
-  this.tableauBesoin.fournisseur=f.fournisseur;
-  this.saveTableauBesoin(this.tableauBesoin);
-  console.log(this.tableauBesoin)
-})
+    this.expressionBesoins.forEach(e => {
+      this.tableauBesoin.expressionBesoin = e;
+      this.tableauBesoin.fournisseur = f.fournisseur;
+      this.saveTableauBesoin(this.tableauBesoin);
+      console.log(this.tableauBesoin)
+    })
 
 
   }
 }
+
+
+

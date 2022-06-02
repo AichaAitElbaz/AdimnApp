@@ -86,4 +86,6 @@ export class FournisseurComponent implements OnInit {
   get tableauBesoin(): TableauBesoin {
     return this.fournisseurService.tableauBesoin;
   }
+
+
 }
