@@ -4,7 +4,7 @@ import {DialogComponent} from "../dialog/dialog.component";
 import {EnCoursService} from "../../controller/service/en-cours.service";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {User} from "../../controller/model/user.model";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
@@ -19,7 +19,9 @@ import {TypeFournisseurComponent} from "../typeFournisseur/typeFournisseur.compo
   styleUrls: ['./en-cours.component.css']
 })
 export class EnCoursComponent implements OnInit {
-  constructor(private enCoursService:EnCoursService,private DIALOG:MatDialog,private servicesService:ServicesService,private enAttenteService:EnAttenteService) {}
+  constructor(private enCoursService: EnCoursService, private DIALOG: MatDialog, private servicesService: ServicesService, private enAttenteService: EnAttenteService
+  ,private router:Router) {
+  }
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
@@ -34,19 +36,20 @@ export class EnCoursComponent implements OnInit {
   get users2(): Array<User> {
     return this.enCoursService.users2;
   }
-  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+
+  public getExpressionBesoinItems(expressionBesoin: ExpressionBesoin) {
     this.servicesService.getExpresssionBesoinItems(expressionBesoin);
   }
+
   public openDialog2() {
     this.DIALOG.open(EnCoursItemsComponent, {
       height: '400px',
-      width: '600px'})
-  }
-  openTypeFournisseur() {
-    this.DIALOG.open(TypeFournisseurComponent, {
-      height: '500px',
       width: '600px'
     })
+  }
+
+  openTypeFournisseur() {
+    this.router.navigate(["tf"])
   }
 
   archiver(expressionBesoin: ExpressionBesoin) {
@@ -57,8 +60,9 @@ export class EnCoursComponent implements OnInit {
     this.enAttenteService.update(expressionBesoin);
   }
 
-  navigate(component:string) {
-    this.enCoursService.navigate(component) }
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
+  }
 
   traiter(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.traiter(expressionBesoin);

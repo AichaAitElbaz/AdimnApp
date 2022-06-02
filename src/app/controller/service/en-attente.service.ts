@@ -225,6 +225,7 @@ export class EnAttenteService {
 
   traiter(expressionBesoin: ExpressionBesoin) {
     expressionBesoin.statut="traitée";
+    this.expressionBesoin=expressionBesoin;
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/",expressionBesoin).subscribe(
       data=>{
         console.log(data)

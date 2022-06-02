@@ -31,6 +31,7 @@ export class EnCoursService {
       data => {
 
         this.expressionBesoinsAcceptees = [...data];
+        console.log(data)
       }
     )
   }

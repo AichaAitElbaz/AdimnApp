@@ -11,7 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
-import {EnAttenteService} from "../../controller/service/en-attente.service";
+import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 
 @Component({
   selector: 'app-fournisseur',
@@ -22,21 +22,24 @@ import {EnAttenteService} from "../../controller/service/en-attente.service";
 export class FournisseurComponent implements OnInit {
   panelOpenState = false;
 
-  apiresponse:any=[];
+  apiresponse: any = [];
+
   constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
-  selected:any;
-  selectedGame:any;
+  selected: any;
+  selectedGame: any;
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
-    // this.fournisseurService.getFournisseurs();
+    this.fournisseurService.getTraiteesExpr();
 
   }
-
-  getFournisseursByType(selected:string){
+  get expressionBesoins(): Array<ExpressionBesoin> {
+    return this.fournisseurService.expressionBesoins;
+  }
+  getFournisseursByType(selected: string) {
     return this.fournisseurService.getFournisseursByType(selected);
   }
 
@@ -54,21 +57,13 @@ export class FournisseurComponent implements OnInit {
   }
 
 
-
   public hide(id: string) {
     document.getElementById(id).hidden = false;
   }
 
-  openTableauBesoin() {
-    this.DIALOG.open(TableauBesoinComponent, {
-      height: '500px',
-      width: '600px'
-    })
-  }
-
 
   unhidden() {
-    document.getElementById("table").hidden=false;
+    document.getElementById("table").hidden = false;
   }
 
   saveTableauBesoinItem() {
@@ -77,17 +72,18 @@ export class FournisseurComponent implements OnInit {
 
   fonction(event, f: FournisseurItem) {
     if (event.target.checked == true) {
-      this.expressionBesoin.fournisseur = f.fournisseur;
-      this.fournisseurService.save(this.expressionBesoin)
+      this.fournisseurService.selectFournisseur(f);
     }
   }
 
   get expressionBesoin(): ExpressionBesoin {
     return this.fournisseurService.expressionBesoin;
   }
-}
 
-export class appfournisseur {
-  selected = "math"
-
+  ExprEnvoyee() {
+    this.fournisseurService.saveExprennvoye(this.expressionBesoin);
+  }
+  get tableauBesoin(): TableauBesoin {
+    return this.fournisseurService.tableauBesoin;
+  }
 }

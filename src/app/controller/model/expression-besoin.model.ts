@@ -2,6 +2,8 @@ import {User} from "./user.model";
 import {ServiceDemandeur} from "./service-demandeur.model";
 import {ExpressionBesoinItem} from "./expression-besoin-item.model";
 import {Fournisseur} from "./fournisseur.model";
+import {FournisseurItem} from "./fournisseur-item.mpdel";
+import {TableauBesoin} from "./tableau-besoin.model";
 
 export class ExpressionBesoin {
   public id: number;
@@ -11,6 +13,5 @@ export class ExpressionBesoin {
   public statut: string;
   public user=new User();
   public expressionBesoinItems = new Array<ExpressionBesoinItem>();
-  public fournisseur =new Fournisseur();
-
+  public tableauBesoins = new Array<TableauBesoin>();
 }

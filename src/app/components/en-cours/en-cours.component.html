@@ -63,8 +63,7 @@
     <td>{{ e.objet  }}</td>
     <td>{{ e.statut }}</td>
     <td>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="navigate('F');traiter(e)">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openTypeFournisseur()">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openTypeFournisseur();traiter(e)">
         <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">

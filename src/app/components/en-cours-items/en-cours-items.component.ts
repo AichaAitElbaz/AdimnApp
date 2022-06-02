@@ -16,4 +16,4 @@ export class EnCoursItemsComponent implements OnInit {
   get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
     return this.enAttenteService.expressionBesoinsItems;
   }
-}
+}0

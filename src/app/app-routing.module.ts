@@ -26,11 +26,10 @@ import {ItemEnCoursComponent} from "./components/item-en-cours/item-en-cours.com
 import {SideBareComponent} from "./components/side-bare/side-bare.component";
 import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
-import {AjouterFournisseurComponent} from "./components/ajouter-fournisseur/ajouter-fournisseur.component";
 
 const routes: Routes = [
   {
-      path: '', component: DashboardComponent, children: [
+    path: '', component: DashboardComponent, children: [
       {path: 'statistiques', component: StatistiquesComponent},
       {path: 'en-attente', component: EnAttenteComponent},
       {path: 'en-cours', component: EnCoursComponent},
@@ -47,7 +46,6 @@ const routes: Routes = [
       {path:'C',component:ItemEnCoursComponent},
       {path:'T',component:TableauBesoinComponent},
       {path:'tf',component:TypeFournisseurComponent},
-      {path:'af',component:AjouterFournisseurComponent},
     ]
   },
   {path: 's', component: ServiceComponent},
