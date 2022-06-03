@@ -6,7 +6,6 @@ import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {EnCoursService} from "./en-cours.service";
 import {TableauBesoinItem} from "../model/tableau-besoin-item.mpdel";
-import {newArray} from "@angular/compiler/src/util";
 import {FournisseurItem} from "../model/fournisseur-item.mpdel";
 import {TableauBesoin} from "../model/tableau-besoin.model";
 
@@ -25,6 +24,7 @@ export class FournisseurService {
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
 
+  private emails: Array<string>
 
   constructor(private http: HttpClient, private enCoursService: EnCoursService) {
   }
@@ -116,17 +116,17 @@ export class FournisseurService {
     this._expressionBesoinsItems = value;
   }
 
-  public getTraiteesExpr() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/trait%C3%A9e").subscribe(
-      data => {
-        this.expressionBesoins = [...data];
-        console.log(this.expressionBesoins)
-      }
-    )
-  }
+  // public getTraiteesExpr() {
+  //   this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/trait%C3%A9e").subscribe(
+  //     data => {
+  //       this.expressionBesoins = [...data];
+  //       console.log(this.expressionBesoins)
+  //     }
+  //   )
+  // }
+
 
   get expressionBesoins(): Array<ExpressionBesoin> {
-    if (this._expressionBesoins == null) this._expressionBesoins = new Array<ExpressionBesoin>();
     return this._expressionBesoins;
   }
 
@@ -219,6 +219,13 @@ export class FournisseurService {
 
   }
 
+  public getExprTraitee() {
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/trait%C3%A9e").subscribe(
+      data => {
+        this.expressionBesoins = [...data];
+      }
+    )
+  }
 
   get tableauBesoin(): TableauBesoin {
     if (this._tableauBesoin == null) this._tableauBesoin = new TableauBesoin();
@@ -249,6 +256,13 @@ export class FournisseurService {
 
 
   }
+
+  getEmail(fournisseur: Fournisseur) {
+    this.emails.push(fournisseur.emailFournisseur);
+    console.log(this.emails);
+  }
+
+
 }
 
 

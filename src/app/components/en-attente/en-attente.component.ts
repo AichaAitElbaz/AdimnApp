@@ -24,8 +24,8 @@ import {EnAttenteItemsComponent} from "../en-attente-items/en-attente-items.comp
 
 export class EnAttenteComponent implements OnInit {
 
-  constructor(private enCoursService:EnCoursService,public dialog: MatDialog, private enAttenteService: EnAttenteService,
-              private DIALOG:MatDialog,private servicesService:ServicesService) {
+  constructor(private enCoursService: EnCoursService, public dialog: MatDialog, private enAttenteService: EnAttenteService,
+              private DIALOG: MatDialog, private servicesService: ServicesService) {
   }
 
   get expressionBesoins2(): Array<ExpressionBesoin> {
@@ -35,7 +35,7 @@ export class EnAttenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.enAttenteService.getExpressionBesoins();
-
+    // this.enCoursService.getExpressionBesoinsAcceptees();
     this.enAttenteService.affecter();
   }
 
@@ -60,20 +60,27 @@ export class EnAttenteComponent implements OnInit {
     this.enAttenteService.update(expressionBesoin);
   }
 
-  updateInUser(expressionBesoin:ExpressionBesoin) {
+  updateInUser(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.updateInUser(expressionBesoin);
   }
+
   public openDialog() {
     this.DIALOG.open(EnAttenteItemsComponent, {
       height: '400px',
-      width: '600px'})
+      width: '600px'
+    })
   }
-  public getExpressionBesoinItems(expressionBesoin:ExpressionBesoin){
+
+  public getExpressionBesoinItems(expressionBesoin: ExpressionBesoin) {
     this.servicesService.getExpresssionBesoinItems(expressionBesoin);
   }
+
   getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.getItemsByExpressionBesoinRef(expressionBesoin);
   }
 
 
+  public f() {
+    this.enCoursService.getExpressionBesoinsAcceptees();
+  }
 }

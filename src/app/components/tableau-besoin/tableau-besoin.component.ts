@@ -27,7 +27,7 @@ export class TableauBesoinComponent implements OnInit {
 
   ngOnInit(): void {
     this.fournisseurService.getItemsValidees()
-    this.fournisseurService.getTraiteesExpr();
+    // this.fournisseurService.getTraiteesExpr();
   }
 
   displayedColumns: ExpressionBesoinItem[];

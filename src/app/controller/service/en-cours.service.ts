@@ -7,6 +7,7 @@ import {User} from "../model/user.model";
 import {ServiceDemandeur} from "../model/service-demandeur.model";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {Router} from "@angular/router";
+import {Produit} from "../model/produit.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,22 +17,52 @@ export class EnCoursService {
   private _expressionBesoinsAcceptees: Array<ExpressionBesoin>;
   private _users2: Array<User>;
   private _service: ServiceDemandeur;
-  private _expressionBesoinItems: Array<ExpressionBesoinItem>
+  private _expressionBesoinItems: Array<ExpressionBesoinItem>;
+  private _ItemsAcceptees: Array<ExpressionBesoinItem>;
+  private _produit: Produit;
+  private _expr: ExpressionBesoin;
 
-  constructor(private dialog: MatDialog, private http: HttpClient,private router:Router) {
+  constructor(private dialog: MatDialog, private http: HttpClient, private router: Router) {
   }
 
   public openDialog() {
     this.dialog.open(DialogComponent)
   }
 
+  get expr(): ExpressionBesoin {
+    return this._expr;
+  }
+
+  set expr(value: ExpressionBesoin) {
+    this._expr = value;
+  }
+
   public getExpressionBesoinsAcceptees() {
     const iterator = "en Cours";
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/" + iterator).subscribe(
       data => {
-
         this.expressionBesoinsAcceptees = [...data];
-        console.log(data)
+        console.log(this.expressionBesoinsAcceptees)
+        // this.expressionBesoinsAcceptees.forEach(e => {
+        //   this.expr.reference=e.reference;
+        //   this.expr.statut=e.statut;
+        //   this.expr.user=e.user;
+        //   this.http.post("http://localhost:8096/v1/admin/expression-besoin/isNull/",this.expr);
+        //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + e.reference).subscribe(
+        //     data => {
+        //
+        //       data.forEach(d => {
+        //         console.log(e)
+        //         d.expressionBesoin = this.expr;
+        //         this.http.post("http://localhost:8096/v1/admin/produit/", this.produit)
+        //         d.produit=this.produit;
+        //                 // this.ItemsAcceptees = [...data];
+        //
+        //       })
+        //     }
+        //   )
+        // })
+
       }
     )
   }
@@ -52,6 +83,14 @@ export class EnCoursService {
   //     }
   //   )
   // }
+
+  get produit(): Produit {
+    return this._produit;
+  }
+
+  set produit(value: Produit) {
+    this._produit = value;
+  }
 
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     if (this._expressionBesoinsAcceptees == null) this._expressionBesoinsAcceptees = new Array<ExpressionBesoin>();
@@ -92,20 +131,19 @@ export class EnCoursService {
   }
 
   public save(id) {
-    id.statut="validée";
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",id).subscribe(
-      data=>{
+    id.statut = "validée";
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", id).subscribe(
+      data => {
         console.log(data);
       })
-
 
 
   }
 
   update(id: ExpressionBesoinItem) {
-    id.statut="null";
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",id).subscribe(
-      data=>{
+    id.statut = "null";
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", id).subscribe(
+      data => {
         console.log(data);
       })
   }
@@ -113,5 +151,14 @@ export class EnCoursService {
 
   navigate(component: string) {
     this.router.navigate([component]);
+  }
+
+
+  get ItemsAcceptees(): Array<ExpressionBesoinItem> {
+    return this._ItemsAcceptees;
+  }
+
+  set ItemsAcceptees(value: Array<ExpressionBesoinItem>) {
+    this._ItemsAcceptees = value;
   }
 }

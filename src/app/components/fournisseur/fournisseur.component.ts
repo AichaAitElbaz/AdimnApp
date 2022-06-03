@@ -12,6 +12,7 @@ import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
+import {EnCoursService} from "../../controller/service/en-cours.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -21,10 +22,9 @@ import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 
 export class FournisseurComponent implements OnInit {
   panelOpenState = false;
-
   apiresponse: any = [];
 
-  constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  constructor(private enCoursService:EnCoursService,private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
@@ -33,7 +33,7 @@ export class FournisseurComponent implements OnInit {
 
   ngOnInit(): void {
     this.fournisseurService.getTypes();
-    this.fournisseurService.getTraiteesExpr();
+    this.fournisseurService.getExprTraitee();
 
   }
   get expressionBesoins(): Array<ExpressionBesoin> {
@@ -73,6 +73,7 @@ export class FournisseurComponent implements OnInit {
   fonction(event, f: FournisseurItem) {
     if (event.target.checked == true) {
       this.fournisseurService.selectFournisseur(f);
+      this.getEmail(f.fournisseur);
     }
   }
 
@@ -86,6 +87,11 @@ export class FournisseurComponent implements OnInit {
   get tableauBesoin(): TableauBesoin {
     return this.fournisseurService.tableauBesoin;
   }
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
+  }
 
-
+  getEmail(fournisseur: Fournisseur) {
+    this.fournisseurService.getEmail(fournisseur);
+  }
 }
