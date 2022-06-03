@@ -67,4 +67,8 @@ export class EnCoursComponent implements OnInit {
   traiter(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.traiter(expressionBesoin);
   }
+
+  getItemsAcceptees() {
+    this.enCoursService.getItemsAcceptees();
+  }
 }

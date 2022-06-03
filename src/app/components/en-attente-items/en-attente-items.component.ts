@@ -14,7 +14,6 @@ export class EnAttenteItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fournisseurService.getlistofExpressionBesoinItem();
-
     this.fournisseurService.getItems();
   }
   get expressionBesoinsItems(): Array<ExpressionBesoinItem> {

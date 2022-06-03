@@ -10,6 +10,7 @@ export class ExpressionBesoinItem {
   public quantite: number;
   public date: string;
   public statut: string;
+  public refExpr: string;
   public expressionBesoin: ExpressionBesoin;
   public produit: Produit;
 }

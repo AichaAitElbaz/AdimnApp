@@ -22,6 +22,7 @@ export class EnCoursService {
   private _produit: Produit;
   private _expr: ExpressionBesoin;
 
+
   constructor(private dialog: MatDialog, private http: HttpClient, private router: Router) {
   }
 
@@ -161,4 +162,28 @@ export class EnCoursService {
   set ItemsAcceptees(value: Array<ExpressionBesoinItem>) {
     this._ItemsAcceptees = value;
   }
+
+  getItemsAcceptees() {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/statut/Accept%C3%A9e").subscribe(
+      data => {
+        this.ItemsAcceptees = [...data];
+        console.log(data)
+      }
+    )
+  }
+
+  saveItem(itemsSelectionne:Array<ExpressionBesoinItem>) {
+    itemsSelectionne.forEach(i=>{
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",i).subscribe(
+        data=>{
+          console.log("data saved");
+          console.log(i);
+        }
+      )
+    })
+
+  }
+
+
+
 }

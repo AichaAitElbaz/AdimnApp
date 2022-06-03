@@ -52,6 +52,7 @@ import { EnAttenteItemsComponent } from './components/en-attente-items/en-attent
 import { EnCoursItemsComponent } from './components/en-cours-items/en-cours-items.component';
 import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.component';
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
+import { ItemsComponent } from './components/items/items.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournis
     EnCoursItemsComponent,
     RefuseeItemsComponent,
     TypeFournisseurComponent,
+    ItemsComponent,
   ],
 
   imports: [

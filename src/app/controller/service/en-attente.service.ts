@@ -23,8 +23,9 @@ export class EnAttenteService {
   private _items: Array<ExpressionBesoinItem>
   private _url: "http://localhost:8096/v1/admin/employe/en-attente-expression-services/";
   private _produit: Produit;
-private _expr:ExpressionBesoin;
-  constructor(private http: HttpClient,private enCoursService:EnCoursService) {
+  private _expr: ExpressionBesoin;
+
+  constructor(private http: HttpClient, private enCoursService: EnCoursService) {
   }
 
   get expr(): ExpressionBesoin {
@@ -38,6 +39,7 @@ private _expr:ExpressionBesoin;
   get expressionBesoinsAcceptees(): Array<ExpressionBesoin> {
     return this.enCoursService.expressionBesoinsAcceptees;
   }
+
   get produit(): Produit {
     return this._produit;
   }
@@ -158,17 +160,17 @@ private _expr:ExpressionBesoin;
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
         console.log(data);
-    //     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
-    //       data => {   console.log(555555555555);
-    //         console.log(data)
-    //         data.forEach(d => {
-    //           d.expressionBesoin = expressionBesoin;
-    //           this.http.post("http://localhost:8096/v1/admin/produit/", d.produit)
-    //           // this.ItemsAcceptees = [...data];
-    //
-    //         })
-    //       }
-    //     )
+        //     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
+        //       data => {   console.log(555555555555);
+        //         console.log(data)
+        //         data.forEach(d => {
+        //           d.expressionBesoin = expressionBesoin;
+        //           this.http.post("http://localhost:8096/v1/admin/produit/", d.produit)
+        //           // this.ItemsAcceptees = [...data];
+        //
+        //         })
+        //       }
+        //     )
       });
     console.log(this.expressionBesoinsAcceptees);
 
@@ -321,11 +323,8 @@ private _expr:ExpressionBesoin;
     )
   }
 
-  getItemsByExpressionBesoinRef(expressionBesoin
-                                  :
-                                  ExpressionBesoin
-  ) {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
+  getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
       data => {
         this.expressionBesoinsItems = [...data];
       }
