@@ -27,6 +27,7 @@ import {SideBareComponent} from "./components/side-bare/side-bare.component";
 import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
 import {ItemsComponent} from "./components/items/items.component";
+import {ItemsSuprimeesComponent} from "./components/items-suprimees/items-suprimees.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,7 @@ const routes: Routes = [
       {path:'T',component:TableauBesoinComponent},
       {path:'tf',component:TypeFournisseurComponent},
       {path:'items',component:ItemsComponent},
+      {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
     ]
   },
   {path: 's', component: ServiceComponent},

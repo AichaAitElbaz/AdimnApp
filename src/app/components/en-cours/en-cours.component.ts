@@ -64,11 +64,6 @@ export class EnCoursComponent implements OnInit {
     this.enCoursService.navigate(component)
   }
 
-  traiter(expressionBesoin: ExpressionBesoin) {
-    this.enAttenteService.traiter(expressionBesoin);
-  }
 
-  getItemsAcceptees() {
-    this.enCoursService.getItemsAcceptees();
-  }
+
 }

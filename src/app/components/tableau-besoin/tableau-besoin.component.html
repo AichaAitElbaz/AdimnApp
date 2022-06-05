@@ -1,4 +1,4 @@
-<table class="table table-striped">
+<table class="table table-striped" >
   <thead>
   <tr>
     <th scope="col">Designations</th>
@@ -6,31 +6,16 @@
     <th scope="col">PU</th>
   </tr>
   </thead>
-  <tbody>
-  <tr >
-    <td>
-pc
-    </td>
-    <td>20</td>
-    <td><input ></td>
+  <tbody >
+  <tr *ngFor="let i of itemsEnCours">
+    <td ngM>{{i.produit.libelle}}</td>
+    <td>{{i.quantite}}</td>
+    <td><input [(ngModel)]="i.pu"></td>
   </tr>
-  <tr>
-  <tr>
-    <td>
 
-
-
-    </td>
-    <td>30</td>
-    <td><input></td>
-  </tr>
-  <tr>
-    <td>MT HT</td>
-    <td></td>
-    <td></td>
-  </tr>
   <tr>
     <td>MT TVA</td>
+    <td><input></td>
     <td></td>
     <td></td>
   </tr>
@@ -39,8 +24,9 @@ pc
     <td></td>
     <td></td>
   </tr>
+  <tr><button mat-raised-button color="warn" (click)="saveTableauBesoin(itemsEnCours)">Envoyer</button>
+  </tr>
   </tbody>
-  <tfoot>
-  <button mat-raised-button color="warn" (click)="setItemsEnvoyees()" >Envoyer</button>
-  </tfoot>
+  <thead >
+  </thead>
 </table>

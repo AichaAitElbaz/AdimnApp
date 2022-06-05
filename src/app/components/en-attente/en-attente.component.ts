@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
-
 import {MatDialog} from "@angular/material/dialog";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {EnAttenteService} from "../../controller/service/en-attente.service";

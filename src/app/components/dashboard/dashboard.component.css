@@ -1,0 +1,21 @@
+.container-fluid{
+  background: url("src/assets/img/header-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+
+.col-md-9{
+  height:calc(90vh - 20px);
+  border-radius: 10px;
+  padding-top: 10px;
+  font-size: 15px;
+  color: black;
+  background-color: rgb(253, 253, 254);
+  margin-left: 40px;
+  background: #f1f1f1;
+}
+.col-md-2{
+  border-radius: 10px;
+}

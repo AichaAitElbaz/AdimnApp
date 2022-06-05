@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EnCoursService} from "../../controller/service/en-cours.service";
 import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 @Component({
   selector: 'app-items',
@@ -8,11 +9,10 @@ import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-ite
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  private _itemsSelectionne=new Array<ExpressionBesoinItem>();
-  constructor(private enCoursService:EnCoursService,) { }
+  constructor(private enCoursService:EnCoursService,private tableauBesoinService:TableauBesoinService) { }
 
   ngOnInit(): void {
-    this.enCoursService.getItemsAcceptees()
+    this.enCoursService.getItemsAcceptees("En cours")
   }
 
   get ItemsAcceptees(): Array<ExpressionBesoinItem> {
@@ -22,18 +22,13 @@ export class ItemsComponent implements OnInit {
   fonction(event, expressionBesoinItem:ExpressionBesoinItem) {
     if (event.target.checked==true){
       console.log(expressionBesoinItem)
-      this.itemsSelectionne.push(expressionBesoinItem);
+      this.tableauBesoinService.itemsSelectionne.push(expressionBesoinItem);
     }
   }
-  public saveItem(){
-    console.log(this.itemsSelectionne)
-    this.enCoursService.saveItem(this.itemsSelectionne);
-  }
-  get itemsSelectionne(): Array<ExpressionBesoinItem> {
-    return this._itemsSelectionne;
-  }
 
-  set itemsSelectionne(value: Array<ExpressionBesoinItem>) {
-    this._itemsSelectionne = value;
+
+
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
   }
 }

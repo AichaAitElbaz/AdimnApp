@@ -13,6 +13,7 @@ import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 import {EnCoursService} from "../../controller/service/en-cours.service";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -24,7 +25,7 @@ export class FournisseurComponent implements OnInit {
   panelOpenState = false;
   apiresponse: any = [];
 
-  constructor(private enCoursService:EnCoursService,private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  constructor(private tableauBesoinService: TableauBesoinService, private enCoursService: EnCoursService, private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
@@ -36,9 +37,11 @@ export class FournisseurComponent implements OnInit {
     this.fournisseurService.getExprTraitee();
 
   }
+
   get expressionBesoins(): Array<ExpressionBesoin> {
     return this.fournisseurService.expressionBesoins;
   }
+
   getFournisseursByType(selected: string) {
     return this.fournisseurService.getFournisseursByType(selected);
   }
@@ -66,14 +69,12 @@ export class FournisseurComponent implements OnInit {
     document.getElementById("table").hidden = false;
   }
 
-  saveTableauBesoinItem() {
 
-  }
 
   fonction(event, f: FournisseurItem) {
     if (event.target.checked == true) {
-      this.fournisseurService.selectFournisseur(f);
       this.getEmail(f.fournisseur);
+      this.tableauBesoinService.fournisseursSelectionne.push(f.fournisseur);
     }
   }
 
@@ -84,14 +85,19 @@ export class FournisseurComponent implements OnInit {
   ExprEnvoyee() {
     this.fournisseurService.saveExprennvoye(this.expressionBesoin);
   }
+
   get tableauBesoin(): TableauBesoin {
     return this.fournisseurService.tableauBesoin;
   }
+
   navigate(component: string) {
     this.enCoursService.navigate(component)
   }
 
   getEmail(fournisseur: Fournisseur) {
     this.fournisseurService.getEmail(fournisseur);
+  }
+  saveTableauBesoinsItems(){
+    this.tableauBesoinService.saveTableauBesoinsItems();
   }
 }

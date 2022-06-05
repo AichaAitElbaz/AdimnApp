@@ -24,7 +24,7 @@ export class FournisseurService {
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
 
-  private emails: Array<string>
+  private emails=new Array<string>();
 
   constructor(private http: HttpClient, private enCoursService: EnCoursService) {
   }
@@ -134,14 +134,6 @@ export class FournisseurService {
     this._expressionBesoins = value;
   }
 
-  getItemsValidees() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/valid%C3%A9e").subscribe(
-      data => {
-        this.expressionBesoinsItemsValidees = [...data]
-        console.log(data)
-      }
-    )
-  }
 
 
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
@@ -152,16 +144,7 @@ export class FournisseurService {
     this._expressionBesoinsItemsValidees = value;
   }
 
-  setItemsEnvoyees() {
-    this.expressionBesoinsItemsValidees.forEach(e => {
-      e.statut = "envoyeé";
-      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
-        data => {
-          console.log(99999999999999999999)
-        }
-      )
-    })
-  }
+
 
   getFournisseurs() {
     this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/").subscribe(
@@ -246,20 +229,10 @@ export class FournisseurService {
     );
   }
 
-  selectFournisseur(f: FournisseurItem) {
-    this.expressionBesoins.forEach(e => {
-      this.tableauBesoin.expressionBesoin = e;
-      this.tableauBesoin.fournisseur = f.fournisseur;
-      this.saveTableauBesoin(this.tableauBesoin);
-      console.log(this.tableauBesoin)
-    })
 
-
-  }
 
   getEmail(fournisseur: Fournisseur) {
     this.emails.push(fournisseur.emailFournisseur);
-    console.log(this.emails);
   }
 
 

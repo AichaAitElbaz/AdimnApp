@@ -3,6 +3,7 @@
   <tr>
     <th scope="col">Designation</th>
     <th scope="col">Qte</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -11,10 +12,22 @@
       {{ e.produit.libelle }}
     </td>
     <td>{{ e.quantite}}</td>
+    <td>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+            (click)="setItemEnCours(e,'En cours')" >
+        <mat-icon class="icon btn-outline-primary">bookmark_border</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  (click)="setItemEnCours(e,'suprimée')">
+        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon class="btn-outline-success" >description</mat-icon>
+      </button>
+    </td>
 
   </tr>
 
   </tbody>
-  <button mat-dialog-close mat-raised-button color="warn" >close</button>
+  <button mat-dialog-close mat-raised-button color="warn">close</button>
 
 </table>

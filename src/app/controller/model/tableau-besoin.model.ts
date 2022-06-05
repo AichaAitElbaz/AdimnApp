@@ -1,9 +1,10 @@
 import {ExpressionBesoin} from "./expression-besoin.model";
 import {Fournisseur} from "./fournisseur.model";
+import {ExpressionBesoinItem} from "./expression-besoin-item.model";
 
 export class TableauBesoin {
-  public id:number;
   public reference:string;
-  public expressionBesoin=new ExpressionBesoin();
-  public fournisseur:Fournisseur;
+  public expressionBesoinItems=new Array<ExpressionBesoinItem>();
+  public tva:number;
+  public ttc:number;
 }

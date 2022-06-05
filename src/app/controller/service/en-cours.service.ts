@@ -8,6 +8,7 @@ import {ServiceDemandeur} from "../model/service-demandeur.model";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {Router} from "@angular/router";
 import {Produit} from "../model/produit.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class EnCoursService {
   private _service: ServiceDemandeur;
   private _expressionBesoinItems: Array<ExpressionBesoinItem>;
   private _ItemsAcceptees: Array<ExpressionBesoinItem>;
+  private _ItemsSuprimees: Array<ExpressionBesoinItem>;
   private _produit: Produit;
   private _expr: ExpressionBesoin;
 
@@ -155,6 +157,26 @@ export class EnCoursService {
   }
 
 
+
+
+  getItemsAcceptees(statut:string){
+   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/"+statut).subscribe(
+     data=>{
+       this.ItemsAcceptees=[...data]
+     }
+   )
+
+  }
+ getItemsSuprimees(){
+   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/suprimee").subscribe(
+     data=>{
+       this.ItemsSuprimees=[...data]
+       console.log(this.ItemsSuprimees)
+     }
+   )
+
+  }
+
   get ItemsAcceptees(): Array<ExpressionBesoinItem> {
     return this._ItemsAcceptees;
   }
@@ -163,27 +185,14 @@ export class EnCoursService {
     this._ItemsAcceptees = value;
   }
 
-  getItemsAcceptees() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/statut/Accept%C3%A9e").subscribe(
-      data => {
-        this.ItemsAcceptees = [...data];
-        console.log(data)
-      }
-    )
+
+
+
+  get ItemsSuprimees(): Array<ExpressionBesoinItem> {
+    return this._ItemsSuprimees;
   }
 
-  saveItem(itemsSelectionne:Array<ExpressionBesoinItem>) {
-    itemsSelectionne.forEach(i=>{
-      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",i).subscribe(
-        data=>{
-          console.log("data saved");
-          console.log(i);
-        }
-      )
-    })
-
+  set ItemsSuprimees(value: Array<ExpressionBesoinItem>) {
+    this._ItemsSuprimees = value;
   }
-
-
-
 }

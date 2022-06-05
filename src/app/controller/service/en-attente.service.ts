@@ -131,69 +131,15 @@ export class EnAttenteService {
     this._service = value;
   }
 
-  public saveExprItems(expressionBesoin: ExpressionBesoin) {
-    expressionBesoin.expressionBesoinItems.forEach(e => {
-      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
-        data =>
-          console.log(e)
-      )
-    })
-  }
-
-  public saveItems(items: Array<ExpressionBesoinItem>) {
-    items.forEach(e => {
-      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", e).subscribe(
-        data => {
-
-
-          console.log("aichaaaaa")
-          console.log(e)
-
-        }
-      );
-
-    })
-  }
 
   public save(expressionBesoin: ExpressionBesoin) {
     expressionBesoin.statut = "en Cours";
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
         console.log(data);
-        //     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
-        //       data => {   console.log(555555555555);
-        //         console.log(data)
-        //         data.forEach(d => {
-        //           d.expressionBesoin = expressionBesoin;
-        //           this.http.post("http://localhost:8096/v1/admin/produit/", d.produit)
-        //           // this.ItemsAcceptees = [...data];
-        //
-        //         })
-        //       }
-        //     )
-      });
-    console.log(this.expressionBesoinsAcceptees);
 
-    // this.expressionBesoinsAcceptees.forEach(e => {
-    //   console.log(e);
-    //   this.expr.reference=e.reference;
-    //   this.expr.statut=e.statut;
-    //   this.expr.user=e.user;
-    //   this.http.post("http://localhost:8096/v1/admin/expression-besoin/isNull/",this.expr);
-    //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + e.reference).subscribe(
-    //     data => {
-    //
-    //       data.forEach(d => {
-    //         console.log(e);
-    //         d.expressionBesoin = this.expr;
-    //         this.http.post("http://localhost:8096/v1/admin/produit/", this.produit)
-    //         d.produit=this.produit;
-    //                 // this.ItemsAcceptees = [...data];
-    //
-    //       })
-    //     }
-    //   )
-    // })
+      });
+
 
   }
 
@@ -360,18 +306,7 @@ export class EnAttenteService {
     this._expressionBesoinsItems = value;
   }
 
-  traiter(expressionBesoin
-            :
-            ExpressionBesoin
-  ) {
-    expressionBesoin.statut = "traitée";
-    // this.expressionBesoin = expressionBesoin;
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
-      data => {
-        console.log(data)
-      }
-    )
-  }
+
 
 
   get items()
@@ -385,5 +320,14 @@ export class EnAttenteService {
               Array<ExpressionBesoinItem>
   ) {
     this._items = value;
+  }
+
+  setItemEnCours(expressionBesoinItem: ExpressionBesoinItem,statut:string) {
+    expressionBesoinItem.statut = statut;
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",expressionBesoinItem).subscribe(
+      data=>{
+        console.log(data)
+      }
+    )
   }
 }

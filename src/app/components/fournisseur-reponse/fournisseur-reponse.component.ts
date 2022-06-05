@@ -16,7 +16,6 @@ export class FournisseurReponseComponent implements OnInit {
   constructor(private fournisseurService:FournisseurService,private DIALOG:MatDialog) { }
 
   ngOnInit(): void {
-    this.fournisseurService.getItemsValidees();
 
   }
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {

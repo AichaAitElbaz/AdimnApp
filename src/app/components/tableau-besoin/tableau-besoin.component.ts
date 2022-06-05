@@ -3,6 +3,7 @@ import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-ite
 import {HttpClient} from "@angular/common/http";
 import {FournisseurService} from "../../controller/service/fournisseur.service";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 export interface PeriodicElement {
   name: string;
@@ -20,14 +21,13 @@ export interface PeriodicElement {
 export class TableauBesoinComponent implements OnInit {
   dataSource: Array<ExpressionBesoinItem>
 
-  constructor(private fournisseurService: FournisseurService, private http: HttpClient) {
+  constructor(private fournisseurService: FournisseurService, private http: HttpClient, private tableauBesoinService: TableauBesoinService) {
   }
 
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit(): void {
-    this.fournisseurService.getItemsValidees()
-    // this.fournisseurService.getTraiteesExpr();
+    this.tableauBesoinService.getEnCoursItems();
   }
 
   displayedColumns: ExpressionBesoinItem[];
@@ -36,7 +36,14 @@ export class TableauBesoinComponent implements OnInit {
     return this.fournisseurService.expressionBesoins;
   }
 
-  setItemsEnvoyees() {
-    this.fournisseurService.setItemsEnvoyees();
+  // saveItm(expressionBesoinItems:Array<> ExpressionBesoinItem){
+  //   this.tableauBesoinService.saveItm(expressionBesoinItem);
+  // }
+  get itemsEnCours(): ExpressionBesoinItem[] {
+    return this.tableauBesoinService.itemsEnCours;
+  }
+
+  saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
+    this.tableauBesoinService. saveTableauBesoin(expressionBesoinItems);
   }
 }
