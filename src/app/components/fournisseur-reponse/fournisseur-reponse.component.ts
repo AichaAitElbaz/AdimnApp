@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
 import {FournisseurService} from "../../controller/service/fournisseur.service";
-import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mpdel";
+import {TableauBesoinItem1} from "../../controller/model/tableau-besoin-item1.mpdel";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 import {MatDialog} from "@angular/material/dialog";
 import {TableaubackComponent} from "../tableauback/tableauback.component";

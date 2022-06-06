@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FournisseurService} from "../../controller/service/fournisseur.service";
-import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mpdel";
+import {TableauBesoinItem1} from "../../controller/model/tableau-besoin-item1.mpdel";
 
 @Component({
   selector: 'app-tableauback',
@@ -13,7 +13,5 @@ export class TableaubackComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  get tableauBesoinItems(): Array<TableauBesoinItem> {
-    return this.fournisseurService.tableauBesoinItems;
-  }
+
 }

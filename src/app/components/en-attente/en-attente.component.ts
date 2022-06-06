@@ -33,7 +33,6 @@ export class EnAttenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.enAttenteService.getExpressionBesoins();
-    // this.enCoursService.getExpressionBesoinsAcceptees();
     this.enAttenteService.affecter();
   }
 

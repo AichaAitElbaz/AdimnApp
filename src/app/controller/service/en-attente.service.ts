@@ -136,7 +136,8 @@ export class EnAttenteService {
     expressionBesoin.statut = "en Cours";
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
-        console.log(data);
+        console.log(expressionBesoin);
+        console.log("heloooo")
 
       });
 

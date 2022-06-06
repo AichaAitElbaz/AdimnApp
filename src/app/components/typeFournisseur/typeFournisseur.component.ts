@@ -70,7 +70,7 @@ export class TypeFournisseurComponent implements OnInit {
     document.getElementById("table").hidden=false;
   }
 
-  saveTableauBesoinItem() {
+  saveTableauBesoinItem1() {
 
   }
 

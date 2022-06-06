@@ -5,7 +5,7 @@ import {TypeFournisseur} from "../model/type-fournisseur.mpdel";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {ExpressionBesoin} from "../model/expression-besoin.model";
 import {EnCoursService} from "./en-cours.service";
-import {TableauBesoinItem} from "../model/tableau-besoin-item.mpdel";
+import {TableauBesoinItem1} from "../model/tableau-besoin-item1.mpdel";
 import {FournisseurItem} from "../model/fournisseur-item.mpdel";
 import {TableauBesoin} from "../model/tableau-besoin.model";
 
@@ -19,7 +19,7 @@ export class FournisseurService {
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _expressionBesoinsItemsValidees: Array<ExpressionBesoinItem>;
   private _expressionBesoins: Array<ExpressionBesoin>;
-  private _tableauBesoinItems: Array<TableauBesoinItem>;
+  private _tableauBesoinItems: Array<TableauBesoinItem1>;
   private _fournisseurItems: Array<FournisseurItem>;
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
@@ -155,19 +155,19 @@ export class FournisseurService {
   }
 
   findTableauItemByexprCode(expressionBesoinItem: ExpressionBesoinItem) {
-    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/code/" + expressionBesoinItem.code).subscribe(
+    this.http.get<Array<TableauBesoinItem1>>("http://localhost:8096/v1/admin/tableau-besoin-item/code/" + expressionBesoinItem.code).subscribe(
       data => {
         this.tableauBesoinItems = [...data];
       })
   }
 
 
-  get tableauBesoinItems(): Array<TableauBesoinItem> {
-    if (this._tableauBesoinItems == null) this._tableauBesoinItems = new Array<TableauBesoinItem>();
+  get tableauBesoinItems(): Array<TableauBesoinItem1> {
+    if (this._tableauBesoinItems == null) this._tableauBesoinItems = new Array<TableauBesoinItem1>();
     return this._tableauBesoinItems;
   }
 
-  set tableauBesoinItems(value: Array<TableauBesoinItem>) {
+  set tableauBesoinItems(value: Array<TableauBesoinItem1>) {
     this._tableauBesoinItems = value;
   }
 

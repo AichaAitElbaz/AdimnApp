@@ -45,6 +45,7 @@ export class EnCoursService {
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/" + iterator).subscribe(
       data => {
         this.expressionBesoinsAcceptees = [...data];
+        console.log(7777777777777777777777777777)
         console.log(this.expressionBesoinsAcceptees)
         // this.expressionBesoinsAcceptees.forEach(e => {
         //   this.expr.reference=e.reference;
