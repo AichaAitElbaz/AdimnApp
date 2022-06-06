@@ -100,4 +100,8 @@ export class FournisseurComponent implements OnInit {
   saveTableauBesoinsItems(){
     this.tableauBesoinService.saveTableauBesoinsItems();
   }
+
+  get fournisseurItem(): FournisseurItem {
+    return this.fournisseurService.fournisseurItem;
+  }
 }

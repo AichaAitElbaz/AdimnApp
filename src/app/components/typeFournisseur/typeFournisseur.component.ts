@@ -80,8 +80,8 @@ export class TypeFournisseurComponent implements OnInit {
 
   openFournisseur() {
     this.DIALOG.open(FournisseurComponent, {
-      height: '500px',
-      width: '600px'
+      height: '600px',
+      width: '800px'
     })
   }
 }

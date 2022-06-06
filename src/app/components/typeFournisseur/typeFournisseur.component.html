@@ -13,8 +13,11 @@
 
   <mat-divider></mat-divider>-->
 
+<div class="row m-3">
+  <div class="col-md-4" *ngFor="let c of typesfournisseur" >
 
-<div *ngFor="let c of typesfournisseur" >
-  <button mat-raised-button color="primary" style="width: 100%" (click)="getFournisseursByType(c.reference);openFournisseur()" >{{c.type}}</button>
-</div>
+    <button  class="button-86 " role="button" (click)="getFournisseursByType(c.reference);openFournisseur()">{{c.type}}</button>
+
+  </div></div>
+
 

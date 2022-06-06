@@ -13,7 +13,8 @@ import {TableauBesoin} from "../model/tableau-besoin.model";
   providedIn: 'root'
 })
 export class FournisseurService {
-  private _fournisseur: Fournisseur;
+  private _fournisseur=new Fournisseur();
+  private _fournisseurItem= new FournisseurItem();
   private _fournisseurs: Array<Fournisseur>;
   private _typesfournisseur: Array<TypeFournisseur>;
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
@@ -39,6 +40,15 @@ export class FournisseurService {
     myclone.villeFournisseur = fournisseur.villeFournisseur;
     myclone.faxFournisseur = fournisseur.faxFournisseur;
     return myclone;
+  }
+
+  get fournisseurItem(): FournisseurItem {
+    if(this._fournisseurItem==null)this._fournisseurItem=new FournisseurItem();
+    return this._fournisseurItem;
+  }
+
+  set fournisseurItem(value: FournisseurItem) {
+    this._fournisseurItem = value;
   }
 
   public getFournisseursByType(selected: string) {
