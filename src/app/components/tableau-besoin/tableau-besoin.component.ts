@@ -46,4 +46,8 @@ export class TableauBesoinComponent implements OnInit {
   saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
     this.tableauBesoinService. saveTableauBesoin(expressionBesoinItems);
   }
+
+  saveTableauBesoinItem(){
+    this.tableauBesoinService.saveTableauBesoinItem();
+  }
 }

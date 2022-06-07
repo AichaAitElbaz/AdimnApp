@@ -24,6 +24,7 @@ export class FournisseurService {
   private _fournisseurItems: Array<FournisseurItem>;
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
+  private _tableauBesoins: Array<TableauBesoin>;
 
   private emails=new Array<string>();
 
