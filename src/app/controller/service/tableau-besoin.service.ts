@@ -19,6 +19,7 @@ export class TableauBesoinService {
   private _fournisseursSelectionne = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
   private _tableauBesoinItem = new TableauBesoinItem();
+  private _tableauBesoinItems = new Array<TableauBesoinItem>();
   private _tableauBesoin = new TableauBesoin();
 
   get itemsSelectionne(): Array<ExpressionBesoinItem> {
@@ -69,6 +70,14 @@ export class TableauBesoinService {
 
   set tableauBesoinItem(value: TableauBesoinItem) {
     this._tableauBesoinItem = value;
+  }
+
+  get tableauBesoinItems(): TableauBesoinItem[] {
+    return this._tableauBesoinItems;
+  }
+
+  set tableauBesoinItems(value: TableauBesoinItem[]) {
+    this._tableauBesoinItems = value;
   }
 
   saveItm(expressionBesoinItem: ExpressionBesoinItem) {
@@ -140,5 +149,13 @@ export class TableauBesoinService {
         }
       )
     })
+  }
+
+  findTableauBesoinItemsByTableauBesoinRef(reference:string){
+    this.http.get<Array<TableauBesoinItem>>("/v1/admin/tableau-besoin-item/tableau-besoin/"+reference).subscribe(
+      data=>{
+        this.tableauBesoinItems=[...data]
+      }
+    )
   }
 }

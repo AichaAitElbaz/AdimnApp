@@ -13,8 +13,8 @@ import {TableauBesoin} from "../model/tableau-besoin.model";
   providedIn: 'root'
 })
 export class FournisseurService {
-  private _fournisseur=new Fournisseur();
-  private _fournisseurItem= new FournisseurItem();
+  private _fournisseur = new Fournisseur();
+  private _fournisseurItem = new FournisseurItem();
   private _fournisseurs: Array<Fournisseur>;
   private _typesfournisseur: Array<TypeFournisseur>;
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
@@ -24,9 +24,9 @@ export class FournisseurService {
   private _fournisseurItems: Array<FournisseurItem>;
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
-  private _tableauBesoins: Array<TableauBesoin>;
+  private _tableauBesoins=new Array<TableauBesoin>();
 
-  private emails=new Array<string>();
+  private emails = new Array<string>();
 
   constructor(private http: HttpClient, private enCoursService: EnCoursService) {
   }
@@ -44,7 +44,7 @@ export class FournisseurService {
   }
 
   get fournisseurItem(): FournisseurItem {
-    if(this._fournisseurItem==null)this._fournisseurItem=new FournisseurItem();
+    if (this._fournisseurItem == null) this._fournisseurItem = new FournisseurItem();
     return this._fournisseurItem;
   }
 
@@ -69,6 +69,14 @@ export class FournisseurService {
     )
   }
 
+
+  get tableauBesoins(): Array<TableauBesoin> {
+    return this._tableauBesoins;
+  }
+
+  set tableauBesoins(value: Array<TableauBesoin>) {
+    this._tableauBesoins = value;
+  }
 
   get fournisseurs(): Array<Fournisseur> {
     if (this._fournisseurs == null) this._fournisseurs = new Array<Fournisseur>();
@@ -146,7 +154,6 @@ export class FournisseurService {
   }
 
 
-
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
     return this._expressionBesoinsItemsValidees;
   }
@@ -154,7 +161,6 @@ export class FournisseurService {
   set expressionBesoinsItemsValidees(value: Array<ExpressionBesoinItem>) {
     this._expressionBesoinsItemsValidees = value;
   }
-
 
 
   getFournisseurs() {
@@ -240,7 +246,15 @@ export class FournisseurService {
     );
   }
 
-
+  getTableauBrsoinsEnCours() {
+    this.http.get<Array<TableauBesoin>>("http://localhost:8098/v1/admin/tableau-besoin/statut/{statut}?statut=en%20cours").subscribe(
+      data => {
+        this.tableauBesoins = [...data];
+        console.log(8888888888888888888)
+        console.log(this.tableauBesoins)
+      }
+    )
+  }
 
   getEmail(fournisseur: Fournisseur) {
     this.emails.push(fournisseur.emailFournisseur);

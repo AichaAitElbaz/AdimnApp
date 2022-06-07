@@ -50,6 +50,7 @@ const routes: Routes = [
       {path:'tf',component:TypeFournisseurComponent},
       {path:'items',component:ItemsComponent},
       {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
+      {path:'reponse',component:FournisseurReponseComponent},
     ]
   },
   {path: 's', component: ServiceComponent},

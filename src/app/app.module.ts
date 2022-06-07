@@ -20,7 +20,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatDividerModule} from '@angular/material/divider';
-// import {FontAwesomeModule} from '@font'
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FournisseurComponent} from './components/fournisseur/fournisseur.component';
@@ -109,6 +108,7 @@ import { ItemsSuprimeesComponent } from './components/items-suprimees/items-supr
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatDividerModule,
     MatListModule,
     HttpClientModule,
     MatDividerModule,
