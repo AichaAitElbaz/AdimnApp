@@ -53,6 +53,7 @@ import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
+import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { ItemsSuprimeesComponent } from './components/items-suprimees/items-supr
     TypeFournisseurComponent,
     ItemsComponent,
     ItemsSuprimeesComponent,
+    BonCmdComponent,
   ],
 
   imports: [

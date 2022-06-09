@@ -28,6 +28,7 @@ import {FournisseurReponseComponent} from "./components/fournisseur-reponse/four
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
 import {ItemsComponent} from "./components/items/items.component";
 import {ItemsSuprimeesComponent} from "./components/items-suprimees/items-suprimees.component";
+import {BonCmdComponent} from "./components/bon-cmd/bon-cmd.component";
 
 const routes: Routes = [
   {
@@ -51,6 +52,7 @@ const routes: Routes = [
       {path:'items',component:ItemsComponent},
       {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
       {path:'reponse',component:FournisseurReponseComponent},
+      {path:'cmd',component:BonCmdComponent},
     ]
   },
   {path: 's', component: ServiceComponent},

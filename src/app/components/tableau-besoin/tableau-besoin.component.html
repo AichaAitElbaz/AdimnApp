@@ -8,7 +8,7 @@
   </thead>
   <tbody >
   <tr *ngFor="let i of itemsEnCours">
-    <td ngM>{{i.produit.libelle}}</td>
+    <td ngM>{{i.libelle}}</td>
     <td>{{i.quantite}}</td>
     <td><input [(ngModel)]="i.pu"></td>
   </tr>

@@ -8,6 +8,7 @@ import {EnCoursService} from "./en-cours.service";
 import {TableauBesoinItem1} from "../model/tableau-besoin-item1.mpdel";
 import {FournisseurItem} from "../model/fournisseur-item.mpdel";
 import {TableauBesoin} from "../model/tableau-besoin.model";
+import {TableauBesoinService} from "./tableau-besoin.service";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class FournisseurService {
 
   private emails = new Array<string>();
 
-  constructor(private http: HttpClient, private enCoursService: EnCoursService) {
+  constructor(private http: HttpClient, private tableauBesoinService: TableauBesoinService) {
   }
 
   clonefournisseure(fournisseur: Fournisseur) {
@@ -122,9 +123,9 @@ export class FournisseurService {
     )
   }
 
-  public getlistofExpressionBesoinItem() {
-    this.enCoursService.expressionBesoinsAcceptees.forEach(e => e.expressionBesoinItems = this.expressionBesoinsItems);
-  }
+  // public getlistofExpressionBesoinItem() {
+  //   this.enCoursService.expressionBesoinsAcceptees.forEach(e => e.expressionBesoinItems = this.expressionBesoinsItems);
+  // }
 
   get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
     if (this._expressionBesoinsItems == null) this._expressionBesoinsItems = new Array<ExpressionBesoinItem>();
@@ -247,11 +248,13 @@ export class FournisseurService {
   }
 
   getTableauBrsoinsEnCours() {
-    this.http.get<Array<TableauBesoin>>("http://localhost:8098/v1/admin/tableau-besoin/statut/{statut}?statut=en%20cours").subscribe(
+    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/{statut}?statut=en%20cours").subscribe(
       data => {
         this.tableauBesoins = [...data];
-        console.log(8888888888888888888)
-        console.log(this.tableauBesoins)
+        this.tableauBesoins.forEach(t=>{
+          this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(t.reference)
+        })
+
       }
     )
   }

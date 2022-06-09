@@ -19,7 +19,7 @@ export class EnCoursService {
   private _users2: Array<User>;
   private _service: ServiceDemandeur;
   private _expressionBesoinItems: Array<ExpressionBesoinItem>;
-  private _ItemsAcceptees: Array<ExpressionBesoinItem>;
+  private _ItemsAcceptees=new Array<ExpressionBesoinItem>();
   private _ItemsSuprimees: Array<ExpressionBesoinItem>;
   private _produit: Produit;
   private _expr: ExpressionBesoin;
@@ -163,7 +163,8 @@ export class EnCoursService {
   getItemsAcceptees(statut:string){
    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/"+statut).subscribe(
      data=>{
-       this.ItemsAcceptees=[...data]
+       this.ItemsAcceptees=[...data];
+       console.log(this.ItemsAcceptees)
      }
    )
 

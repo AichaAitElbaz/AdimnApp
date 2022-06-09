@@ -13,8 +13,7 @@ export class EnAttenteItemsComponent implements OnInit {
   constructor(private fournisseurService:FournisseurService,private enAttenteService:EnAttenteService) { }
 
   ngOnInit(): void {
-    this.fournisseurService.getlistofExpressionBesoinItem();
-    this.fournisseurService.getItems();
+
   }
   get expressionBesoinsItems(): Array<ExpressionBesoinItem> {
     return this.enAttenteService.expressionBesoinsItems;

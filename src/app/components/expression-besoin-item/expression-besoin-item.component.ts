@@ -18,7 +18,7 @@ export class ExpressionBesoinItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fournisseurService.getlistofExpressionBesoinItem();
+    // this.fournisseurService.getlistofExpressionBesoinItem();
     this.fournisseurService.getItems();
   }
 

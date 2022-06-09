@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
 import {FournisseurService} from "../../controller/service/fournisseur.service";
 import {TableauBesoinItem1} from "../../controller/model/tableau-besoin-item1.mpdel";
@@ -16,11 +16,13 @@ import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mode
 })
 export class FournisseurReponseComponent implements OnInit {
 
-  constructor(private fournisseurService:FournisseurService,private DIALOG:MatDialog,private tableauBesoinService:TableauBesoinService) { }
+  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService) {
+  }
 
   ngOnInit(): void {
-this.fournisseurService.getTableauBrsoinsEnCours();
+    this.fournisseurService.getTableauBrsoinsEnCours();
   }
+
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
     return this.fournisseurService.expressionBesoinsItemsValidees;
   }
@@ -36,13 +38,22 @@ this.fournisseurService.getTableauBrsoinsEnCours();
   get tableauBesoinItems(): TableauBesoinItem[] {
     return this.tableauBesoinService.tableauBesoinItems;
   }
+
   openDialog() {
     this.DIALOG.open(TableaubackComponent, {
       height: '400px',
-      width: '600px'})
+      width: '600px'
+    })
   }
-
-  findTableauBesoinItemsByTableauBesoinRef(reference:string){
+  fonction(event,tableauBesoinItem:TableauBesoinItem) {
+    if (event.target.checked==true){
+      this.tableauBesoinService.reponsesSelectionnees.push(tableauBesoinItem);
+    }
+  }
+  setReponsesSeletcionnees(){
+    this.tableauBesoinService.setReponsesSeletcionnees();
+  }
+  findTableauBesoinItemsByTableauBesoinRef(reference: string) {
     this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(reference)
   }
 }
