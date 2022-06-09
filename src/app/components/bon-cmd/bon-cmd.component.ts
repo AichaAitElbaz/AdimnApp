@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.model";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
+import {CmdService} from "../../controller/service/cmd.service";
 
 @Component({
   selector: 'app-bon-cmd',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BonCmdComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cmdService:CmdService) { }
 
   ngOnInit(): void {
+    this.cmdService.getReponseSelectionne();
   }
-
+  get reposeSelectionee(): TableauBesoinItem {
+    return this.cmdService.reposeSelectionee;
+  }
 }

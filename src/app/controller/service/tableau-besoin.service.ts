@@ -11,7 +11,7 @@ import {ArrayDataSource} from "@angular/cdk/collections";
   providedIn: 'root'
 })
 export class TableauBesoinService {
-  private _reponsesSelectionnees=new Array<TableauBesoinItem>();
+  private _reponseSelectionnee=new TableauBesoinItem();
 
   constructor(private http: HttpClient) {
   }
@@ -83,12 +83,13 @@ export class TableauBesoinService {
     this._tableauBesoinItems = value;
   }
 
-  get reponsesSelectionnees(): TableauBesoinItem[] {
-    return this._reponsesSelectionnees;
+
+  get reponseSelectionnee(): TableauBesoinItem {
+    return this._reponseSelectionnee;
   }
 
-  set reponsesSelectionnees(value: TableauBesoinItem[]) {
-    this._reponsesSelectionnees = value;
+  set reponseSelectionnee(value: TableauBesoinItem) {
+    this._reponseSelectionnee = value;
   }
 
   saveItm(expressionBesoinItem: ExpressionBesoinItem) {
@@ -157,12 +158,12 @@ export class TableauBesoinService {
       this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
         data => {
           console.log("aaaaaaaaaaaaaa")
-         this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+"T").subscribe(
-           data=>{
-             console.log("send email")
+          this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+"T").subscribe(
+            data=>{
+              console.log("send email")
 
-           }
-         )
+            }
+          )
         }
       )
     })
@@ -187,14 +188,11 @@ export class TableauBesoinService {
     )
   }
   setReponsesSeletcionnees(){
-    this.reponsesSelectionnees.forEach(r=>{
-      r.statut="validee"
-      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/tableau-besoin-item/",r).subscribe(
+     this.reponseSelectionnee.statut="validee"
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.reponseSelectionnee).subscribe(
         data=>{
-          console.log(r)
+          console.log(this.reponseSelectionnee)
         }
       )
-
-    })
   }
 }

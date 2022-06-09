@@ -47,7 +47,7 @@ export class FournisseurReponseComponent implements OnInit {
   }
   fonction(event,tableauBesoinItem:TableauBesoinItem) {
     if (event.target.checked==true){
-      this.tableauBesoinService.reponsesSelectionnees.push(tableauBesoinItem);
+      this.tableauBesoinService.reponseSelectionnee=tableauBesoinItem;
     }
   }
   setReponsesSeletcionnees(){
