@@ -6,6 +6,7 @@ export class ExpressionBesoinItem {
   public id: number;
   public code: number;
   public pu: number;
+  public pt: number;
   public ref: string;
   public libelle: string;
   public quantite: number;
