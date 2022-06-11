@@ -100,7 +100,6 @@ export class TableauBesoinService {
   }
 
   saveTableauBesoinsItems() {
-    console.log("888888")
     this.fournisseursSelectionne.forEach(f => {
       this.tableauBesoinItem1.fournisseur = f;
       this.itemsSelectionne.forEach(i => {
@@ -131,7 +130,6 @@ export class TableauBesoinService {
     expressionBesoinItems.forEach(e=>{
     })
     this.tableauBesoin.statut = "en cours"
-    console.log("heeehooo")
     console.log(this.tableauBesoin)
     this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", this.tableauBesoin).subscribe(
       data => {
@@ -156,10 +154,9 @@ export class TableauBesoinService {
       this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
       this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
         data => {
-          console.log("aaaaaaaaaaaaaa")
-         this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+"T").subscribe(
+         this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+this.tableauBesoin.reference).subscribe(
            data=>{
-             console.log("send email")
+             console.log("send email effectuee")
 
            }
          )

@@ -93,6 +93,7 @@ import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
     ItemsComponent,
     ItemsSuprimeesComponent,
     BonCmdComponent,
+    ServiceComponent,
   ],
 
   imports: [
