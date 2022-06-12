@@ -149,7 +149,7 @@ export class TableauBesoinService {
   }
 
   saveTableauBesoinItem() {
-
+/*
     this.fournisseursSelectionne.forEach(f => {
       this.tableauBesoinItem.fournisseur = f;
       this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
@@ -171,7 +171,10 @@ export class TableauBesoinService {
     this.fournisseursSelectionne=new Array();
     this.itemsSelectionne=new Array();
 
+
+  } */
   }
+
 
   findTableauBesoinItemsByTableauBesoinRef(reference: string) {
     this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/tableau-besoin/" + reference).subscribe(

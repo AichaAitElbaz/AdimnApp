@@ -54,6 +54,9 @@ import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournis
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
 import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
+import {NgChartsModule} from "ng2-charts";
+
+
 
 @NgModule({
   declarations: [
@@ -97,6 +100,7 @@ import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
   ],
 
   imports: [
+    NgChartsModule,
     AppRoutingModule,
     MatTableModule,
     BrowserModule,
