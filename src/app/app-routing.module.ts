@@ -35,6 +35,7 @@ const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
       {path: 'statistiques', component: StatistiquesComponent},
+      {path: '', component: StatistiquesComponent},
       {path: 'en-attente', component: EnAttenteComponent},
       {path: 'en-cours', component: EnCoursComponent},
       {path: 'dialog', component: DialogComponent},

@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap 4 Responsive Dashboard Card Design</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-3 col-sm-6">
       <div class="card-box bg-blue">
         <div class="inner">
-          <h3> 13436 </h3>
-          <p> Student Strength </p>
+          <h3> {{this.ttc_par_annee}} DH</h3>
+          <p> les charges </p>
         </div>
         <div class="icon">
-          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          <i class="fa fa-money" aria-hidden="true"></i>
         </div>
-        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
 
@@ -32,7 +21,6 @@
         <div class="icon">
           <i class="fa fa-archive" aria-hidden="true"></i>
         </div>
-        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
@@ -44,7 +32,6 @@
         <div class="icon">
           <i class="fa fa-spinner" aria-hidden="true"></i>
         </div>
-        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
@@ -56,7 +43,7 @@
         <div class="icon">
           <i class="fa fa-users"></i>
         </div>
-        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+        <!--<a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>-->
       </div>
     </div>
   </div>
@@ -79,8 +66,8 @@
     </div>
   </div>
   <p-table [value]="users" responsiveLayout="scroll">
-    <ng-template pTemplate="header">
-      <tr>
+    <ng-template  pTemplate="header">
+      <tr >
         <th>id</th>
         <th>nom</th>
         <th>service</th>
@@ -99,8 +86,6 @@
   <!--row3-->
 </div>
 </div>
-</body>
-</html>
 
 
 

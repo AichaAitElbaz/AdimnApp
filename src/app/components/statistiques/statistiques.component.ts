@@ -7,17 +7,7 @@ import {AjaxError} from "rxjs/ajax";
 import {TabViewModule} from 'primeng/tabview';
 
 
-export interface PeriodicElement {
-  x: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, x: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-
-];
 
 
 @Component({
@@ -29,8 +19,7 @@ export class StatistiquesComponent implements OnInit {
   ///
   public users = new Array<User>();
 
-  displayedColumns: string[] = ['id', 'username', 'reference', 'service'];
-  dataSource = this.users;
+
 
   ///
   public numberOfUsers: number;
@@ -43,6 +32,7 @@ export class StatistiquesComponent implements OnInit {
   public listMonthcommande: [];
   public graphmois: any;
   public graphmoiscommande: any;
+  public ttc_par_annee:number;
   //
   id: number;
   username: string;
@@ -53,10 +43,12 @@ export class StatistiquesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dashboardservice.get_ttc_par_annee().subscribe(
+      data=>this.ttc_par_annee=data
+    )
     this.dashboardservice.getUsers().subscribe(
       data => {
         this.users = [...data];
-        console.log(this.users)
 
       }
     )
@@ -179,6 +171,7 @@ export class StatistiquesComponent implements OnInit {
         }
       })
     })
+
 
   }
   public graph_commande_budjet() {
