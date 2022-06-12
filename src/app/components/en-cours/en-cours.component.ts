@@ -47,7 +47,9 @@ export class EnCoursComponent implements OnInit {
       width: '600px'
     })
   }
-
+  getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
+    this.enAttenteService.getItemsByExpressionBesoinRef(expressionBesoin);
+  }
   openTypeFournisseur() {
     this.router.navigate(["tf"])
   }

@@ -11,12 +11,13 @@ import {ArrayDataSource} from "@angular/cdk/collections";
   providedIn: 'root'
 })
 export class TableauBesoinService {
-  private _reponseSelectionnee=new TableauBesoinItem();
+  private _reponseSelectionnee = new TableauBesoinItem();
 
   constructor(private http: HttpClient) {
   }
 
   private _itemsSelectionne = new Array<ExpressionBesoinItem>();
+  private _itemsEnvoyee = new Array<ExpressionBesoinItem>();
   private _itemsEnCours = new Array<ExpressionBesoinItem>();
   private _fournisseursSelectionne = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
@@ -90,6 +91,14 @@ export class TableauBesoinService {
 
   set reponseSelectionnee(value: TableauBesoinItem) {
     this._reponseSelectionnee = value;
+  }
+
+  get itemsEnvoyee(): ExpressionBesoinItem[] {
+    return this._itemsEnvoyee;
+  }
+
+  set itemsEnvoyee(value: ExpressionBesoinItem[]) {
+    this._itemsEnvoyee = value;
   }
 
   saveItm(expressionBesoinItem: ExpressionBesoinItem) {
@@ -194,5 +203,13 @@ export class TableauBesoinService {
           console.log(this.reponseSelectionnee)
         }
       )
+  }
+
+  getItemsEnAttenteDeDevis() {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/envoyee").subscribe(
+      data => {
+        this.itemsEnvoyee = [...data]
+      }
+    )
   }
 }

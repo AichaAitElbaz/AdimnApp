@@ -137,9 +137,9 @@ export class EnAttenteService {
     this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
       data => {
         console.log(expressionBesoin);
-      },error=>{
+      }, error => {
         console.log(error)
-    });
+      });
 
 
   }
@@ -278,6 +278,8 @@ export class EnAttenteService {
     )
   }
 
+
+
   //
   // getItemsByExprStatut() {
   //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/statut/Accept%C3%A9e").subscribe(
@@ -308,8 +310,6 @@ export class EnAttenteService {
   }
 
 
-
-
   get items()
     :
     Array<ExpressionBesoinItem> {
@@ -323,10 +323,10 @@ export class EnAttenteService {
     this._items = value;
   }
 
-  setItemEnCours(expressionBesoinItem: ExpressionBesoinItem,statut:string) {
+  setItemEnCours(expressionBesoinItem: ExpressionBesoinItem, statut: string) {
     expressionBesoinItem.statut = statut;
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",expressionBesoinItem).subscribe(
-      data=>{
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", expressionBesoinItem).subscribe(
+      data => {
         console.log(data)
       }
     )
