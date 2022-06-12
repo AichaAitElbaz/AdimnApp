@@ -59,10 +59,6 @@ import {TableModule} from "primeng/table";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
 
-
-import {ItemsComponent } from './components/items/items.component';
-import {ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
-import {BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
 import { CmdComponent } from './components/cmd/cmd.component';
 import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
 
