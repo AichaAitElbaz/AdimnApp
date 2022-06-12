@@ -138,11 +138,14 @@ export class TableauBesoinService {
 
   saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
     this.tableauBesoin.expressionBesoinItems = expressionBesoinItems;
+    expressionBesoinItems.forEach(e=>{
+    })
     this.tableauBesoin.statut = "en cours"
+    console.log("heeehooo")
+    console.log(this.tableauBesoin)
     this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", this.tableauBesoin).subscribe(
       data => {
         console.log(this.tableauBesoin);
-
       }
     )
   }
@@ -157,29 +160,25 @@ export class TableauBesoinService {
   }
 
   saveTableauBesoinItem() {
-    console.log(this.fournisseursSelectionne)
+
     this.fournisseursSelectionne.forEach(f => {
-      console.log("aaaaaaaaaaaaaa")
       this.tableauBesoinItem.fournisseur = f;
       this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
-      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
         data => {
-          this.sendEmail(f);
+          console.log("aaaaaaaaaaaaaa")
+          this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+"T").subscribe(
+            data=>{
+              console.log("send email")
+
+            }
+          )
         }
       )
     })
-    this.fournisseursSelectionne = new Array();
-    this.itemsSelectionne = new Array();
+    this.fournisseursSelectionne=new Array();
+    this.itemsSelectionne=new Array();
 
-  }
-
-  sendEmail(fournisseur: Fournisseur) {
-    this.http.get("http://localhost:8096/v1/admin/EmailSender/" + fournisseur.emailFournisseur + "/" + "T").subscribe(
-      data => {
-        console.log("send email")
-
-      }
-    )
   }
 
   findTableauBesoinItemsByTableauBesoinRef(reference: string) {
@@ -190,14 +189,20 @@ export class TableauBesoinService {
     )
   }
 
+  getReponses(){
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/reponse").subscribe(
+      data=>{
 
-  setReponsesSeletcionnees() {
-    this.reponseSelectionnee.statut = "validee"
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.reponseSelectionnee).subscribe(
-      data => {
-        console.log(this.reponseSelectionnee)
       }
     )
+  }
+  setReponsesSeletcionnees(){
+     this.reponseSelectionnee.statut="validee"
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.reponseSelectionnee).subscribe(
+        data=>{
+          console.log(this.reponseSelectionnee)
+        }
+      )
   }
 
   getItemsEnAttenteDeDevis() {

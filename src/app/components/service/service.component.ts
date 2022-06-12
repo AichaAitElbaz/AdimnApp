@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EnAttenteService} from "../../controller/service/en-attente.service";
 import {ServiceDemandeur} from "../../controller/model/service-demandeur.model";
 import {ServicesService} from "../../controller/service/services.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-service',
@@ -12,13 +13,16 @@ import {ServicesService} from "../../controller/service/services.service";
 })
 export class ServiceComponent implements OnInit {
   private serviceDemandeur: ServiceDemandeur;
+  id:number;
 
-  constructor(private enAttenteService: EnAttenteService, private servicesService: ServicesService) {
+  constructor(private enAttenteService: EnAttenteService, private servicesService: ServicesService, private activatedRoute:ActivatedRoute) {
   }
 
 
   ngOnInit(): void {
     this.enAttenteService.getServices();
+    this.id=this.activatedRoute.snapshot.params['id'];
+    console.log(this.id);
 
   }
 

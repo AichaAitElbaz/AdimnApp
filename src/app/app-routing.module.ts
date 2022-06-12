@@ -57,7 +57,7 @@ const routes: Routes = [
       {path:'cmd',component:CmdComponent},
     ]
   },
-  {path: 's', component: ServiceComponent},
+  {path: 's/:id', component: ServiceComponent},
   {path: 'login', component: SignInComponent}
 ];
 

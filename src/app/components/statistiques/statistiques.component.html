@@ -1,1 +1,71 @@
-<p>statistiques works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Responsive Dashboard Card Design</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-blue">
+        <div class="inner">
+          <h3> 13436 </h3>
+          <p> Student Strength </p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-green">
+        <div class="inner">
+          <h3> {{numberOfCommande}} </h3>
+          <p> Commandes </p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-archive" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-orange">
+        <div class="inner">
+          <h3> {{numberOfExpressionBesoinEnattente}} </h3>
+          <p> Demmande En attente </p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-spinner" aria-hidden="true"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card-box bg-red">
+        <div class="inner">
+          <h3> {{numberOfUsers}} </h3>
+          <p> les utilisateur </p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+  <!--row2-->
+  <div class="row">
+    <div class="col-md-4">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+  </div>
+</div>
+</body>
+</html>

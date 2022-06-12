@@ -45,11 +45,16 @@ import {ItemEnCoursComponent} from './components/item-en-cours/item-en-cours.com
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatInputModule} from "@angular/material/input";
 import {FournisseurReponseComponent} from "./components/fournisseur-reponse/fournisseur-reponse.component";
-import {TableaubackComponent } from './components/tableauback/tableauback.component';
-import {EnAttenteItemsComponent } from './components/en-attente-items/en-attente-items.component';
-import {EnCoursItemsComponent } from './components/en-cours-items/en-cours-items.component';
-import {RefuseeItemsComponent } from './components/refusee-items/refusee-items.component';
+import { TableaubackComponent } from './components/tableauback/tableauback.component';
+import { EnAttenteItemsComponent } from './components/en-attente-items/en-attente-items.component';
+import { EnCoursItemsComponent } from './components/en-cours-items/en-cours-items.component';
+import { RefuseeItemsComponent } from './components/refusee-items/refusee-items.component';
 import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournisseur.component";
+import { ItemsComponent } from './components/items/items.component';
+import { ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
+import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
+
+
 import {ItemsComponent } from './components/items/items.component';
 import {ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
 import {BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
@@ -93,6 +98,7 @@ import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attent
     ItemsComponent,
     ItemsSuprimeesComponent,
     BonCmdComponent,
+    ServiceComponent,
     CmdComponent,
     EnAttenteDevisComponent,
   ],
