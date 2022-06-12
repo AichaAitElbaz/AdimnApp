@@ -197,8 +197,4 @@ export class StatistiquesComponent implements OnInit {
     })
 
   }
-
-///////////////////////
-
-
 }
