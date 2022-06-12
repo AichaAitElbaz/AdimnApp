@@ -197,4 +197,12 @@ export class EnCoursService {
   set ItemsSuprimees(value: Array<ExpressionBesoinItem>) {
     this._ItemsSuprimees = value;
   }
+
+  updateItem(expressionBesoinItem:ExpressionBesoinItem){
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/",expressionBesoinItem).subscribe(
+          data=>{
+              console.log(121212121212)
+          }
+      )
+  }
 }

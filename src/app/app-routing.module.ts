@@ -12,7 +12,6 @@ import {EnCoursComponent} from "./components/en-cours/en-cours.component";
 import {DialogComponent} from "./components/dialog/dialog.component";
 import {FournisseurComponent} from "./components/fournisseur/fournisseur.component";
 import {EnAttenteLivraisonComponent} from "./components/en-attente-livraison/en-attente-livraison.component";
-import {EnAttenteDeviComponent} from "./components/en-attente-devi/en-attente-devi.component";
 import {EnAttentePaiementComponent} from "./components/en-attente-paiement/en-attente-paiement.component";
 import {ArchiveeComponent} from "./components/archivee/archivee.component";
 import {ServiceComponent} from "./components/service/service.component";
@@ -29,6 +28,8 @@ import {TypeFournisseurComponent} from "./components/typeFournisseur/typeFournis
 import {ItemsComponent} from "./components/items/items.component";
 import {ItemsSuprimeesComponent} from "./components/items-suprimees/items-suprimees.component";
 import {BonCmdComponent} from "./components/bon-cmd/bon-cmd.component";
+import {CmdComponent} from "./components/cmd/cmd.component";
+import {EnAttenteDevisComponent} from "./components/en-attente-devis/en-attente-devis.component";
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
       {path: 'en-cours', component: EnCoursComponent},
       {path: 'dialog', component: DialogComponent},
       {path: 'F', component: FournisseurComponent},
-      {path: 'devis', component: EnAttenteDeviComponent},
+      {path: 'devis', component: EnAttenteDevisComponent},
       {path: 'livraison', component: EnAttenteLivraisonComponent},
       {path: 'paiement', component: EnAttentePaiementComponent},
       {path: 'archivee', component: ArchiveeComponent},
@@ -52,7 +53,8 @@ const routes: Routes = [
       {path:'items',component:ItemsComponent},
       {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
       {path:'reponse',component:FournisseurReponseComponent},
-      {path:'cmd',component:BonCmdComponent},
+      {path:'bn-cmd',component:BonCmdComponent},
+      {path:'cmd',component:CmdComponent},
     ]
   },
   {path: 's', component: ServiceComponent},
