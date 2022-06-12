@@ -62,10 +62,45 @@
   </div>
   <!--row2-->
   <div class="row">
-    <div class="col-md-4">
-      <canvas id="myChart" width="400" height="400"></canvas>
+    <div class="col-md-6">
+      <canvas id="myChart"  ></canvas>
+    </div>
+    <div class="col-md-6">
+      <canvas id="myChart2" ></canvas>
     </div>
   </div>
+  <!--row3-->
+<div class="row">
+<div class="tableFixHead col-md-6">
+  <div class="input-group mb-3">
+    <input type="text" name="username" [(ngModel)]="username" (ngModelChange)="search()" class="form-control" placeholder="saif" aria-label="Recipient's username" aria-describedby="basic-addon2">
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon2">inserer un nom</span>
+    </div>
+  </div>
+  <p-table [value]="users" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th>service</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr >
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.serviceDemandeur}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+  <!--row3-->
+</div>
 </div>
 </body>
 </html>
+
+
+

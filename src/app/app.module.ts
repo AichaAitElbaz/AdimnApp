@@ -55,6 +55,10 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
 import { BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
 import {NgChartsModule} from "ng2-charts";
+import {TabViewModule} from "primeng/tabview";
+import {TableModule} from "primeng/table";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {Ng2OrderModule} from "ng2-order-pipe";
 
 
 
@@ -100,6 +104,8 @@ import {NgChartsModule} from "ng2-charts";
   ],
 
   imports: [
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
     NgChartsModule,
     AppRoutingModule,
     MatTableModule,
@@ -129,6 +135,8 @@ import {NgChartsModule} from "ng2-charts";
     NgbAlertModule,
     MatCardModule,
     MatTabsModule,
+    TabViewModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

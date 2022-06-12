@@ -14,6 +14,10 @@ export class DashboardService {
   constructor(private http:HttpClient) {
 
   }
+  public getUsers(){
+    return this.http.get<Array<User>>("http://localhost:8096/v1/admin/user/");
+  }
+
   public getNumberOfUsers(){
     return this.http.get<number>("http://localhost:8096/v1/admin/user/users")
   }
@@ -27,6 +31,8 @@ export class DashboardService {
 
   public get_statistic_graph_mois(e1:string,e2:string,e3:string,e4:string,e5:string,e6:string,e7:string,e8:string,e9:string,e10:string,e11:string,e12:string){
     return this.http.get<Array<number>>("http://localhost:8096/v1/admin/expression-besoin/monthv2?e1="+e1+"&e2="+e2+"&e3="+e3+"&e4="+e4+"&e5="+e5+"&e6="+e6+"&e7="+e7+"&e8="+e8+"&e9="+e9+"&e10="+e10+"&e11="+e11+"&e12="+e12)
+  }public get_statistic_graph_commande_budjet(e1:string,e2:string,e3:string,e4:string,e5:string,e6:string,e7:string,e8:string,e9:string,e10:string,e11:string,e12:string){
+    return this.http.get<Array<number>>("http://localhost:8096/v1/admin/commande/graph_commande_budjet?e1="+e1+"&e2="+e2+"&e3="+e3+"&e4="+e4+"&e5="+e5+"&e6="+e6+"&e7="+e7+"&e8="+e8+"&e9="+e9+"&e10="+e10+"&e11="+e11+"&e12="+e12)
   }
 
 
