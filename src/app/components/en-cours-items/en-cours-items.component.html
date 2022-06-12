@@ -9,9 +9,9 @@
   <tbody>
   <tr *ngFor="let e of expressionBesoinsItems; index as i">
     <td>
-      {{ e.produit.libelle }}
+      {{ e.produit.libelle }}<br><input hidden="true" id="input-designation">
     </td>
-    <td>{{ e.quantite}}</td>
+    <td>{{ e.quantite}}<br><input hidden="true" id="input-qte" ></td>
     <td>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
             (click)="setItemEnCours(e,'En cours')" >
@@ -20,8 +20,9 @@
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  (click)="setItemEnCours(e,'suprimée')">
         <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="setiputInhidden('input-designation');setiputInhidden('input-qte')">
         <mat-icon class="btn-outline-success" >description</mat-icon>
+
       </button>
     </td>
 

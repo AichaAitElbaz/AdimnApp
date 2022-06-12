@@ -23,7 +23,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FournisseurComponent} from './components/fournisseur/fournisseur.component';
-import {EnAttenteDeviComponent} from './components/en-attente-devi/en-attente-devi.component';
 import {EnAttenteLivraisonComponent} from './components/en-attente-livraison/en-attente-livraison.component';
 import {EnAttentePaiementComponent} from './components/en-attente-paiement/en-attente-paiement.component';
 import {ArchiveeComponent} from './components/archivee/archivee.component';
@@ -61,6 +60,11 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
 
 
+import {ItemsComponent } from './components/items/items.component';
+import {ItemsSuprimeesComponent } from './components/items-suprimees/items-suprimees.component';
+import {BonCmdComponent } from './components/bon-cmd/bon-cmd.component';
+import { CmdComponent } from './components/cmd/cmd.component';
+import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +76,6 @@ import {Ng2OrderModule} from "ng2-order-pipe";
     DialogComponent,
     SideBareComponent,
     FournisseurComponent,
-    EnAttenteDeviComponent,
     EnAttenteLivraisonComponent,
     EnAttentePaiementComponent,
     ArchiveeComponent,
@@ -101,6 +104,8 @@ import {Ng2OrderModule} from "ng2-order-pipe";
     ItemsSuprimeesComponent,
     BonCmdComponent,
     ServiceComponent,
+    CmdComponent,
+    EnAttenteDevisComponent,
   ],
 
   imports: [

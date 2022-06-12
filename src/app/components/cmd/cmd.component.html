@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row align-items-start ">
+    <div class="col"  >
+      <label ><code>*Séléctionnez l'éxercice</code></label>
+      <select  class="form-select" [(ngModel)]="exercice.libelle" (change)="getChapitresByExerciceRef()">
+        <option selected ></option>
+        <option [value]="ex.libelle" *ngFor="let ex of exercices">{{ex.libelle}}</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <label ><code>*Séléctionnez le chapitre</code></label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="chapitre.libelle" (change)="getArticles()">
+        <option selected></option>
+        <option *ngFor="let c of chapitres" >{{c.libelle}}</option>
+      </select></div>
+
+
+    <div class="col">"
+      <label ><code>*Séléctionnez l'article</code></label>
+      <select class="form-select" aria-label="Default select example"  [(ngModel)]="article.libelle" (change)="getParagraphes()">
+        <option selected></option>
+        <option *ngFor="let a of articles">{{a.libelle}}</option>
+
+      </select></div>
+
+
+  </div>
+  <div class="container">
+    <div class="row align-items-start mt-4">
+      <div class="col">
+        <label ><code>*Séléctionnez le paragraphe</code></label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="paragraphe.libellePara" (change)="getLignes()">
+          <option selected></option>
+          <option *ngFor="let p of paragraphes">{{p.libellePara}}</option>
+        </select></div>
+      <div class="col">
+        <label ><code>*séléctionnez la ligne</code></label>
+        <select  class="form-select" aria-label="Default select example" [(ngModel)]="ligne.libelle" (change)="getRubriques()">
+          <option selected></option>
+          <option *ngFor="let l of lignes">{{l.libelle}}</option>
+        </select></div>
+      <div class="col">
+        <label><code>*Séléctionnez la rubrique</code></label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected></option>
+          <option selected *ngFor="let r of rubriques">{{r.libelle}}</option>
+        </select></div>
+    </div>
+  </div>
+</div>
+<div class="row align-items-start mt-4">
+  <div class="col">
+
+    <div class="form-outline">
+      <input value="Adresse" [(ngModel)]="cmd.adresse"/>
+    </div>
+  </div>
+  <div class="col">
+
+    <div class="form-outline">
+      <input value="Raison sociale" [(ngModel)]="cmd.raisonSociale"/>
+    </div>
+  </div>
+</div>
+<tfoot class=" btn row mt-5 ">
+  <button class="btn-warning" (click)="openDialog();saveCommande()">ok</button>
+</tfoot>
