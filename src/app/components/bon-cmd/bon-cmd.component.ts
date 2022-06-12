@@ -28,7 +28,7 @@ export class BonCmdComponent implements OnInit {
     return this.cmdService.cmd;
   }
 
-  sendEmail(fournisseur: Fournisseur) {
-    this.tableauBesoinService.sendEmail(fournisseur)
-  }
+  // sendEmail(fournisseur: Fournisseur) {
+  //   this.tableauBesoinService.sendEmail(fournisseur)
+  // }
 }

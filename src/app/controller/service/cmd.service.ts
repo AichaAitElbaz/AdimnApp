@@ -10,6 +10,7 @@ import {Chapitre} from "../model/chapitre.model";
 import {Article} from "../model/article.model";
 import {Paragraphe} from "../model/paragraphe.model";
 import {Ligne} from "../model/ligne.model";
+import {Fournisseur} from "../model/fournisseur.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ import {Ligne} from "../model/ligne.model";
 })
 export class CmdService {
   private _tableauBesoinItem = new TableauBesoinItem()
+  private _tableauBesoinItemDetail = new TableauBesoinItem()
   private _rubrique = new Rubrique();
   private _rubriques = new Array<Rubrique>();
   private _exercices = new Array<Exercice>();
@@ -34,6 +36,14 @@ export class CmdService {
   constructor(private http: HttpClient) {
   }
 
+
+  get tableauBesoinItemDetail(): TableauBesoinItem {
+    return this._tableauBesoinItemDetail;
+  }
+
+  set tableauBesoinItemDetail(value: TableauBesoinItem) {
+    this._tableauBesoinItemDetail = value;
+  }
 
   get rubrique(): Rubrique {
     return this._rubrique;
@@ -234,5 +244,13 @@ export class CmdService {
     //
     //   }
     // )
+  }
+  findTableauBesoinItemByTabAndFournisseur(tableauBesoin:TableauBesoin,fournisseur:Fournisseur){
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/tableauBesoin/fournisseur/"+tableauBesoin.reference+"/"+fournisseur.referenceFournisseur).subscribe(
+      data=>{
+        this.tableauBesoinItemDetail=data;
+        console.log(this.tableauBesoinItemDetail)
+      }
+    )
   }
 }

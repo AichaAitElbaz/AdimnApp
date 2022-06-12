@@ -1,1 +1,36 @@
-
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Designations</th>
+    <th scope="col">Quantite</th>
+    <th scope="col">PU</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of tableauBesoinItemDetail.tableauBesoin.expressionBesoinItems">
+    <td>
+      {{e.produit.libelle}}
+    </td>
+    <td>{{e.quantite}}</td>
+    <td>{{e.pu}}</td>
+  </tr>
+  <tr>
+    <td>MT HT</td>
+    <td>gkhgk</td>
+    <td>{{tableauBesoinItemDetail.ht}}</td>
+  </tr>
+  <tr>
+    <td>TVA</td>
+    <td></td>
+    <td>{{tableauBesoinItemDetail.tva}}</td>
+  </tr>
+  <tr>
+    <td>MT TTC</td>
+    <td></td>
+    <td>{{tableauBesoinItemDetail.ttc}}</td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <button mat-dialog-close class="btn-danger">Retour</button>
+  </tfoot>
+</table>

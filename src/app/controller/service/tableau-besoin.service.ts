@@ -11,7 +11,7 @@ import {ArrayDataSource} from "@angular/cdk/collections";
   providedIn: 'root'
 })
 export class TableauBesoinService {
-  private _reponseSelectionnee = new TableauBesoinItem();
+  private _reponseSelectionnees = new Array<TableauBesoinItem>();
 
   constructor(private http: HttpClient) {
   }
@@ -25,6 +25,14 @@ export class TableauBesoinService {
   private _tableauBesoinItems = new Array<TableauBesoinItem>();
   private _tableauBesoin = new TableauBesoin();
 
+
+  get reponseSelectionnees(): TableauBesoinItem[] {
+    return this._reponseSelectionnees;
+  }
+
+  set reponseSelectionnees(value: TableauBesoinItem[]) {
+    this._reponseSelectionnees = value;
+  }
 
   get itemsSelectionne(): Array<ExpressionBesoinItem> {
     return this._itemsSelectionne;
@@ -85,14 +93,6 @@ export class TableauBesoinService {
   }
 
 
-  get reponseSelectionnee(): TableauBesoinItem {
-    return this._reponseSelectionnee;
-  }
-
-  set reponseSelectionnee(value: TableauBesoinItem) {
-    this._reponseSelectionnee = value;
-  }
-
   get itemsEnvoyee(): ExpressionBesoinItem[] {
     return this._itemsEnvoyee;
   }
@@ -138,7 +138,7 @@ export class TableauBesoinService {
 
   saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
     this.tableauBesoin.expressionBesoinItems = expressionBesoinItems;
-    expressionBesoinItems.forEach(e=>{
+    expressionBesoinItems.forEach(e => {
     })
     this.tableauBesoin.statut = "en cours"
     console.log("heeehooo")
@@ -164,11 +164,11 @@ export class TableauBesoinService {
     this.fournisseursSelectionne.forEach(f => {
       this.tableauBesoinItem.fournisseur = f;
       this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
-      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
         data => {
           console.log("aaaaaaaaaaaaaa")
-          this.http.get("http://localhost:8096/v1/admin/EmailSender/"+f.emailFournisseur+"/"+"T").subscribe(
-            data=>{
+          this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur + "/" + "T").subscribe(
+            data => {
               console.log("send email")
 
             }
@@ -176,8 +176,8 @@ export class TableauBesoinService {
         }
       )
     })
-    this.fournisseursSelectionne=new Array();
-    this.itemsSelectionne=new Array();
+    this.fournisseursSelectionne = new Array();
+    this.itemsSelectionne = new Array();
 
   }
 
@@ -189,20 +189,22 @@ export class TableauBesoinService {
     )
   }
 
-  getReponses(){
+  getReponses() {
     this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/reponse").subscribe(
-      data=>{
+      data => {
 
       }
     )
   }
-  setReponsesSeletcionnees(){
-     this.reponseSelectionnee.statut="validee"
-      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.reponseSelectionnee).subscribe(
-        data=>{
-          console.log(this.reponseSelectionnee)
+
+  setReponsesSeletcionnees() {
+    this.reponseSelectionnees.forEach(r => {
+      r.statut = "validee";
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",r).subscribe(
+        data => {
         }
       )
+    })
   }
 
   getItemsEnAttenteDeDevis() {

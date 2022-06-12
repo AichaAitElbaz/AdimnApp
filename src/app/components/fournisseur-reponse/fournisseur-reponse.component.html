@@ -1,24 +1,35 @@
 <div *ngFor="let t of tableauBesoins">
-<h6> {{t.reference}}</h6>
-  <table class="table table-striped" >
+  <h6> {{t.reference}}</h6>
+  <table class="table table-striped">
     <thead>
-    <tr >
+    <tr>
       <th scope="col">fournisseur</th>
-
       <th scope="col">ttc</th>
-<th></th>
+      <th>Details</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr  *ngFor="let t of tableauBesoinItems" >
-      <td>{{t.fournisseur.nomFournisseur}}</td>
-      <td>{{t.ttc}}  </td>
-      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,t)"></td>
+    <tr *ngFor="let x of tableauBesoinItems">
+      <td>{{x.fournisseur.nomFournisseur}}</td>
+      <td>{{x.ttc}}</td>
       <td>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon class="btn-outline-success"
+                    (click)="findTableauBesoinItemByTabAndFournisseur(t,x.fournisseur);openDialog()">description
+          </mat-icon>
+        </button>
+      </td>
+      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,x)">
       </td>
     </tr>
     </tbody>
-    <tfoot><button class="btn-warning" (click)="setReponsesSeletcionnees()">ok</button></tfoot>
+<!--    <tfoot>-->
+<!--    </tfoot>-->
   </table>
   <mat-divider></mat-divider>
+</div>
+<div>
+  <button class="btn-warning" (click)="setReponsesSeletcionnees();navigate('cmd')">ok</button>
+
 </div>

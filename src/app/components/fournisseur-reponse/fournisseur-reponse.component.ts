@@ -8,6 +8,9 @@ import {TableaubackComponent} from "../tableauback/tableauback.component";
 import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.model";
+import {Fournisseur} from "../../controller/model/fournisseur.model";
+import {CmdService} from "../../controller/service/cmd.service";
+import {EnCoursService} from "../../controller/service/en-cours.service";
 
 @Component({
   selector: 'app-fournisseur-reponse',
@@ -16,7 +19,8 @@ import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mode
 })
 export class FournisseurReponseComponent implements OnInit {
 
-  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService) {
+  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService,private cmdService:CmdService
+  ,private enCoursService:EnCoursService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +51,7 @@ export class FournisseurReponseComponent implements OnInit {
   }
   fonction(event,tableauBesoinItem:TableauBesoinItem) {
     if (event.target.checked==true){
-      this.tableauBesoinService.reponseSelectionnee=tableauBesoinItem;
+      this.tableauBesoinService.reponseSelectionnees.push(tableauBesoinItem);
     }
   }
   setReponsesSeletcionnees(){
@@ -55,5 +59,11 @@ export class FournisseurReponseComponent implements OnInit {
   }
   findTableauBesoinItemsByTableauBesoinRef(reference: string) {
     this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(reference)
+  }
+  findTableauBesoinItemByTabAndFournisseur(tableauBesoin:TableauBesoin,fournisseur:Fournisseur){
+    this.cmdService.findTableauBesoinItemByTabAndFournisseur(tableauBesoin,fournisseur)
+  }
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
   }
 }
