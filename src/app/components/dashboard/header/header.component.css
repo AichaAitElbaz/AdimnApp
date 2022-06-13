@@ -14,10 +14,44 @@
   left: 0;
 }
 *{
-  color: white;
-  /*background: #5b5e71;*/
+  color: black;
+  background: #e4e3e6;
+
   position: relative;
   border-radius: 5px;
 
 
 }
+.navbar{
+  height:40px;
+  margin:5px 0px 10px 0px;
+  background: #e8e8e9;
+}
+
+
+.notification {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  margin-right:15px;
+}
+
+.notification:hover {
+  font-size:20px;
+}
+.user:hover {
+  font-size:20px;
+}
+
+ .badge {
+  position: absolute;
+  padding: 2px 4px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+ .dropdown-menu{
+   width:500px
+ }
