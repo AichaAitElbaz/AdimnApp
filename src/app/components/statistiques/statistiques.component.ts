@@ -45,6 +45,7 @@ export class StatistiquesComponent implements OnInit {
   public graphmoiscommande: any;
   //
   id: number;
+  ttc_par_anne: number;
   username: string;
   service: string;
 
@@ -53,6 +54,9 @@ export class StatistiquesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dashboardservice.getttc_par_annee().subscribe(
+      data=>this.ttc_par_anne=data
+    )
     this.dashboardservice.getUsers().subscribe(
       data => {
         this.users = [...data];

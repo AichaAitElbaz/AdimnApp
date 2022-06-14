@@ -6,7 +6,7 @@
   height: 100%;
 }
 .header{
-  position:relative;
+  margin-bottom:60px;
 }
 
 .col-md-9{
@@ -22,3 +22,5 @@
 .col-md-2{
   border-radius: 10px;
 }
+
+
