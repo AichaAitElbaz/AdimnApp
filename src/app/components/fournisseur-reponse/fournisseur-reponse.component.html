@@ -1,25 +1,28 @@
-<div *ngFor="let t of tableauBesoins">
-  <h6> {{t.reference}}</h6>
-  <table class="table table-striped">
+<!--<div *ngFor="let t of tableauBesoins" >-->
+<!--  <h6 [(ngModel)]="tableauBesoin1.reference"> <code> Tableau de Besoin:  {{t.reference}}</code></h6>-->
+  <table class="table table-striped" >
     <thead>
     <tr>
       <th scope="col">fournisseur</th>
       <th scope="col">ttc</th>
+      <th>Tableau de besoin</th>
       <th>Details</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let x of tableauBesoinItems">
+    <tr  *ngFor="let x of tableauBesoinItemss" >
       <td>{{x.fournisseur.nomFournisseur}}</td>
       <td>{{x.ttc}}</td>
-      <td>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-          <mat-icon class="btn-outline-success"
-                    (click)="findTableauBesoinItemByTabAndFournisseur(t,x.fournisseur);openDialog()">description
-          </mat-icon>
-        </button>
-      </td>
+
+      <td>{{x.tableauBesoin.reference}}</td>
+            <td>
+              <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <mat-icon class="btn-outline-success"
+                          (click)="findTabItemByRef(x.reference);openDialog()">description
+                </mat-icon>
+              </button>
+            </td>
       <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,x)">
       </td>
     </tr>
@@ -28,7 +31,7 @@
 <!--    </tfoot>-->
   </table>
   <mat-divider></mat-divider>
-</div>
+
 <div>
   <button class="btn-warning" (click)="setReponsesSeletcionnees();navigate('cmd')">ok</button>
 

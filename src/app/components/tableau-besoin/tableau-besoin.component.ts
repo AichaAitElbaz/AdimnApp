@@ -27,7 +27,7 @@ export class TableauBesoinComponent implements OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit(): void {
-    this.tableauBesoinService.getEnCoursItems();
+    this.tableauBesoinService.getItemsEnvoye();
   }
 
   displayedColumns: ExpressionBesoinItem[];

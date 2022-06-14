@@ -18,4 +18,7 @@ export class TableaubackComponent implements OnInit {
   get tableauBesoinItemDetail(): TableauBesoinItem {
     return this.cmdService.tableauBesoinItemDetail;
   }
+  get tableauBesoinItem(): TableauBesoinItem {
+    return this.fournisseurService.tableauBesoinItem;
+  }
 }

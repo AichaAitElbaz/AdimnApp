@@ -16,8 +16,9 @@
 <div class="row m-3">
   <div class="col-md-4" *ngFor="let c of typesfournisseur" >
 
-    <button  class="button-86 " role="button" (click)="getFournisseursByType(c.reference);openFournisseur()">{{c.type}}</button>
+    <button  class="button-86 " role="button" (click)="getFournisseursByType(c);openFournisseur()" >{{c.type}}</button>
 
   </div></div>
 
 
+  <button class="btn-warning" (click)="navigate('T')">ok</button>

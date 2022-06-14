@@ -29,9 +29,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let e of expressionBesoinsItems; index as i">
+  <tr *ngFor="let e of foundedtableauBesoinItem.tableauBesoin.expressionBesoinItems; index as i">
     <td>
-      {{ e.produit.libelle }}
+      {{ e.libelle }}
     </td>
     <td>{{ e.quantite}}</td>
   </tr>

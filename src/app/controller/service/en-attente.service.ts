@@ -274,6 +274,7 @@ export class EnAttenteService {
     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
       data => {
         this.expressionBesoinsItems = [...data];
+        console.log(data)
       }
     )
   }

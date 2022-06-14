@@ -27,7 +27,9 @@ export class BonCmdComponent implements OnInit {
   get cmd(): Commande {
     return this.cmdService.cmd;
   }
-
+  savebnCommande(cmd: Commande){
+    this.cmdService.savebnCommande(cmd);
+  }
   // sendEmail(fournisseur: Fournisseur) {
   //   this.tableauBesoinService.sendEmail(fournisseur)
   // }

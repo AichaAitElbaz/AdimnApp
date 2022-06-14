@@ -1,1 +1,40 @@
-<p>en-attente-livraison works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th></th>
+    <th scope="col">Reference</th>
+    <th scope="col">Fournisseur</th>
+    <th scope="col">Details</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let i of tableauBesoinItemsEnAttenteLaivraison">
+    <td>
+    </td>
+    <td>
+      {{i.reference}}
+    </td>
+    <td>
+      {{i.fournisseur.nomFournisseur}}
+    </td>
+    <td>   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon class="btn-outline-success"(click)="findTableauBesoinItemByRef(i.reference);openDialog()">description</mat-icon>
+    </button></td>
+
+    <!--    <td>-->
+    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openTypeFournisseur();getItemsAcceptees()">-->
+    <!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
+    <!--      </button>-->
+    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+    <!--        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>-->
+    <!--      </button>-->
+    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+    <!--        <mat-icon class="btn-outline-success" (click)="openDialog2()">description</mat-icon>-->
+    <!--      </button>-->
+    <!--    </td>-->
+  </tr>
+  </tbody>
+
+</table>

@@ -19,14 +19,18 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
 })
 export class FournisseurReponseComponent implements OnInit {
 
-  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService,private cmdService:CmdService
-  ,private enCoursService:EnCoursService) {
+  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService, private cmdService: CmdService
+    , private enCoursService: EnCoursService) {
   }
 
   ngOnInit(): void {
-    this.fournisseurService.getTableauBrsoinsEnCours();
+    // this.fournisseurService.getTableauBrsoinsEnCours();
+    this.fournisseurService.findTabItemEnAttente();
   }
 
+  get tableauBesoin1(): TableauBesoin {
+    return this.fournisseurService.tableauBesoin1;
+  }
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
     return this.fournisseurService.expressionBesoinsItemsValidees;
   }
@@ -39,8 +43,8 @@ export class FournisseurReponseComponent implements OnInit {
     return this.fournisseurService.tableauBesoins;
   }
 
-  get tableauBesoinItems(): TableauBesoinItem[] {
-    return this.tableauBesoinService.tableauBesoinItems;
+  get tableauBesoinItemss(): TableauBesoinItem[] {
+    return this.fournisseurService.tableauBesoinItemss;
   }
 
   openDialog() {
@@ -49,21 +53,28 @@ export class FournisseurReponseComponent implements OnInit {
       width: '600px'
     })
   }
-  fonction(event,tableauBesoinItem:TableauBesoinItem) {
-    if (event.target.checked==true){
+
+  fonction(event, tableauBesoinItem: TableauBesoinItem) {
+    if (event.target.checked == true) {
       this.tableauBesoinService.reponseSelectionnees.push(tableauBesoinItem);
     }
   }
-  setReponsesSeletcionnees(){
+
+  setReponsesSeletcionnees() {
     this.tableauBesoinService.setReponsesSeletcionnees();
   }
-  findTableauBesoinItemsByTableauBesoinRef(reference: string) {
-    this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(reference)
+
+  findTableauBesoinItemByTabAndFournisseur(tableauBesoin: TableauBesoin, fournisseur: Fournisseur) {
+    this.cmdService.findTableauBesoinItemByTabAndFournisseur(tableauBesoin, fournisseur)
   }
-  findTableauBesoinItemByTabAndFournisseur(tableauBesoin:TableauBesoin,fournisseur:Fournisseur){
-    this.cmdService.findTableauBesoinItemByTabAndFournisseur(tableauBesoin,fournisseur)
-  }
+
   navigate(component: string) {
     this.enCoursService.navigate(component)
+  }
+  findTabItemEnAttente(){
+    this.fournisseurService.findTabItemEnAttente();
+  }
+  findTabItemByRef(ref:string){
+    this.fournisseurService.findTabItemByRef(ref)
   }
 }
