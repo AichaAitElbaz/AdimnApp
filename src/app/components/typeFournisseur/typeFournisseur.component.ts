@@ -11,6 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
+import {EnCoursService} from "../../controller/service/en-cours.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -22,7 +23,7 @@ export class TypeFournisseurComponent implements OnInit {
   panelOpenState = false;
 
   apiresponse:any=[];
-  constructor(private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  constructor(private enCoursService:EnCoursService,private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
@@ -35,8 +36,8 @@ export class TypeFournisseurComponent implements OnInit {
     console.log(this.selected+"hhhhhh")
   }
 
-  getFournisseursByType(selected:string){
-    return this.fournisseurService.getFournisseursByType(selected);
+  getFournisseursByType(t:TypeFournisseur){
+    return this.fournisseurService.getFournisseursByType(t);
   }
 
   get fournisseurItems(): Array<FournisseurItem> {
@@ -48,12 +49,17 @@ export class TypeFournisseurComponent implements OnInit {
     return this.fournisseurService.typesfournisseur;
   }
 
-  addFournisseur(fournisseur: Fournisseur) {
-    this.fournisseurService.addFourniseeur(fournisseur);
+  // addFournisseur(fournisseur: Fournisseur) {
+  //   this.fournisseurService.addFourniseeur(fournisseur);
+  // }
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
   }
 
 
-
+  get fournisseurItem(): FournisseurItem {
+    return this.fournisseurService.fournisseurItem;
+  }
   public hide(id: string) {
     document.getElementById(id).hidden = false;
   }

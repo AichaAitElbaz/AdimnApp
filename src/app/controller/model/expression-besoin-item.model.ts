@@ -14,7 +14,7 @@ export class ExpressionBesoinItem {
   public date: string;
   public statut: string;
   public refExpr: string;
-  public expressionBesoin: ExpressionBesoin;
+  public expressionBesoin=new ExpressionBesoin();
   public tableauBesoin: TableauBesoin;
   public produit=new Produit();
 }

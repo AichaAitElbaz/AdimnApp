@@ -8,6 +8,9 @@ import {TableaubackComponent} from "../tableauback/tableauback.component";
 import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.model";
+import {Fournisseur} from "../../controller/model/fournisseur.model";
+import {CmdService} from "../../controller/service/cmd.service";
+import {EnCoursService} from "../../controller/service/en-cours.service";
 
 @Component({
   selector: 'app-fournisseur-reponse',
@@ -16,13 +19,18 @@ import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mode
 })
 export class FournisseurReponseComponent implements OnInit {
 
-  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService) {
+  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService, private cmdService: CmdService
+    , private enCoursService: EnCoursService) {
   }
 
   ngOnInit(): void {
-    this.fournisseurService.getTableauBrsoinsEnCours();
+    // this.fournisseurService.getTableauBrsoinsEnCours();
+    this.fournisseurService.findTabItemEnAttente();
   }
 
+  get tableauBesoin1(): TableauBesoin {
+    return this.fournisseurService.tableauBesoin1;
+  }
   get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
     return this.fournisseurService.expressionBesoinsItemsValidees;
   }
@@ -35,8 +43,8 @@ export class FournisseurReponseComponent implements OnInit {
     return this.fournisseurService.tableauBesoins;
   }
 
-  get tableauBesoinItems(): TableauBesoinItem[] {
-    return this.tableauBesoinService.tableauBesoinItems;
+  get tableauBesoinItemss(): TableauBesoinItem[] {
+    return this.fournisseurService.tableauBesoinItemss;
   }
 
   openDialog() {
@@ -45,15 +53,28 @@ export class FournisseurReponseComponent implements OnInit {
       width: '600px'
     })
   }
-  fonction(event,tableauBesoinItem:TableauBesoinItem) {
-    if (event.target.checked==true){
-      this.tableauBesoinService.reponseSelectionnee=tableauBesoinItem;
+
+  fonction(event, tableauBesoinItem: TableauBesoinItem) {
+    if (event.target.checked == true) {
+      this.tableauBesoinService.reponseSelectionnees.push(tableauBesoinItem);
     }
   }
-  setReponsesSeletcionnees(){
+
+  setReponsesSeletcionnees() {
     this.tableauBesoinService.setReponsesSeletcionnees();
   }
-  findTableauBesoinItemsByTableauBesoinRef(reference: string) {
-    this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(reference)
+
+  findTableauBesoinItemByTabAndFournisseur(tableauBesoin: TableauBesoin, fournisseur: Fournisseur) {
+    this.cmdService.findTableauBesoinItemByTabAndFournisseur(tableauBesoin, fournisseur)
+  }
+
+  navigate(component: string) {
+    this.enCoursService.navigate(component)
+  }
+  findTabItemEnAttente(){
+    this.fournisseurService.findTabItemEnAttente();
+  }
+  findTabItemByRef(ref:string){
+    this.fournisseurService.findTabItemByRef(ref)
   }
 }

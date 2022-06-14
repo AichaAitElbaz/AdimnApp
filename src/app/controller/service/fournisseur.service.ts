@@ -9,6 +9,7 @@ import {TableauBesoinItem1} from "../model/tableau-besoin-item1.mpdel";
 import {FournisseurItem} from "../model/fournisseur-item.mpdel";
 import {TableauBesoin} from "../model/tableau-besoin.model";
 import {TableauBesoinService} from "./tableau-besoin.service";
+import {TableauBesoinItem} from "../model/tableau-besoin-item.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,11 @@ export class FournisseurService {
   private _fournisseurItems: Array<FournisseurItem>;
   private _expressionBesoin: ExpressionBesoin;
   private _tableauBesoin: TableauBesoin;
-  private _tableauBesoins=new Array<TableauBesoin>();
+  private _tableauBesoins = new Array<TableauBesoin>();
+  private _tableauBesoinItemss = new Array<TableauBesoinItem>();
+  private _tableauBesoinItem = new TableauBesoinItem();
+  private _tableauBesoin1 = new TableauBesoin();
+
 
   private emails = new Array<string>();
 
@@ -44,6 +49,22 @@ export class FournisseurService {
     return myclone;
   }
 
+  get tableauBesoinItem(): TableauBesoinItem {
+    return this._tableauBesoinItem;
+  }
+
+  set tableauBesoinItem(value: TableauBesoinItem) {
+    this._tableauBesoinItem = value;
+  }
+
+  get tableauBesoin1(): TableauBesoin {
+    return this._tableauBesoin1;
+  }
+
+  set tableauBesoin1(value: TableauBesoin) {
+    this._tableauBesoin1 = value;
+  }
+
   get fournisseurItem(): FournisseurItem {
     if (this._fournisseurItem == null) this._fournisseurItem = new FournisseurItem();
     return this._fournisseurItem;
@@ -53,8 +74,9 @@ export class FournisseurService {
     this._fournisseurItem = value;
   }
 
-  public getFournisseursByType(selected: string) {
-    this.http.get<Array<FournisseurItem>>("http://localhost:8096/v1/admin/fournisseur-item/type-fournisseur/reference/" + selected).subscribe(
+  public getFournisseursByType(t:TypeFournisseur) {
+    this.fournisseurItem.typeFournisseur=t;
+    this.http.get<Array<FournisseurItem>>("http://localhost:8096/v1/admin/fournisseur-item/type-fournisseur/reference/" + t.reference).subscribe(
       data => {
         this.fournisseurItems = [...data];
       }
@@ -106,8 +128,18 @@ export class FournisseurService {
     this._typesfournisseur = value;
   }
 
-  addFourniseeur(fournisseur: Fournisseur) {
-    this.http.post("http://localhost:8096/v1/admin/fournisseur/", fournisseur).subscribe(
+  get tableauBesoinItemss(): TableauBesoinItem[] {
+    return this._tableauBesoinItemss;
+  }
+
+  set tableauBesoinItemss(value: TableauBesoinItem[]) {
+    this._tableauBesoinItemss = value;
+  }
+
+  addFourniseeur(fournisseurItem: FournisseurItem) {
+    // fournisseur.fournisseurItem = this.fournisseurItem;
+    console.log(fournisseurItem)
+    this.http.post("http://localhost:8096/v1/admin/fournisseur-item/", fournisseurItem).subscribe(
       data => {
 
       }
@@ -251,10 +283,11 @@ export class FournisseurService {
     this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/{statut}?statut=en%20cours").subscribe(
       data => {
         this.tableauBesoins = [...data];
-        this.tableauBesoins.forEach(t=>{
-          this.tableauBesoinService.findTableauBesoinItemsByTableauBesoinRef(t.reference)
+        console.log(this.tableauBesoins)
+        this.tableauBesoins.forEach(t => {
+          t.tableauBesoinItems = this.tableauBesoinItemss;
+          this.findTableauBesoinItemsByTableauBesoinRef(t.reference);
         })
-
       }
     )
   }
@@ -263,7 +296,31 @@ export class FournisseurService {
     this.emails.push(fournisseur.emailFournisseur);
   }
 
+  findTableauBesoinItemsByTableauBesoinRef(reference: string) {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/tableau-besoin/" + reference).subscribe(
+      data => {
+        this.tableauBesoinItemss = [...data]
+        console.log('data')
+        console.log(data)
+      }
+    )
+  }
 
+  findTabItemEnAttente() {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=En%20attente").subscribe(
+      data => {
+        this.tableauBesoinItemss = [...data]
+      }
+    )
+  }
+
+  findTabItemByRef(ref: string) {
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/{reference}").subscribe(
+      data => {
+        this.tableauBesoinItem == data;
+      }
+    )
+  }
 }
 
 

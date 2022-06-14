@@ -1,4 +1,4 @@
-<img src="src/assets/img/Cady_ayyad_university.png"><h4>UNIVERSITE CADI AYYAD PRESIDENCE.</h4>
+<img src="assets/img/Cady_ayyad_university.png"><h4>UNIVERSITE CADI AYYAD PRESIDENCE.</h4>
 <h5>Marrakech</h5>
 <h6>EXERCICE: {{cmd.exercice}}</h6>
 <h6>CHAPITRE: {{cmd.rubrique.ligne.paragraphe.article.chapitre.libelle}}</h6>
@@ -49,5 +49,5 @@
   </table>
 </div>
 <div>
-  <button class="btn-danger" (click)="sendEmail(tableauBesoinItem.fournisseur)">Envoyer</button>
+  <button class="btn-danger" (click)="savebnCommande(cmd)">Envoyer</button>
 </div>

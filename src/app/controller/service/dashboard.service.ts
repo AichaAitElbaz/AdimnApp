@@ -35,10 +35,6 @@ export class DashboardService {
     return this.http.get<Array<number>>("http://localhost:8096/v1/admin/commande/graph_commande_budjet?e1="+e1+"&e2="+e2+"&e3="+e3+"&e4="+e4+"&e5="+e5+"&e6="+e6+"&e7="+e7+"&e8="+e8+"&e9="+e9+"&e10="+e10+"&e11="+e11+"&e12="+e12)
   }
 
-  public get_ttc_par_annee(){
-   return  this.http.get<number>("http://localhost:8096/v1/admin/commande/getttc_par_anne?date=2022");
-  }
-
 
   get user(): User {
     if(this._user==null){this._user=new User();}

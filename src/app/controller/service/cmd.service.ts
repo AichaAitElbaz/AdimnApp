@@ -10,6 +10,7 @@ import {Chapitre} from "../model/chapitre.model";
 import {Article} from "../model/article.model";
 import {Paragraphe} from "../model/paragraphe.model";
 import {Ligne} from "../model/ligne.model";
+import {Fournisseur} from "../model/fournisseur.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ import {Ligne} from "../model/ligne.model";
 })
 export class CmdService {
   private _tableauBesoinItem = new TableauBesoinItem()
+  private _foundedtableauBesoinItem = new TableauBesoinItem()
+  private _tableauBesoinItems = new Array<TableauBesoinItem>()
+  private _tableauBesoinItemsEnAttenteLaivraison = new Array<TableauBesoinItem>()
+  private _tableauBesoinItemDetail = new TableauBesoinItem()
   private _rubrique = new Rubrique();
   private _rubriques = new Array<Rubrique>();
   private _exercices = new Array<Exercice>();
@@ -34,6 +39,38 @@ export class CmdService {
   constructor(private http: HttpClient) {
   }
 
+
+  get foundedtableauBesoinItem(): TableauBesoinItem {
+    return this._foundedtableauBesoinItem;
+  }
+
+  set foundedtableauBesoinItem(value: TableauBesoinItem) {
+    this._foundedtableauBesoinItem = value;
+  }
+
+  get tableauBesoinItemsEnAttenteLaivraison(): TableauBesoinItem[] {
+    return this._tableauBesoinItemsEnAttenteLaivraison;
+  }
+
+  set tableauBesoinItemsEnAttenteLaivraison(value: TableauBesoinItem[]) {
+    this._tableauBesoinItemsEnAttenteLaivraison = value;
+  }
+
+  get tableauBesoinItems(): TableauBesoinItem[] {
+    return this._tableauBesoinItems;
+  }
+
+  set tableauBesoinItems(value: TableauBesoinItem[]) {
+    this._tableauBesoinItems = value;
+  }
+
+  get tableauBesoinItemDetail(): TableauBesoinItem {
+    return this._tableauBesoinItemDetail;
+  }
+
+  set tableauBesoinItemDetail(value: TableauBesoinItem) {
+    this._tableauBesoinItemDetail = value;
+  }
 
   get rubrique(): Rubrique {
     return this._rubrique;
@@ -149,10 +186,13 @@ export class CmdService {
   }
 
   getTableauBesoinItemValidee() {
-    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=validee").subscribe(
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=validee").subscribe(
       data => {
-        this.tableauBesoinItem = data;
-        console.log(data.tableauBesoin.expressionBesoinItems)
+        this.tableauBesoinItems = [...data];
+        this.tableauBesoinItems.forEach(t => {
+          this.tableauBesoinItem = t;
+          this.cmd.tableauBesoinItem = t;
+        })
       }
     )
   }
@@ -228,11 +268,40 @@ export class CmdService {
     this.cmd.rubrique.ligne.paragraphe.article = this.article;
     this.cmd.rubrique.ligne.paragraphe.article.chapitre = this.chapitre;
     console.log(this.cmd)
-    // this.http.post("http://localhost:8096/v1/admin/commande/", this.cmd).subscribe(
-    //   data => {
-    //     console.log("00000000000000000");
-    //
-    //   }
-    // )
+  }
+
+  savebnCommande(cmd: Commande) {
+    this.http.post("http://localhost:8096/v1/admin/commande/", this.cmd).subscribe(
+      data => {
+        console.log(cmd)
+      }
+    )
+  }
+
+  //
+
+
+  findTableauBesoinItemByTabAndFournisseur(tableauBesoin: TableauBesoin, fournisseur: Fournisseur) {
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/tableauBesoin/fournisseur/" + tableauBesoin.reference + "/" + fournisseur.referenceFournisseur).subscribe(
+      data => {
+        this.tableauBesoinItemDetail = data;
+        console.log(this.tableauBesoinItemDetail)
+      }
+    )
+  }
+
+  getEnAttenteLaivraisonItems() {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=En%20attent%20de%20livraison").subscribe(
+      data => {
+        this.tableauBesoinItemsEnAttenteLaivraison = [...data];
+      }
+    )
+  }
+  findTableauBesoinItemByRef(ref:string){
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/"+ref).subscribe(
+      data=> {
+        this.foundedtableauBesoinItem = data;
+      }
+    )
   }
 }

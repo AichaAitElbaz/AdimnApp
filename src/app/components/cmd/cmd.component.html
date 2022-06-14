@@ -60,9 +60,13 @@
 
     <div class="form-outline">
       <input value="Raison sociale" [(ngModel)]="cmd.raisonSociale"/>
+<!--      <form>-->
+<!--        <input required='' type='text'>-->
+<!--        <label alt='Placeholder' placeholder='Adaptive Placeholder'></label>-->
+<!--      </form>-->
     </div>
   </div>
 </div>
 <tfoot class=" btn row mt-5 ">
-  <button class="btn-warning" (click)="openDialog();saveCommande()">ok</button>
+  <button class="btn-warning" (click)="saveCommande();openDialog()">ok</button>
 </tfoot>

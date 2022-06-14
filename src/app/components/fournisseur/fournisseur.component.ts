@@ -42,9 +42,9 @@ export class FournisseurComponent implements OnInit {
     return this.fournisseurService.expressionBesoins;
   }
 
-  getFournisseursByType(selected: string) {
-    return this.fournisseurService.getFournisseursByType(selected);
-  }
+  // getFournisseursByType(selected: string) {
+  //   return this.fournisseurService.getFournisseursByType(selected);
+  // }
 
   get fournisseurItems(): Array<FournisseurItem> {
     return this.fournisseurService.fournisseurItems;
@@ -55,8 +55,8 @@ export class FournisseurComponent implements OnInit {
     return this.fournisseurService.typesfournisseur;
   }
 
-  addFournisseur(fournisseur: Fournisseur) {
-    this.fournisseurService.addFourniseeur(fournisseur);
+  addFournisseur(fournisseurItem: FournisseurItem) {
+    this.fournisseurService.addFourniseeur(fournisseurItem);
   }
 
 
@@ -90,9 +90,7 @@ export class FournisseurComponent implements OnInit {
     return this.fournisseurService.tableauBesoin;
   }
 
-  navigate(component: string) {
-    this.enCoursService.navigate(component)
-  }
+
 
   getEmail(fournisseur: Fournisseur) {
     this.fournisseurService.getEmail(fournisseur);

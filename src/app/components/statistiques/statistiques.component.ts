@@ -7,7 +7,17 @@ import {AjaxError} from "rxjs/ajax";
 import {TabViewModule} from 'primeng/tabview';
 
 
+export interface PeriodicElement {
+  x: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
 
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, x: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+
+];
 
 
 @Component({
@@ -19,7 +29,8 @@ export class StatistiquesComponent implements OnInit {
   ///
   public users = new Array<User>();
 
-
+  displayedColumns: string[] = ['id', 'username', 'reference', 'service'];
+  dataSource = this.users;
 
   ///
   public numberOfUsers: number;
@@ -32,7 +43,6 @@ export class StatistiquesComponent implements OnInit {
   public listMonthcommande: [];
   public graphmois: any;
   public graphmoiscommande: any;
-  public ttc_par_annee:number;
   //
   id: number;
   username: string;
@@ -43,12 +53,10 @@ export class StatistiquesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dashboardservice.get_ttc_par_annee().subscribe(
-      data=>this.ttc_par_annee=data
-    )
     this.dashboardservice.getUsers().subscribe(
       data => {
         this.users = [...data];
+        console.log(this.users)
 
       }
     )
@@ -96,9 +104,7 @@ export class StatistiquesComponent implements OnInit {
       options: {
         scales: {
           y: {
-            beginAtZero: true,
-
-
+            beginAtZero: true
           }
         }
       }
@@ -156,9 +162,6 @@ export class StatistiquesComponent implements OnInit {
         }
       }
     });
-    ////////
-
-    ////
   }
 
   search() {
@@ -181,7 +184,6 @@ export class StatistiquesComponent implements OnInit {
   public shekmonth() {
 
     this.dashboardservice.get_statistic_graph_mois("JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER").subscribe((Liste_montants_mois_string) => {
-
       Liste_montants_mois_string.forEach(elem => {
         if (elem != null) {
           this.number = +elem;
@@ -193,8 +195,8 @@ export class StatistiquesComponent implements OnInit {
       })
     })
 
-
   }
+
   public graph_commande_budjet() {
 
     this.dashboardservice.get_statistic_graph_commande_budjet("JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER").subscribe((Liste_montants_mois_string) => {
@@ -211,8 +213,4 @@ export class StatistiquesComponent implements OnInit {
     })
 
   }
-
-///////////////////////
-
-
 }
