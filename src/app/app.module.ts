@@ -61,6 +61,7 @@ import {Ng2OrderModule} from "ng2-order-pipe";
 
 import { CmdComponent } from './components/cmd/cmd.component';
 import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
+import { PaiementComponent } from './components/paiement/paiement.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attent
     ServiceComponent,
     CmdComponent,
     EnAttenteDevisComponent,
+    PaiementComponent,
   ],
 
     imports: [

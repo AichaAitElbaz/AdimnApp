@@ -30,11 +30,14 @@ import {ItemsSuprimeesComponent} from "./components/items-suprimees/items-suprim
 import {BonCmdComponent} from "./components/bon-cmd/bon-cmd.component";
 import {CmdComponent} from "./components/cmd/cmd.component";
 import {EnAttenteDevisComponent} from "./components/en-attente-devis/en-attente-devis.component";
+import {PaiementComponent} from "./components/paiement/paiement.component";
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent, children: [
+
       {path: 'statistiques', component: StatistiquesComponent},
+      {path: 'paiement', component: PaiementComponent},
       {path: '', component: StatistiquesComponent},
       {path: 'en-attente', component: EnAttenteComponent},
       {path: 'en-cours', component: EnCoursComponent},

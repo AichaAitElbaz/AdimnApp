@@ -52,14 +52,15 @@
         </li>-->
         <li class="notification nav-item" ngbDropdown>
           <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-            <i class="fas fa-bell"></i>
+            <i class="notificationfas fas fa-bell"></i>
             <span class="badge">{{nbrofExpressionBesoinEnAttente}}</span>
 
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-            <a ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes">
-              <span><i style="color:green"class="fa fa-spinner" aria-hidden="true"></i>  <span style="color:darkslategray">   Nom</span>:{{e.user.username}},</span>
-              <span style="color:darkslategray">   L'objet</span><span>   :{{e.objet}}</span>
+            <a class="notificationitem" ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes" routerLink="en-attente">
+              <span><i style="color:green"class="fa fa-spinner" aria-hidden="true"></i>  <span style="color:#1069ce">   Nom</span>:{{e.user.username}},</span>
+              <span style="color:#1069ce">   L'objet</span><span>   :{{e.objet}}</span>
+              <span style="color:#1069ce">   date</span><span>   :{{e.dateExb}}</span><br>
             </a>
 
           </div>
@@ -68,8 +69,8 @@
           <div ngbDropdown class="d-inline-block">
             <a class="btn" id="dropdownBasic1" ngbDropdownToggle><i class="user fa fa-user fa-fw"></i> User</a>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button ngbDropdownItem>info</button>
-              <button ngbDropdownItem>deconnecte</button>
+              <button ngbDropdownItem><i class="fa fa-user-o" aria-hidden="true"></i>info</button>
+              <button ngbDropdownItem><i class="fa fa-sign-out" aria-hidden="true"></i>deconnecte</button>
             </div>
           </div>
         </li>
