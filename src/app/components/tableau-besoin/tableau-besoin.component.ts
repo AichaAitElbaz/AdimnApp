@@ -28,6 +28,8 @@ export class TableauBesoinComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableauBesoinService.getItemsEnvoye();
+    // this.tableauBesoinService.getTableauBesoinEnCours();
+
   }
 
   displayedColumns: ExpressionBesoinItem[];
@@ -44,10 +46,13 @@ export class TableauBesoinComponent implements OnInit {
   }
 
   saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
-    this.tableauBesoinService. saveTableauBesoin(expressionBesoinItems);
+    this.tableauBesoinService.saveTableauBesoin(expressionBesoinItems);
   }
 
-  saveTableauBesoinItem(){
+  saveTableauBesoinItem() {
     this.tableauBesoinService.saveTableauBesoinItem();
+  }
+  getTableauBesoinEnCours(){
+    this.tableauBesoinService.getTableauBesoinEnCours();
   }
 }

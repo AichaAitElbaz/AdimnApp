@@ -1,0 +1,40 @@
+<div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">OBJET DE LA COMMANDE</th>
+    <th scope="col">Quantité</th>
+    <th scope="col">P.U HT</th>
+    <th scope="col">P.T HT</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of foundedcmd.tableauBesoinItem.tableauBesoin.expressionBesoinItems">
+    <td>{{e.libelle}}</td>
+    <td>{{e.quantite}}</td>
+    <td>{{e.pu}}</td>
+    <td>{{e.pt}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>TOTAL HT</td>
+    <td>{{foundedcmd.tableauBesoinItem.ht}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>TVA</td>
+    <td>{{foundedcmd.tableauBesoinItem.tva}}</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td>TOTAL TTTC</td>
+    <td>{{foundedcmd.tableauBesoinItem.ttc}}</td>
+  </tr>
+
+  </tbody>
+</table>
+</div>
+

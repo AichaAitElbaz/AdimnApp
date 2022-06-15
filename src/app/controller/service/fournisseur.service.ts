@@ -279,18 +279,7 @@ export class FournisseurService {
     );
   }
 
-  getTableauBrsoinsEnCours() {
-    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/{statut}?statut=en%20cours").subscribe(
-      data => {
-        this.tableauBesoins = [...data];
-        console.log(this.tableauBesoins)
-        this.tableauBesoins.forEach(t => {
-          t.tableauBesoinItems = this.tableauBesoinItemss;
-          this.findTableauBesoinItemsByTableauBesoinRef(t.reference);
-        })
-      }
-    )
-  }
+
 
   getEmail(fournisseur: Fournisseur) {
     this.emails.push(fournisseur.emailFournisseur);
@@ -307,7 +296,7 @@ export class FournisseurService {
   }
 
   findTabItemEnAttente() {
-    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=En%20attente").subscribe(
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/reponse").subscribe(
       data => {
         this.tableauBesoinItemss = [...data]
       }
@@ -315,9 +304,11 @@ export class FournisseurService {
   }
 
   findTabItemByRef(ref: string) {
-    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/{reference}").subscribe(
+    console.log(ref)
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/"+ref).subscribe(
       data => {
-        this.tableauBesoinItem == data;
+        console.log(data)
+        this.tableauBesoinItem = data;
       }
     )
   }

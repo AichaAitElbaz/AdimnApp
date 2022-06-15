@@ -95,9 +95,7 @@ export class FournisseurComponent implements OnInit {
   getEmail(fournisseur: Fournisseur) {
     this.fournisseurService.getEmail(fournisseur);
   }
-  saveTableauBesoinsItems(){
-    this.tableauBesoinService.saveTableauBesoinsItems();
-  }
+
 
   get fournisseurItem(): FournisseurItem {
     return this.fournisseurService.fournisseurItem;

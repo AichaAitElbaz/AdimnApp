@@ -102,5 +102,9 @@ export class CmdComponent implements OnInit {
   getRubriques(){
     this.cmdService.getRubriques()
   }
+  getTableauBesoinItemValidee(){
+    this.cmdService.getTableauBesoinItemValidee();
+
+  }
 
 }

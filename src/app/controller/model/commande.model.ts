@@ -5,6 +5,7 @@ import {TableauBesoinItem} from "./tableau-besoin-item.model";
 export class Commande {
   public id: number;
   public code: string;
+  public statut: string;
   public raisonSociale: string;
   public adresse: string;
   public totalTtc: string;

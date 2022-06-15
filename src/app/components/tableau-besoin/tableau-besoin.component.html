@@ -4,29 +4,34 @@
     <th scope="col">Designations</th>
     <th scope="col">Quantite</th>
     <th scope="col">PU</th>
+    <th scope="col">PT</th>
   </tr>
   </thead>
   <tbody >
   <tr *ngFor="let i of itemsEnCours">
-    <td ngM>{{i.libelle}}</td>
+    <td>{{i.libelle}}</td>
     <td>{{i.quantite}}</td>
-    <td><input [(ngModel)]="i.pu"></td>
+    <td><input disabled></td>
+    <td><input disabled></td>
+<!--    <td><input [(ngModel)]="i.pu"></td>-->
   </tr>
 
   <tr>
     <td>MT TVA</td>
-    <td><input></td>
+    <td><input disabled></td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
     <td>MT TTC</td>
+    <td><input disabled></td>
     <td></td>
     <td></td>
   </tr>
-  <tr><button mat-raised-button color="warn" (click)="saveTableauBesoin(itemsEnCours);saveTableauBesoinItem()">Envoyer</button>
-  </tr>
+
   </tbody>
-  <thead >
-  </thead>
+
 </table>
+<div><button class="btn-danger" (click)="saveTableauBesoin(itemsEnCours);getTableauBesoinEnCours();saveTableauBesoinItem()">Envoyer</button>
+</div>

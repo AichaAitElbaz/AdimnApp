@@ -1,9 +1,10 @@
 .container-fluid{
   /*background: url("src/assets/img/4K-Snow-Desktop-Wallpaper.jpg");*/
-  background:url("../../../assets/img/background2.jpg");
+  /*background:url("../../../assets/img/background2.jpg");*/
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
+  background-color: #8690a3;
 }
 .header{
   position:relative;

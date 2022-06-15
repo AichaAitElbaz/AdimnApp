@@ -12,6 +12,7 @@ import {MatTableModule} from "@angular/material/table";
 import {FournisseurItem} from "../../controller/model/fournisseur-item.mpdel";
 import {FournisseurComponent} from "../fournisseur/fournisseur.component";
 import {EnCoursService} from "../../controller/service/en-cours.service";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 @Component({
   selector: 'app-fournisseur',
@@ -23,7 +24,7 @@ export class TypeFournisseurComponent implements OnInit {
   panelOpenState = false;
 
   apiresponse:any=[];
-  constructor(private enCoursService:EnCoursService,private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
+  constructor(private tableauBesoinService:TableauBesoinService,private enCoursService:EnCoursService,private DIALOG: MatDialog, private fournisseurService: FournisseurService, private servicesService: ServicesService) {
   }
 
   disableSelect = new FormControl(false);
@@ -43,7 +44,10 @@ export class TypeFournisseurComponent implements OnInit {
   get fournisseurItems(): Array<FournisseurItem> {
     return this.fournisseurService.fournisseurItems;
   }
+  saveTableauBesoinsItems(){
+    this.tableauBesoinService.saveTableauBesoinsItems();
 
+  }
 
   get typesfournisseur(): Array<TypeFournisseur> {
     return this.fournisseurService.typesfournisseur;

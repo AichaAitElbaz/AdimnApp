@@ -17,7 +17,6 @@ export class BonCmdComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cmdService.getTableauBesoinItemValidee();
   }
 
   get tableauBesoinItem(): TableauBesoinItem {

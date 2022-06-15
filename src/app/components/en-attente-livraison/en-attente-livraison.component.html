@@ -2,39 +2,34 @@
   <thead>
   <tr>
     <th></th>
-    <th scope="col">Reference</th>
-    <th scope="col">Fournisseur</th>
+    <th scope="col">Code de commande</th>
+    <th scope="col">Date de commande</th>
+    <th>Fournisseur</th>
     <th scope="col">Details</th>
 
   </tr>
   </thead>
   <tbody>
 
-  <tr *ngFor="let i of tableauBesoinItemsEnAttenteLaivraison">
+  <tr *ngFor="let c of cmdsAttLaivr">
+    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,c)" ></td>
     <td>
+    {{c.code}}
     </td>
     <td>
-      {{i.reference}}
+      {{c.dateCommande}}
     </td>
     <td>
-      {{i.fournisseur.nomFournisseur}}
+      {{c.tableauBesoinItem.fournisseur.nomFournisseur}}
     </td>
-    <td>   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon class="btn-outline-success"(click)="findTableauBesoinItemByRef(i.reference);openDialog()">description</mat-icon>
+    <td>   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="findCmdByCode(c);openDialog()">
+      <mat-icon class="btn-outline-success" >description</mat-icon>
     </button></td>
 
-    <!--    <td>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openTypeFournisseur();getItemsAcceptees()">-->
-    <!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
-    <!--      </button>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-    <!--        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>-->
-    <!--      </button>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-    <!--        <mat-icon class="btn-outline-success" (click)="openDialog2()">description</mat-icon>-->
-    <!--      </button>-->
-    <!--    </td>-->
   </tr>
   </tbody>
 
 </table>
+<div>
+  <button class="btn-warning" (click)="setCmdLaivree()">confirmer</button>
+</div>

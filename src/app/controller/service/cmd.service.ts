@@ -27,6 +27,7 @@ export class CmdService {
   private _exercices = new Array<Exercice>();
   private _exercice = new Exercice();
   private _cmd = new Commande();
+  private _foundedcmd = new Commande();
   private _chapitres: Array<Chapitre>;
   private _article = new Article();
   private _articles = new Array<Article>();
@@ -35,10 +36,54 @@ export class CmdService {
   private _paragraphes = new Array<Paragraphe>();
   private _ligne = new Ligne();
   private _lignes = new Array<Ligne>();
+  private _cmdsAttLaivr = new Array<Commande>();
+  private _cmdsLaivrees = new Array<Commande>();
+  private _cmdsEnAttPaiemenet = new Array<Commande>();
+  private _cmdsPayees = new Array<Commande>();
 
   constructor(private http: HttpClient) {
   }
 
+
+  get cmdsPayees(): Commande[] {
+    return this._cmdsPayees;
+  }
+
+  set cmdsPayees(value: Commande[]) {
+    this._cmdsPayees = value;
+  }
+
+  get cmdsEnAttPaiemenet(): Commande[] {
+    return this._cmdsEnAttPaiemenet;
+  }
+
+  set cmdsEnAttPaiemenet(value: Commande[]) {
+    this._cmdsEnAttPaiemenet = value;
+  }
+
+  get cmdsLaivrees(): Commande[] {
+    return this._cmdsLaivrees;
+  }
+
+  set cmdsLaivrees(value: Commande[]) {
+    this._cmdsLaivrees = value;
+  }
+
+  get foundedcmd(): Commande {
+    return this._foundedcmd;
+  }
+
+  set foundedcmd(value: Commande) {
+    this._foundedcmd = value;
+  }
+
+  get cmdsAttLaivr(): Commande[] {
+    return this._cmdsAttLaivr;
+  }
+
+  set cmdsAttLaivr(value: Commande[]) {
+    this._cmdsAttLaivr = value;
+  }
 
   get foundedtableauBesoinItem(): TableauBesoinItem {
     return this._foundedtableauBesoinItem;
@@ -186,12 +231,13 @@ export class CmdService {
   }
 
   getTableauBesoinItemValidee() {
-    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=validee").subscribe(
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/validee").subscribe(
       data => {
         this.tableauBesoinItems = [...data];
         this.tableauBesoinItems.forEach(t => {
           this.tableauBesoinItem = t;
           this.cmd.tableauBesoinItem = t;
+          console.log(this.tableauBesoinItem)
         })
       }
     )
@@ -278,9 +324,6 @@ export class CmdService {
     )
   }
 
-  //
-
-
   findTableauBesoinItemByTabAndFournisseur(tableauBesoin: TableauBesoin, fournisseur: Fournisseur) {
     this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/tableauBesoin/fournisseur/" + tableauBesoin.reference + "/" + fournisseur.referenceFournisseur).subscribe(
       data => {
@@ -290,17 +333,45 @@ export class CmdService {
     )
   }
 
-  getEnAttenteLaivraisonItems() {
-    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/{statut}?statut=En%20attent%20de%20livraison").subscribe(
+  getCommandeEnattenteLivraison() {
+    this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/envoyee").subscribe(
       data => {
-        this.tableauBesoinItemsEnAttenteLaivraison = [...data];
+        this.cmdsAttLaivr = [...data]
       }
     )
   }
-  findTableauBesoinItemByRef(ref:string){
-    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/"+ref).subscribe(
-      data=> {
+
+  findTableauBesoinItemByRef(ref: string) {
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/" + ref).subscribe(
+      data => {
         this.foundedtableauBesoinItem = data;
+      }
+    )
+  }
+
+  findCmdByCode(cmd: Commande) {
+    this.http.get<Commande>("http://localhost:8096/v1/admin/commande/code/" + cmd.code).subscribe(
+      data => {
+        this.foundedcmd = data;
+      }
+    )
+  }
+
+  setCmdLaivree(cmds:Array<Commande>,statut:string) {
+    cmds.forEach(cmd => {
+      this.http.put("http://localhost:8096/v1/admin/commande/update/statut/"+statut, cmd).subscribe(
+        data => {
+          console.log("cmd update")
+        }
+      )
+    })
+
+  }
+
+  getCmdsAttPaiement(){
+    this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
+      data=>{
+        this.cmdsEnAttPaiemenet=[...data]
       }
     )
   }
