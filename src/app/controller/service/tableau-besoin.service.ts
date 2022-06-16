@@ -236,8 +236,10 @@ export class TableauBesoinService {
       }
     )
   }
+
   sendBonCommande(t:TableauBesoinItem){
-    this.http.get("http://localhost:8096/v1/admin/EmailSender/" +t.fournisseur.emailFournisseur  +"/").subscribe(
+    //this.http.get("http://localhost:8096/v1/admin/EmailSender/" +t.fournisseur.emailFournisseur  +"/").subscribe(
+    this.http.get("http://localhost:8096/v1/admin/EmailSender/{to}/{sujet}/{path}?path="+"path"+"&sujet=bon de commande&to="+"marouansaif123%40gmail.com").subscribe(
       data => {
       }
     )

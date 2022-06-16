@@ -108,6 +108,7 @@ export class StatistiquesComponent implements OnInit {
       options: {
         scales: {
           y: {
+            display: false,
             beginAtZero: true
           }
         }
@@ -160,7 +161,9 @@ export class StatistiquesComponent implements OnInit {
       },
       options: {
         scales: {
+
           y: {
+            display: false,
             beginAtZero: true
           }
         }
