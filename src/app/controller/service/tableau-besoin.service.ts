@@ -22,9 +22,18 @@ export class TableauBesoinService {
   private _fournisseursSelectionne = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
   private _tableauBesoinItem = new TableauBesoinItem();
+  private _tableauBesoinItems = new Array<TableauBesoinItem>();
   private _tableauBesoin = new TableauBesoin();
   private _tableauBesoinEnCours = new Array<TableauBesoin>();
 
+
+  get tableauBesoinItems(): TableauBesoinItem[] {
+    return this._tableauBesoinItems;
+  }
+
+  set tableauBesoinItems(value: TableauBesoinItem[]) {
+    this._tableauBesoinItems = value;
+  }
 
   get tableauBesoinEnCours(): TableauBesoin[] {
     return this._tableauBesoinEnCours;
@@ -156,7 +165,7 @@ export class TableauBesoinService {
     this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
       data => {
         console.log("data")
-        data.forEach(d => {
+        data.forEach(d=>{
           this.tableauBesoinItem.tableauBesoin = d;
           console.log("hoooooooooooo" + d)
           this.fournisseursSelectionne.forEach(f => {
@@ -164,32 +173,30 @@ export class TableauBesoinService {
             // this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
             console.log("hahowa" + this.tableauBesoinItem.tableauBesoin)
             this.tableauBesoinItem.statut = "En attente"
-            this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
+            this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
               data => {
-                console.log(this.tableauBesoinItem)
-                this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur + "/" + "T").subscribe(
-                  data => {
-                    console.log("send email")
-
+                this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
+                  data=>{
+                    data.forEach(d=>{
+                      this.tableauBesoinItem=d;
+                        this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur +"/"+this.tableauBesoinItem.reference).subscribe(
+                          data => {
+                            console.log("send email")
+                          }
+                        )
+                      }
+                    )                    })
                   }
                 )
-              }
-            )
+
           })
-          this.http.post("http://localhost:8096/v1/admin/tableau-besoin/update",d).subscribe(
+          this.http.post("http://localhost:8096/v1/admin/tableau-besoin/update", d).subscribe(
             data => {
               console.log("tab envoye")
             }
           )
           this.fournisseursSelectionne = new Array();
           this.itemsSelectionne = new Array();
-          // d.statut = 'envoye'
-          // this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", d).subscribe(
-          //   data => {
-          //     console.log("tab envoye")
-          //   }
-          // )
-
         })
       }
     )
@@ -218,6 +225,7 @@ export class TableauBesoinService {
         data => {
         }
       )
+      this.sendBonCommande(r);
     })
   }
 
@@ -225,6 +233,12 @@ export class TableauBesoinService {
     this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/envoyee").subscribe(
       data => {
         this.itemsEnvoyee = [...data]
+      }
+    )
+  }
+  sendBonCommande(t:TableauBesoinItem){
+    this.http.get("http://localhost:8096/v1/admin/EmailSender/" +t.fournisseur.emailFournisseur  +"/").subscribe(
+      data => {
       }
     )
   }

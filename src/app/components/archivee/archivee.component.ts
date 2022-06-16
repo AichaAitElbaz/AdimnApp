@@ -9,6 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ServicesService} from "../../controller/service/services.service";
 import {RefuseeItemsComponent} from "../refusee-items/refusee-items.component";
 import {EnAttenteItemsComponent} from "../en-attente-items/en-attente-items.component";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-archivee',
@@ -35,7 +36,7 @@ export class ArchiveeComponent implements OnInit {
     this.enAttenteService.save(expressionBesoin);
   }
   public openDialog2() {
-    this.DIALOG.open(EnAttenteItemsComponent, {
+    this.DIALOG.open(DialogComponent, {
       height: '400px',
       width: '600px'})
   }

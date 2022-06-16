@@ -10,6 +10,8 @@ import {ServicesService} from "../../controller/service/services.service";
 import {ExpressionBesoinItemComponent} from "../expression-besoin-item/expression-besoin-item.component";
 import {MatIcon} from "@angular/material/icon";
 import {EnAttenteItemsComponent} from "../en-attente-items/en-attente-items.component";
+import {EnCoursItemsComponent} from "../en-cours-items/en-cours-items.component";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-en-attente',
@@ -62,7 +64,7 @@ export class EnAttenteComponent implements OnInit {
   }
 
   public openDialog() {
-    this.DIALOG.open(EnAttenteItemsComponent, {
+    this.DIALOG.open(DialogComponent, {
       height: '400px',
       width: '600px'
     })

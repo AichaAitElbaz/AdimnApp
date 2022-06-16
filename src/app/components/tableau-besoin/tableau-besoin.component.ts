@@ -11,8 +11,6 @@ export interface PeriodicElement {
   weight: number;
 
 }
-
-
 @Component({
   selector: 'app-tableau-besoin',
   templateUrl: './tableau-besoin.component.html',

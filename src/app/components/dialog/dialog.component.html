@@ -1,27 +1,21 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Designation</th>
+    <th scope="col">Qte</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let e of expressionBesoinsItems; index as i">
+    <td>
+      {{ e.produit.libelle }}<br><input hidden="true" id="input-designation">
+    </td>
+    <td>{{ e.quantite}}<br><input hidden="true" id="input-qte" ></td>
 
-<!--<table class="table table-striped">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th scope="col">Expression De Besoin</th>-->
-<!--    <th scope="col">Designation</th>-->
-<!--    <th scope="col">Qte</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let e of expressionBesoinItems; index as i">-->
-<!--    <td>-->
 
-<!--      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,e)">-->
-<!--    </td>-->
-<!--    <td></td>-->
-<!--    <td>-->
-<!--      {{ e.produit.libelle }}-->
-<!--    </td>-->
-<!--    <td>{{ e.quantite}}</td>-->
-<!--    <td>-->
-<!--    </td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--  <button mat-raised-button color="warn" (click)="openTableauBesoin()">Valider</button>-->
+  </tr>
 
-<!--</table>-->
+  </tbody>
+  <button mat-dialog-close mat-raised-button color="warn">close</button>
+
+</table>
