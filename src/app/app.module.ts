@@ -58,9 +58,11 @@ import {TabViewModule} from "primeng/tabview";
 import {TableModule} from "primeng/table";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CmdComponent } from './components/cmd/cmd.component';
 import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
+import { PaiementComponent } from './components/paiement/paiement.component';
 import { EnAttenteLaivraisonDetailsComponent } from './components/en-attente-laivraison-details/en-attente-laivraison-details.component';
 
 @NgModule({
@@ -103,10 +105,12 @@ import { EnAttenteLaivraisonDetailsComponent } from './components/en-attente-lai
     ServiceComponent,
     CmdComponent,
     EnAttenteDevisComponent,
+    PaiementComponent,
     EnAttenteLaivraisonDetailsComponent,
   ],
 
   imports: [
+    NgbModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgChartsModule,

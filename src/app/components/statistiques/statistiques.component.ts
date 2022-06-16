@@ -45,6 +45,7 @@ export class StatistiquesComponent implements OnInit {
   public graphmoiscommande: any;
   //
   id: number;
+  ttc_par_anne: number;
   username: string;
   service: string;
 
@@ -53,6 +54,9 @@ export class StatistiquesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dashboardservice.getttc_par_annee().subscribe(
+      data=>this.ttc_par_anne=data
+    )
     this.dashboardservice.getUsers().subscribe(
       data => {
         this.users = [...data];
@@ -108,6 +112,25 @@ export class StatistiquesComponent implements OnInit {
           }
         }
       }
+    });const myChart3 = new Chart("myChart3", {
+      type: 'doughnut',
+      data: {
+        labels: [
+          'Red',
+          'Blue',
+          'Yellow'
+        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [300, 50, 100],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+        }]
+      }
+
     });
     const myChart2 = new Chart("myChart2", {
       type: 'line',

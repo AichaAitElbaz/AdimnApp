@@ -1,83 +1,83 @@
-<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+<!-- Navbar -->
 
-<!--<nav class="navbar navbar-expand-lg fixed-top ">-->
-<!--  &lt;!&ndash; Container wrapper &ndash;&gt;-->
-<!--  <div class="container-fluid">-->
+<nav class="navbar navbar-expand-lg fixed-top ">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
 
-<!--    &lt;!&ndash; Navbar brand &ndash;&gt;-->
-<!--    &lt;!&ndash;    <a class="navbar-brand" href="#">&ndash;&gt;-->
-<!--    &lt;!&ndash;      <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="30" alt="" loading="lazy" />&ndash;&gt;-->
-<!--    &lt;!&ndash;    </a>&ndash;&gt;-->
+    <!-- Navbar brand -->
+    <!--    <a class="navbar-brand" href="#">-->
+    <!--      <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="30" alt="" loading="lazy" />-->
+    <!--    </a>-->
 
-<!--    &lt;!&ndash; Toggle button &ndash;&gt;-->
-<!--    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"-->
-<!--            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--      <i class="fas fa-bars"></i>-->
-<!--    </button>-->
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
 
-<!--    &lt;!&ndash; Collapsible wrapper &ndash;&gt;-->
-<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--      &lt;!&ndash; Left links &ndash;&gt;-->
-<!--      <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-<!--      </ul>-->
-<!--      &lt;!&ndash; Left links &ndash;&gt;-->
+      </ul>
+      <!-- Left links -->
 
-<!--      &lt;!&ndash; Search form &ndash;&gt;-->
-<!--      <form class="d-flex input-group w-auto">-->
-<!--        <div class="input-group rounded">-->
-<!--          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"-->
-<!--                 aria-describedby="search-addon"/>-->
-<!--          <span class="input-group-text border-0" id="search-addon">-->
-<!--    <i class="fas fa-search"></i>-->
-<!--  </span>-->
-<!--        </div>-->
-<!--      </form>-->
-<!--      <ul class="navbar-nav mb-2 mb-lg-0">-->
+      <!-- Search form -->
+      <form class="d-flex input-group w-auto">
+        <div class="input-group rounded">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                 aria-describedby="search-addon"/>
+          <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+        </div>
+      </form>
+      <ul class="navbar-nav mb-2 mb-lg-0">
 
 
-<!--        &lt;!&ndash; Navba² ²                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <r dropdown &ndash;&gt;-->
-<!--       &lt;!&ndash; <li class="nav-item dropdown">-->
-<!--          <div ngbDropdown class="d-inline-block">-->
-<!--          <a class="btn" id="dropdownBasic2" ngbDropdownToggle class="notification">-->
-<!--            <i class="fas fa-bell"></i>-->
-<!--            <span class="badge">{{nbrofExpressionBesoinEnAttente}}</span>-->
-<!--          </a>-->
-<!--            <div  ngbDropdownMenu aria-labelledby="dropdownBasic2">-->
-<!--              <div   *ngFor="let e of ExpressionBesoinEnAttentes">-->
-<!--              <span><i class="bi bi-person-circle"></i>:{{e.user.username}},</span>-->
-<!--              <span>objet:{{e.objet}}</span></div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>&ndash;&gt;-->
-<!--        <li class="notification nav-item" ngbDropdown>-->
-<!--          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">-->
-<!--            <i class="fas fa-bell"></i>-->
-<!--            <span class="badge">{{nbrofExpressionBesoinEnAttente}}</span>-->
+        <!-- Navba² ²                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <r dropdown -->
+       <!-- <li class="nav-item dropdown">
+          <div ngbDropdown class="d-inline-block">
+          <a class="btn" id="dropdownBasic2" ngbDropdownToggle class="notification">
+            <i class="fas fa-bell"></i>
+            <span class="badge">{{nbrofExpressionBesoinEnAttente}}</span>
+          </a>
+            <div  ngbDropdownMenu aria-labelledby="dropdownBasic2">
+              <div   *ngFor="let e of ExpressionBesoinEnAttentes">
+              <span><i class="bi bi-person-circle"></i>:{{e.user.username}},</span>
+              <span>objet:{{e.objet}}</span></div>
+            </div>
+          </div>
+        </li>-->
+        <li class="notification nav-item" ngbDropdown>
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+            <i class="fas fa-bell"></i>
+            <span class="badge">{{nbrofExpressionBesoinEnAttente}}</span>
 
-<!--          </a>-->
-<!--          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">-->
-<!--            <a ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes">-->
-<!--              <span><i style="color:green"class="fa fa-spinner" aria-hidden="true"></i>  <span style="color:darkslategray">   Nom</span>:{{e.user.username}},</span>-->
-<!--              <span style="color:darkslategray">   L'objet</span><span>   :{{e.objet}}</span>-->
-<!--            </a>-->
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+            <a ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes">
+              <span><i style="color:green"class="fa fa-spinner" aria-hidden="true"></i>  <span style="color:darkslategray">   Nom</span>:{{e.user.username}},</span>
+              <span style="color:darkslategray">   L'objet</span><span>   :{{e.objet}}</span>
+            </a>
 
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li class="nav-item dropdown">-->
-<!--          <div ngbDropdown class="d-inline-block">-->
-<!--            <a class="btn" id="dropdownBasic1" ngbDropdownToggle><i class="user fa fa-user fa-fw"></i> User</a>-->
-<!--            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">-->
-<!--              <button ngbDropdownItem>info</button>-->
-<!--              <button ngbDropdownItem>deconnecte</button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--      </ul>-->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <div ngbDropdown class="d-inline-block">
+            <a class="btn" id="dropdownBasic1" ngbDropdownToggle><i class="user fa fa-user fa-fw"></i> User</a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>info</button>
+              <button ngbDropdownItem>deconnecte</button>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-<!--    </div>-->
-<!--    &lt;!&ndash; Collapsible wrapper &ndash;&gt;-->
-<!--  </div>-->
-<!--  &lt;!&ndash; Container wrapper &ndash;&gt;-->
-<!--</nav>-->
-<!--&lt;!&ndash; Navbar &ndash;&gt;-->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

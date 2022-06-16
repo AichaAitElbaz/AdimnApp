@@ -11,11 +11,14 @@ export class DashboardService {
   private _user:User;
 
 
+
   constructor(private http:HttpClient) {
 
   }
   public getUsers(){
     return this.http.get<Array<User>>("http://localhost:8096/v1/admin/user/");
+  }public getttc_par_annee(){
+    return this.http.get<number>("http://localhost:8096/v1/admin/commande/getttc_par_anne");
   }
 
   public getNumberOfUsers(){
