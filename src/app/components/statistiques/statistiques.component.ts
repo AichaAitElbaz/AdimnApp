@@ -84,7 +84,7 @@ export class StatistiquesComponent implements OnInit {
       data: {
         labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
         datasets: [{
-          label: "nombre d'expression  e besoins par moi",
+          label: "nombre d'expressions de besoins par moi",
           data: this.list_montant_mois,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -107,10 +107,16 @@ export class StatistiquesComponent implements OnInit {
       },
       options: {
         scales: {
+
           y: {
-            display: false,
-            beginAtZero: true
+
+            min: 0,
+
+            ticks: {
+              // forces step size to be 50 units
+              stepSize: 1
           }
+        }
         }
       }
     });const myChart3 = new Chart("myChart3", {
@@ -138,7 +144,7 @@ export class StatistiquesComponent implements OnInit {
       data: {
         labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
         datasets: [{
-          label: "nombre d'expression  e besoins par moi",
+          label: "les charges de cette annee",
           data: this.list_montant_mois_commande,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -163,8 +169,13 @@ export class StatistiquesComponent implements OnInit {
         scales: {
 
           y: {
-            display: false,
-            beginAtZero: true
+
+            min: 0,
+
+            ticks: {
+              // forces step size to be 50 units
+              stepSize: 1
+            }
           }
         }
       }
