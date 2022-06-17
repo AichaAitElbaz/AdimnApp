@@ -26,8 +26,9 @@
     </thead>
     <tbody>
     <tr *ngFor="let f of fournisseurItems; index as i">
-      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,f)"></td>
-       <td>{{ f.fournisseur.nomFournisseur}}</td>
+      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,f)">
+      </td>
+      <td>{{ f.fournisseur.nomFournisseur}}</td>
       <td>{{ f.fournisseur.emailFournisseur}}</td>
       <td>{{f.fournisseur.villeFournisseur}}
       </td>
@@ -37,21 +38,22 @@
     </tbody>
     <!--    <button mat-raised-button color="warn" mat-dialog-close (click)="navigate('T')">ok</button>-->
 
-  <tfoot>
+    <tfoot>
 
-  <tr>
-    <td><i class="fa fa-edit btn btn-outline-primary"
-           style="margin:10px;padding-top: 0px; border: solid white;"
-           (click)="addFournisseur(fournisseurItem)"></i>
+    <tr>
+      <td><i class="fa fa-edit btn btn-outline-primary"
+             style="margin:10px;padding-top: 0px; border: solid white;"
+             (click)="addFournisseur(fournisseurItem)"></i>
 
-    </td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.nomFournisseur"></td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur"></td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur"></td>
+      </td>
+      <td><input [(ngModel)]="fournisseurItem.fournisseur.nomFournisseur"></td>
+      <td><input [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur"></td>
+      <td><input [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur"></td>
 
-  </tr>
-  <button mat-raised-button color="warn" mat-dialog-close >Retour</button>
-  </tfoot> </table>
+    </tr>
+    <button mat-raised-button color="warn" mat-dialog-close>Retour</button>
+    </tfoot>
+  </table>
 </div>
 
 <!--

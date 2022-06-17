@@ -4,7 +4,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  background-color: #8690a3;
+  /*background-color: #0f1041;*/
+  background: -webkit-linear-gradient(90deg, #dce5dc,#9ea69b,#d9dcd6);/* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(90deg, #dce5dc,#9ea69b,#d9dcd6);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .header{
   margin-bottom:60px;
