@@ -55,5 +55,7 @@ color:lightgray;}
  .dropdown-menu{
    width:800px
  }
-
+span{
+  background:transparent;
+}
 

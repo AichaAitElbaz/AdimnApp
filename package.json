@@ -25,6 +25,7 @@
     "@fortawesome/angular-fontawesome": "^0.10.2",
     "@ng-bootstrap/ng-bootstrap": "~12.1.1",
     "@popperjs/core": "^2.11.5",
+    "angular-utils": "^0.2.7",
     "bootstrap": "^5.1.3",
     "chart.js": "^3.8.0",
     "font-awesome": "^4.7.0",
