@@ -155,52 +155,74 @@ export class TableauBesoinService {
 
     this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", this.tableauBesoin).subscribe(
       data => {
+      })
+    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
+      data => {
+        data.forEach(d => {
+          console.log(77777777777777777)
+          console.log("d=" + d)
+          this.tableauBesoin = d;
+          console.log(this.tableauBesoin)
+        })
+        this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
+        this.fournisseursSelectionne.forEach(f => {
+            this.tableauBesoinItem.fournisseur = f;
+            this.tableauBesoinItem.statut = "En attente"
+            this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
+              data => {
+              })
+            this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
+              data => {
+                data.forEach(d => {
+                    console.log(d)
+                    this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur + "/" + d.reference).subscribe(
+                      data => {
+                      })
+                  }
+                )
+                this.tableauBesoin.statut = "envoye"
+
+                this.http.put("http://localhost:8096/v1/admin/tableau-besoin/update/statut/envoye",this.tableauBesoin).subscribe(
+                  data => {
+                  })
+              })
+          }
+        )
 
       }
     )
+
   }
 
   getTableauBesoinEnCours() {
-    console.log("data")
-    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
-      data => {
-        console.log("data")
-        data.forEach(d=>{
-          this.tableauBesoinItem.tableauBesoin = d;
-          console.log("hoooooooooooo" + d)
-          this.fournisseursSelectionne.forEach(f => {
-            this.tableauBesoinItem.fournisseur = f;
-            // this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
-            console.log("hahowa" + this.tableauBesoinItem.tableauBesoin)
-            this.tableauBesoinItem.statut = "En attente"
-            this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
-              data => {
-                this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
-                  data=>{
-                    data.forEach(d=>{
-                      this.tableauBesoinItem=d;
-                        this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur +"/"+this.tableauBesoinItem.reference).subscribe(
-                          data => {
-                            console.log("send email")
-                          }
-                        )
-                      }
-                    )                    })
-                  }
-                )
 
-          })
-          this.http.post("http://localhost:8096/v1/admin/tableau-besoin/update", d).subscribe(
-            data => {
-              console.log("tab envoye")
-            }
-          )
-          this.fournisseursSelectionne = new Array();
-          this.itemsSelectionne = new Array();
-        })
-      }
-    )
   }
+  //   console.log("data")
+  //   this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
+  //     data => {
+  //       data.forEach(d=>{
+  //
+  //               this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
+  //                 data=>{
+  //                   data.forEach(d=>{
+  //                     this.tableauBesoinItem=d;
+  //
+  //                       )
+  //                     }
+  //                   )                    })
+  //                 })
+  //         })
+  //         this.http.post("http://localhost:8096/v1/admin/tableau-besoin/update", d).subscribe(
+  //           data => {
+  //             console.log("tab envoye")
+  //           }
+  //         )
+  //         this.fournisseursSelectionne = new Array();
+  //         this.itemsSelectionne = new Array();
+  //
+  //
+  //
+  // }
 
   saveTableauBesoinItem() {
     // this.getTableauBesoinEnCours();
@@ -225,21 +247,22 @@ export class TableauBesoinService {
         data => {
         }
       )
-      this.sendBonCommande(r);
+      // this.sendBonCommande(r);
     })
   }
 
   getItemsEnAttenteDeDevis() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/envoyee").subscribe(
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/attente-devis").subscribe(
       data => {
         this.itemsEnvoyee = [...data]
       }
     )
   }
-  sendBonCommande(t:TableauBesoinItem){
-    this.http.get("http://localhost:8096/v1/admin/EmailSender/" +t.fournisseur.emailFournisseur  +"/").subscribe(
-      data => {
-      }
-    )
-  }
+
+  // sendBonCommande(t:TableauBesoinItem){
+  //   this.http.get("/v1/admin/EmailSender/+"+t.fournisseur.emailFournisseur+{sujet}/{path}"   +"/").subscribe(
+  //     data => {
+  //     }
+  //   )
+  // }
 }

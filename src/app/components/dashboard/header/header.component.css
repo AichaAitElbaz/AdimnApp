@@ -14,8 +14,8 @@
   left: 0;
 }
 *{
-  color: black;
-  background: #e4e3e6;
+  color: lightgoldenrodyellow;
+  background: #0f1041;
 
   /*position: relative;*/
   border-radius: 5px;
@@ -25,7 +25,7 @@
 .navbar{
   height:50px;
   margin:5px 0px 10px 0px;
-  background: #e8e8e9;
+  background: transparent;
 
 }
 
@@ -56,4 +56,6 @@ color:lightgray;}
    width:800px
  }
 
-
+input{
+  /*background-color: red;*/
+}

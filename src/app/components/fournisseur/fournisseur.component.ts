@@ -100,4 +100,9 @@ export class FournisseurComponent implements OnInit {
   get fournisseurItem(): FournisseurItem {
     return this.fournisseurService.fournisseurItem;
   }
+  setInhidden(id:string){
+    document.getElementsByName(id).forEach(e=>{
+      e.hidden=false
+    })
+  }
 }

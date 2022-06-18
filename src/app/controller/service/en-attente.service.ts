@@ -144,6 +144,14 @@ export class EnAttenteService {
 
   }
 
+  setExprTraitee(expressionBesoin:ExpressionBesoin) {
+    expressionBesoin.statut = "traitee";
+    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+      data => {
+        console.log(expressionBesoin.statut)
+      }
+    )
+  }
 
   archiver(expressionBesoin
              :
@@ -278,7 +286,6 @@ export class EnAttenteService {
       }
     )
   }
-
 
 
   //

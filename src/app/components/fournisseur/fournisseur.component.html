@@ -26,51 +26,28 @@
     </thead>
     <tbody>
     <tr *ngFor="let f of fournisseurItems; index as i">
-      <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,f)"></td>
-       <td>{{ f.fournisseur.nomFournisseur}}</td>
+      <td><input class="form-check-input"  type="checkbox" value="" id="flexCheckChecked " (change)="fonction($event,f)">
+      </td>
+      <td>{{ f.fournisseur.nomFournisseur}}</td>
       <td>{{ f.fournisseur.emailFournisseur}}</td>
       <td>{{f.fournisseur.villeFournisseur}}
       </td>
     </tr>
-
-
     </tbody>
-    <!--    <button mat-raised-button color="warn" mat-dialog-close (click)="navigate('T')">ok</button>-->
 
-  <tfoot>
+    <tfoot>
 
-  <tr>
-    <td><i class="fa fa-edit btn btn-outline-primary"
-           style="margin:10px;padding-top: 0px; border: solid white;"
-           (click)="addFournisseur(fournisseurItem)"></i>
+    <tr>
+      <td>
+        <i class="fa btn fa-solid  fa-user-plus" style="  color: red;" (click)="setInhidden('x')"></i>
+        <i class="fa btn fa-solid fa-check" style="  color: #00a65a;" name="x" hidden (click)="addFournisseur(fournisseurItem)"></i>      </td>
+      <td><input hidden="true" name="x" id="x"  [(ngModel)]="fournisseurItem.fournisseur.nomFournisseur" placeholder="Nom">
+      </td>
+      <td><input hidden="true" name="x"  [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur" placeholder="Email"></td>
+      <td><input hidden="true" name="x"[(ngModel)]="fournisseurItem.fournisseur.villeFournisseur" placeholder="Ville"></td>
 
-    </td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.nomFournisseur"></td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur"></td>
-    <td><input [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur"></td>
-
-  </tr>
-  <button mat-raised-button color="warn" mat-dialog-close >Retour</button>
-  </tfoot> </table>
+    </tr>
+        <button mat-raised-button color="accent" mat-dialog-close>Retour</button>
+    </tfoot>
+  </table>
 </div>
-
-<!--
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@300&display=swap"
-      rel="stylesheet">
-
-<div class="container">
-  <div class="card"  *ngFor="let c of typesfournisseur">
-    <figure class="card__thumb">
-      <img src="https://source.unsplash.com/75S9fpDJVdo/300x510" alt="Picture by Kyle Cottrell" class="card__image">
-      <figcaption class="card__caption">
-        <h2 class="card__title">{{c.type}}</h2>
-        <p class="card__snippet">NASA released a list of 219 new “planet candidates” discovered by the Kepler space
-          telescope, 10 of which are similar to Earth’s size and may be habitable by other life forms.</p>
-        <a href="" class="card__button">Read more</a>
-      </figcaption>
-    </figure>
-  </div>
-
-
-</div>
--->

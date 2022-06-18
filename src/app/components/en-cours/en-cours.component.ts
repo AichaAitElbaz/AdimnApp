@@ -57,7 +57,9 @@ export class EnCoursComponent implements OnInit {
   archiver(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.archiver(expressionBesoin);
   }
-
+  setExprTraitee(expressionBesoin:ExpressionBesoin){
+    this.enAttenteService.setExprTraitee(expressionBesoin)
+  }
   update(expressionBesoin: ExpressionBesoin) {
     this.enAttenteService.update(expressionBesoin);
   }

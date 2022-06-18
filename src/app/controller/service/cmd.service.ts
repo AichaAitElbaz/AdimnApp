@@ -376,4 +376,7 @@ export class CmdService {
     )
   }
 
+  sendBnReception() {
+
+  }
 }

@@ -70,7 +70,7 @@ export class TypeFournisseurComponent implements OnInit {
 
   openTableauBesoin() {
     this.DIALOG.open(TableauBesoinComponent, {
-      height: '500px',
+      height: '300px',
       width: '600px'
     })
   }

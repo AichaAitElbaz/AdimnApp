@@ -64,6 +64,7 @@ import { CmdComponent } from './components/cmd/cmd.component';
 import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { EnAttenteLaivraisonDetailsComponent } from './components/en-attente-laivraison-details/en-attente-laivraison-details.component';
+import { DemandesTraiteesComponent } from './components/demandes-traitees/demandes-traitees.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { EnAttenteLaivraisonDetailsComponent } from './components/en-attente-lai
     EnAttenteDevisComponent,
     PaiementComponent,
     EnAttenteLaivraisonDetailsComponent,
+    DemandesTraiteesComponent,
   ],
 
   imports: [

@@ -8,10 +8,19 @@ import {User} from "../model/user.model";
 })
 export class ArchiveeService {
 private _expressionBesoinsArchivees:Array<ExpressionBesoin>;
+private _expressionBesoinsTraitees:Array<ExpressionBesoin>;
 private _users:Array<User>;
 
   constructor(private http:HttpClient) { }
 
+
+  get expressionBesoinsTraitees(): Array<ExpressionBesoin> {
+    return this._expressionBesoinsTraitees;
+  }
+
+  set expressionBesoinsTraitees(value: Array<ExpressionBesoin>) {
+    this._expressionBesoinsTraitees = value;
+  }
 
   get expressionBesoinsArchivees(): Array<ExpressionBesoin> {
     if (this._expressionBesoinsArchivees==null)this._expressionBesoinsArchivees=new Array<ExpressionBesoin>()
@@ -30,6 +39,16 @@ private _users:Array<User>;
         console.log(data)
 
         this.expressionBesoinsArchivees = [...data];
+      }
+    )  }
+  getExpressionBesoinsTraitees() {
+    console.log("ven")
+    const iterator = "traitee";
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/"+iterator).subscribe(
+      data => {
+        console.log(data)
+
+        this.expressionBesoinsTraitees = [...data];
       }
     )  }
 

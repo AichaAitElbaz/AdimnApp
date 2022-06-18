@@ -50,7 +50,7 @@ export class TableauBesoinComponent implements OnInit {
   saveTableauBesoinItem() {
     this.tableauBesoinService.saveTableauBesoinItem();
   }
-  getTableauBesoinEnCours(){
-    this.tableauBesoinService.getTableauBesoinEnCours();
-  }
+  // getTableauBesoinEnCours(){
+  //   this.tableauBesoinService.getTableauBesoinEnCours();
+  // }
 }

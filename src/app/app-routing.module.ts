@@ -31,6 +31,7 @@ import {BonCmdComponent} from "./components/bon-cmd/bon-cmd.component";
 import {CmdComponent} from "./components/cmd/cmd.component";
 import {EnAttenteDevisComponent} from "./components/en-attente-devis/en-attente-devis.component";
 import {PaiementComponent} from "./components/paiement/paiement.component";
+import {DemandesTraiteesComponent} from "./components/demandes-traitees/demandes-traitees.component";
 
 const routes: Routes = [
   {
@@ -57,6 +58,7 @@ const routes: Routes = [
       {path:'items',component:ItemsComponent},
       {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
       {path:'reponse',component:FournisseurReponseComponent},
+      {path:'demandes traitees',component:DemandesTraiteesComponent},
       {path:'bn-cmd',component:BonCmdComponent},
       {path:'cmd',component:CmdComponent},
     ]
