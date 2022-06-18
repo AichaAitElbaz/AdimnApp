@@ -5,6 +5,7 @@ import {User} from "../../controller/model/user.model";
 import {Chart} from "chart.js";
 import {AjaxError} from "rxjs/ajax";
 import {TabViewModule} from 'primeng/tabview';
+import {ColorPicker} from "primeng/colorpicker";
 
 
 export interface PeriodicElement {
@@ -84,7 +85,7 @@ export class StatistiquesComponent implements OnInit {
       data: {
         labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
         datasets: [{
-          label: "nombre d'expression  e besoins par moi",
+          label: "nombre d'expressions de besoins par moi",
           data: this.list_montant_mois,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -107,9 +108,16 @@ export class StatistiquesComponent implements OnInit {
       },
       options: {
         scales: {
+
           y: {
-            beginAtZero: true
+
+            min: 0,
+
+            ticks: {
+              // forces step size to be 50 units
+              stepSize: 1
           }
+        }
         }
       }
     });const myChart3 = new Chart("myChart3", {
@@ -137,31 +145,23 @@ export class StatistiquesComponent implements OnInit {
       data: {
         labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
         datasets: [{
-          label: "nombre d'expression  e besoins par moi",
+          label: "les charges de cette annee en DH",
           data: this.list_montant_mois_commande,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
+          borderColor: 'rgb(54, 162, 235)',
           borderWidth: 1
         }]
       },
       options: {
         scales: {
+
           y: {
-            beginAtZero: true
+
+            min: 0,
+
+            ticks: {
+              // forces step size to be 50 units
+              stepSize: 100
+            }
           }
         }
       }

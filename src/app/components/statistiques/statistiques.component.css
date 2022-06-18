@@ -89,7 +89,7 @@ tr:hover {
   background-color: #cdcdcd;
 }
 .tableFixHead {
-  overflow-y: auto;
+  overflow-y: scroll;
   height:200px;
 }
 .tableFixHead thead th {
