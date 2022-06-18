@@ -18,16 +18,19 @@
       {{ e.user.serviceDemandeur }}
     </td>
     <td>{{ e.statut }}</td>
-    <td>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="icon btn-outline-primary" (click)="updateInUser(e);save(e)">bookmark_border</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon class="btn-outline-success"(click)="getItemsByExpressionBesoinRef(e);openDialog()">description</mat-icon>
-      </button>
+    <td><i class="btn-outline-solid fas  fa-check-circle" style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px" (click)="updateInUser(e);save(e)"></i>
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+
+<!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
+<!--      </button>-->
+      <i class="btn-solid fas fa-trash" style="color:firebrick;cursor: pointer;display: inline-block; margin-right: 20px" (click)="archiver(e);update(e)"></i>
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+<!--        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>-->
+<!--      </button>-->
+      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;" (click)="getItemsByExpressionBesoinRef(e);openDialog()"></i>
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+<!--        <mat-icon class="btn-outline-success"(click)="getItemsByExpressionBesoinRef(e);openDialog()">description</mat-icon>-->
+<!--      </button>-->
     </td>
   </tr>
   </tbody>

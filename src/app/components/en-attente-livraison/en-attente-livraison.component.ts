@@ -55,4 +55,8 @@ export class EnAttenteLivraisonComponent implements OnInit {
   setCmdLaivree(){
     this.cmdService.setCmdLaivree(this.cmdService.cmdsLaivrees,"laivree");
   }
+
+  sendBnReception() {
+    this.cmdService.sendBnReception();
+  }
 }

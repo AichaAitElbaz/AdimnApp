@@ -12,7 +12,7 @@
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
+      ggggg
     </button>
 
     <!-- Collapsible wrapper -->
@@ -57,9 +57,10 @@
 
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-            <a ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes">
+            <a ngbDropdownItem href="#"*ngFor="let e of ExpressionBesoinEnAttentes" routerLink="en-attente">
               <span><i style="color:green"class="fa fa-spinner" aria-hidden="true"></i>  <span style="color:darkslategray">   Nom</span>:{{e.user.username}},</span>
               <span style="color:darkslategray">   L'objet</span><span>   :{{e.objet}}</span>
+              <span style="color:darkslategray">   date:</span><span>   :{{e.dateExb}}</span>
             </a>
 
           </div>

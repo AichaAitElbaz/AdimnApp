@@ -19,7 +19,10 @@
 .main-menu:hover, nav.main-menu.expanded {
   overflow: visible;
 }
-
+ul{
+  overflow-y:scroll ;
+height:90vh;
+}
 .main-menu {
   border-radius: 8px;
   background: #f1f1f1;

@@ -13,17 +13,20 @@
     </td>
     <td>{{ e.quantite}}<br><input hidden="true" id="input-qte" ></td>
     <td>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            (click)="setItemEnCours(e,'En cours')" >
-        <mat-icon class="icon btn-outline-primary">bookmark_border</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  (click)="setItemEnCours(e,'suprimée')">
-        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="setiputInhidden('input-designation');setiputInhidden('input-qte')">
-        <mat-icon class="btn-outline-success" >description</mat-icon>
+      <i class="btn-outline-solid fas  fa-check-circle"  (click)="setItemEnCours(e,'En cours')" style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px" ></i>
+      <i class="btn-solid fas fa-trash"  (click)="setItemEnCours(e,'suprimée')" style="color:firebrick;cursor: pointer;display: inline-block; margin-right: 20px" ></i>
 
-      </button>
+      <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"-->
+<!--            (click)="setItemEnCours(e,'En cours')" >-->
+<!--        <mat-icon class="icon btn-outline-primary">bookmark_border</mat-icon>-->
+<!--      </button>-->
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"  (click)="setItemEnCours(e,'suprimée')">-->
+<!--        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>-->
+<!--      </button>-->
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="setiputInhidden('input-designation');setiputInhidden('input-qte')">-->
+<!--        <mat-icon class="btn-outline-success" >description</mat-icon>-->
+
+<!--      </button>-->
     </td>
 
   </tr>
