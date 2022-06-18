@@ -29,7 +29,6 @@ export class EnAttenteComponent implements OnInit {
   }
 
   get expressionBesoins2(): Array<ExpressionBesoin> {
-
     return this.enAttenteService.expressionBesoins2;
   }
 
