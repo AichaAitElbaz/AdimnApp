@@ -341,6 +341,14 @@ export class CmdService {
     )
   }
 
+  getCommandeEnattentePaiemant() {
+    this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
+      data => {
+        this.cmdsAttLaivr = [...data]
+      }
+    )
+  }
+
   findTableauBesoinItemByRef(ref: string) {
     this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/" + ref).subscribe(
       data => {
@@ -357,9 +365,9 @@ export class CmdService {
     )
   }
 
-  setCmdLaivree(cmds:Array<Commande>,statut:string) {
+  setCmdLaivree(cmds: Array<Commande>, statut: string) {
     cmds.forEach(cmd => {
-      this.http.put("http://localhost:8096/v1/admin/commande/update/statut/"+statut, cmd).subscribe(
+      this.http.put("http://localhost:8096/v1/admin/commande/update/statut/" + statut, cmd).subscribe(
         data => {
           console.log("cmd update")
         }
@@ -368,10 +376,11 @@ export class CmdService {
 
   }
 
-  getCmdsAttPaiement(){
+  getCmdsAttPaiement() {
     this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
-      data=>{
-        this.cmdsEnAttPaiemenet=[...data]
+      data => {
+        this.cmdsEnAttPaiemenet = [...data]
+        console.log(this.cmdsAttLaivr)
       }
     )
   }

@@ -59,7 +59,6 @@ import {TableModule} from "primeng/table";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {Ng2OrderModule} from "ng2-order-pipe";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { CmdComponent } from './components/cmd/cmd.component';
 import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attente-devis.component';
 import { PaiementComponent } from './components/paiement/paiement.component';

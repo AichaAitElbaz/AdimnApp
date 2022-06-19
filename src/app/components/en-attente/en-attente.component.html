@@ -1,36 +1,42 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">Nom</th>
-    <th scope="col">Objet</th>
-    <th scope="col">Service</th>
+    <th scope="col">Demandeurs</th>
+    <th scope="col">Services</th>
+    <th scope="col">Objets</th>
     <th scope="col">Statut</th>
-    <th scope="col">Action</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let e of expressionBesoins2; index as i">
     <td>
-      {{ e.user.username }}
+      {{ e.user.firstname }} {{e.user.lastname}}
     </td>
-    <td>{{ e.objet  }}</td>
+
     <td>
       {{ e.user.serviceDemandeur }}
     </td>
+    <td>{{ e.objet  }}</td>
     <td>{{ e.statut }}</td>
-    <td><i class="btn-outline-solid fas  fa-check-circle" style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px" (click)="updateInUser(e);save(e)"></i>
-<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+    <td><i class="btn-outline-solid fas  fa-check-circle"
+           style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px"
+           (click)="updateInUser(e);save(e)"></i>
+      <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
 
-<!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
-<!--      </button>-->
-      <i class="btn-solid fas fa-trash" style="color:firebrick;cursor: pointer;display: inline-block; margin-right: 20px" (click)="archiver(e);update(e)"></i>
-<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-<!--        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>-->
-<!--      </button>-->
-      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;" (click)="getItemsByExpressionBesoinRef(e);openDialog()"></i>
-<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-<!--        <mat-icon class="btn-outline-success"(click)="getItemsByExpressionBesoinRef(e);openDialog()">description</mat-icon>-->
-<!--      </button>-->
+      <!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
+      <!--      </button>-->
+      <i class="btn-solid fas fa-trash"
+         style="color:firebrick;cursor: pointer;display: inline-block; margin-right: 20px"
+         (click)="archiver(e);update(e)"></i>
+      <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+      <!--        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>-->
+      <!--      </button>-->
+      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
+         (click)="getItemsByExpressionBesoinRef(e);openDialog()"></i>
+      <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
+      <!--        <mat-icon class="btn-outline-success"(click)="getItemsByExpressionBesoinRef(e);openDialog()">description</mat-icon>-->
+      <!--      </button>-->
     </td>
   </tr>
   </tbody>

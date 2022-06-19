@@ -83,9 +83,9 @@ export class StatistiquesComponent implements OnInit {
     const myChart = new Chart("myChart", {
       type: 'bar',
       data: {
-        labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [{
-          label: "nombre d'expressions de besoins par moi",
+          label: "Nombre d'expressions des besoins par mois",
           data: this.list_montant_mois,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -143,9 +143,9 @@ export class StatistiquesComponent implements OnInit {
     const myChart2 = new Chart("myChart2", {
       type: 'line',
       data: {
-        labels: ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'out', 'septembre', 'october', 'novembre', 'december'],
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
         datasets: [{
-          label: "les charges de cette annee en DH",
+          label: "Les charges de cette année en DH",
           data: this.list_montant_mois_commande,
           borderColor: 'rgb(54, 162, 235)',
           borderWidth: 1

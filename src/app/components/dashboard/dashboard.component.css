@@ -4,10 +4,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
-  background: #0f1041;
+  background: #0c0d2a;
 }
 .header{
   margin-bottom:60px;
+  background:transparent;
 }
 
 .col-md-9{

@@ -2,9 +2,9 @@
   <thead>
   <tr>
     <th></th>
-    <th scope="col">Code de commande</th>
-    <th scope="col">Date de commande</th>
-    <th>Fournisseur</th>
+    <th scope="col">Codes des commandes</th>
+    <th scope="col">Dates des commandes</th>
+    <th>Fournisseurs</th>
     <th scope="col">Details</th>
 
   </tr>
@@ -22,9 +22,13 @@
     <td>
       {{c.tableauBesoinItem.fournisseur.nomFournisseur}}
     </td>
-    <td>   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="findCmdByCode(c);openDialog()">
-      <mat-icon class="btn-outline-success" >description</mat-icon>
-    </button></td>
+    <td>
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"-->
+<!--                      >-->
+<!--      <mat-icon class="btn-outline-success">description</mat-icon>-->
+      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"  (click)="findCmdByCode(c);openDialog()"></i>
+
+    </td>
 
   </tr>
   </tbody>

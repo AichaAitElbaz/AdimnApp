@@ -45,24 +45,24 @@
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">Nom</th>
-    <th scope="col">Objet</th>
-    <th scope="col">Service</th>
+    <th scope="col">Demandeurs</th>
+    <th scope="col">Services</th>
+    <th scope="col">Objets</th>
     <th scope="col">Statut</th>
-    <th scope="col">Action</th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let e of expressionBesoinsAcceptees; index as i">
     <td>
-      {{ e.user.username }}
+      {{ e.user.firstname }} {{e.user.lastname}}
     </td>
     <td>
       {{ e.user.serviceDemandeur }}
     </td>
     <td>{{ e.objet  }}</td>
     <td>{{ e.statut }}</td>
-    <td>
+
     <td>
     <i class="btn-outline-solid fas  fa-check-circle" (click)="setExprTraitee(e)" style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px" ></i>
 

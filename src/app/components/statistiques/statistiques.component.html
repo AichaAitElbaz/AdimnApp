@@ -14,7 +14,7 @@
       <div class="card-box bg-blue">
         <div class="inner">
           <h3> {{ttc_par_anne}} Dh</h3>
-          <p> charges  </p>
+          <p> Charges  </p>
         </div>
         <div class="icon">
           <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
       <div class="card-box bg-orange">
         <div class="inner">
           <h3> {{numberOfExpressionBesoinEnattente}} </h3>
-          <p> Demmande En attente </p>
+          <p> Demmandes en attente </p>
         </div>
         <div class="icon">
           <i class="fa fa-spinner" aria-hidden="true"></i>
@@ -48,7 +48,7 @@
       <div class="card-box bg-red">
         <div class="inner">
           <h3> {{numberOfUsers}} </h3>
-          <p> les utilisateur </p>
+          <p> Les utilisateurs </p>
         </div>
         <div class="icon">
           <i class="fa fa-users"></i>
@@ -77,9 +77,8 @@
       <p-table [value]="users" responsiveLayout="scroll">
         <ng-template pTemplate="header">
           <tr>
-            <th>id</th>
-            <th>nom</th>
-            <th>service</th>
+            <th>Demandeurs</th>
+            <th>Services</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
@@ -89,7 +88,6 @@
 
 
           >
-            <td>{{user.id}}</td>
             <td>{{user.username}}</td>
             <td>{{user.serviceDemandeur}}</td>
           </tr>
