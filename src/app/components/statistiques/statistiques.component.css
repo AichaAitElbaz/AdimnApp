@@ -90,7 +90,7 @@ tr:hover {
 }
 .tableFixHead {
   overflow-y: scroll;
-  height:200px;
+  height:160px;
 }
 .tableFixHead thead th {
   position: sticky;
@@ -112,3 +112,4 @@ th {
   position: sticky;
   top: 0;
 }
+
