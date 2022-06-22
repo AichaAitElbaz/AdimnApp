@@ -27,10 +27,10 @@ public ExpressionBesoinEnAttentes:Array<ExpressionBesoin>;
 
 
   showNotifications() {
-      this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/employe/en-attente-expression-services").subscribe(
+      this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/"+"En attente").subscribe(
         data=>{
           this.ExpressionBesoinEnAttentes=[...data];
-          console.log(data)
+          console.log("show"+data)
         }
       )
   }
