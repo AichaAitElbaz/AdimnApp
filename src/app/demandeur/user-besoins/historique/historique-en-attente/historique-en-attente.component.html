@@ -1,0 +1,35 @@
+<div class="col-md-12 mt-3">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Objet</th>
+      <th scope="col">Date</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Details</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of expressionBesoinsEnAttente">
+
+      <td>{{c.objet}}</td>
+      <td>{{c.dateExb}}</td>
+      <td>{{c.statut}}</td>
+      <td>
+        <i class="btn fa fa-map-marker-plus" ></i>
+        <i class="fa-solid fa-circle-info"style="color:mediumblue;cursor: pointer;display: inline-block;" (click)="opendetails();findExpressionBesoinItemByExpressionObjet(c)"></i>
+        <!--        <button routerLink="details" routerLinkActive="active"  mat-mini-fab color="warn" aria-label="Example icon button with a menu icon">-->
+        <!--          <mat-icon>info</mat-icon>-->
+        <!--        </button>-->
+        <!--        <button mat-raised-button color="primary" routerLink="details" routerLinkActive="active" (click)="opendetails();findExpressionBesoinItemByExpressionObjet(c)">-->
+        <!--          <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>-->
+        <!--        </button>-->
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+

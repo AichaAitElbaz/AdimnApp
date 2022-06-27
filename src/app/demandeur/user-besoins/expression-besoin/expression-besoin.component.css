@@ -1,0 +1,13 @@
+
+.alert {
+  font-size: 14px;
+  color: red;
+  /*display: flex;
+  height: 20px;
+  align-items: center;
+
+  text-align: center;
+  font-size: 14px;
+  border-color: #e87171;
+  background-color: #f1c8c8;*/
+}

@@ -1,0 +1,30 @@
+<div  class="card-header">
+  <h4 style="text-align: center"> détail </h4>
+</div>
+<div class="card-body" >
+  <table class="table " >
+    <thead>
+
+    <th>Reference</th>
+    <th>Désignations</th>
+    <th>Quantité</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of expressionBesoin.expressionBesoinItems,index as i">
+      <td>{{c.ref}}</td>
+      <td>{{c.produit.libelle}}</td>
+      <td>{{c.quantite}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+<div class="card-footer">
+
+ <!-- <button mat-dialog-close style=" border-color: crimson"  color="primary"> Fermé</button>
+  -->
+
+  <button mat-flat-button mat-dialog-close color="primary"> Fermé </button>
+
+</div>

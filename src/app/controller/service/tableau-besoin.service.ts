@@ -159,10 +159,7 @@ export class TableauBesoinService {
     this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
       data => {
         data.forEach(d => {
-          console.log(77777777777777777)
-          console.log("d=" + d)
           this.tableauBesoin = d;
-          console.log(this.tableauBesoin)
         })
         this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
         this.fournisseursSelectionne.forEach(f => {
@@ -171,21 +168,7 @@ export class TableauBesoinService {
             this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
               data => {
               })
-            this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
-              data => {
-                data.forEach(d => {
-                    console.log(d)
-                    this.http.get("http://localhost:8096/v1/admin/EmailSender/" + f.emailFournisseur + "/" + d.reference).subscribe(
-                      data => {
-                      })
-                  }
-                )
-                this.tableauBesoin.statut = "envoye"
 
-                this.http.put("http://localhost:8096/v1/admin/tableau-besoin/update/statut/envoye",this.tableauBesoin).subscribe(
-                  data => {
-                  })
-              })
           }
         )
 
@@ -194,9 +177,25 @@ export class TableauBesoinService {
 
   }
 
+  sendEmail() {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
+      data => {
+        data.forEach(d => {
+            console.log(d)
+            this.http.get("http://localhost:8096/v1/admin/EmailSender/" + d.fournisseur.emailFournisseur + "/" + d.reference).subscribe(
+              data => {
+                console.log("88888888888888888888888888888888"+d.fournisseur)
+              })
+          }
+        )
+
+      })
+  }
+
   getTableauBesoinEnCours() {
 
   }
+
   //   console.log("data")
   //   this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
   //     data => {

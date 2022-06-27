@@ -1,0 +1,38 @@
+<div class="col-md-12 mt-4">
+    <table class="table table-hover table-striped ">
+      <thead>
+
+
+      <!--      <th>id</th>-->
+      <!--      <th>reference</th>-->
+      <th>objet</th>
+      <th>date</th>
+      <th>statut</th>
+      <th>detail</th>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let c of expressionBesoinsRefusees">
+        <!--        <td>{{c.id}}</td>-->
+        <!--        <td>{{c.reference}}</td>-->
+        <td>{{c.objet}}</td>
+        <td>{{c.dateExb}}</td>
+        <td>{{c.statut}}</td>
+
+        <!--      <td><i class="fa fa-address-book btn btn-outline-primary" routerLink="details" routerLinkActive="active" (click)="opendetails();findExpressionBesoinItemByExpressionObjet(c)"></i></td>-->
+        <td>
+<!--          <button mat-dialog-close style="background-color:aqua" routerLink="details" routerLinkActive="active"-->
+<!--                  (click)="opendetails();findExpressionBesoinItemByExpressionObjet(c)">details-->
+<!--          </button>-->
+
+
+          <button routerLinkActive="active"
+                  (click)="opendetails();findExpressionBesoinItemByExpressionObjet(c)" mat-mini-fab color="warn" aria-label="Example icon button with a menu icon">
+            <mat-icon>info</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+

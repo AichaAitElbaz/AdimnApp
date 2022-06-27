@@ -1,0 +1,52 @@
+<header class="mb-4">
+  <div class="container-xl px-3">
+    <div class="col-4">
+      <img src="assets/img/téléchargement.png" alt="">
+
+    </div>
+    <div class="col-8 justify-content-center links">
+      <ul>
+        <!--        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>-->
+        <li>
+          <a routerLink="/home/demande-expression-de-besoin" routerLinkActive="active" class="link">Expressions des besoins</a>
+        </li>
+        <li>
+          <a routerLink="/home/historique" routerLinkActive="active" class="link">Historique</a>
+        </li>
+        <!--        <li>-->
+        <!--          <a>Login</a>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <a-->
+<!--        <button class="btn btn-primary" type="submit" (click)="logout()" >logout</button>-->
+<!--        <button class="navbar-toggler"  type="submit" data-toggle="collapse" data-target="#collapsibleNavbar">-->
+<!--          <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+
+
+        <!--          >Register</a-->
+        <!--          >-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <a-->
+        <!--          >Management</a-->
+        <!--          >-->
+        <!--        </li>-->
+      </ul>
+    </div>
+    <div class="col-1 justify-content-end end">
+      <ul>
+        <li >
+          <a [matMenuTriggerFor]="menu"
+          ><i class="bi bi-person-lines-fill" style="font-size: 20px"></i> </a>
+        </li>
+
+      </ul>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </div>
+  </div>
+</header>

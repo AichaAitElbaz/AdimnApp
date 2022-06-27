@@ -64,9 +64,40 @@ import { EnAttenteDevisComponent } from './components/en-attente-devis/en-attent
 import { PaiementComponent } from './components/paiement/paiement.component';
 import { EnAttenteLaivraisonDetailsComponent } from './components/en-attente-laivraison-details/en-attente-laivraison-details.component';
 import { DemandesTraiteesComponent } from './components/demandes-traitees/demandes-traitees.component';
+import { HomeComponent } from './home/home.component';
+import { DemandeurComponent } from './demandeur/demandeur.component';
+import {NavbarComponent} from "./demandeur/navbar/navbar.component";
+import {ExpressionBesoinComponent} from "./demandeur/user-besoins/expression-besoin/expression-besoin.component";
+import {MenubareComponent} from "./demandeur/user-besoins/menubare/menubare.component";
+import {DetailsComponent} from "./demandeur/user-besoins/details/details.component";
+import {HistoriqueRefuseComponent} from "./demandeur/user-besoins/historique/historique-refuse/historique-refuse.component";
+import {HistoriqueSideBareComponent} from "./demandeur/user-besoins/historique/historique-side-bare/historique-side-bare.component";
+import {HistoriqueAccepteesComponent} from "./demandeur/user-besoins/historique/historique-acceptees/historique-acceptees.component";
+import {HistoriqueTermineesComponent} from "./demandeur/user-besoins/historique/historique-terminees/historique-terminees.component";
+import {HistoriqueEnAttenteComponent} from "./demandeur/user-besoins/historique/historique-en-attente/historique-en-attente.component";
+import {RegisterDemandeurComponent} from "./demandeur/user-besoins/register-demandeur/register-demandeur.component";
+import {DesignationItemComponent} from "./demandeur/user-besoins/designation-item/designation-item.component";
+import {SignInDemandeurComponent} from "./demandeur/user-besoins/sign-in/sign-in.component";
+import {UserBesoinsComponent} from "./demandeur/user-besoins/user-besoins.component";
+import {MatMenuModule} from "@angular/material/menu";
+import {HistoriqueComponent} from "./demandeur/user-besoins/historique/historique.component";
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
+    HistoriqueComponent,
+    RegisterDemandeurComponent,
+    UserBesoinsComponent,
+    SignInDemandeurComponent,
+    DesignationItemComponent,
+    HistoriqueTermineesComponent,
+    HistoriqueEnAttenteComponent,
+    HistoriqueRefuseComponent,
+    HistoriqueAccepteesComponent,
+    DetailsComponent,
+    MenubareComponent,
+    ExpressionBesoinComponent,
+    NavbarComponent,
     AppComponent,
     ComponentsComponent,
     UpBareComponent,
@@ -108,6 +139,8 @@ import { DemandesTraiteesComponent } from './components/demandes-traitees/demand
     PaiementComponent,
     EnAttenteLaivraisonDetailsComponent,
     DemandesTraiteesComponent,
+    HomeComponent,
+    DemandeurComponent,
   ],
 
   imports: [
@@ -145,6 +178,8 @@ import { DemandesTraiteesComponent } from './components/demandes-traitees/demand
     MatTabsModule,
     TabViewModule,
     TableModule,
+    MatMenuModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

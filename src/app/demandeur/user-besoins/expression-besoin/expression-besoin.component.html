@@ -1,0 +1,143 @@
+<app-menubare></app-menubare>
+<div class="row mt-2" id="expr">
+  <div class="col-md-6 form-group ">
+    <div class="row">
+      <div class="col-5 mb-2">
+        <label>Service * </label>
+        <select class="form-select" aria-label="Default select example" required
+                [(ngModel)]="user.serviceDemandeur" #serviceDemandeur="ngModel">
+          <option selected=>service</option>
+          <option *ngFor="let s of services">{{s.nom}}</option>
+        </select>
+        <div *ngIf="serviceDemandeur.invalid && (serviceDemandeur.dirty || serviceDemandeur.touched)"
+             class="alert">
+
+          <div *ngIf="serviceDemandeur.errors?.['required']">
+            Veuillez sélectionner un service valide.
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+      <div class="col-5 mb-2">
+        <label>Nature du demande * </label>
+        <select class="form-select   " required [(ngModel)]="expressionBesoin.natureDemande.nom"
+                #natureDemande="ngModel">
+          <option selected=></option>
+          <option *ngFor="let g of natureDemandes">{{g.nom}}</option>
+        </select>
+        <div *ngIf="natureDemande.invalid && (natureDemande.dirty || natureDemande.touched)"
+             class="alert">
+
+          <div *ngIf="natureDemande.errors?.['required']">
+            Veuillez sélectionner une nature valide.
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    <div class="col-12  mb-2">-->
+<!--      <label>Reference * </label>-->
+<!--      <input type="text" class="form-control" required-->
+<!--             [(ngModel)]="expressionBesoin.user.reference" #reference="ngModel">-->
+<!--      <div *ngIf="reference.invalid && (reference.dirty || reference.touched)"-->
+<!--           class="alert">-->
+
+<!--        <div *ngIf="reference.errors?.['required']">-->
+<!--          Veuillez saisir un reference valide.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div class="col-12  mb-2">
+      <label for="inputlg">Objet *</label>
+      <input class="form-control" id="inputlg"  [(ngModel)]="expressionBesoin.objet" >
+      <!--<div *ngIf="objettt.invalid && (objettt.dirty || objettt.touched)"
+           class="alert">
+
+        <div *ngIf="objettt.errors?.['required']">
+          Veuillez saisir un objet valide.
+        </div> -->
+
+    </div>
+    <div class="card col-12  mb-4">
+      <div class="card-header">Ajouter une désignation</div>
+      <div class="card-body">
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <label>Désignation * </label>
+            <textarea required [(ngModel)]="produit.libelle" class="form-control" rows="2" type="text"
+                      #design="ngModel"></textarea>
+            <div *ngIf="design.invalid && (design.dirty || design.touched)"
+                 class="alert">
+
+              <div *ngIf="design.errors?.['required']">
+                Veuillez saisir une désignation.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <label>Quantité * </label>
+            <input type="number" min="1" required [(ngModel)]="expressionBesoinItem.quantite" class="form-control"
+                   #qte="ngModel">
+            <div *ngIf="qte.invalid && (qte.dirty || qte.touched)"
+                 class="alert">
+
+              <div *ngIf="qte.errors?.['required']">
+                Veuillez saisir une quantité valide.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+
+        <button mat-raised-button color="warn" (click)="getlistofExpressionBesoinItem()"> Ajouter <i
+          class="fa fa-plus"></i></button>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6 ">
+    <h4 class="mb-4">Liste des désignations</h4>
+    <table class="table table-striped table-hover">
+      <thead>
+      <!--<th>id</th>-->
+      <th>Libellé</th>
+      <th>Quantité</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let c of expressionBesoin.expressionBesoinItems,index as i">
+        <td>{{c.produit.libelle}}</td>
+        <td>{{c.quantite}}</td>
+        <td>
+          <i class="fa-solid fa-trash" style="margin:0 10px;color:firebrick" (click)="deletefromlist(i)">
+
+          </i>
+          <i class="fa-solid fa-pencil" style="margin:0 10px;color:gold"
+             (click)="update(i,c)"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div class="row ">
+  <div class="col-md-9"></div>
+  <div class="col-md-3">
+    <button mat-raised-button style="background-color: mediumblue;color: #c4c3ca" (click)="save()"
+            [disabled]="
+            serviceDemandeur.invalid || natureDemande.invalid
+"> valider <i
+      class="fa fa-send"></i></button>
+
+    <button class="ms-3" mat-raised-button style="background-color: darkgoldenrod;color: #c4c3ca" id="btn" hidden="true" (click)="imprimer()"> Imprimer <i
+      class="fa fa-print"></i>
+    </button>
+
+  </div>
+</div>
+

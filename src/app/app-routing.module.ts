@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 
 import {CommonModule} from "@angular/common";
@@ -32,14 +32,30 @@ import {CmdComponent} from "./components/cmd/cmd.component";
 import {EnAttenteDevisComponent} from "./components/en-attente-devis/en-attente-devis.component";
 import {PaiementComponent} from "./components/paiement/paiement.component";
 import {DemandesTraiteesComponent} from "./components/demandes-traitees/demandes-traitees.component";
+import {HomeComponent} from "./home/home.component";
+import {UserBesoinsComponent} from "./demandeur/user-besoins/user-besoins.component";
+import {HistoriqueComponent} from "./demandeur/user-besoins/historique/historique.component";
+import {AuthGuard} from "./controller/auth/auth.guard";
+import {ExpressionBesoinComponent} from "./demandeur/user-besoins/expression-besoin/expression-besoin.component";
+import {RegisterDemandeurComponent} from "./demandeur/user-besoins/register-demandeur/register-demandeur.component";
+import {SignInDemandeurComponent} from "./demandeur/user-besoins/sign-in/sign-in.component";
 
 const routes: Routes = [
+  {path: 'homeDemandeur', redirectTo: "/home/demande-expression-de-besoin", pathMatch: "full"},
   {
-    path: '', component: DashboardComponent, children: [
+    path: 'home', component: UserBesoinsComponent, children: [
+      {path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuard]},
+      {path: 'demande-expression-de-besoin', component: ExpressionBesoinComponent, canActivate: [AuthGuard]},
+    ]
+  },
+  {path: 'loginDemandeur', component: SignInDemandeurComponent},
+  {path: 'register', component: RegisterDemandeurComponent},
+  {
+    path: 'dashbord', component: DashboardComponent, children: [
 
       {path: 'statistiques', component: StatistiquesComponent},
       {path: 'paiement', component: PaiementComponent},
-      {path: '', component: StatistiquesComponent},
+      {path: 'statistique', component: StatistiquesComponent},
       {path: 'en-attente', component: EnAttenteComponent},
       {path: 'en-cours', component: EnCoursComponent},
       {path: 'dialog', component: DialogComponent},
@@ -50,25 +66,28 @@ const routes: Routes = [
       {path: 'archivee', component: ArchiveeComponent},
       {path: 'terminee', component: TermineeComponent},
       {path: 'virement', component: VirementComponent},
-      {path:'SI',component:SignInComponent},
-      {path:'sidebar',component:SideBareComponent},
-      {path:'C',component:ItemEnCoursComponent},
-      {path:'T',component:TableauBesoinComponent},
-      {path:'tf',component:TypeFournisseurComponent},
-      {path:'items',component:ItemsComponent},
-      {path:'itemsSuprimees',component:ItemsSuprimeesComponent},
-      {path:'reponse',component:FournisseurReponseComponent},
-      {path:'demandes traitees',component:DemandesTraiteesComponent},
-      {path:'bn-cmd',component:BonCmdComponent},
-      {path:'cmd',component:CmdComponent},
+      {path: 'SI', component: SignInComponent},
+      {path: 'sidebar', component: SideBareComponent},
+      {path: 'C', component: ItemEnCoursComponent},
+      {path: 'T', component: TableauBesoinComponent},
+      {path: 'tf', component: TypeFournisseurComponent},
+      {path: 'items', component: ItemsComponent},
+      {path: 'itemsSuprimees', component: ItemsSuprimeesComponent},
+      {path: 'reponse', component: FournisseurReponseComponent},
+      {path: 'demandes traitees', component: DemandesTraiteesComponent},
+      {path: 'bn-cmd', component: BonCmdComponent},
+      {path: 'cmd', component: CmdComponent},
     ]
   },
   {path: 's/:id', component: ServiceComponent},
-  {path: 'login', component: SignInComponent}
+  {path: 'login', component: SignInComponent},
+  {path: '', component: HomeComponent},
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),CommonModule],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
