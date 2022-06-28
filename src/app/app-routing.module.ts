@@ -39,44 +39,45 @@ import {AuthGuard} from "./controller/auth/auth.guard";
 import {ExpressionBesoinComponent} from "./demandeur/user-besoins/expression-besoin/expression-besoin.component";
 import {RegisterDemandeurComponent} from "./demandeur/user-besoins/register-demandeur/register-demandeur.component";
 import {SignInDemandeurComponent} from "./demandeur/user-besoins/sign-in/sign-in.component";
+import {AuthGuardD} from "./demandeur/controller/auth/auth.guard";
 
 const routes: Routes = [
   {path: 'homeDemandeur', redirectTo: "/home/demande-expression-de-besoin", pathMatch: "full"},
   {
-    path: 'home', component: UserBesoinsComponent, children: [
-      {path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuard]},
-      {path: 'demande-expression-de-besoin', component: ExpressionBesoinComponent, canActivate: [AuthGuard]},
+    path: 'home', component: UserBesoinsComponent,  canActivate: [AuthGuardD],children: [
+      {path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardD]},
+      {path: 'demande-expression-de-besoin', component: ExpressionBesoinComponent, canActivate: [AuthGuardD]},
     ]
   },
   {path: 'loginDemandeur', component: SignInDemandeurComponent},
   {path: 'register', component: RegisterDemandeurComponent},
   {
-    path: 'dashbord', component: DashboardComponent, children: [
+    path: 'dashbord', component: DashboardComponent, canActivate: [AuthGuard], children: [
 
-      {path: 'statistiques', component: StatistiquesComponent},
-      {path: 'paiement', component: PaiementComponent},
-      {path: 'statistique', component: StatistiquesComponent},
-      {path: 'en-attente', component: EnAttenteComponent},
-      {path: 'en-cours', component: EnCoursComponent},
-      {path: 'dialog', component: DialogComponent},
-      {path: 'F', component: FournisseurComponent},
-      {path: 'devis', component: EnAttenteDevisComponent},
-      {path: 'livraison', component: EnAttenteLivraisonComponent},
-      {path: 'paiement', component: EnAttentePaiementComponent},
-      {path: 'archivee', component: ArchiveeComponent},
-      {path: 'terminee', component: TermineeComponent},
-      {path: 'virement', component: VirementComponent},
-      {path: 'SI', component: SignInComponent},
-      {path: 'sidebar', component: SideBareComponent},
-      {path: 'C', component: ItemEnCoursComponent},
-      {path: 'T', component: TableauBesoinComponent},
-      {path: 'tf', component: TypeFournisseurComponent},
-      {path: 'items', component: ItemsComponent},
-      {path: 'itemsSuprimees', component: ItemsSuprimeesComponent},
-      {path: 'reponse', component: FournisseurReponseComponent},
-      {path: 'demandes traitees', component: DemandesTraiteesComponent},
-      {path: 'bn-cmd', component: BonCmdComponent},
-      {path: 'cmd', component: CmdComponent},
+      {path: 'statistiques', component: StatistiquesComponent , canActivate: [AuthGuard]      },
+      {path: 'paiement', component: PaiementComponent ,canActivate: [AuthGuard]},
+      {path: 'statistique', component: StatistiquesComponent ,canActivate: [AuthGuard]},
+      {path: 'en-attente', component: EnAttenteComponent ,canActivate: [AuthGuard]},
+      {path: 'en-cours', component: EnCoursComponent ,canActivate: [AuthGuard]},
+      {path: 'dialog', component: DialogComponent ,canActivate: [AuthGuard]},
+      {path: 'F', component: FournisseurComponent ,canActivate: [AuthGuard]},
+      {path: 'devis', component: EnAttenteDevisComponent ,canActivate: [AuthGuard]},
+      {path: 'livraison', component: EnAttenteLivraisonComponent ,canActivate: [AuthGuard]},
+      {path: 'paiement', component: EnAttentePaiementComponent ,canActivate: [AuthGuard]},
+      {path: 'archivee', component: ArchiveeComponent ,canActivate: [AuthGuard]},
+      {path: 'terminee', component: TermineeComponent ,canActivate: [AuthGuard]},
+      {path: 'virement', component: VirementComponent ,canActivate: [AuthGuard]},
+      {path: 'SI', component: SignInComponent ,canActivate: [AuthGuard]},
+      {path: 'sidebar', component: SideBareComponent ,canActivate: [AuthGuard]},
+      {path: 'C', component: ItemEnCoursComponent ,canActivate: [AuthGuard]},
+      {path: 'T', component: TableauBesoinComponent ,canActivate: [AuthGuard]},
+      {path: 'tf', component: TypeFournisseurComponent ,canActivate: [AuthGuard]},
+      {path: 'items', component: ItemsComponent ,canActivate: [AuthGuard]},
+      {path: 'itemsSuprimees', component: ItemsSuprimeesComponent ,canActivate: [AuthGuard]},
+      {path: 'reponse', component: FournisseurReponseComponent ,canActivate: [AuthGuard]},
+      {path: 'demandes traitees', component: DemandesTraiteesComponent ,canActivate: [AuthGuard]},
+      {path: 'bn-cmd', component: BonCmdComponent ,canActivate: [AuthGuard]},
+      {path: 'cmd', component: CmdComponent ,canActivate: [AuthGuard]},
     ]
   },
   {path: 's/:id', component: ServiceComponent},

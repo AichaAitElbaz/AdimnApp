@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 })
 export class AuthService {
 
-  readonly API = "http://localhost:8095";
+  readonly API = "http://localhost:8096";
   private _user = new User();
   private _loadeduser = new User();
   public role: string;
@@ -67,7 +67,7 @@ export class AuthService {
     this.authenticated = false;
     this._loggedIn.next(false);
     this._authenticatedUser = new User();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/loginDemandeur']);
   }
 
   public loadInfos() {
@@ -115,7 +115,7 @@ export class AuthService {
             'success'
 
           )
-          this.router.navigate(['login']);
+          this.router.navigate(['loginDemandeur']);
         }
       }, error => {
         console.log(error);
