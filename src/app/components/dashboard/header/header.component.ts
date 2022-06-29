@@ -6,6 +6,7 @@ import {SideBareComponent} from "../../side-bare/side-bare.component";
 import {FournisseurComponent} from "../../fournisseur/fournisseur.component";
 import {ExpressionBesoin} from "../../../controller/model/expression-besoin.model";
 import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../../controller/auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ import {HttpClient} from "@angular/common/http";
 export class HeaderComponent implements OnInit {
 public nbrofExpressionBesoinEnAttente:number;
 public ExpressionBesoinEnAttentes:Array<ExpressionBesoin>;
-  constructor(private dashboardservice:DashboardService,private DIALOG: MatDialog,private http:HttpClient) { }
+  constructor(private dashboardservice:DashboardService,private DIALOG: MatDialog,private http:HttpClient , private auth: AuthService) { }
 
 
   ngOnInit(): void {
@@ -33,5 +34,8 @@ public ExpressionBesoinEnAttentes:Array<ExpressionBesoin>;
           console.log("show"+data)
         }
       )
+  }
+  logout() {
+    this.auth.logout();
   }
 }
