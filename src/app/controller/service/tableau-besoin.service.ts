@@ -17,15 +17,60 @@ export class TableauBesoinService {
   }
 
   private _itemsSelectionne = new Array<ExpressionBesoinItem>();
+  private _items = new Array<ExpressionBesoinItem>();
+  private _foundeditems = new Array<ExpressionBesoinItem>();
   private _itemsEnvoyee = new Array<ExpressionBesoinItem>();
   private _itemsEnCours = new Array<ExpressionBesoinItem>();
   private _fournisseursSelectionne = new Array<Fournisseur>();
+  private _fournisseurs = new Array<Fournisseur>();
+  private _foundedfournisseurs = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
-  private _tableauBesoinItem = new TableauBesoinItem();
+  private _tableauBesoinItem =new TableauBesoinItem();
   private _tableauBesoinItems = new Array<TableauBesoinItem>();
   private _tableauBesoin = new TableauBesoin();
   private _tableauBesoinEnCours = new Array<TableauBesoin>();
+  private _tableauBesoins = new Array<TableauBesoin>();
 
+
+  get tableauBesoins(): TableauBesoin[] {
+    return this._tableauBesoins;
+  }
+
+  set tableauBesoins(value: TableauBesoin[]) {
+    this._tableauBesoins = value;
+  }
+
+  get foundeditems(): ExpressionBesoinItem[] {
+    return this._foundeditems;
+  }
+
+  set foundeditems(value: ExpressionBesoinItem[]) {
+    this._foundeditems = value;
+  }
+
+  get items(): ExpressionBesoinItem[] {
+    return this._items;
+  }
+
+  set items(value: ExpressionBesoinItem[]) {
+    this._items = value;
+  }
+
+  get fournisseurs(): Fournisseur[] {
+    return this._fournisseurs;
+  }
+
+  set fournisseurs(value: Fournisseur[]) {
+    this._fournisseurs = value;
+  }
+
+  get foundedfournisseurs(): Fournisseur[] {
+    return this._foundedfournisseurs;
+  }
+
+  set foundedfournisseurs(value: Fournisseur[]) {
+    this._foundedfournisseurs = value;
+  }
 
   get tableauBesoinItems(): TableauBesoinItem[] {
     return this._tableauBesoinItems;
@@ -112,7 +157,6 @@ export class TableauBesoinService {
 
 
   saveTableauBesoinsItems() {
-    console.log("888888")
     this.fournisseursSelectionne.forEach(f => {
       this.tableauBesoinItem1.fournisseur = f;
       this.itemsSelectionne.forEach(i => {
@@ -131,47 +175,32 @@ export class TableauBesoinService {
 
   setItem(expressionBesoinItem: ExpressionBesoinItem, statut: string) {
     expressionBesoinItem.statut = statut;
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin-item/", expressionBesoinItem).subscribe(
+    this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/updateStatut", expressionBesoinItem).subscribe(
       data => {
-        console.log("hello aicha")
       }
     )
   }
 
-  getItemsEnvoye() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/envoyee").subscribe(
+  getItemsSelectionnees() {
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/selectionnee").subscribe(
       data => {
         this.itemsEnCours = [...data]
       }
     )
   }
 
-  saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
-    this.tableauBesoin.expressionBesoinItems = expressionBesoinItems;
-    expressionBesoinItems.forEach(e => {
-      this.setItem(e, 'attente-devis');
+  saveTableauBesoin(tab: TableauBesoin, expressionBesoinItems: ExpressionBesoinItem[]) {
+    this.getFourniseursSelectionnes();
+    this.fournisseurs.forEach(f => {
+      this.tableauBesoinItem.fournisseur = f;
+      this.tableauBesoinItems.push(this.tableauBesoinItem);
+      console.log(this.tableauBesoinItems)
     })
-    this.tableauBesoin.statut = "en cours"
-
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", this.tableauBesoin).subscribe(
+    tab.expressionBesoinItems = expressionBesoinItems;
+    tab.tableauBesoinItems = this.tableauBesoinItems;
+    tab.statut = "en cours"
+    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", tab).subscribe(
       data => {
-      })
-    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
-      data => {
-        data.forEach(d => {
-          this.tableauBesoin = d;
-        })
-        this.tableauBesoinItem.tableauBesoin = this.tableauBesoin;
-        this.fournisseursSelectionne.forEach(f => {
-            this.tableauBesoinItem.fournisseur = f;
-            this.tableauBesoinItem.statut = "En attente"
-            this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
-              data => {
-              })
-
-          }
-        )
-
       }
     )
 
@@ -181,10 +210,9 @@ export class TableauBesoinService {
     this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
       data => {
         data.forEach(d => {
-            console.log(d)
             this.http.get("http://localhost:8096/v1/admin/EmailSender/" + d.fournisseur.emailFournisseur + "/" + d.reference).subscribe(
               data => {
-                console.log("88888888888888888888888888888888"+d.fournisseur)
+                1
               })
           }
         )
@@ -224,9 +252,6 @@ export class TableauBesoinService {
   // }
 
   saveTableauBesoinItem() {
-    // this.getTableauBesoinEnCours();
-    // this.tableauBesoinItem.tableauBesoin.statut = "envoye"
-
 
   }
 
@@ -251,17 +276,82 @@ export class TableauBesoinService {
   }
 
   getItemsEnAttenteDeDevis() {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/statut/attente-devis").subscribe(
+    this.http.get<Array<TableauBesoin>>("http://localhost:8096/v1/admin/tableau-besoin/statut/en%20cours").subscribe(
       data => {
-        this.itemsEnvoyee = [...data]
+        this.tableauBesoins= [...data]
+
       }
     )
   }
 
-  // sendBonCommande(t:TableauBesoinItem){
-  //   this.http.get("/v1/admin/EmailSender/+"+t.fournisseur.emailFournisseur+{sujet}/{path}"   +"/").subscribe(
-  //     data => {
-  //     }
-  //   )
-  // }
+  saveSelectionnes() {
+    console.log(88888888888888888888)
+    this.itemsSelectionne.forEach(i => {
+      i.statut = "selectionnee"
+      this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/updateStatut", i).subscribe(
+        data => {
+          console.log(i)
+        }
+      )
+    })
+    this.fournisseursSelectionne.forEach(f => {
+      f.statut = "selectionnee"
+      this.http.put("http://localhost:8096/v1/admin/fournisseur/updateStatut", f)
+        .subscribe(
+          data => {
+            console.log(f)
+          }
+        )
+    })
+  }
+
+  getFourniseursSelectionnes() {
+    this.http.get<Array<Fournisseur>>("http://localhost:8096/v1/admin/fournisseur/statut/selectionnee").subscribe(
+      data => {
+        this.fournisseurs = [...data];
+      }
+    )
+
+  }
+
+  getTableauBesoinItem(reference) {
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/" + reference).subscribe(
+      data => {
+        this.tableauBesoinItem = data;
+      }
+    )
+  }
+
+  saveTableauBesoinItem2(tableauBesoinItem: TableauBesoinItem) {
+    let ht = 0;
+    tableauBesoinItem.tva = tableauBesoinItem.tableauBesoin.tva;
+    tableauBesoinItem.tableauBesoin.expressionBesoinItems.forEach(e => {
+      ht += e.pu * e.quantite;
+    })
+    tableauBesoinItem.ht = ht;
+    tableauBesoinItem.ttc = ht + (tableauBesoinItem.tva * ht) / 100;
+    tableauBesoinItem.statut = "reçu"
+    this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", tableauBesoinItem).subscribe(
+      data => {
+
+      }
+    )
+
+  }
+  findDesignationsByTableauBesoinsRef(tableauBesoin:TableauBesoin){
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/tableau-besoin/reference/"+tableauBesoin.reference).subscribe(
+      data=>{
+        this.foundeditems=[...data];
+        console.log(this.foundeditems)
+      }
+    )
+  }
+  findFournisseursByStatutTableauBesoinRef(statut:string,tableauBesoin:TableauBesoin){
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/tableauBesoin/reference/"+statut+"/"+tableauBesoin.reference).subscribe(
+      data=>{
+       this.tableauBesoinItems=[...data]
+
+      }
+    )
+  }
 }

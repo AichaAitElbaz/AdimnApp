@@ -37,7 +37,6 @@ import {HeaderComponent} from './components/dashboard/header/header.component';
 import {SidebarComponent} from './components/dashboard/sidebar/sidebar.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {StatistiquesComponent} from './components/statistiques/statistiques.component';
-import {VirementComponent} from './components/virement/virement.component';
 import {TermineeComponent} from './components/terminee/terminee.component';
 import {TableauBesoinComponent} from './components/tableau-besoin/tableau-besoin.component';
 import {MatTableModule} from "@angular/material/table";
@@ -83,6 +82,11 @@ import {MatMenuModule} from "@angular/material/menu";
 import {HistoriqueComponent} from "./demandeur/user-besoins/historique/historique.component";
 import {MatRippleModule} from "@angular/material/core";
 import { FournisseurDetailsComponent } from './components/fournisseur-details/fournisseur-details.component';
+import { TableauBesoinSendedComponent } from './components/tableau-besoin-sended/tableau-besoin-sended.component';
+import { AttenteDevisDetailsComponent } from './components/attente-devis-details/attente-devis-details.component';
+import { AttenteDevisFournisseursComponent } from './components/attente-devis-fournisseurs/attente-devis-fournisseurs.component';
+import { FournisseursResponsesDetailsComponent } from './components/fournisseurs-responses-details/fournisseurs-responses-details.component';
+import { EnAttenteViremenetComponent } from './components/en-attente-viremenet/en-attente-viremenet.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +122,6 @@ import { FournisseurDetailsComponent } from './components/fournisseur-details/fo
     SidebarComponent,
     DashboardComponent,
     StatistiquesComponent,
-    VirementComponent,
     TermineeComponent,
     EnAttenteItemsComponent,
     TableauBesoinComponent,
@@ -143,6 +146,11 @@ import { FournisseurDetailsComponent } from './components/fournisseur-details/fo
     HomeComponent,
     DemandeurComponent,
     FournisseurDetailsComponent,
+    TableauBesoinSendedComponent,
+    AttenteDevisDetailsComponent,
+    AttenteDevisFournisseursComponent,
+    FournisseursResponsesDetailsComponent,
+    EnAttenteViremenetComponent,
   ],
 
   imports: [

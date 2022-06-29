@@ -1,42 +1,31 @@
-<!--<div *ngFor="let t of tableauBesoins" >-->
-<!--  <h6 [(ngModel)]="tableauBesoin1.reference"> <code> Tableau de Besoin:  {{t.reference}}</code></h6>-->
 <table class="table table-striped">
   <thead>
   <tr>
-    <th scope="col">Fournisseurs</th>
-    <th>Tableaux des besoins</th>
-    <th scope="col">TTC</th>
-    <th>Details</th>
     <th></th>
+    <th scope="col">TableauxBesoins</th>
+    <th scope="col">Dates</th>
+    <th scope="col">Devis</th>
+
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let x of tableauBesoinItemss">
-    <td>{{x.fournisseur.nomFournisseur}}</td>
 
-    <td>{{x.tableauBesoin.reference}}</td>
-    <td>{{x.ttc}}</td>
+  <tr *ngFor="let t of tableauBesoins">
+    <td>
+    </td>
+    <td>
+      {{t.reference}}
+    </td>
+    <td>
+    </td>
+
+
 
     <td>
-      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
-         (click)="findTabItemByRef(x.reference);openDialog()"></i>
-      <!--              <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-      <!--                <mat-icon class="btn-outline-success"-->
-      <!--                         >description-->
-      <!--                </mat-icon>-->
-      <!--              </button>-->
-    </td>
-    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,x)">
+      <i class="fas fa-users" style= "color:darkgoldenrod;cursor: pointer;display: inline-block;position: relative"
+         (click)="openFournisseurs(t)"></i>
     </td>
   </tr>
   </tbody>
-  <!--    <tfoot>-->
-  <!--    </tfoot>-->
+
 </table>
-<mat-divider></mat-divider>
-
-<!--  <button class="btn-warning" >ok</button>-->
-<button mat-raised-button mat-dialog-close style="margin-top: 400px;margin-left: 20px;   background-color: #f39c12"
-        (click)="setReponsesSeletcionnees();navigate('cmd')">Créer le bon de commande
-</button>
-

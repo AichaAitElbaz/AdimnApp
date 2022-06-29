@@ -39,6 +39,7 @@ export class AuthService {
   public loginUser(username: string, password: string) {
     this.http.post<any>(this.API + '/login', {username, password}, {observe: 'response'}).subscribe(
       resp => {
+        console.log("apres")
         this.error = null;
         const jwt = resp.headers.get('Authorization');
         jwt != null ? this.tokenService.saveToken(jwt) : false;

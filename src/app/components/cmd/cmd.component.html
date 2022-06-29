@@ -41,15 +41,13 @@
         <select class="form-select" aria-label="Default select example" [(ngModel)]="ligne.libelle"
                 (change)="getRubriques()">
           <option selected></option>
-          <option>Mobilier, matériel et fournitures de bureau
-          </option>
           <option *ngFor="let l of lignes">{{l.libelle}}</option>
         </select></div>
       <div class="col">
         <label><code>*Séléctionnez la rubrique</code></label>
         <select class="form-select" aria-label="Default select example">
           <option selected></option>
-          <option >Fournitures de bureau, produits d'impression, papeterie et imprimés
+          <option *ngFor="let r of rubriques" >{{r.libelle}}
           </option>
 <!--          <option selected *ngFor="let r of rubriques">{{r.libelle}}</option>-->
         </select></div>

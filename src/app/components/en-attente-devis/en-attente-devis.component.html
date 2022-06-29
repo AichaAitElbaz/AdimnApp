@@ -2,34 +2,34 @@
   <thead>
   <tr>
     <th></th>
-    <th scope="col">Désignations</th>
-    <th scope="col">Quantite</th>
+    <th scope="col">TableauxBesoins</th>
+    <th scope="col">Dates</th>
+    <th scope="col">Details</th>
+    <th scope="col">Devis</th>
 
   </tr>
   </thead>
   <tbody>
 
-  <tr *ngFor="let i of itemsEnvoyee">
+  <tr *ngFor="let t of tableauBesoins">
     <td>
     </td>
     <td>
-      {{i.libelle}}
+      {{t.reference}}
     </td>
     <td>
-      {{i.quantite}}
     </td>
+      <td >
+              <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;position: relative"
+              (click)="findDesignationsByTableauBesoinsRef(t);openDetails();"
+              ></i>
+      </td>
 
-    <!--    <td>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="openTypeFournisseur();getItemsAcceptees()">-->
-    <!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
-    <!--      </button>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-    <!--        <mat-icon class=" btn-outline-danger" (click)="archiver(e);update(e)">delete_outline</mat-icon>-->
-    <!--      </button>-->
-    <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-    <!--        <mat-icon class="btn-outline-success" (click)="openDialog2()">description</mat-icon>-->
-    <!--      </button>-->
-    <!--    </td>-->
+
+    <td>
+      <i class="fas fa-users" style= "color:darkgoldenrod;cursor: pointer;display: inline-block;position: relative"
+      (click)="findFournisseursByStatutTableauBesoinRef('en attente',t);openFournisseurs()"></i>
+    </td>
   </tr>
   </tbody>
 

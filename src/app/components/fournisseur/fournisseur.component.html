@@ -30,8 +30,8 @@
       </td>
       <td>{{ f.fournisseur.nomFournisseur}}</td>
       <td>{{ f.fournisseur.adresseFournisseur}}</td>
-      <td> <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
-              (click)="openDialog();findFournisseurByRef(f.fournisseur.referenceFournisseur)"></i>
+      <td><i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
+             (click)="openDialog();findFournisseurByRef(f.fournisseur.referenceFournisseur)"></i>
       </td>
     </tr>
     </tbody>
@@ -41,19 +41,27 @@
     <tr>
       <td>
         <i class="fa btn fa-solid  fa-user-plus" style="  color: red;" (click)="setInhidden('x')"></i>
-        <i class="fa btn fa-solid fa-check" style="  color: #00a65a;" name="x" hidden
-           (click)="addFournisseur(fournisseurItem)"></i></td>
+  </td></tr><tr>
       <td><input hidden="true" name="x" id="x" [(ngModel)]="fournisseurItem.fournisseur.nomFournisseur"
                  placeholder="Nom">
       </td>
       <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur" placeholder="Email">
       </td>
       <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.faxFournisseur" placeholder="Fax">
-      </td>   </tr><tr> <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur" placeholder="Ville">
-      </td>    <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.adresseFournisseur" placeholder="Adresse">
       </td>
-      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.telephoneFournisseur" placeholder="Tel">
+    </tr>
+    <tr>
+      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur" placeholder="Ville">
       </td>
+      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.adresseFournisseur"
+                 placeholder="Adresse">
+      </td>
+      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.telephoneFournisseur"
+                 placeholder="Tel">
+      </td>
+      <tr>
+      <td>      <i class="fa btn fa-solid fa-check" style="  color: #00a65a;" name="x" hidden
+                   (click)="addFournisseur(fournisseurItem)"></i></td>
     </tr>
     <button mat-raised-button mat-dialog-close style="background-color: #f39c12">Retour</button>
     </tfoot>

@@ -294,8 +294,8 @@ export class FournisseurService {
     )
   }
 
-  findTabItemEnAttente() {
-    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/reponse").subscribe(
+  findTabItemRecus() {
+    this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/re%C3%A7u").subscribe(
       data => {
         this.tableauBesoinItemss = [...data]
       }

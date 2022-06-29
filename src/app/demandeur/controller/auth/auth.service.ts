@@ -64,7 +64,7 @@ export class AuthService {
     this.authenticated = false;
     this._loggedIn.next(false);
     this._authenticatedUser = new User();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/loginDemandeur']);
   }
 
   public loadInfos() {

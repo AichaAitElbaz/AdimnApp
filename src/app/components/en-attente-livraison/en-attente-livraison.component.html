@@ -23,9 +23,7 @@
       {{c.tableauBesoinItem.fournisseur.nomFournisseur}}
     </td>
     <td>
-<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"-->
-<!--                      >-->
-<!--      <mat-icon class="btn-outline-success">description</mat-icon>-->
+
       <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"  (click)="findCmdByCode(c);openDialog()"></i>
 
     </td>
@@ -35,5 +33,5 @@
 
 </table>
 <div>
-  <button class="btn-warning" (click)="setCmdLaivree();sendBnReception()">confirmer</button>
+  <button class="btn-warning" (click)="setCmdLaivree()">confirmer</button>
 </div>

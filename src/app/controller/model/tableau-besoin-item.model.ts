@@ -3,7 +3,7 @@ import {TableauBesoin} from "./tableau-besoin.model";
 
 export class TableauBesoinItem {
   public fournisseur:Fournisseur;
-  public tableauBesoin=new TableauBesoin();
+  public tableauBesoin: TableauBesoin;
   public reference:string;
   public statut:string;
   public tva:number;

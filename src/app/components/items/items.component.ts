@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EnCoursService} from "../../controller/service/en-cours.service";
 import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
 import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
@@ -9,7 +9,8 @@ import {TableauBesoinService} from "../../controller/service/tableau-besoin.serv
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  constructor(private enCoursService:EnCoursService,private tableauBesoinService:TableauBesoinService) { }
+  constructor(private enCoursService: EnCoursService, private tableauBesoinService: TableauBesoinService) {
+  }
 
   ngOnInit(): void {
     this.enCoursService.getItemsAcceptees("En cours")
@@ -19,13 +20,11 @@ export class ItemsComponent implements OnInit {
     return this.enCoursService.ItemsAcceptees;
   }
 
-  fonction(event, expressionBesoinItem:ExpressionBesoinItem) {
-    if (event.target.checked==true){
-      console.log(expressionBesoinItem)
+  fonction(event, expressionBesoinItem: ExpressionBesoinItem) {
+    if (event.target.checked == true) {
       this.tableauBesoinService.itemsSelectionne.push(expressionBesoinItem);
     }
   }
-
 
 
   navigate(component: string) {

@@ -11,6 +11,11 @@ import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.mode
 import {Fournisseur} from "../../controller/model/fournisseur.model";
 import {CmdService} from "../../controller/service/cmd.service";
 import {EnCoursService} from "../../controller/service/en-cours.service";
+import {AttenteDevisDetailsComponent} from "../attente-devis-details/attente-devis-details.component";
+import {AttenteDevisFournisseursComponent} from "../attente-devis-fournisseurs/attente-devis-fournisseurs.component";
+import {
+  FournisseursResponsesDetailsComponent
+} from "../fournisseurs-responses-details/fournisseurs-responses-details.component";
 
 @Component({
   selector: 'app-fournisseur-reponse',
@@ -18,64 +23,35 @@ import {EnCoursService} from "../../controller/service/en-cours.service";
   styleUrls: ['./fournisseur-reponse.component.css']
 })
 export class FournisseurReponseComponent implements OnInit {
-
-  constructor(private fournisseurService: FournisseurService, private DIALOG: MatDialog, private tableauBesoinService: TableauBesoinService, private cmdService: CmdService
-    , private enCoursService: EnCoursService) {
-  }
+  constructor(private DIALOG:MatDialog,private tableauBesoinService:TableauBesoinService) { }
 
   ngOnInit(): void {
-    // this.fournisseurService.getTableauBrsoinsEnCours();
-    this.fournisseurService.findTabItemEnAttente();
+    this.tableauBesoinService.getItemsEnAttenteDeDevis();
   }
 
-  get tableauBesoin1(): TableauBesoin {
-    return this.fournisseurService.tableauBesoin1;
-  }
-  get expressionBesoinsItemsValidees(): Array<ExpressionBesoinItem> {
-    return this.fournisseurService.expressionBesoinsItemsValidees;
-  }
 
-  findTableauItemByexprCode(expressionBesoinItem: ExpressionBesoinItem) {
-    this.fournisseurService.findTableauItemByexprCode(expressionBesoinItem);
+  get tableauBesoins(): TableauBesoin[] {
+    return this.tableauBesoinService.tableauBesoins;
   }
-
-  get tableauBesoins(): Array<TableauBesoin> {
-    return this.fournisseurService.tableauBesoins;
+  findDesignationsByTableauBesoinsRef(tableauBesoin:TableauBesoin){
+    this.tableauBesoinService.findDesignationsByTableauBesoinsRef(tableauBesoin);
   }
-
-  get tableauBesoinItemss(): TableauBesoinItem[] {
-    return this.fournisseurService.tableauBesoinItemss;
+  findFournisseursByTableauBesoinRef(tableauBesoin:TableauBesoin) {
+    this.tableauBesoinService.findFournisseursByStatutTableauBesoinRef("recu",tableauBesoin);
   }
-
-  openDialog() {
-    this.DIALOG.open(TableaubackComponent, {
-      height: '400px',
+  public openDetails() {
+    this.DIALOG.open(AttenteDevisDetailsComponent, {
+      height: '600px',
       width: '600px'
     })
   }
 
-  fonction(event, tableauBesoinItem: TableauBesoinItem) {
-    if (event.target.checked == true) {
-      this.tableauBesoinService.reponseSelectionnees.push(tableauBesoinItem);
-      // this.tableauBesoinService.sendBonCommande(tableauBesoinItem);
-    }
+  public openFournisseurs(tableauBesoin:TableauBesoin) {
+    this.findFournisseursByTableauBesoinRef(tableauBesoin)
+    this.DIALOG.open(FournisseursResponsesDetailsComponent, {
+      height: '600px',
+      width: '600px'
+    })
   }
 
-  setReponsesSeletcionnees() {
-    this.tableauBesoinService.setReponsesSeletcionnees();
-  }
-
-  findTableauBesoinItemByTabAndFournisseur(tableauBesoin: TableauBesoin, fournisseur: Fournisseur) {
-    this.cmdService.findTableauBesoinItemByTabAndFournisseur(tableauBesoin, fournisseur)
-  }
-
-  navigate(component: string) {
-    this.enCoursService.navigate(component)
-  }
-  findTabItemEnAttente(){
-    this.fournisseurService.findTabItemEnAttente();
-  }
-  findTabItemByRef(ref:string){
-    this.fournisseurService.findTabItemByRef(ref)
-  }
 }

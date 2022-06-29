@@ -28,8 +28,8 @@ export class EnAttentePaiementComponent implements OnInit {
       this.cmdService.cmdsPayees.push(commande);
     }
   }
-  setCmdLaivree(){
-    this.cmdService.setCmdLaivree(this.cmdService.cmdsPayees,"payee");
+  setCmdPayee(){
+    this.cmdService.updateCmdStatue(this.cmdService.cmdsPayees,"payee");
   }
   findCmdByCode(cmd: Commande) {
     this.cmdService.findCmdByCode(cmd)

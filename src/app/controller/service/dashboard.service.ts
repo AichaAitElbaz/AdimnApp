@@ -25,7 +25,7 @@ export class DashboardService {
     return this.http.get<number>("http://localhost:8096/v1/admin/user/users")
   }
   public getNumberOfExpressionBesoinEnAttente(){
-    return this.http.get<number>("http://localhost:8096/v1/admin/expression-besoin/microservice/getNumberOfExpressionBesoinEnAttente")
+    return this.http.get<number>("http://localhost:8096/v1/admin/expression-besoin/statut/EnAttente")
   }
   public getnbrOfCommande(){
     return this.http.get<number>("http://localhost:8096/v1/admin/commande/getnbrOfCommande")

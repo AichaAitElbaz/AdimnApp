@@ -39,11 +39,29 @@ export class CmdService {
   private _cmdsAttLaivr = new Array<Commande>();
   private _cmdsLaivrees = new Array<Commande>();
   private _cmdsEnAttPaiemenet = new Array<Commande>();
+  private _cmdsEnAttVirement = new Array<Commande>();
   private _cmdsPayees = new Array<Commande>();
+  private _cmdsTerminees = new Array<Commande>();
 
   constructor(private http: HttpClient) {
   }
 
+
+  get cmdsTerminees(): Commande[] {
+    return this._cmdsTerminees;
+  }
+
+  set cmdsTerminees(value: Commande[]) {
+    this._cmdsTerminees = value;
+  }
+
+  get cmdsEnAttVirement(): Commande[] {
+    return this._cmdsEnAttVirement;
+  }
+
+  set cmdsEnAttVirement(value: Commande[]) {
+    this._cmdsEnAttVirement = value;
+  }
 
   get cmdsPayees(): Commande[] {
     return this._cmdsPayees;
@@ -319,7 +337,7 @@ export class CmdService {
   savebnCommande(cmd: Commande) {
     this.http.post("http://localhost:8096/v1/admin/commande/", this.cmd).subscribe(
       data => {
-        console.log(cmd)
+
       }
     )
   }
@@ -340,7 +358,13 @@ export class CmdService {
       }
     )
   }
-
+  getCommandeEnattenteVirement() {
+    this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/payee").subscribe(
+      data => {
+        this.cmdsEnAttVirement = [...data]
+      }
+    )
+  }
   getCommandeEnattentePaiemant() {
     this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
       data => {
@@ -361,15 +385,15 @@ export class CmdService {
     this.http.get<Commande>("http://localhost:8096/v1/admin/commande/code/" + cmd.code).subscribe(
       data => {
         this.foundedcmd = data;
+        console.log(this.foundedcmd)
       }
     )
   }
 
-  setCmdLaivree(cmds: Array<Commande>, statut: string) {
+  updateCmdStatue(cmds: Array<Commande>, statut: string) {
     cmds.forEach(cmd => {
       this.http.put("http://localhost:8096/v1/admin/commande/update/statut/" + statut, cmd).subscribe(
         data => {
-          console.log("cmd update")
         }
       )
     })
@@ -379,8 +403,15 @@ export class CmdService {
   getCmdsAttPaiement() {
     this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
       data => {
-        this.cmdsEnAttPaiemenet = [...data]
-        console.log(this.cmdsAttLaivr)
+        this.cmdsEnAttVirement = [...data]
+      }
+    )
+  }
+
+  getCmdsTerminees() {
+    this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/terminee").subscribe(
+      data => {
+        this.cmdsTerminees = [...data]
       }
     )
   }

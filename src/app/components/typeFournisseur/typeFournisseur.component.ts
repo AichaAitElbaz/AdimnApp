@@ -94,4 +94,7 @@ export class TypeFournisseurComponent implements OnInit {
       width: '800px'
     })
   }
-}
+  saveSelectionnes() {
+    this.tableauBesoinService.saveSelectionnes();
+  }
+  }

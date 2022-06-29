@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {FournisseurService} from "../../controller/service/fournisseur.service";
 import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
+import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 
 export interface PeriodicElement {
   name: string;
@@ -25,8 +26,7 @@ export class TableauBesoinComponent implements OnInit {
   // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 
   ngOnInit(): void {
-    this.tableauBesoinService.getItemsEnvoye();
-    // this.tableauBesoinService.getTableauBesoinEnCours();
+    this.tableauBesoinService.getItemsSelectionnees();
 
   }
 
@@ -43,8 +43,8 @@ export class TableauBesoinComponent implements OnInit {
     return this.tableauBesoinService.itemsEnCours;
   }
 
-  saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
-    this.tableauBesoinService.saveTableauBesoin(expressionBesoinItems);
+  saveTableauBesoin(tableauBesoin1:TableauBesoin,expressionBesoinItems: ExpressionBesoinItem[]) {
+    this.tableauBesoinService.saveTableauBesoin(tableauBesoin1,expressionBesoinItems);
   }
 
   saveTableauBesoinItem() {
@@ -53,4 +53,7 @@ export class TableauBesoinComponent implements OnInit {
  sendEmail(){
     this.tableauBesoinService.sendEmail();
  }
+  get tableauBesoin(): TableauBesoin {
+    return this.tableauBesoinService.tableauBesoin;
+  }
 }
