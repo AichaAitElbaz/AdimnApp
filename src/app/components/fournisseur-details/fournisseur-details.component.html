@@ -1,0 +1,33 @@
+<div>
+  <table class="table table-striped" id="table">
+    <thead>
+    <tr>
+      <th scope="col">Fournisseur</th>
+      <th scope="col">Email</th>
+      <th scope="col">fax</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Tel</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ fournisseur.nomFournisseur}}</td>
+      <td>{{ fournisseur.emailFournisseur}}</td>
+      <td>{{ fournisseur.faxFournisseur}}</td>
+      <td>{{ fournisseur.villeFournisseur}}</td>
+      <td>{{ fournisseur.adresseFournisseur}}</td>
+      <td>{{ fournisseur.telephoneFournisseur}}</td>
+
+    </tr>
+    </tbody>
+
+    <tfoot>
+
+    <tr>
+
+    </tr>
+    <button mat-raised-button mat-dialog-close style="background-color: #f39c12">Retour</button>
+    </tfoot>
+  </table>
+</div>
