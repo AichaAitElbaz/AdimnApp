@@ -3,18 +3,7 @@
   <div class="col-md-6 form-group ">
     <div class="row">
       <div class="col-5 mb-2">
-        <label>Service * </label>
-        <select class="form-select" aria-label="Default select example" required
-                [(ngModel)]="user.serviceDemandeur" #serviceDemandeur="ngModel">
-          <option selected=>service</option>
-          <option *ngFor="let s of services">{{s.nom}}</option>
-        </select>
-        <div *ngIf="serviceDemandeur.invalid && (serviceDemandeur.dirty || serviceDemandeur.touched)"
-             class="alert">
 
-          <div *ngIf="serviceDemandeur.errors?.['required']">
-            Veuillez sélectionner un service valide.
-          </div>
         </div>
       </div>
       <div class="col-2"></div>
@@ -124,13 +113,11 @@
     </table>
 
   </div>
-</div>
 <div class="row ">
   <div class="col-md-9"></div>
   <div class="col-md-3">
     <button mat-raised-button style="background-color: mediumblue;color: #c4c3ca" (click)="save()"
-            [disabled]="
-            serviceDemandeur.invalid || natureDemande.invalid
+            [disabled]=" natureDemande.invalid
 "> valider <i
       class="fa fa-send"></i></button>
 

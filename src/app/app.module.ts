@@ -82,6 +82,7 @@ import {UserBesoinsComponent} from "./demandeur/user-besoins/user-besoins.compon
 import {MatMenuModule} from "@angular/material/menu";
 import {HistoriqueComponent} from "./demandeur/user-besoins/historique/historique.component";
 import {MatRippleModule} from "@angular/material/core";
+import { FournisseurDetailsComponent } from './components/fournisseur-details/fournisseur-details.component';
 
 @NgModule({
   declarations: [
@@ -141,6 +142,7 @@ import {MatRippleModule} from "@angular/material/core";
     DemandesTraiteesComponent,
     HomeComponent,
     DemandeurComponent,
+    FournisseurDetailsComponent,
   ],
 
   imports: [

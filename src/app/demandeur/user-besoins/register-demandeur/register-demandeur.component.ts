@@ -5,6 +5,8 @@ import {AuthService} from "../../controller/auth/auth.service";
 import {Router} from "@angular/router";
 import {SignInDemandeurComponent} from "../sign-in/sign-in.component";
 import {MessageService} from "primeng/api";
+import {ExpressionBesoinService} from "../../controller/service/expression-besoin.service";
+import {ServiceDemandeur} from "../../controller/model/serviceDemandeur.model";
 
 @Component({
   selector: 'app-register-demandeur',
@@ -18,13 +20,18 @@ export class RegisterDemandeurComponent implements OnInit {
     prenom: new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', Validators.required),
+    service: new FormControl('', Validators.required),
   })
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private expressionBesoinService:ExpressionBesoinService,private authService: AuthService, private router: Router) {
   }
-
+  get services(): Array<ServiceDemandeur> {
+    return this.expressionBesoinService.services;
+  }
   ngOnInit(): void {
+    this.expressionBesoinService.findAllservices();
+
   }
 
 
@@ -33,10 +40,12 @@ export class RegisterDemandeurComponent implements OnInit {
   }
 
   register() {
+    console.log(this.user)
     const formValues = this.registerForm.value;
-    const {prenom, nom, username, password} = formValues;
-    this.user.nom = nom;
-    this.user.prenom = prenom;
+    const {prenom, nom, username, password,service} = formValues;
+    this.user.lastname = nom;
+    this.user.serviceDemandeur=service;
+    this.user.firstname = prenom;
     this.user.username = username;
     this.user.password = password;
     this.authService.register();

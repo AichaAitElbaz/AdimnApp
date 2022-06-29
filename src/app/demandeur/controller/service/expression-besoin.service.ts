@@ -210,7 +210,7 @@ export class ExpressionBesoinService {
 
   public getExpressionBesoins() {
 
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/").subscribe(
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/").subscribe(
       data => {
         this.expressionBesoins = [...data]
         console.log(data)
@@ -238,31 +238,32 @@ export class ExpressionBesoinService {
   //   )
   // }
 
+
   public save() {
     this.loadedByUserName();
-    console.log(this.expressionBesoin)
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/",
-      this.expressionBesoin).subscribe(
-      data => {
-        if (data > 0) {
-          this.expressionBesoins.push(this.cloneListExpression(this.expressionBesoin));
-          this.expressionBesoin.natureDemande = null;
-          this.expressionBesoin.user = null;
-          this.expressionBesoin.reference = null;
-          this.expressionBesoin.expressionBesoinItems = null;
+    this.expressionBesoin.statut = "En attente ",
+      this.http.post("http://localhost:8096/v1/admin/expression-besoin/",
+        this.expressionBesoin).subscribe(
+        data => {
+          if (data > 0) {
+            this.expressionBesoins.push(this.cloneListExpression(this.expressionBesoin));
+            this.expressionBesoin.natureDemande = null;
+            this.expressionBesoin.user = null;
+            this.expressionBesoin.reference = null;
+            this.expressionBesoin.expressionBesoinItems = null;
 
-          (<HTMLInputElement>document.getElementById("btn")).disabled = false;
-          (<HTMLElement>document.getElementById("btn")).hidden = false;
-        } else if (data === -1) {
-          console.log("-1")
-        } else {
-          console.log(data);
+            (<HTMLInputElement>document.getElementById("btn")).disabled = false;
+            (<HTMLElement>document.getElementById("btn")).hidden = false;
+          } else if (data === -1) {
+            console.log("-1")
+          } else {
+            console.log(data);
+          }
+          error => {
+            console.log(error)
+          }
         }
-        error => {
-          console.log(error)
-        }
-      }
-    )
+      )
   }
 
 
@@ -284,7 +285,6 @@ export class ExpressionBesoinService {
   findAllnatures() {
     this.http.get<Array<NatureDemande>>("http://localhost:8096/centre-project/v1/nature-demande/").subscribe(
       data => {
-
         this.natureDemandes = [...data];
         console.log(222222222222222222222)
       }

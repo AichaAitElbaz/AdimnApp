@@ -74,8 +74,8 @@ export class FournisseurService {
     this._fournisseurItem = value;
   }
 
-  public getFournisseursByType(t:TypeFournisseur) {
-    this.fournisseurItem.typeFournisseur=t;
+  public getFournisseursByType(t: TypeFournisseur) {
+    this.fournisseurItem.typeFournisseur = t;
     this.http.get<Array<FournisseurItem>>("http://localhost:8096/v1/admin/fournisseur-item/type-fournisseur/reference/" + t.reference).subscribe(
       data => {
         this.fournisseurItems = [...data];
@@ -280,7 +280,6 @@ export class FournisseurService {
   }
 
 
-
   getEmail(fournisseur: Fournisseur) {
     this.emails.push(fournisseur.emailFournisseur);
   }
@@ -305,10 +304,18 @@ export class FournisseurService {
 
   findTabItemByRef(ref: string) {
     console.log(ref)
-    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/"+ref).subscribe(
+    this.http.get<TableauBesoinItem>("http://localhost:8096/v1/admin/tableau-besoin-item/reference/" + ref).subscribe(
       data => {
         console.log(data)
         this.tableauBesoinItem = data;
+      }
+    )
+  }
+
+  findFournisseurByRef(referenceFournisseur: string) {
+    this.http.get<Fournisseur>("http://localhost:8096/v1/admin/fournisseur/reference/" + referenceFournisseur).subscribe(
+      data => {
+        this.fournisseur=data;
       }
     )
   }

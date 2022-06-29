@@ -28,13 +28,12 @@ export class EnAttenteComponent implements OnInit {
               private DIALOG: MatDialog, private servicesService: ServicesService) {
   }
 
-  get expressionBesoins2(): Array<ExpressionBesoin> {
-    return this.enAttenteService.expressionBesoins2;
+  get expressionBesoins(): Array<ExpressionBesoin> {
+    return this.enAttenteService.expressionBesoins;
   }
 
   ngOnInit(): void {
-    this.enAttenteService.getExpressionBesoins();
-    this.enAttenteService.affecter();
+    this.enAttenteService.getUserBesoinsByStatut('en attente conslt');
   }
 
   get users(): Array<User> {
@@ -54,13 +53,9 @@ export class EnAttenteComponent implements OnInit {
     this.enAttenteService.vider(i);
   }
 
-  update(expressionBesoin: ExpressionBesoin) {
-    this.enAttenteService.update(expressionBesoin);
-  }
 
-  updateInUser(expressionBesoin: ExpressionBesoin) {
-    this.enAttenteService.updateInUser(expressionBesoin);
-  }
+
+
 
   public openDialog() {
     this.DIALOG.open(DialogComponent, {

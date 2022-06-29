@@ -5,8 +5,8 @@ import {ServiceDemandeur} from "./serviceDemandeur.model";
 export class User {
   public id:number;
   public reference:string;
-  public nom:string;
-  public prenom:string;
+  public lastname:string;
+  public firstname:string;
   public username:string;
   public password:string;
   public serviceDemandeur:string;

@@ -31,7 +31,7 @@
       <td>{{ f.fournisseur.nomFournisseur}}</td>
       <td>{{ f.fournisseur.adresseFournisseur}}</td>
       <td> <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
-              ></i>
+              (click)="openDialog();findFournisseurByRef(f.fournisseur.referenceFournisseur)"></i>
       </td>
     </tr>
     </tbody>
@@ -48,9 +48,12 @@
       </td>
       <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.emailFournisseur" placeholder="Email">
       </td>
-      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur" placeholder="Ville">
+      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.faxFournisseur" placeholder="Fax">
+      </td>   </tr><tr> <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.villeFournisseur" placeholder="Ville">
+      </td>    <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.adresseFournisseur" placeholder="Adresse">
       </td>
-
+      <td><input hidden="true" name="x" [(ngModel)]="fournisseurItem.fournisseur.telephoneFournisseur" placeholder="Tel">
+      </td>
     </tr>
     <button mat-raised-button mat-dialog-close style="background-color: #f39c12">Retour</button>
     </tfoot>

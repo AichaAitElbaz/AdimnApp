@@ -10,6 +10,7 @@ import {ExpressionBesoinItemService} from "../../controller/service/designation-
 import {User} from "../../controller/model/user.model";
 import Swal from 'sweetalert2'
 import {NatureDemande} from "../../controller/model/natureDemande.model";
+import {AuthService} from "../../controller/auth/auth.service";
 
 @Component({
   selector: 'app-expression-besoin',
@@ -29,7 +30,7 @@ export class ExpressionBesoinComponent implements OnInit {
     return this.expressionBesoinService.expressionBesoin;
   }
 
-  constructor(private fb: FormBuilder, private expressionBesoinService: ExpressionBesoinService
+  constructor(private authService:AuthService,private fb: FormBuilder, private expressionBesoinService: ExpressionBesoinService
               ,private expressionBesoinItemService:ExpressionBesoinItemService) {
   }
 
@@ -44,7 +45,9 @@ export class ExpressionBesoinComponent implements OnInit {
   public getExpressionBesoinItem() {
     this.expressionBesoinService.getExpressionBesoinItems();
   }
-
+  get user(): User {
+    return this.authService.user;
+  }
   public save() {
 
     return this.expressionBesoinService.save();
@@ -79,7 +82,6 @@ export class ExpressionBesoinComponent implements OnInit {
     this.registrationForm = this.fb.group({
       alternateDesignation: this.fb.array([])
     })
-    this.expressionBesoinService.findAllservices();
     this.expressionBesoinService.findAllnatures();
     this.expressionBesoinService.getExpressionBesoins();
     this.expressionBesoinService.init();
@@ -109,9 +111,6 @@ export class ExpressionBesoinComponent implements OnInit {
 
   get produit(): Produit {
     return this.expressionBesoinService.produit;
-  }
-  get user(): User {
-    return this.expressionBesoinService.user;
   }
 
 

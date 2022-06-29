@@ -39,14 +39,13 @@ export class AuthService {
   public loginUser(username: string, password: string) {
     this.http.post<any>(this.API + '/login', {username, password}, {observe: 'response'}).subscribe(
       resp => {
-        console.log("apres")
         this.error = null;
         const jwt = resp.headers.get('Authorization');
         jwt != null ? this.tokenService.saveToken(jwt) : false;
         this.loadInfos();
         // console.log(this.tokenService.getUsername());
         console.log('you are logged in successfully');
-        this.router.navigate(['']);
+        this.router.navigate(['dashbord']);
       }, (error: HttpErrorResponse) => {
         this.error = error.message;
      // mina

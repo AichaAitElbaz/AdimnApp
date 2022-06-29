@@ -22,7 +22,6 @@ export class ArchiveeComponent implements OnInit {
 
   ngOnInit(): void {
     this.archiveeService.getExpressionBesoinsArchivee();
-    this.archiveeService.affecter();
   }
   get expressionBesoinsArchivees(): Array<ExpressionBesoin> {
     return this.archiveeService.expressionBesoinsArchivees;

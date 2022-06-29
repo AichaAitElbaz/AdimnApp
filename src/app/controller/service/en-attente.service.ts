@@ -13,7 +13,7 @@ import {EnCoursService} from "./en-cours.service";
   providedIn: 'root'
 })
 export class EnAttenteService {
-  private _expressionBesoins2: Array<ExpressionBesoin>;
+  private _expressionBesoins: Array<ExpressionBesoin>;
   private _expressionBesoinsItems: Array<ExpressionBesoinItem>;
   private _service: ServiceDemandeur;
   private _expressionBesoin: ExpressionBesoin;
@@ -48,10 +48,10 @@ export class EnAttenteService {
     this._produit = value;
   }
 
-  public getExpressionBesoins() {
-    this.http.get<Array<ExpressionBesoin>>("http://localhost:8095/centre-project/v1/expression-besoin/statut/" + "En attente").subscribe(
+  public getUserBesoinsByStatut(statut:string) {
+    this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/"+statut).subscribe(
       data => {
-        this.expressionBesoins2 = [...data];
+        this.expressionBesoins = [...data];
       }
     )
   }
@@ -72,15 +72,13 @@ export class EnAttenteService {
     this._url = value;
   }
 
-  get expressionBesoins2(): Array<ExpressionBesoin> {
-    if (this._expressionBesoins2 == null) {
-      this._expressionBesoins2 = new Array<ExpressionBesoin>();
-    }
-    return this._expressionBesoins2;
+
+  get expressionBesoins(): Array<ExpressionBesoin> {
+    return this._expressionBesoins;
   }
 
-  set expressionBesoins2(value: Array<ExpressionBesoin>) {
-    this._expressionBesoins2 = value;
+  set expressionBesoins(value: Array<ExpressionBesoin>) {
+    this._expressionBesoins = value;
   }
 
   public findUserByExpressionDeBesoinRef(expressionBesoin: ExpressionBesoin) {
@@ -92,15 +90,6 @@ export class EnAttenteService {
 
   }
 
-  public affecter() {
-    this.expressionBesoins2.forEach(
-      e => {
-        this.users.push(e.user);
-
-      }
-    )
-
-  }
 
   get expressionBesoin(): ExpressionBesoin {
     return this._expressionBesoin;
@@ -133,8 +122,7 @@ export class EnAttenteService {
 
 
   public save(expressionBesoin: ExpressionBesoin) {
-    expressionBesoin.statut = "en Cours";
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+    this.http.put("http://localhost:8096/v1/admin/expression-besoin/accepter", expressionBesoin).subscribe(
       data => {
         console.log(expressionBesoin);
       }, error => {
@@ -153,14 +141,12 @@ export class EnAttenteService {
     )
   }
 
-  archiver(expressionBesoin
-             :
-             ExpressionBesoin
+  archiver(expressionBesoin:ExpressionBesoin
   ) {
     expressionBesoin.statut = "Archivée";
-    this.http.post("http://localhost:8096/v1/admin/expression-besoin/", expressionBesoin).subscribe(
+    this.http.put("http://localhost:8096/v1/admin/expression-besoin/refuser", expressionBesoin).subscribe(
       data => {
-        console.log(expressionBesoin.statut)
+        console.log(expressionBesoin)
       }
     )
 
@@ -170,7 +156,7 @@ export class EnAttenteService {
           :
           number
   ) {
-    this.expressionBesoins2.splice(i, 1)
+    this.expressionBesoins.splice(i, 1)
 
   }
 
@@ -182,16 +168,7 @@ export class EnAttenteService {
     this.services.splice(i, 1)
   }
 
-  update(expressionBesoin
-           :
-           ExpressionBesoin
-  ) {
-    this.http.put("http://localhost:8095/centre-project/v1/expression-besoin/refuser", expressionBesoin).subscribe(
-      data => {
-        console.log(expressionBesoin.statut)
-      }
-    )
-  }
+
 
   get users()
     :
@@ -267,22 +244,15 @@ export class EnAttenteService {
 
   }
 
-  updateInUser(expressionBesoin
-                 :
-                 ExpressionBesoin
-  ) {
-    this.http.put("http://localhost:8095/centre-project/v1/expression-besoin/accepter", expressionBesoin).subscribe(
-      data => {
 
-      }
-    )
-  }
 
   getItemsByExpressionBesoinRef(expressionBesoin: ExpressionBesoin) {
-    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8095/centre-project/v1/designation-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/reference/" + expressionBesoin.reference).subscribe(
       data => {
         this.expressionBesoinsItems = [...data];
-        console.log(data)
+        this.expressionBesoinsItems.forEach(e=>{
+          e.expressionBesoin=expressionBesoin;
+        })
       }
     )
   }

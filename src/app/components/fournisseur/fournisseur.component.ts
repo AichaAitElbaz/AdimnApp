@@ -14,6 +14,8 @@ import {ExpressionBesoin} from "../../controller/model/expression-besoin.model";
 import {TableauBesoin} from "../../controller/model/tableau-besoin.model";
 import {EnCoursService} from "../../controller/service/en-cours.service";
 import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
+import {DialogComponent} from "../dialog/dialog.component";
+import {FournisseurDetailsComponent} from "../fournisseur-details/fournisseur-details.component";
 
 @Component({
   selector: 'app-fournisseur',
@@ -104,5 +106,15 @@ export class FournisseurComponent implements OnInit {
     document.getElementsByName(id).forEach(e=>{
       e.hidden=false
     })
+  }
+  public openDialog() {
+    this.DIALOG.open(FournisseurDetailsComponent, {
+      height: '400px',
+      width: '800px'
+    })
+  }
+
+  findFournisseurByRef(referenceFournisseur: string) {
+    this.fournisseurService.findFournisseurByRef(referenceFournisseur)
   }
 }

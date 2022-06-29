@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 })
 export class AuthService {
 
-  readonly API = "http://localhost:8095";
+  readonly API = "http://localhost:8096";
   private _user = new User();
   private _loadeduser = new User();
   public role: string;
@@ -37,15 +37,12 @@ export class AuthService {
   }
 
   public loginUser(username: string, password: string) {
-    this.http.post<any>(this.API + '/login', {username, password}, {observe: 'response'}).subscribe(
+    this.http.post<any>(this.API  + '/v1/admin/user/sign-in/', {username, password}, {observe: 'response'}).subscribe(
       resp => {
-        console.log("apres")
         this.error = null;
         const jwt = resp.headers.get('Authorization');
         jwt != null ? this.tokenService.saveToken(jwt) : false;
         this.loadInfos();
-        // console.log(this.tokenService.getUsername());
-        console.log('you are logged in successfully');
         this.router.navigate(['homeDemandeur']);
       }, (error: HttpErrorResponse) => {
         this.error = error.message;
@@ -108,14 +105,13 @@ export class AuthService {
           )
           this.errorRegister = "null";
         } else {
-          console.log("good")
           Swal.fire(
             'authentification',
             'Vous avez bien enregistrer ,Conn',
             'success'
 
           )
-          this.router.navigate(['login']);
+          this.router.navigate(['loginDemandeur']);
         }
       }, error => {
         console.log(error);

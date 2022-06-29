@@ -25,7 +25,6 @@ export class EnCoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.enCoursService.getExpressionBesoinsAcceptees();
-    this.enCoursService.affecter();
   }
 
 
@@ -59,9 +58,6 @@ export class EnCoursComponent implements OnInit {
   }
   setExprTraitee(expressionBesoin:ExpressionBesoin){
     this.enAttenteService.setExprTraitee(expressionBesoin)
-  }
-  update(expressionBesoin: ExpressionBesoin) {
-    this.enAttenteService.update(expressionBesoin);
   }
 
   navigate(component: string) {

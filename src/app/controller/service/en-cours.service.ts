@@ -41,7 +41,7 @@ export class EnCoursService {
   }
 
   public getExpressionBesoinsAcceptees() {
-    const iterator = "en Cours";
+    const iterator = "En cours";
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/" + iterator).subscribe(
       data => {
         this.expressionBesoinsAcceptees = [...data];
@@ -71,22 +71,8 @@ export class EnCoursService {
     )
   }
 
-  public affecter() {
-    this.expressionBesoinsAcceptees.forEach(
-      e => {
-        this.users2.push(e.user);
-      }
-    )
 
-  }
 
-  // public getitems() {
-  //   this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/expression-besoin/statut/en%20Cours").subscribe(
-  //     data => {
-  //       this.expressionBesoinItems = [...data];
-  //     }
-  //   )
-  // }
 
   get produit(): Produit {
     return this._produit;

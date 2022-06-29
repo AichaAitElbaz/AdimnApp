@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let e of expressionBesoins2; index as i">
+  <tr *ngFor="let e of expressionBesoins; index as i">
     <td>
       {{ e.user.firstname }} {{e.user.lastname}}
     </td>
@@ -21,17 +21,15 @@
     <td>{{ e.statut }}</td>
     <td><i class="btn-outline-solid fas  fa-check-circle"
            style="color: forestgreen ; cursor: pointer;display: inline-block;margin-right: 20px"
-           (click)="updateInUser(e);save(e)"></i>
+           (click)="save(e)"></i>
       <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
 
       <!--        <mat-icon class="icon btn-outline-primary" >bookmark_border</mat-icon>-->
       <!--      </button>-->
       <i class="btn-solid fas fa-trash"
          style="color:firebrick;cursor: pointer;display: inline-block; margin-right: 20px"
-         (click)="archiver(e);update(e)"></i>
-      <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->
-      <!--        <mat-icon class=" btn-outline-danger" >delete_outline</mat-icon>-->
-      <!--      </button>-->
+         (click)="archiver(e)"></i>
+
       <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"
          (click)="getItemsByExpressionBesoinRef(e);openDialog()"></i>
       <!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">-->

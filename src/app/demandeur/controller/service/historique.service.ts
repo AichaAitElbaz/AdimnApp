@@ -68,11 +68,9 @@ export class HistoriqueService {
 
   public getExpressionBesoinsEnAttente() {
 
-    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8095/centre-project/v1/expression-besoin/statut/En%20attente/username/" + this.loadeduser.username).subscribe(
-
-
+    this.http.get<Array<ExpressionBesoin>>( "http://localhost:8096/v1/admin/expression-besoin/historique/en%20attente%20conslt/"+this.loadeduser.username).subscribe(
       data => {
-        console.log(this.loadeduser.username)
+        console.log("data"+data)
         this.expressionBesoinsEnAttente = [...data]
         console.log(this.expressionBesoinsEnAttente)
       }

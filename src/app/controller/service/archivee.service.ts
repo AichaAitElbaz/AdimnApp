@@ -32,12 +32,9 @@ private _users:Array<User>;
   }
 
   getExpressionBesoinsArchivee() {
-    console.log("ven")
     const iterator = "Archivée";
     this.http.get<Array<ExpressionBesoin>>("http://localhost:8096/v1/admin/expression-besoin/statut/"+iterator).subscribe(
       data => {
-        console.log(data)
-
         this.expressionBesoinsArchivees = [...data];
       }
     )  }

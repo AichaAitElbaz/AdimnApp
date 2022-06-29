@@ -39,6 +39,7 @@ import {AuthGuard} from "./controller/auth/auth.guard";
 import {ExpressionBesoinComponent} from "./demandeur/user-besoins/expression-besoin/expression-besoin.component";
 import {RegisterDemandeurComponent} from "./demandeur/user-besoins/register-demandeur/register-demandeur.component";
 import {SignInDemandeurComponent} from "./demandeur/user-besoins/sign-in/sign-in.component";
+import {FournisseurDetailsComponent} from "./components/fournisseur-details/fournisseur-details.component";
 
 const routes: Routes = [
   {path: 'homeDemandeur', redirectTo: "/home/demande-expression-de-besoin", pathMatch: "full"},
@@ -82,6 +83,7 @@ const routes: Routes = [
   {path: 's/:id', component: ServiceComponent},
   {path: 'login', component: SignInComponent},
   {path: '', component: HomeComponent},
+  {path: 'fournisseurDetails', component: FournisseurDetailsComponent},
 
 ];
 
