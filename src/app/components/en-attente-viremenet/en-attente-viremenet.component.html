@@ -1,0 +1,37 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th></th>
+    <th scope="col">Codes des commandes</th>
+    <th scope="col">Dates des commandes</th>
+    <th>Fournisseurs</th>
+    <th scope="col">Details</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let c of cmdsEnAttVirement">
+    <td><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="fonction($event,c)" ></td>
+    <td>
+      {{c.code}}
+    </td>
+    <td>
+      {{c.dateCommande}}
+    </td>
+    <td>
+      {{c.tableauBesoinItem.fournisseur.nomFournisseur}}
+    </td>
+    <td>
+
+      <i class="fas fa-map-marker-plus" style="color:mediumblue;cursor: pointer;display: inline-block;"  (click)="findCmdByCode(c);openDialog()"></i>
+
+    </td>
+
+  </tr>
+  </tbody>
+
+</table>
+<div>
+  <button class="btn-warning" (click)="setCmdTerminee()">confirmer</button>
+</div>

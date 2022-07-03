@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Fournisseurs</th>
+    <th scope="col">Devis</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let t of tableauBesoinItems">
+    <td>
+      {{t.fournisseur.nomFournisseur}}
+
+    </td>
+    <td>
+      {{t.statut}}
+
+    </td>
+
+  </tr>
+  </tbody>
+
+</table>
+<button mat-raised-button mat-dialog-close style="background-color: #f39c12" >Retour</button>

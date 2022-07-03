@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Désignations</th>
+    <th scope="col">Quantités</th>
+
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let i of foundeditems">
+    <td>
+      {{i.libelle}}
+
+    </td>
+    <td>
+      {{i.quantite}}
+
+    </td>
+
+  </tr>
+  </tbody>
+
+</table>
+<button mat-raised-button mat-dialog-close style="background-color: #f39c12" >Retour</button>

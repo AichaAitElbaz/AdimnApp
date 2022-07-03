@@ -1,0 +1,33 @@
+<div class="x">
+  <table class="table table-striped" >
+    <thead>
+    <tr>
+      <th scope="col">Designations</th>
+      <th scope="col">Quantite</th>
+      <th scope="col">PU</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of tableauBesoinItem.tableauBesoin.expressionBesoinItems">
+      <td >
+        {{e.produit.libelle}}
+      </td>
+      <td >{{e.quantite}}</td>
+      <td ><input [(ngModel)]="e.pu"></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td >MT HT</td></tr>
+    <tr><td >TVA <input [(ngModel)]="tableauBesoinItem.tableauBesoin.tva"></td></tr>
+    <tr><td >MT TTC</td></tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <button class="btn-warning" (click)="saveTableauBesoinItem(tableauBesoinItem)">envoyer</button>
+    </tfoot>
+  </table>
+</div>
