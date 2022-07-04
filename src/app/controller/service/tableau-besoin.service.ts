@@ -15,7 +15,7 @@ export class TableauBesoinService {
 
   constructor(private http: HttpClient) {
   }
-  private _reponseSelectionnee = new TableauBesoinItem();
+  private _reponseSelectionnee:TableauBesoinItem;
   private _itemsSelectionne = new Array<ExpressionBesoinItem>();
   private _items = new Array<ExpressionBesoinItem>();
   private _foundeditems = new Array<ExpressionBesoinItem>();
@@ -25,7 +25,7 @@ export class TableauBesoinService {
   private _fournisseurs = new Array<Fournisseur>();
   private _foundedfournisseurs = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
-  private _tableauBesoinItem =new TableauBesoinItem();
+  private _tableauBesoinItem : TableauBesoinItem;
   private _tableauBesoinItems = new Array<TableauBesoinItem>();
   private _tableauBesoin =new TableauBesoin();
   private _tableauBesoinEnCours = new Array<TableauBesoin>();
@@ -195,8 +195,6 @@ export class TableauBesoinService {
     this.fournisseurs.forEach(f => {
       this.tableauBesoinItem.fournisseur = f;
       this.tableauBesoinItem.statut="x"
-      console.log("tired")
-
       this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
         data=>{
           console.log("tired")
@@ -346,14 +344,14 @@ export class TableauBesoinService {
       )
     })
     let ht = 0;
-    // this.tableauBesoinItem.tva = this.tableauBesoinItem.tableauBesoin.tva;
     this.foundeditems.forEach(e => {
       this.tableauBesoinItem.ht += e.pu * e.quantite;
       this.tableauBesoinItem.ttc = this.tableauBesoinItem.ht + (this.tableauBesoinItem.tva * ht) / 100;
 
     })
     this.tableauBesoinItem.statut = "reçu"
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
+    console.log("this.tableauBesoinItem"+this.tableauBesoinItem)
+    this.http.put("http://localhost:8096/v1/admin/tableau-besoin-item/update/statut", this.tableauBesoinItem).subscribe(
       data => {
 
       }

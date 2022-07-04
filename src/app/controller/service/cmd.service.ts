@@ -405,7 +405,7 @@ export class CmdService {
   getCmdsAttPaiement() {
     this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/laivree").subscribe(
       data => {
-        this.cmdsEnAttVirement = [...data]
+        this.cmdsEnAttPaiemenet = [...data]
       }
     )
   }

@@ -12,6 +12,8 @@ import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-ite
 import {Article} from "../../controller/model/article.model";
 import {Paragraphe} from "../../controller/model/paragraphe.model";
 import {Ligne} from "../../controller/model/ligne.model";
+import {TableauBesoinItem} from "../../controller/model/tableau-besoin-item.model";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 @Component({
   selector: 'app-cmd',
@@ -20,7 +22,7 @@ import {Ligne} from "../../controller/model/ligne.model";
 })
 export class CmdComponent implements OnInit {
 
-  constructor(private DIALOG: MatDialog, private cmdService: CmdService) {
+  constructor(private DIALOG: MatDialog, private cmdService: CmdService,private tableauBesoinService:TableauBesoinService) {
   }
 
   ngOnInit(): void {
@@ -107,4 +109,10 @@ export class CmdComponent implements OnInit {
 
   }
 
+  get tableauBesoinItems(): TableauBesoinItem[] {
+    return this.tableauBesoinService.tableauBesoinItems;
+  }
+  findItemsByTableauBeosinItemRef(ref) {
+    this.tableauBesoinService.findItemsByTableauBeosinItemRef(ref)
+  }
 }

@@ -56,7 +56,7 @@ export class FournisseursResponsesDetailsComponent implements OnInit {
   fonction(event, tableauBesoinItem: TableauBesoinItem) {
     if (event.target.checked == true) {
       this.tableauBesoinService.reponseSelectionnee=tableauBesoinItem;
-      this.tableauBesoinService.findItemsByTableauBeosinItemRef(tableauBesoinItem.reference)
+      // this.tableauBesoinService.findItemsByTableauBeosinItemRef(tableauBesoinItem.reference)
     }
   }
 
@@ -78,4 +78,7 @@ export class FournisseursResponsesDetailsComponent implements OnInit {
   get tableauBesoinItems(): TableauBesoinItem[] {
     return this.tableauBesoinService.tableauBesoinItems;
   }
-}
+  findItemsByTableauBeosinItemRef(ref) {
+    this.tableauBesoinService.findItemsByTableauBeosinItemRef(ref)
+  }
+  }

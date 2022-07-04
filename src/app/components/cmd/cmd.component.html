@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row">
-      <div class="col">
+  <div class="row">
+    <div class="col">
       <label><code>*Séléctionnez l'éxercice</code></label>
       <select class="form-select" [(ngModel)]="exercice.libelle" (change)="getChapitresByExerciceRef()">
         <option selected></option>
@@ -16,9 +16,9 @@
         <option *ngFor="let c of chapitres">{{c.libelle}}</option>
       </select></div>
 
-</div>
-    <div class="row">
-      <div class="col">
+  </div>
+  <div class="row">
+    <div class="col">
       <label><code>*Séléctionnez l'article</code></label>
       <select class="form-select" aria-label="Default select example" [(ngModel)]="article.libelle"
               (change)="getParagraphes()">
@@ -28,59 +28,43 @@
       </select></div>
 
 
-      <div class="col">
-        <label><code>*Séléctionnez le paragraphe</code></label>
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="paragraphe.libellePara"
-                (change)="getLignes()">
-          <option selected></option>
-          <option *ngFor="let p of paragraphes">{{p.libellePara}}</option>
-        </select></div></div>
-      <div class="row">
-        <div class="col">
-        <label><code>*séléctionnez la ligne</code></label>
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="ligne.libelle"
-                (change)="getRubriques()">
-          <option selected></option>
-          <option *ngFor="let l of lignes">{{l.libelle}}</option>
-        </select></div>
-      <div class="col">
-        <label><code>*Séléctionnez la rubrique</code></label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected></option>
-          <option *ngFor="let r of rubriques" >{{r.libelle}}
-          </option>
-<!--          <option selected *ngFor="let r of rubriques">{{r.libelle}}</option>-->
-        </select></div>
-    </div></div>
+    <div class="col">
+      <label><code>*Séléctionnez le paragraphe</code></label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="paragraphe.libellePara"
+              (change)="getLignes()">
+        <option selected></option>
+        <option *ngFor="let p of paragraphes">{{p.libellePara}}</option>
+      </select></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <label><code>*séléctionnez la ligne</code></label>
+      <select class="form-select" aria-label="Default select example" [(ngModel)]="ligne.libelle"
+              (change)="getRubriques()">
+        <option selected></option>
+        <option *ngFor="let l of lignes">{{l.libelle}}</option>
+      </select></div>
+    <div class="col">
+      <label><code>*Séléctionnez la rubrique</code></label>
+      <select class="form-select" aria-label="Default select example">
+        <option selected></option>
+        <option *ngFor="let r of rubriques">{{r.libelle}}
+        </option>
+        <!--          <option selected *ngFor="let r of rubriques">{{r.libelle}}</option>-->
+      </select></div>
+  </div>
+</div>
 
 <hr style="color:darkblue;">
 <div class="row align-items-start mt-2">
 
-<div class="col">
-  <section class="input-content">
-    <div class="input-content-wrap">
-      <dl class="inputbox">
-        <dd class="inputbox-content">
-          <input id="input0" type="text" required/>
-          <label for="input0" style="color:darkblue;">Adresse</label>
-          <span class="underline"></span>
-      </dl>
-
-
-    </div>
-
-  </section>
-  <!--    <div class="form-outline">-->
-  <!--      <input value="Adresse" [(ngModel)]="cmd.adresse"/>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <div class="col">
     <section class="input-content">
       <div class="input-content-wrap">
         <dl class="inputbox">
           <dd class="inputbox-content">
-            <input id="input1" type="text" required/>
-            <label for="input1" style="color:darkblue;">Raison sociale</label>
+            <input id="input0" type="text" required [(ngModel)]="cmd.adresse"/>
+            <label for="input0" style="color:darkblue;">Adresse</label>
             <span class="underline"></span>
         </dl>
 
@@ -88,17 +72,34 @@
       </div>
 
     </section>
-    <hr style="color:darkblue;">
-<!--    <div class="form-outline">-->
-<!--      <input value="Raison sociale" [(ngModel)]="cmd.raisonSociale"/>-->
-<!--      &lt;!&ndash;      <form>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <input required='' type='text'>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <label alt='Placeholder' placeholder='Adaptive Placeholder'></label>&ndash;&gt;-->
-<!--      &lt;!&ndash;      </form>&ndash;&gt;-->
+
+    <div class="col">
+      <section class="input-content">
+        <div class="input-content-wrap">
+          <dl class="inputbox">
+            <dd class="inputbox-content">
+              <input id="input1" type="text" required [(ngModel)]="cmd.raisonSociale"/>
+              <label for="input1" style="color:darkblue;">Raison sociale</label>
+              <span class="underline"></span>
+          </dl>
+
+
+        </div>
+
+      </section>
+      <hr style="color:darkblue;">
+      <!--    <div class="form-outline">-->
+      <!--      <input value="Raison sociale" [(ngModel)]="cmd.raisonSociale"/>-->
+      <!--      &lt;!&ndash;      <form>&ndash;&gt;-->
+      <!--      &lt;!&ndash;        <input required='' type='text'>&ndash;&gt;-->
+      <!--      &lt;!&ndash;        <label alt='Placeholder' placeholder='Adaptive Placeholder'></label>&ndash;&gt;-->
+      <!--      &lt;!&ndash;      </form>&ndash;&gt;-->
     </div>
   </div>
 </div>
 <tfoot class=" btn row mt-5 ">
-<button mat-raised-button mat-dialog-close style="background-color: #f39c12" (click)="saveCommande();openDialog()">Bon de commande</button>
+<button mat-raised-button mat-dialog-close style="background-color: #f39c12" (click)="saveCommande();openDialog()">Bon
+  de commande
+</button>
 
 </tfoot>
