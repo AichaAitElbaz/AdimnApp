@@ -1,36 +1,44 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ExpressionBesoinItem} from "../model/expression-besoin-item.model";
 import {Fournisseur} from "../model/fournisseur.model";
 import {TableauBesoin} from "../model/tableau-besoin.model";
 import {TableauBesoinItem} from "../model/tableau-besoin-item.model";
 import {TableauBesoinItem1} from "../model/tableau-besoin-item1.mpdel";
 import {ArrayDataSource} from "@angular/cdk/collections";
+import {error} from "@angular/compiler/src/util";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableauBesoinService {
-  private _reponseSelectionnees = new Array<TableauBesoinItem>();
 
   constructor(private http: HttpClient) {
   }
-
+  private _reponseSelectionnee = new TableauBesoinItem();
   private _itemsSelectionne = new Array<ExpressionBesoinItem>();
   private _items = new Array<ExpressionBesoinItem>();
   private _foundeditems = new Array<ExpressionBesoinItem>();
   private _itemsEnvoyee = new Array<ExpressionBesoinItem>();
-  private _itemsEnCours = new Array<ExpressionBesoinItem>();
+  private _itemsEnCours : Array<ExpressionBesoinItem>;
   private _fournisseursSelectionne = new Array<Fournisseur>();
   private _fournisseurs = new Array<Fournisseur>();
   private _foundedfournisseurs = new Array<Fournisseur>();
   private _tableauBesoinItem1 = new TableauBesoinItem1();
   private _tableauBesoinItem =new TableauBesoinItem();
   private _tableauBesoinItems = new Array<TableauBesoinItem>();
-  private _tableauBesoin = new TableauBesoin();
+  private _tableauBesoin =new TableauBesoin();
   private _tableauBesoinEnCours = new Array<TableauBesoin>();
   private _tableauBesoins = new Array<TableauBesoin>();
 
+
+  get reponseSelectionnee(): TableauBesoinItem {
+    return this._reponseSelectionnee;
+  }
+
+  set reponseSelectionnee(value: TableauBesoinItem) {
+    this._reponseSelectionnee = value;
+  }
 
   get tableauBesoins(): TableauBesoin[] {
     return this._tableauBesoins;
@@ -88,13 +96,6 @@ export class TableauBesoinService {
     this._tableauBesoinEnCours = value;
   }
 
-  get reponseSelectionnees(): TableauBesoinItem[] {
-    return this._reponseSelectionnees;
-  }
-
-  set reponseSelectionnees(value: TableauBesoinItem[]) {
-    this._reponseSelectionnees = value;
-  }
 
   get itemsSelectionne(): Array<ExpressionBesoinItem> {
     return this._itemsSelectionne;
@@ -189,22 +190,38 @@ export class TableauBesoinService {
     )
   }
 
-  saveTableauBesoin(tab: TableauBesoin, expressionBesoinItems: ExpressionBesoinItem[]) {
+  saveTableauBesoin( expressionBesoinItems: ExpressionBesoinItem[]) {
     this.getFourniseursSelectionnes();
     this.fournisseurs.forEach(f => {
       this.tableauBesoinItem.fournisseur = f;
-      this.tableauBesoinItems.push(this.tableauBesoinItem);
-      console.log(this.tableauBesoinItems)
+      this.tableauBesoinItem.statut="x"
+      console.log("tired")
+
+      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/",this.tableauBesoinItem).subscribe(
+        data=>{
+          console.log("tired")
+        }
+      )
     })
-    tab.expressionBesoinItems = expressionBesoinItems;
-    tab.tableauBesoinItems = this.tableauBesoinItems;
-    tab.statut = "en cours"
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", tab).subscribe(
+    this.tableauBesoin.expressionBesoinItems = expressionBesoinItems;
+    this.tableauBesoin.statut = "en cours";
+
+    this.http.post("http://localhost:8096/v1/admin/tableau-besoin/", this.tableauBesoin).subscribe(
       data => {
+        expressionBesoinItems.forEach(e=>{
+          e.statut="en"
+          this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/updateStatut",e)
+        })
+
+      },
+      error=>{
+        this.itemsSelectionne.forEach(e=>{
+          e.statut="en"
+          this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/updateStatut",e)
       }
     )
 
-  }
+  })}
 
   sendEmail() {
     this.http.get<Array<TableauBesoinItem>>("http://localhost:8096/v1/admin/tableau-besoin-item/statut/En%20attente").subscribe(
@@ -265,14 +282,14 @@ export class TableauBesoinService {
   }
 
   setReponsesSeletcionnees() {
-    this.reponseSelectionnees.forEach(r => {
-      r.statut = "validee";
-      this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", r).subscribe(
-        data => {
-        }
-      )
-      // this.sendBonCommande(r);
-    })
+    // this.reponseSelectionnees.forEach(r => {
+    //   r.statut = "validee";
+    //   this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", r).subscribe(
+    //     data => {
+    //     }
+    //   )
+    //   // this.sendBonCommande(r);
+    // })
   }
 
   getItemsEnAttenteDeDevis() {
@@ -285,7 +302,6 @@ export class TableauBesoinService {
   }
 
   saveSelectionnes() {
-    console.log(88888888888888888888)
     this.itemsSelectionne.forEach(i => {
       i.statut = "selectionnee"
       this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/updateStatut", i).subscribe(
@@ -320,18 +336,24 @@ export class TableauBesoinService {
         this.tableauBesoinItem = data;
       }
     )
+    this.findItemsByTableauBeosinItemRef(reference)
   }
 
-  saveTableauBesoinItem2(tableauBesoinItem: TableauBesoinItem) {
-    let ht = 0;
-    tableauBesoinItem.tva = tableauBesoinItem.tableauBesoin.tva;
-    tableauBesoinItem.tableauBesoin.expressionBesoinItems.forEach(e => {
-      ht += e.pu * e.quantite;
+  saveTableauBesoinItem2() {
+    this.foundeditems.forEach(f=>{
+      this.http.put("http://localhost:8096/v1/admin/expression-besoin-item/prix",f).subscribe(
+
+      )
     })
-    tableauBesoinItem.ht = ht;
-    tableauBesoinItem.ttc = ht + (tableauBesoinItem.tva * ht) / 100;
-    tableauBesoinItem.statut = "reçu"
-    this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", tableauBesoinItem).subscribe(
+    let ht = 0;
+    // this.tableauBesoinItem.tva = this.tableauBesoinItem.tableauBesoin.tva;
+    this.foundeditems.forEach(e => {
+      this.tableauBesoinItem.ht += e.pu * e.quantite;
+      this.tableauBesoinItem.ttc = this.tableauBesoinItem.ht + (this.tableauBesoinItem.tva * ht) / 100;
+
+    })
+    this.tableauBesoinItem.statut = "reçu"
+    this.http.post("http://localhost:8096/v1/admin/tableau-besoin-item/", this.tableauBesoinItem).subscribe(
       data => {
 
       }
@@ -351,6 +373,13 @@ export class TableauBesoinService {
       data=>{
        this.tableauBesoinItems=[...data]
 
+      }
+    )
+  }
+  findItemsByTableauBeosinItemRef(ref){
+    this.http.get<Array<ExpressionBesoinItem>>("http://localhost:8096/v1/admin/expression-besoin-item/tableau-besoin-item/ref/"+ref).subscribe(
+      data=>{
+        this.foundeditems=[...data]
       }
     )
   }

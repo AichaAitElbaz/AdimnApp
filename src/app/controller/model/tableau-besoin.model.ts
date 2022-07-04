@@ -7,8 +7,8 @@ export class TableauBesoin {
   public id:number;
   public reference:string;
   public statut:string;
-  public expressionBesoinItems=new Array<ExpressionBesoinItem>();
-  public tableauBesoinItems=new Array<TableauBesoinItem>();
+  public expressionBesoinItems: Array<ExpressionBesoinItem>;
+  public tableauBesoinItems: Array<TableauBesoinItem>;
   public tva:number;
   public ttc:number;
 }

@@ -18,7 +18,6 @@ export class TableauBesoinSendedComponent implements OnInit {
 
     ngOnInit(): void {
     this.tableauBesoinService.getTableauBesoinItem(this.reference)
-      console.log(this.tableauBesoinItem)
     // this.tableauBesoinService.getAllTableauBesoinItem();
     this.activatedRoute.params.subscribe(params => {
       console.log(params['reference'])
@@ -40,9 +39,12 @@ export class TableauBesoinSendedComponent implements OnInit {
     return this.tableauBesoinService.tableauBesoinItem;
   }
 
-  saveTableauBesoinItem(tableauBesoinItem: TableauBesoinItem) {
-    this.tableauBesoinService.saveTableauBesoinItem2(tableauBesoinItem)
+  saveTableauBesoinItem() {
+    this.tableauBesoinService.saveTableauBesoinItem2()
   }
 
 
+  get foundeditems(): ExpressionBesoinItem[] {
+    return this.tableauBesoinService.foundeditems;
+  }
 }

@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let e of tableauBesoinItem.tableauBesoin.expressionBesoinItems">
+    <tr *ngFor="let e of foundeditems">
       <td >
         {{e.produit.libelle}}
       </td>
@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td >MT HT</td></tr>
-    <tr><td >TVA <input [(ngModel)]="tableauBesoinItem.tableauBesoin.tva"></td></tr>
+    <tr><td >TVA <input [(ngModel)]="tableauBesoinItem.tva"></td></tr>
     <tr><td >MT TTC</td></tr>
     <tr>
       <td></td>
@@ -27,7 +27,7 @@
     </tr>
     </tbody>
     <tfoot>
-    <button class="btn-warning" (click)="saveTableauBesoinItem(tableauBesoinItem)">envoyer</button>
+    <button class="btn-warning" (click)="saveTableauBesoinItem()">envoyer</button>
     </tfoot>
   </table>
 </div>

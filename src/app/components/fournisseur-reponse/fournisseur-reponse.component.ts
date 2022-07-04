@@ -16,6 +16,8 @@ import {AttenteDevisFournisseursComponent} from "../attente-devis-fournisseurs/a
 import {
   FournisseursResponsesDetailsComponent
 } from "../fournisseurs-responses-details/fournisseurs-responses-details.component";
+import {Router} from "@angular/router";
+import {FournisseurDetailsComponent} from "../fournisseur-details/fournisseur-details.component";
 
 @Component({
   selector: 'app-fournisseur-reponse',
@@ -23,7 +25,7 @@ import {
   styleUrls: ['./fournisseur-reponse.component.css']
 })
 export class FournisseurReponseComponent implements OnInit {
-  constructor(private DIALOG:MatDialog,private tableauBesoinService:TableauBesoinService) { }
+  constructor(private DIALOG:MatDialog,private tableauBesoinService:TableauBesoinService,private ROUTER:Router) { }
 
   ngOnInit(): void {
     this.tableauBesoinService.getItemsEnAttenteDeDevis();
@@ -54,4 +56,7 @@ export class FournisseurReponseComponent implements OnInit {
     })
   }
 
+  navigate() {
+this.ROUTER.navigate(['dashbord/cmd'])
+  }
 }

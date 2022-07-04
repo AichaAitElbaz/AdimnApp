@@ -13,23 +13,24 @@ import {Fournisseur} from "../../controller/model/fournisseur.model";
 })
 export class BonCmdComponent implements OnInit {
 
-  constructor(private cmdService: CmdService,private tableauBesoinService:TableauBesoinService) {
+  constructor(private cmdService: CmdService, private tableauBesoinService: TableauBesoinService) {
   }
 
   ngOnInit(): void {
   }
 
   get tableauBesoinItem(): TableauBesoinItem {
-    return this.cmdService.tableauBesoinItem;
+    return this.tableauBesoinService.tableauBesoinItem;
   }
+
 
   get cmd(): Commande {
     return this.cmdService.cmd;
   }
-  savebnCommande(cmd: Commande){
+  get foundeditems(): ExpressionBesoinItem[] {
+    return this.tableauBesoinService.foundeditems;
+  }
+  savebnCommande(cmd: Commande) {
     this.cmdService.savebnCommande(cmd);
   }
-  // sendEmail(fournisseur: Fournisseur) {
-  //   this.tableauBesoinService.sendEmail(fournisseur)
-  // }
 }

@@ -9,6 +9,8 @@ import {BonCmdComponent} from "../bon-cmd/bon-cmd.component";
 import {
   EnAttenteLaivraisonDetailsComponent
 } from "../en-attente-laivraison-details/en-attente-laivraison-details.component";
+import {ExpressionBesoinItem} from "../../controller/model/expression-besoin-item.model";
+import {TableauBesoinService} from "../../controller/service/tableau-besoin.service";
 
 @Component({
   selector: 'app-en-attente-livraison',
@@ -17,7 +19,7 @@ import {
 })
 export class EnAttenteLivraisonComponent implements OnInit {
 
-  constructor(private cmdService: CmdService, private DIALOG: MatDialog) {
+  constructor(private cmdService: CmdService, private DIALOG: MatDialog,) {
   }
 
   ngOnInit(): void {
@@ -57,7 +59,5 @@ export class EnAttenteLivraisonComponent implements OnInit {
 
   }
 
-  sendBnReception() {
-    this.cmdService.sendBnReception();
-  }
+
 }

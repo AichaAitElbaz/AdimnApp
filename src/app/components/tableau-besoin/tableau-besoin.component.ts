@@ -27,6 +27,7 @@ export class TableauBesoinComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableauBesoinService.getItemsSelectionnees();
+    console.log(this.tableauBesoinService.fournisseursSelectionne)
 
   }
 
@@ -43,8 +44,8 @@ export class TableauBesoinComponent implements OnInit {
     return this.tableauBesoinService.itemsEnCours;
   }
 
-  saveTableauBesoin(tableauBesoin1:TableauBesoin,expressionBesoinItems: ExpressionBesoinItem[]) {
-    this.tableauBesoinService.saveTableauBesoin(tableauBesoin1,expressionBesoinItems);
+  saveTableauBesoin(expressionBesoinItems: ExpressionBesoinItem[]) {
+    this.tableauBesoinService.saveTableauBesoin(expressionBesoinItems);
   }
 
   saveTableauBesoinItem() {

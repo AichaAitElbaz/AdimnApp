@@ -11,6 +11,7 @@ import {Article} from "../model/article.model";
 import {Paragraphe} from "../model/paragraphe.model";
 import {Ligne} from "../model/ligne.model";
 import {Fournisseur} from "../model/fournisseur.model";
+import {TableauBesoinService} from "./tableau-besoin.service";
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,7 @@ export class CmdService {
   private _cmdsPayees = new Array<Commande>();
   private _cmdsTerminees = new Array<Commande>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private tableauBesoinService:TableauBesoinService) {
   }
 
 
@@ -324,14 +325,13 @@ export class CmdService {
   }
 
   saveCommande() {
-    this.cmd.tableauBesoinItem = this.tableauBesoinItem;
+    this.cmd.tableauBesoinItem = this.tableauBesoinService.reponseSelectionnee;
     this.cmd.exercice = this.exercice.libelle;
     this.cmd.rubrique = this.rubrique;
     this.cmd.rubrique.ligne = this.ligne;
     this.cmd.rubrique.ligne.paragraphe = this.paragraphe;
     this.cmd.rubrique.ligne.paragraphe.article = this.article;
     this.cmd.rubrique.ligne.paragraphe.article.chapitre = this.chapitre;
-    console.log(this.cmd)
   }
 
   savebnCommande(cmd: Commande) {
@@ -357,6 +357,7 @@ export class CmdService {
         this.cmdsAttLaivr = [...data]
       }
     )
+
   }
   getCommandeEnattenteVirement() {
     this.http.get<Array<Commande>>("http://localhost:8096/v1/admin/commande/statut/payee").subscribe(
@@ -385,9 +386,10 @@ export class CmdService {
     this.http.get<Commande>("http://localhost:8096/v1/admin/commande/code/" + cmd.code).subscribe(
       data => {
         this.foundedcmd = data;
-        console.log(this.foundedcmd)
+
       }
     )
+    this.tableauBesoinService.findItemsByTableauBeosinItemRef(cmd.tableauBesoinItem.reference)
   }
 
   updateCmdStatue(cmds: Array<Commande>, statut: string) {
